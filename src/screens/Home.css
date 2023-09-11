@@ -1,0 +1,26 @@
+.name-page {
+  height: 95vh;
+  min-height: 95vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.omega-title {
+  padding-top: 20vh;
+  font-size: 3rem;
+  font-weight: 400;
+  font-family: "Inter Tight", sans-serif;
+}
+
+.content-section {
+  border-top: 1px solid gray;
+  max-width: 40rem;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.body-section {
+  display: flex;
+  flex-direction: column;
+}
