@@ -8,7 +8,9 @@ export function Navbar() {
     <div className="nav-container">
     <ul className="navbar">
       <li>
-        <NavLink to="/" className="navlink" style={{ padding: "0" }}>
+        <NavLink to="/" className="navlink" style={({ isActive }) =>
+            isActive ? { backgroundColor: "#cbcbcb" } : {}
+          }>
           Home
         </NavLink>
       </li>
