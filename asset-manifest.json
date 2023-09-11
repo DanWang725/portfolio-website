@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/DanWang725/portfolio-website.git/static/css/main.89461942.css",
+    "main.js": "/DanWang725/portfolio-website.git/static/js/main.fe36b163.js",
+    "static/js/787.749b4a44.chunk.js": "/DanWang725/portfolio-website.git/static/js/787.749b4a44.chunk.js",
+    "index.html": "/DanWang725/portfolio-website.git/index.html",
+    "main.89461942.css.map": "/DanWang725/portfolio-website.git/static/css/main.89461942.css.map",
+    "main.fe36b163.js.map": "/DanWang725/portfolio-website.git/static/js/main.fe36b163.js.map",
+    "787.749b4a44.chunk.js.map": "/DanWang725/portfolio-website.git/static/js/787.749b4a44.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.89461942.css",
+    "static/js/main.fe36b163.js"
+  ]
+}
