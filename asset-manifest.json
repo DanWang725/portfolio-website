@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/danielwang725.com/static/css/main.89461942.css",
-    "main.js": "/danielwang725.com/static/js/main.6c02404f.js",
-    "static/js/787.749b4a44.chunk.js": "/danielwang725.com/static/js/787.749b4a44.chunk.js",
-    "index.html": "/danielwang725.com/index.html",
-    "main.89461942.css.map": "/danielwang725.com/static/css/main.89461942.css.map",
-    "main.6c02404f.js.map": "/danielwang725.com/static/js/main.6c02404f.js.map",
-    "787.749b4a44.chunk.js.map": "/danielwang725.com/static/js/787.749b4a44.chunk.js.map"
+    "main.css": "/static/css/main.89461942.css",
+    "main.js": "/static/js/main.aa93b053.js",
+    "static/js/787.749b4a44.chunk.js": "/static/js/787.749b4a44.chunk.js",
+    "index.html": "/index.html",
+    "main.89461942.css.map": "/static/css/main.89461942.css.map",
+    "main.aa93b053.js.map": "/static/js/main.aa93b053.js.map",
+    "787.749b4a44.chunk.js.map": "/static/js/787.749b4a44.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.89461942.css",
-    "static/js/main.6c02404f.js"
+    "static/js/main.aa93b053.js"
   ]
 }
