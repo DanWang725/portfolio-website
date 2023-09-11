@@ -1,7 +1,7 @@
 {
   "name": "portfolio-website",
   "version": "0.1.0",
-  "homepage": "https://github.com/DanWang725/portfolio-website.git",
+  "homepage": "https://danwang725.github.io/portfolio-website",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
