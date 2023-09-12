@@ -5,6 +5,7 @@ export const useScrollSection = ({ initialSection }) => {
 
   useEffect(() => {
     const handleScroll = () => {
+      console.log("scroll detecetd");
       const scrollPosition = window.scrollY;
       const sections = document.querySelectorAll("section");
 
@@ -13,8 +14,8 @@ export const useScrollSection = ({ initialSection }) => {
         const sectionHeight = section.offsetHeight;
 
         if (
-          scrollPosition >= sectionTop - 50 && // Adjust the offset as needed
-          scrollPosition < sectionTop + sectionHeight - 50 // Adjust the offset as needed
+          scrollPosition >= sectionTop - 100 && // Adjust the offset as needed
+          scrollPosition < sectionTop + sectionHeight - 100 // Adjust the offset as needed
         ) {
           setActiveSection(section.id);
         }
@@ -50,7 +51,7 @@ export const useScrollSection = ({ initialSection }) => {
 
   const scrollToSection = (section) => {
     const element = document.getElementById(section);
-    element.scrollIntoView({ behavior: "smooth" });
+    element.scrollTo({ behavior: "smooth", top: 1000 });
   };
   return { activeSection, handleLinkClick };
 };

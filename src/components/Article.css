@@ -10,3 +10,8 @@
   display: flex;
   flex-direction: column;
 }
+
+.article-sidebar {
+  position: sticky;
+  top: 10vh;
+}
