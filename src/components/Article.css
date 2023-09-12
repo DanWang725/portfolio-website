@@ -1,0 +1,12 @@
+.article-body {
+  display: flex;
+  flex-direction: row;
+}
+
+.article-entry {
+  border-top: 1px solid gray;
+  max-width: 40rem;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
