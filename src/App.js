@@ -19,7 +19,7 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <Navbar disableAtHome={true} />
+        <Navbar />
         <AppRoutes />
       </div>
     </BrowserRouter>

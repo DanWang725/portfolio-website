@@ -1,5 +1,6 @@
 import ArticleEntry from "../components/ArticleEntry";
 import ArticleLayout from "../components/ArticleLayout";
+import ArticleSidebar from "../components/ArticleSidebar";
 import { Navbar } from "../navbar/Navbar";
 import "./Home.css";
 import { articleContent } from "./utils";
@@ -15,15 +16,15 @@ const Home = () => {
   return (
     <>
       <div className="content-section">
-        <section className="name-page">
+        <section className="name-page" id="#home">
           <h1 className="omega-title">{"Hi Aww, Im Daniel"}</h1>
           <h2>Computer science student, front end developer.</h2>
           <h1>Abungus</h1>
         </section>
-        <Navbar extraClasses="test" />
+        <div></div>
         <ArticleLayout
           content={articles}
-          sidebar={<a href="#projects">go here</a>}
+          sidebar={<ArticleSidebar></ArticleSidebar>}
         />
       </div>
     </>
