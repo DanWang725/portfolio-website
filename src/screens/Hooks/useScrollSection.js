@@ -44,14 +44,5 @@ export const useScrollSection = ({ initialSection }) => {
     window.location.hash = activeSection;
   }, [activeSection]);
 
-  const handleLinkClick = (section) => {
-    setActiveSection(section);
-    scrollToSection(section);
-  };
-
-  const scrollToSection = (section) => {
-    const element = document.getElementById(section);
-    element.scrollTo({ behavior: "smooth", top: 1000 });
-  };
-  return { activeSection, handleLinkClick };
+  return { activeSection };
 };

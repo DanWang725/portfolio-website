@@ -3,10 +3,11 @@ import { useScrollSection } from "../screens/Hooks/useScrollSection";
 import "./Article.css";
 
 const ArticleSidebar = () => {
-  const { activeSection, handleLinkClick } = useScrollSection("home");
+  const { activeSection } = useScrollSection("home");
   return (
     <div className="article-sidebar">
-      <ul>
+      Navivation
+      <ul className="article-sidebar-list">
         <li>
           <NavLink
             to="/#home"
@@ -23,7 +24,6 @@ const ArticleSidebar = () => {
             isActive={() => {
               return window.location.hash === "#projects";
             }}
-            onClick={() => handleLinkClick("projects")}
           >
             Section 2
           </NavLink>
@@ -34,7 +34,6 @@ const ArticleSidebar = () => {
             isActive={() => {
               return window.location.hash === "#about";
             }}
-            onClick={() => handleLinkClick("about")}
           >
             Section 3
           </NavLink>

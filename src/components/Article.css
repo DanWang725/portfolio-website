@@ -13,5 +13,14 @@
 
 .article-sidebar {
   position: sticky;
-  top: 10vh;
+  top: 20vh;
+  margin-right: 1rem;
+}
+
+.article-sidebar-list {
+  list-style-type: none;
+}
+
+.article-sidebar-list > li > a {
+  text-decoration: none;
 }
