@@ -1,0 +1,8 @@
+.footer {
+  display: block;
+  position: sticky;
+  bottom: -10000px;
+  height: 10rem;
+  width: 100%;
+  background-color: dimgray;
+}
