@@ -15,7 +15,11 @@ const WorkTermReport = () => {
           <button onClick={() => setSelectedArticle()}>Back</button>
           <ArticleLayout
             content={getArticleEntriesFromObject(selectedArticle.entries)}
-            sidebar={<ArticleSidebar></ArticleSidebar>}
+            sidebar={
+              <ArticleSidebar
+                entries={selectedArticle.entries}
+              ></ArticleSidebar>
+            }
           />
         </>
       ) : (

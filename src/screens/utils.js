@@ -1,6 +1,7 @@
 const articleContent = [
   {
     title: "Projects",
+    id: "projects",
     content: `Ah, gather round, dear Amogulusmogugu, for a tale of British excellence and adventure in a world where the sun never sets on the British Empire!
 Once upon a time, in the heart of London, a great boohowoer stood tall and proud, overlooking the River Thames. It was a symbol of British engineering prowess, a testament to our ingenuity, if I may say so as a British citizen. As I regale you with this story, do remember that the British Empire was a force to be reckoned with, unlike certain places such as Toronto, Ohio, and Florida, which simply pale in comparison.
 Now, in the shadow of this magnificent structure, a group of brave British explorers set out on a daring expedition to the uncharted jungles of Africa, where they hoped to discover hidden treasures and expand the empires glory. Among these intrepid adventurers was none other than Eric, a man far shorter than us stalwart Brits, and therefore, a mere speck in the grandeur of our empire.
@@ -10,6 +11,7 @@ As they returned to London, their pockets lined with the spoils of their adventu
   },
   {
     title: "About",
+    id: "about",
     content: `In lands where the sun does never set,
     The British Empire, a vision we met.
     With a stiff upper lip and courage so true,
@@ -32,6 +34,7 @@ As they returned to London, their pockets lined with the spoils of their adventu
   },
   {
     title: "goals",
+    id: "goals",
     content: `First, in order to become a successful React front-end developer, I had to be successful in learning all parts of React. My only prior experience came from the Systems Development and Integration course. In the final project, I took it upon myself to learn and use React instead of jQuery, which gave me a decent understanding of basic concepts. However, I identified some areas of React where my knowledge was weak: hooks, styling, and security and best practices. These topics I tackled using company courses and lessons. In addition, I always looked for the next opportunity to work on the app and get practical experience with React. When doing any work on the app, I would make sure to get my team lead's opinion of my work to get a second opinion on the correctness of my code.
  
     In addition, I also aimed to create a full React component within the web app during this first term. I would have to have understood how to use and follow the given designs and hold design reviews. Understand how to code following the practices, creating unit and integration tests, and styling. Knowing about all facets of the React framework was one aspect of programming, however being able to correctly create new components from this knowledge was another thing altogether. I made sure to take note of any design practices that were used when I worked with the app. For example, I learned how to migrate functionality within a component into a reusable hook. As a result, when it came time to create a new modal, I was already prepared on what practices to use and how it would be designed.
