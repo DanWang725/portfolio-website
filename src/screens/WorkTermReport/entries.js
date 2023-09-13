@@ -49,6 +49,7 @@ const workTermReport1 = {
       As for the resolution of these goals, I am very proud to say that I accomplished all three of these goals much quicker than I thought. It was a huge benefit to my overall goal to become a capable developer on the team. The first two goals represented my onboarding journey for front end development, given it was the skills I needed for day-to-day development. Moreover, building good collaboration skills was a benefit in many ways. I was getting clarification and help on my many issues starting out, as well as returning the favour by helping team members out with their work. In reflection, the goals that I had set myself were an appropriate challenge. It helped me focus my efforts and opened many of the opportunities to contribute to the product.
       `,
     },
+    { title: "abungus", id: "abungus", content: "abungus" },
   ],
 };
 

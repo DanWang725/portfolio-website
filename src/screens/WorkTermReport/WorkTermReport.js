@@ -18,6 +18,7 @@ const WorkTermReport = () => {
             sidebar={
               <ArticleSidebar
                 entries={selectedArticle.entries}
+                handleBack={() => setSelectedArticle()}
               ></ArticleSidebar>
             }
           />

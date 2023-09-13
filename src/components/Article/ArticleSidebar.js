@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import "./Article.css";
 
-const ArticleSidebar = ({ entries }) => {
+const ArticleSidebar = ({ entries, handleBack }) => {
   return (
     <div className="article-sidebar">
       Navivation
@@ -19,6 +19,7 @@ const ArticleSidebar = ({ entries }) => {
           </li>
         ))}
       </ul>
+      {handleBack && <button onClick={handleBack}>Back</button>}
     </div>
   );
 };
