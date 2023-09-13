@@ -1,19 +1,12 @@
-import ArticleEntry from "../components/ArticleEntry";
-import ArticleLayout from "../components/ArticleLayout";
-import ArticleSidebar from "../components/ArticleSidebar";
+import { ArticleEntry } from "../components/Article/index";
 import { HashScroll } from "react-hash-scroll";
 import { Navbar } from "../navbar/Navbar";
 import "./Home.css";
 import { articleContent } from "./utils";
+import { getArticleEntriesFromObject } from "../components/Article/utils";
 
 const Home = () => {
-  const articles = articleContent.map((article) => (
-    <ArticleEntry
-      {...article}
-      id={article.title.toLowerCase()}
-      key={article.title.toLowerCase()}
-    />
-  ));
+  const articles = getArticleEntriesFromObject(articleContent);
   return (
     <>
       <div className="content-section">
@@ -25,10 +18,7 @@ const Home = () => {
           </section>
         </HashScroll>
         <div></div>
-        <ArticleLayout
-          content={articles}
-          sidebar={<ArticleSidebar></ArticleSidebar>}
-        />
+        {articles}
       </div>
     </>
   );

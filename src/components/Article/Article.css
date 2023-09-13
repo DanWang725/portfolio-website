@@ -9,6 +9,8 @@
   align-items: center;
   display: flex;
   flex-direction: column;
+  line-break: inherit;
+  white-space: pre-wrap;
 }
 
 .article-sidebar {

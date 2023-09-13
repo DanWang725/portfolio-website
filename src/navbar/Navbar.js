@@ -45,7 +45,7 @@ export const Navbar = () => {
         </li>
         <li>
           <NavLink
-            to="/collection"
+            to="/work-term-report"
             className="navlink"
             style={({ isActive }) =>
               isActive ? { backgroundColor: "#cbcbcb" } : {}

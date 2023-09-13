@@ -4,12 +4,10 @@
   margin: 0;
   background-color: dimgray;
   width: 100%;
-  transition: all 0.2s ease;
 }
 .nav-container {
   position: sticky;
   width: 100dvw;
-  transition: all 0.25s;
 }
 .navbar > li {
   display: inline-block;
@@ -26,6 +24,6 @@
 }
 
 .start-bottom {
-  top: -90vh;
-  transform: translate(0px, 90vh);
+  top: calc(3rem - 100vh);
+  transform: translate(0px, calc(100vh - 3rem));
 }

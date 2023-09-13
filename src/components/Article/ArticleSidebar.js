@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { useScrollSection } from "../screens/Hooks/useScrollSection";
+import { useScrollSection } from "../../screens/Hooks/useScrollSection";
 import "./Article.css";
 
 const ArticleSidebar = () => {
