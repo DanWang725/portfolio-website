@@ -17,10 +17,12 @@
   position: sticky;
   top: 20vh;
   margin-right: 1rem;
+  min-width: 6rem;
 }
 
 .article-sidebar-list {
   list-style-type: none;
+  padding-left: 1rem;
 }
 
 .article-sidebar-list > li > a {

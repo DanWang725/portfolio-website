@@ -1,25 +1,37 @@
 import { NavLink } from "react-router-dom";
+import { getHash } from "../../shared-utils/src";
 import "./Article.css";
 
 const ArticleSidebar = ({ entries, handleBack }) => {
   return (
     <div className="article-sidebar">
-      Navivation
+      Navigation
       <ul className="article-sidebar-list">
         {entries?.map(({ id, title }) => (
           <li key={id}>
             <NavLink
               to={`#${id}`}
               isActive={() => {
-                return window.location.hash === `#${id}`;
+                return getHash() === `#${id}`;
               }}
+              style={() =>
+                getHash() === `#${id}` ? { fontWeight: "600" } : {}
+              }
             >
               {`${title}`}
             </NavLink>
           </li>
         ))}
       </ul>
-      {handleBack && <button onClick={handleBack}>Back</button>}
+      {handleBack && (
+        <button
+          onClick={() => {
+            handleBack();
+          }}
+        >
+          Back
+        </button>
+      )}
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import { Navbar } from "./navbar/Navbar";
 import { AppRoutes } from "./Routes";
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 import React, { useEffect } from "react";
 import Footer from "./components/Footer";
 
@@ -18,13 +18,13 @@ function App() {
     );
   }, []);
   return (
-    <BrowserRouter>
+    <HashRouter>
       <div className="App">
         <Navbar />
         <AppRoutes />
         <Footer />
       </div>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 

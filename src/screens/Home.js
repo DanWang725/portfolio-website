@@ -1,4 +1,4 @@
-import { ArticleEntry } from "../components/Article/index";
+import { ArticleEntry } from "../components/Article";
 import { HashScroll } from "react-hash-scroll";
 import { Navbar } from "../navbar/Navbar";
 import "./Home.css";
@@ -12,9 +12,9 @@ const Home = () => {
       <div className="content-section">
         <HashScroll hash="#home">
           <section className="name-page">
-            <h1 className="omega-title">{"Hi Aww, Im Daniel"}</h1>
+            <h1 className="omega-title">{"Hey, I'm Daniel"}</h1>
             <h2>Computer science student, front end developer.</h2>
-            <h1>Abungus</h1>
+            <h1></h1>
           </section>
         </HashScroll>
         <div></div>
