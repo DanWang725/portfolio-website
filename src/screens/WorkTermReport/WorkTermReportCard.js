@@ -23,6 +23,9 @@ const WorkTermReportCard = ({ workTermReportEntry, setSelectedWtr }) => {
         <Typography gutterBottom variant="h5" component="div">
           {workTermReportEntry.title}
         </Typography>
+        <Typography gutterBottom variant="p" component="div">
+          {workTermReportEntry.description}
+        </Typography>
       </CardContent>
     </Card>
   );

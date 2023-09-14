@@ -21,7 +21,7 @@ export const Navbar = () => {
             Home
           </NavLink>
         </li>
-        <li>
+        {/* <li>
           <NavLink
             to="/browse"
             className="navlink"
@@ -42,7 +42,7 @@ export const Navbar = () => {
           >
             Create
           </NavLink>
-        </li>
+        </li> */}
         <li>
           <NavLink
             to="/work-term-report"
@@ -51,7 +51,7 @@ export const Navbar = () => {
               isActive ? { backgroundColor: "#cbcbcb" } : {}
             }
           >
-            My Collection
+            Work Term Reports
           </NavLink>
         </li>
       </ul>
