@@ -6,9 +6,7 @@ import React from "react";
 export const Navbar = () => {
   const location = useLocation();
   return (
-    <div
-      className={`nav-container ${location.pathname === "/" && "start-bottom"}`}
-    >
+    <div className={`nav-container `}>
       <ul className="navbar">
         <li>
           <NavLink

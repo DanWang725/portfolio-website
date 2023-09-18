@@ -1,9 +1,31 @@
 .name-page {
-  height: 95vh;
-  min-height: 95vh;
+  height: calc(100vh - 3rem);
+  min-height: calc(100vh - 3rem);
   display: flex;
   align-items: center;
   flex-direction: column;
+  border-color: cadetblue;
+  width: 100%;
+}
+
+.static {
+  position: fixed;
+  z-index: -1;
+}
+
+.background-image {
+  background: url("../img/background.jpg");
+  filter: blur(1px);
+  -webkit-filter: blur(1px);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: fixed;
+  z-index: -1;
+  width: 110%;
+  height: 110%;
+  left: 0;
+  top: 0;
 }
 .omega-title {
   padding-top: 20vh;
@@ -12,11 +34,11 @@
   font-family: "Inter Tight", sans-serif;
 }
 .content-section {
-  border-top: 1px solid gray;
   align-items: center;
   display: flex;
   flex-direction: column;
   padding-bottom: 10rem;
+  /* background-color: red; */
 }
 .body-section {
   display: flex;

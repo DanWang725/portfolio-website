@@ -11,12 +11,15 @@ const Home = () => {
     <>
       <div className="content-section">
         <HashScroll hash="#home">
-          <section className="name-page">
-            <h1 className="omega-title">{"Hey, I'm Daniel"}</h1>
-            <h2>Computer science student, front end developer.</h2>
-            <h1></h1>
-          </section>
+          <section className="background-image name-page"></section>
         </HashScroll>
+        <section className="name-page static">
+          <h1 className="omega-title">{"Hey, I'm Daniel"}</h1>
+          <h2>Computer science student, front end developer.</h2>
+          <h1></h1>
+        </section>
+        <section className="name-page"></section>
+        <Navbar></Navbar>
         <div></div>
         {articles}
       </div>

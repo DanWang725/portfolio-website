@@ -6,11 +6,15 @@
 .article-entry {
   border-top: 1px solid gray;
   max-width: 40rem;
+  width: 100%;
   align-items: center;
   display: flex;
   flex-direction: column;
   line-break: inherit;
   white-space: pre-wrap;
+  background-color: coral;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .article-sidebar {
