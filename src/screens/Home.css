@@ -10,23 +10,9 @@
 
 .static {
   position: fixed;
-  z-index: -1;
+  /* z-index: -1; */
 }
 
-.background-image {
-  background: url("../img/background.jpg");
-  filter: blur(1px);
-  -webkit-filter: blur(1px);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: fixed;
-  z-index: -1;
-  width: 110%;
-  height: 110%;
-  left: 0;
-  top: 0;
-}
 .omega-title {
   padding-top: 20vh;
   font-size: 3rem;
@@ -40,6 +26,10 @@
   padding-bottom: 10rem;
   /* background-color: red; */
 }
+.content-section > * {
+  z-index: 1;
+}
+
 .body-section {
   display: flex;
   flex-direction: column;

@@ -1,36 +1,35 @@
 import { Navbar } from "./navbar/Navbar";
 import { AppRoutes } from "./Routes";
 import { HashRouter } from "react-router-dom";
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 import Footer from "./components/Footer";
 import Body from "./screens/Body";
+import { loadFull } from "tsparticles";
+import { loadSlim } from "tsparticles-slim"; // if you are going to use `loadSlim`, install the "tsparticles-slim" package too.
+import Particles from "react-particles";
+import { scroll } from "scroll-speed";
+import ParticleWrapper from "./screens/ParticleWrapper/ParticleWrapper";
 
 function App() {
-  useEffect(() => {
-    const bg = document.querySelector(".background-image");
-    const windowWidth = window.innerWidth / 5;
-    const windowHeight = window.innerHeight / 5;
-    window.addEventListener(
-      "scroll",
-      () => {
-        document.body.style.setProperty(
-          "--scroll",
-          window.pageYOffset / (document.body.offsetHeight - window.innerHeight)
-        );
-      },
-      false
-    );
-    window.addEventListener("mousemove", (e) => {
-      const mouseX = e.clientX / windowWidth;
-      const mouseY = e.clientY / windowHeight;
-
-      bg.style.transform = `translate3d(-${mouseX}%, -${mouseY}%, 0)`;
-    });
-  }, []);
+  // useEffect(() => {
+  //   window.addEventListener(
+  //     "scroll",
+  //     () => {
+  //       document.body.style.setProperty(
+  //         "--scroll",
+  //         window.pageYOffset / (document.body.offsetHeight - window.innerHeight)
+  //       );
+  //     },
+  //     false
+  //   );
+  // }, []);
   return (
-    <HashRouter>
-      <Body></Body>
-    </HashRouter>
+    <>
+      <ParticleWrapper></ParticleWrapper>
+      <HashRouter>
+        <Body></Body>
+      </HashRouter>
+    </>
   );
 }
 

@@ -4,11 +4,16 @@
   margin: 0;
   background-color: dimgray;
   width: 100%;
+  z-index: 100;
+}
+.navbar > * {
+  z-index: 100;
 }
 .nav-container {
   position: sticky;
   width: 100dvw;
   top: 0;
+  z-index: 100;
 }
 .navbar > li {
   display: inline-block;
@@ -25,6 +30,6 @@
 }
 
 .start-bottom {
-  top: calc(3rem - 100vh);
-  transform: translate(0px, calc(100vh - 3rem));
+  /* top: calc(3rem - 100vh); */
+  /* transform: translate(0px, calc(100vh - 3rem)); */
 }

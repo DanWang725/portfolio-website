@@ -4,6 +4,7 @@
   align-items: center;
   flex-direction: column;
   overflow-y: hidden;
+  z-index: 1;
 }
 
 .App-logo {
