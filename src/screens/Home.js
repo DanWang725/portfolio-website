@@ -15,7 +15,7 @@ const Home = () => {
         </HashScroll>
         <section className="name-page static">
           <h1 className="omega-title">{"Hey, I'm Daniel"}</h1>
-          <h2>Computer science student, front end developer.</h2>
+          <h2>Computer science student, Front End Developer.</h2>
           <h1></h1>
         </section>
         <Navbar></Navbar>

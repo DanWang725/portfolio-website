@@ -1,7 +1,7 @@
 export const getParticleOptions = (speed) => ({
   background: {
     color: {
-      value: "#0d47a1",
+      value: "#000022",
     },
   },
   fpsLimit: 120,

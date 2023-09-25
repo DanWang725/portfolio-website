@@ -12,9 +12,10 @@
   flex-direction: column;
   line-break: inherit;
   white-space: pre-wrap;
-  background-color: coral;
+  background-color: #005e7c;
   padding-left: 1rem;
   padding-right: 1rem;
+  color: white;
 }
 
 .article-sidebar {
@@ -22,6 +23,10 @@
   top: 20vh;
   margin-right: 1rem;
   min-width: 6rem;
+  background-color: #005e7c;
+  padding: 1rem;
+  color: white;
+  text-decoration-color: darkturquoise;
 }
 
 .article-sidebar-list {
@@ -31,4 +36,5 @@
 
 .article-sidebar-list > li > a {
   text-decoration: none;
+  color: deepskyblue;
 }

@@ -27,9 +27,9 @@ const ParticleWrapper = () => {
   //     if (scrollSpeed > 0) containerRef.current.playEmitter("scrollUp");
   //     else containerRef.current?.pauseEmitter("scrollUp");
   //   }, [scrollSpeed]);
-  useEffect(() => {
-    console.log(containerRef.current);
-  });
+  //   useEffect(() => {
+  //     console.log(containerRef.current);
+  //   });
 
   useEffect(() => {
     let lastScrollY = window.scrollY;
@@ -57,6 +57,7 @@ const ParticleWrapper = () => {
       init={particlesInit}
       loaded={particlesLoaded}
       options={getParticleOptions(scrollSpeed)}
+      style={{ backgroundColor: "#001242" }}
     />
   );
 };
