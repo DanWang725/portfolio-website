@@ -31,32 +31,32 @@ const ParticleWrapper = () => {
   //     console.log(containerRef.current);
   //   });
 
-  useEffect(() => {
-    let lastScrollY = window.scrollY;
-    let animationFrameId;
+  // useEffect(() => {
+  //   let lastScrollY = window.scrollY;
+  //   let animationFrameId;
 
-    const updateScrollSpeed = () => {
-      const currentScrollY = window.scrollY;
-      const scrollSpeed = Math.abs(currentScrollY - lastScrollY);
-      setScrollSpeed(scrollSpeed / 1000);
-      lastScrollY = currentScrollY;
-      animationFrameId = requestAnimationFrame(updateScrollSpeed);
-    };
+  //   const updateScrollSpeed = () => {
+  //     const currentScrollY = window.scrollY;
+  //     const scrollSpeed = Math.abs(currentScrollY - lastScrollY);
+  //     setScrollSpeed(scrollSpeed / 1000);
+  //     lastScrollY = currentScrollY;
+  //     animationFrameId = requestAnimationFrame(updateScrollSpeed);
+  //   };
 
-    updateScrollSpeed(); // Initial call
+  //   updateScrollSpeed(); // Initial call
 
-    return () => {
-      cancelAnimationFrame(animationFrameId);
-      window.removeEventListener("scroll", updateScrollSpeed);
-    };
-  }, []);
+  //   return () => {
+  //     cancelAnimationFrame(animationFrameId);
+  //     window.removeEventListener("scroll", updateScrollSpeed);
+  //   };
+  // }, []);
 
   return (
     <Particles
       id="tsparticles"
       init={particlesInit}
       loaded={particlesLoaded}
-      options={getParticleOptions(scrollSpeed)}
+      options={getParticleOptions(2)}
       style={{ backgroundColor: "#001242" }}
     />
   );
