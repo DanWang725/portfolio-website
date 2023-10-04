@@ -5,6 +5,7 @@ import Particles from "react-particles";
 import { loadFull } from "tsparticles";
 import { loadMotionPlugin } from "tsparticles-plugin-motion";
 import { loadExternalBubbleInteraction } from "tsparticles-interaction-external-bubble";
+import "./ParticleWrapper.css";
 
 const ParticleWrapper = () => {
   const [scrollSpeed, setScrollSpeed] = useState(0);
@@ -54,10 +55,12 @@ const ParticleWrapper = () => {
   return (
     <Particles
       id="tsparticles"
+      className="particles"
       init={particlesInit}
       loaded={particlesLoaded}
       options={getParticleOptions(2)}
       style={{ backgroundColor: "#001242" }}
+      z
     />
   );
 };

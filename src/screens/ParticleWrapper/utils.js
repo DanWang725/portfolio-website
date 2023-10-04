@@ -13,7 +13,7 @@ export const getParticleOptions = (speed) => ({
         mode: "slow",
       },
       onDiv: {
-        selectors: ["#omega-title", "h2", "h1", "p"],
+        selectors: [".name-page"],
         enable: true,
         mode: "bounce",
         type: "rectangle",
@@ -47,10 +47,14 @@ export const getParticleOptions = (speed) => ({
     },
     links: {
       color: "#ffffff",
-      distance: 150,
+      distance: 130,
       enable: true,
-      opacity: 0.5,
+      opacity: 0.1,
       width: 1,
+      triangles: {
+        enable: true,
+        opacity: 0.1,
+      },
     },
     move: {
       direction: speed === 0 ? "none" : "down",
@@ -59,7 +63,7 @@ export const getParticleOptions = (speed) => ({
         default: "bounce",
       },
       random: false,
-      speed: speed === 0 ? 1 : 3,
+      speed: speed === 0 ? 4 : 5,
       straight: false,
     },
     number: {
@@ -67,7 +71,7 @@ export const getParticleOptions = (speed) => ({
         enable: true,
         area: 800,
       },
-      value: 80,
+      value: 100,
     },
     opacity: {
       value: 0.5,
@@ -76,7 +80,7 @@ export const getParticleOptions = (speed) => ({
       type: "circle",
     },
     size: {
-      value: { min: 1, max: 5 },
+      value: 1,
     },
   },
   detectRetina: true,

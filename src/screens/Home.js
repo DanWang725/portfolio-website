@@ -11,14 +11,22 @@ const Home = () => {
     <>
       <div className="content-section">
         <HashScroll hash="#home">
-          <section className="name-page"></section>
+          <section className="name-page">
+            <h1 className="title-text title-name">{"Hey, I'm Daniel"}</h1>
+            <h2 className="title-text title-desc">
+              Computer science student, Front End Developer.
+            </h2>
+            <h1></h1>
+          </section>
         </HashScroll>
-        <section className="name-page static">
-          <h1 className="omega-title">{"Hey, I'm Daniel"}</h1>
-          <h2>Computer science student, Front End Developer.</h2>
+        {/* <section className="name-page static">
+          <h1 className="title-text title-name">{"Hey, I'm Daniel"}</h1>
+          <h2 className="title-text title-desc">
+            Computer science student, Front End Developer.
+          </h2>
           <h1></h1>
-        </section>
-        <Navbar></Navbar>
+        </section> */}
+        <Navbar classOverride={"homepage-navbar"}></Navbar>
         <div></div>
         {articles}
       </div>

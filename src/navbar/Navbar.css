@@ -1,14 +1,44 @@
-.navbar {
+.navbar-default {
   list-style-type: none;
   padding: 0;
   margin: 0;
-  background-color: dimgray;
+  background: rgb(116, 116, 145);
+  background: -moz-linear-gradient(
+    180deg,
+    rgba(116, 116, 145, 1) 0%,
+    rgba(8, 8, 42, 1) 90%,
+    rgba(0, 0, 34, 0) 100%
+  );
+  background: -webkit-linear-gradient(
+    180deg,
+    rgba(116, 116, 145, 1) 0%,
+    rgba(8, 8, 42, 1) 90%,
+    rgba(0, 0, 34, 0) 100%
+  );
+  background: linear-gradient(
+    180deg,
+    rgba(116, 116, 145, 1) 0%,
+    rgba(8, 8, 42, 1) 90%,
+    rgba(0, 0, 34, 0) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#747491",endColorstr="#000022",GradientType=1);
   width: 100%;
   z-index: 100;
 }
+
+.homepage-navbar {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  z-index: 100;
+  background-color: yellow;
+}
+
 .navbar > * {
   z-index: 100;
 }
+
 .nav-container {
   position: sticky;
   width: 100dvw;
