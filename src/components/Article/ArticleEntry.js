@@ -2,6 +2,7 @@ import "./Article.css";
 import { HashScroll } from "react-hash-scroll";
 const ArticleEntry = ({ title, content, id, key }) => {
   const scrollToSection = (ref, behavior, position) => {
+    console.log(ref, behavior, position);
     if (ref.current) {
       // Calculate the target scroll position 50px from the top of the section
       const targetScrollPosition =

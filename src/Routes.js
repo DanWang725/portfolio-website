@@ -2,15 +2,19 @@ import { Route, Routes } from "react-router-dom";
 import { Home } from "./screens";
 import WorkTermReport from "./screens/WorkTermReport/WorkTermReport";
 
-export function AppRoutes() {
+export const AppRoutes = ({ setNavbarClass }) => {
   return (
     <div>
       <Routes>
-        <Route exact path="/" element={<Home />} />
+        <Route
+          exact
+          path="/"
+          element={<Home setNavbarClass={setNavbarClass} />}
+        />
         <Route path="/work-term-report" element={<WorkTermReport />} />
         {/* <Route exact path="/about" element={} />
         <Route exact path="/edit" element={} /> */}
       </Routes>
     </div>
   );
-}
+};

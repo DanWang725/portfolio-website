@@ -1,16 +1,12 @@
 import "./Navbar.css";
 import "../styles.css";
 import { NavLink, useLocation } from "react-router-dom";
-import React from "react";
+import React, { useState } from "react";
 
 export const Navbar = ({ classOverride }) => {
   const location = useLocation();
   return (
-    <div
-      className={`nav-container ${
-        location.pathname === "/" ? "start-bottom" : ""
-      }`}
-    >
+    <div className={`nav-container `}>
       <ul className={`navbar ${classOverride ?? "navbar-default"}`}>
         <li>
           <NavLink
