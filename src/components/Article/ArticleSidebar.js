@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { getHash } from "../../shared-utils/src";
+import { getHash, scrollToHash } from "../../shared-utils/src";
 import "./Article.css";
 
 const ArticleSidebar = ({ entries, handleBack }) => {
@@ -17,6 +17,7 @@ const ArticleSidebar = ({ entries, handleBack }) => {
               style={() =>
                 getHash() === `#${id}` ? { fontWeight: "600" } : {}
               }
+              onClick={() => scrollToHash(id)}
             >
               {`${title}`}
             </NavLink>
