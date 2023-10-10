@@ -13,7 +13,7 @@ export const getParticleOptions = (speed) => ({
         mode: "slow",
       },
       onDiv: {
-        selectors: [".name-page"],
+        selectors: [".title-name"],
         enable: true,
         mode: "bounce",
         type: "rectangle",
