@@ -12,7 +12,6 @@
   color: antiquewhite;
   border: white 1px solid;
   width: auto;
-  align-items: flex-start;
   left: 10rem;
   backdrop-filter: blur(2px);
   background: rgba(30, 30, 30, 0.5);
