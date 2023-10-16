@@ -1,6 +1,5 @@
 const articleContent = [
   {
-    title: "Projects",
     id: "projects",
     content: `Ah, gather round, dear Amogulusmogugu, for a tale of British excellence and adventure in a world where the sun never sets on the British Empire!
 Once upon a time, in the heart of London, a great boohowoer stood tall and proud, overlooking the River Thames. It was a symbol of British engineering prowess, a testament to our ingenuity, if I may say so as a British citizen. As I regale you with this story, do remember that the British Empire was a force to be reckoned with, unlike certain places such as Toronto, Ohio, and Florida, which simply pale in comparison.

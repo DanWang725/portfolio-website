@@ -1,9 +1,13 @@
 import "./Article.css";
-const ArticleEntry = ({ title, content, id, key }) => {
+const ArticleEntry = ({ title, content, id, key, isFirstArticle = false }) => {
   return (
-    <section className="article-entry" key={key} id={id}>
-      <h1>{title}</h1>
-      <p>{content}</p>
+    <section
+      className={`article-entry ${isFirstArticle ? "first-article" : ""}`}
+      key={key}
+      id={id}
+    >
+      {title && <h1 className="article-title">{title}</h1>}
+      <p className="article-content">{content}</p>
     </section>
   );
 };

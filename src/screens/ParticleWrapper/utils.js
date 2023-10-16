@@ -12,16 +12,16 @@ export const getParticleOptions = (speed) => ({
         enable: true,
         mode: "slow",
       },
-      onDiv: {
-        selectors: [".title-name"],
-        enable: true,
-        mode: "bounce",
-        type: "rectangle",
-      },
-      onHover: {
-        enable: true,
-        mode: "slow",
-      },
+      // onDiv: {
+      //   selectors: [".title-name"],
+      //   enable: true,
+      //   mode: "bounce",
+      //   type: "rectangle",
+      // },
+      // onHover: {
+      //   enable: true,
+      //   mode: "slow",
+      // },
       resize: true,
     },
     modes: {
@@ -46,10 +46,10 @@ export const getParticleOptions = (speed) => ({
       value: "#ffffff",
     },
     links: {
-      color: "#ffffff",
-      distance: 130,
+      color: "#ADF5FF",
+      distance: 135,
       enable: true,
-      opacity: 0.1,
+      opacity: 0.5,
       width: 1,
       triangles: {
         enable: true,
@@ -57,13 +57,13 @@ export const getParticleOptions = (speed) => ({
       },
     },
     move: {
-      direction: speed === 0 ? "none" : "down",
+      direction: speed === 0 ? "down" : "down",
       enable: true,
       outModes: {
-        default: "bounce",
+        default: "out",
       },
       random: false,
-      speed: speed === 0 ? 4 : 5,
+      speed: speed === 0 ? 10 : 6,
       straight: false,
     },
     number: {
@@ -71,7 +71,7 @@ export const getParticleOptions = (speed) => ({
         enable: true,
         area: 800,
       },
-      value: 100,
+      value: 70,
     },
     opacity: {
       value: 0.5,
@@ -80,7 +80,7 @@ export const getParticleOptions = (speed) => ({
       type: "circle",
     },
     size: {
-      value: 1,
+      value: 0.7,
     },
   },
   detectRetina: true,
