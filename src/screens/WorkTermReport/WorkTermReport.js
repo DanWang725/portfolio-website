@@ -15,6 +15,7 @@ const WorkTermReport = () => {
       {selectedArticle ? (
         <>
           <ArticleLayout
+            classOverrides={"no-title"}
             content={getArticleEntriesFromObject(selectedArticle.entries)}
             sidebar={
               <ArticleSidebar
