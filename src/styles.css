@@ -34,6 +34,7 @@ h1 {
   background: rgba(30, 30, 30, 0.8);
   margin-left: 3rem;
   margin-right: 3rem;
+  backdrop-filter: blur(2px);
 }
 
 @media only screen and (max-width: 1200px) {
@@ -128,7 +129,6 @@ h1 {
   align-items: center;
   flex-direction: column;
   border: #f2fdff 1px solid;
-  backdrop-filter: blur(2px);
 }
 
 @media screen and (min-width: 1201px) {
@@ -147,7 +147,7 @@ h1 {
 }
 
 .name-page > h2 {
-  margin-top: 2rem;
+  margin-top: 0.5rem;
   margin-bottom: 0.5rem;
   font-weight: 300;
   font-size: 1em;
@@ -267,8 +267,6 @@ h1 {
   flex-direction: column;
   line-break: inherit;
   white-space: pre-wrap;
-  backdrop-filter: blur(2px);
-  color: white;
 }
 
 .no-title {
@@ -308,4 +306,19 @@ h1 {
 .article-sidebar-list > li > a {
   text-decoration: none;
   color: deepskyblue;
+}
+
+/**** WORK TERM REPORT PAGE *****/
+
+.work-report-container {
+  margin-top: 2rem;
+  height: 20em;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border: #f2fdff 1px solid;
+}
+
+.test2 {
+  width: 10em;
 }

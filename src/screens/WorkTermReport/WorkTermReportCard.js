@@ -8,8 +8,9 @@ const WorkTermReportCard = ({ workTermReportEntry, setSelectedWtr }) => {
   console.log(workTermReportEntry);
   return (
     <Card
-      sx={{ maxWidth: 345 }}
+      sx={{ maxWidth: 350 }}
       onClick={() => setSelectedWtr(workTermReportEntry)}
+      className="test2"
     >
       <CardActionArea>
         <CardMedia

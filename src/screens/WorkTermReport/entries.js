@@ -1,6 +1,7 @@
 import cover1 from "./images/coverWTR1.png";
 const workTermReport1 = {
   title: "Work Term Report 1",
+  id: "wtr-s23",
   image: cover1,
   description: "This is the first work term report.",
   entries: [
