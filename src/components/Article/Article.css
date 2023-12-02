@@ -4,8 +4,8 @@
 }
 
 .article-entry {
-  border-left: 1px solid gray;
-  border-right: 1px solid gray;
+  border-left: 1px solid #f2fdff;
+  border-right: 1px solid #f2fdff;
   max-width: 40rem;
   width: 90%;
   align-items: center;
@@ -25,11 +25,11 @@
 }
 
 .first-article {
-  border-top: 1px solid gray;
+  border-top: 1px solid #f2fdff;
 }
 
 .article-title {
-  border-bottom: 1px solid white;
+  border-bottom: 1px solid #f2fdff;
   text-align: start;
   width: 90%;
 }

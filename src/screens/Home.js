@@ -1,4 +1,3 @@
-import "./Home.css";
 import { articleContent } from "./utils";
 import { getArticleEntriesFromObject } from "../components/Article/utils";
 import { useInView } from "react-intersection-observer";
@@ -17,12 +16,17 @@ const Home = ({ setNavbarClass }) => {
   return (
     <>
       <div className="content-section">
-        <section className="name-page" id={"home"} ref={ref}>
-          <h1 className="title-text title-name">{"Hey, I'm Daniel"}</h1>
-          <h2 className="title-text title-desc">
-            Computer science student, Front End Developer.
+        <div id="home"></div>
+        <section className="std-container name-page" ref={ref}>
+          <h1>{"I'm Daniel Wang"}</h1>
+          <h2 className="name-page-about">
+            {
+              "A Student Software Engineer based in Guelph, Ontario. I'm currently a front end developer at "
+            }
+            <b>NCR</b>
+            {", I am open to any oppertunity."}
           </h2>
-          <h3 className="title-navigation">
+          <h3 className="name-page-navigation">
             Scroll down or navigate to these areas
           </h3>
           <div className="title-nav-items">

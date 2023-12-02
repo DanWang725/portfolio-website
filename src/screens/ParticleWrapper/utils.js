@@ -4,7 +4,7 @@ export const getParticleOptions = (speed) => ({
       value: "#000022",
     },
   },
-  fpsLimit: 120,
+  fpsLimit: 30,
   interactivity: {
     detectsOn: "window",
     events: {
@@ -63,7 +63,7 @@ export const getParticleOptions = (speed) => ({
         default: "out",
       },
       random: false,
-      speed: speed === 0 ? 10 : 6,
+      speed: speed === 0 ? 4 : 3,
       straight: false,
     },
     number: {

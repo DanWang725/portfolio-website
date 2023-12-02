@@ -9,6 +9,7 @@ import { loadSlim } from "tsparticles-slim"; // if you are going to use `loadSli
 import Particles from "react-particles";
 import { scroll } from "scroll-speed";
 import ParticleWrapper from "./screens/ParticleWrapper/ParticleWrapper";
+import "./styles.css";
 
 function App() {
   // useEffect(() => {

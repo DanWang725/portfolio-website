@@ -13,7 +13,7 @@ export const Navbar = ({ classOverride }) => {
             to="/#home"
             className="navlink"
             style={({ isActive }) =>
-              isActive ? { backgroundColor: "#cbcbcb" } : {}
+              isActive ? { backgroundColor: "#001414" } : {}
             }
           >
             Home
@@ -24,7 +24,7 @@ export const Navbar = ({ classOverride }) => {
             to="/browse"
             className="navlink"
             style={({ isActive }) =>
-              isActive ? { backgroundColor: "#cbcbcb" } : {}
+              isActive ? { backgroundColor: "#002929" } : {}
             }
           >
             About
@@ -35,7 +35,7 @@ export const Navbar = ({ classOverride }) => {
             to="/create"
             className="navlink"
             style={({ isActive }) =>
-              isActive ? { backgroundColor: "#cbcbcb" } : {}
+              isActive ? { backgroundColor: "#002929" } : {}
             }
           >
             Create
@@ -46,7 +46,7 @@ export const Navbar = ({ classOverride }) => {
             to="/work-term-report"
             className="navlink"
             style={({ isActive }) =>
-              isActive ? { backgroundColor: "#cbcbcb" } : {}
+              isActive ? { backgroundColor: "#001414" } : {}
             }
           >
             Work Term Reports

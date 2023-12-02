@@ -1,8 +1,9 @@
-import "./Article.css";
 const ArticleEntry = ({ title, content, id, key, isFirstArticle = false }) => {
   return (
     <section
-      className={`article-entry ${isFirstArticle ? "first-article" : ""}`}
+      className={`std-container article-entry ${
+        isFirstArticle ? "first-article" : ""
+      } `}
       key={key}
       id={id}
     >

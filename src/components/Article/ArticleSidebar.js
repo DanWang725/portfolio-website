@@ -1,6 +1,5 @@
 import { NavLink } from "react-router-dom";
 import { getHash, scrollToHash } from "../../shared-utils/src";
-import "./Article.css";
 
 const ArticleSidebar = ({ entries, handleBack }) => {
   return (
