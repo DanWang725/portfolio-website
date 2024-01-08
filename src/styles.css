@@ -269,6 +269,10 @@ h1 {
   white-space: pre-wrap;
 }
 
+.article-footer {
+  border-bottom: 1px solid #f2fdff;
+}
+
 .no-title {
   padding-top: 5rem;
 }
@@ -312,13 +316,41 @@ h1 {
 
 .work-report-container {
   margin-top: 2rem;
-  height: 20em;
+  min-height: 20em;
+  height: auto;
+  padding-bottom: 1em;
   display: flex;
   align-items: center;
   flex-direction: column;
   border: #f2fdff 1px solid;
 }
 
-.test2 {
-  width: 10em;
+.report-card {
+  width: 25em;
+  font-size: 1em;
+  height: auto;
+}
+
+.report-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+@media only screen and (max-width: 1200px) {
+  .report-card {
+    width: 22.5em;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .report-card {
+    width: 20em;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .report-card {
+    width: 17.5em;
+  }
 }

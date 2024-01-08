@@ -33,16 +33,18 @@ const WorkTermReport = () => {
       ) : (
         <>
           <section className="std-container work-report-container">
-            <h1>Work Term Reports</h1>
-            {workTermReportEntries.map((article) => (
-              <WorkTermReportCard
-                workTermReportEntry={article}
-                setSelectedWtr={(entry) =>
-                  navigate(`/work-term-report/${entry.id}`)
-                }
-                key={article.title.toLowerCase()}
-              />
-            ))}
+            <h1 className="article-title">Work Term Reports</h1>
+            <div className="report-list">
+              {workTermReportEntries.map((article) => (
+                <WorkTermReportCard
+                  workTermReportEntry={article}
+                  setSelectedWtr={(entry) =>
+                    navigate(`/work-term-report/${entry.id}`)
+                  }
+                  key={article.title.toLowerCase()}
+                />
+              ))}
+            </div>
           </section>
         </>
       )}

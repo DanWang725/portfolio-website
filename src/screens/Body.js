@@ -11,7 +11,6 @@ const Body = () => {
     <div className="Body">
       <Navbar classOverride={navbarClassOverrides} />
       <AppRoutes setNavbarClass={setNavbarClassOverrides} />
-      <Footer />
     </div>
   );
 };
