@@ -1,7 +1,7 @@
 import { Navbar } from "./navbar/Navbar";
 import { AppRoutes } from "./Routes";
 import { HashRouter } from "react-router-dom";
-import React, { useCallback, useEffect } from "react";
+import React, { createContext, useCallback, useEffect, useState } from "react";
 import Footer from "./components/Footer";
 import Body from "./screens/Body";
 import { loadFull } from "tsparticles";
@@ -10,27 +10,18 @@ import Particles from "react-particles";
 import { scroll } from "scroll-speed";
 import ParticleWrapper from "./screens/ParticleWrapper/ParticleWrapper";
 import "./styles.css";
-
+import { PerformanceContext } from "./Contexts";
 function App() {
-  // useEffect(() => {
-  //   window.addEventListener(
-  //     "scroll",
-  //     () => {
-  //       document.body.style.setProperty(
-  //         "--scroll",
-  //         window.pageYOffset / (document.body.offsetHeight - window.innerHeight)
-  //       );
-  //     },
-  //     false
-  //   );
-  // }, []);
+  const [isLowPerformance, setIsLowPerformance] = useState(false);
   return (
-    <>
-      <ParticleWrapper></ParticleWrapper>
+    <PerformanceContext.Provider
+      value={{ isLowPerformance, setIsLowPerformance }}
+    >
+      {!isLowPerformance && <ParticleWrapper />}
       <HashRouter>
         <Body></Body>
       </HashRouter>
-    </>
+    </PerformanceContext.Provider>
   );
 }
 

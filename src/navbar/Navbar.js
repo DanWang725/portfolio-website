@@ -1,9 +1,12 @@
 import "./Navbar.css";
 import "../styles.css";
 import { NavLink, useLocation } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { PerformanceContext } from "../Contexts";
 
 export const Navbar = ({ classOverride }) => {
+  const { isLowPerformance, setIsLowPerformance } =
+    useContext(PerformanceContext);
   const location = useLocation();
   return (
     <div className={`nav-container `}>
@@ -51,6 +54,9 @@ export const Navbar = ({ classOverride }) => {
           >
             Work Term Reports
           </NavLink>
+        </li>
+        <li onClick={() => setIsLowPerformance(!isLowPerformance)}>
+          {isLowPerformance ? "Background on" : "Background off"}
         </li>
       </ul>
     </div>

@@ -34,6 +34,11 @@ const WorkTermReport = () => {
         <>
           <section className="std-container work-report-container">
             <h1 className="article-title">Work Term Reports</h1>
+            <p className="article-content">
+              These reports are cover my experiences and achievements during my
+              co-op work terms. 8-month work terms are split into two separate
+              reports covering 4 months each.
+            </p>
             <div className="report-list">
               {workTermReportEntries.map((article) => (
                 <WorkTermReportCard
