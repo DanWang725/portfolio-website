@@ -55,8 +55,11 @@ export const Navbar = ({ classOverride }) => {
             Work Term Reports
           </NavLink>
         </li>
-        <li onClick={() => setIsLowPerformance(!isLowPerformance)}>
-          {isLowPerformance ? "Background on" : "Background off"}
+        <li
+          className="navlink"
+          onClick={() => setIsLowPerformance(!isLowPerformance)}
+        >
+          {isLowPerformance ? "Background: Off" : "Background: On"}
         </li>
       </ul>
     </div>
