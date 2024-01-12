@@ -54,8 +54,8 @@ const workTermReport1 = {
 };
 
 const workTermReport2 = {
-  title: "Work Term Report W23",
-  id: "wtr-w23",
+  title: "Work Term Report F23",
+  id: "wtr-f23",
   image: cover2,
   description: "Report for the second half of my NCR placement.",
   entries: [
