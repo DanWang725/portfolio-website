@@ -8,7 +8,6 @@ import { useNavigate, useParams } from "react-router-dom";
 
 const WorkTermReport = () => {
   const params = useParams();
-  console.log(params);
   // const [selectedArticle, setSelectedArticle] = useState();
   const navigate = useNavigate();
   const selectedArticle = workTermReportEntries.find(

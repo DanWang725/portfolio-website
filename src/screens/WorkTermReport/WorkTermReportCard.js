@@ -6,7 +6,6 @@ import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 
 const WorkTermReportCard = ({ workTermReportEntry, setSelectedWtr }) => {
-  console.log(workTermReportEntry);
   return (
     <Card
       sx={{ maxWidth: 1000, display: "flex" }}

@@ -5,7 +5,6 @@ export const useScrollSection = ({ initialSection }) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      console.log("scroll detecetd");
       const scrollPosition = window.scrollY;
       const sections = document.querySelectorAll("section");
 
