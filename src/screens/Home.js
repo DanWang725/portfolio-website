@@ -21,10 +21,8 @@ const Home = ({ setNavbarClass }) => {
           <h1>{"I'm Daniel Wang"}</h1>
           <h2 className="name-page-about">
             {
-              "A Student Software Engineer based in Guelph, Ontario. I'm currently a front end developer at "
+              "Hello! I'm a software developer currently in his third year studying at University of Geulph. I am open to any oppertunities. Looking to chat? You can find my contact information below. I am always up for a challenge."
             }
-            <b>NCR</b>
-            {", I am open to any oppertunity."}
           </h2>
           <h3 className="name-page-navigation">
             Scroll down or navigate to these areas
