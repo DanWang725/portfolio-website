@@ -291,6 +291,21 @@ h1 {
   margin-right: 3rem;
 }
 
+.article-profile-image {
+  width: 15rem;
+  border-radius: 50%;
+  margin: 1rem;
+  margin-right: 0rem;
+}
+
+.article-column {
+  display: inline-flex;
+  align-items: flex-start;
+}
+.article-content > p {
+  max-width: fit-content;
+}
+
 .article-sidebar {
   position: sticky;
   top: 20vh;

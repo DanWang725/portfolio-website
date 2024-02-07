@@ -1,4 +1,24 @@
-const ArticleEntry = ({ title, content, id, key, isFirstArticle = false }) => {
+import EntryColumns from "./EntryColumns";
+
+const ArticleEntry = ({
+  title,
+  content,
+  id,
+  key,
+  isFirstArticle = false,
+  options,
+}) => {
+  if (options?.columns && options.columns !== "single") {
+    return (
+      <EntryColumns
+        title={title}
+        content={content}
+        id={id}
+        key={key}
+        isFirstArticle={isFirstArticle}
+      />
+    );
+  }
   return (
     <section
       className={`std-container article-entry ${
