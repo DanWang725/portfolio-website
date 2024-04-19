@@ -1,4 +1,4 @@
-import "./Footer.css";
+import './Footer.css';
 const Footer = () => {
   return <div className="footer no-title"></div>;
 };

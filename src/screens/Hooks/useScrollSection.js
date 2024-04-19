@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 export const useScrollSection = ({ initialSection }) => {
   const [activeSection, setActiveSection] = useState(initialSection);
@@ -6,7 +6,7 @@ export const useScrollSection = ({ initialSection }) => {
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
-      const sections = document.querySelectorAll("section");
+      const sections = document.querySelectorAll('section');
 
       sections.forEach((section) => {
         const sectionTop = section.offsetTop;
@@ -21,9 +21,9 @@ export const useScrollSection = ({ initialSection }) => {
       });
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
@@ -33,9 +33,9 @@ export const useScrollSection = ({ initialSection }) => {
       setActiveSection(sectionFromUrl);
     };
 
-    window.addEventListener("hashchange", handleUrlAnchorChange);
+    window.addEventListener('hashchange', handleUrlAnchorChange);
     return () => {
-      window.removeEventListener("hashchange", handleUrlAnchorChange);
+      window.removeEventListener('hashchange', handleUrlAnchorChange);
     };
   }, []);
 

@@ -1,2 +1,2 @@
-import {default as Home} from "./Home";
+import {default as Home} from './Home';
 export { Home };

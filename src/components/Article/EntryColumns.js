@@ -2,7 +2,7 @@ const EntryColumns = ({ title, content, id, key, isFirstArticle = false }) => {
   return (
     <section
       className={`std-container article-entry ${
-        isFirstArticle ? "first-article" : ""
+        isFirstArticle ? 'first-article' : ''
       } `}
       key={key}
       id={id}

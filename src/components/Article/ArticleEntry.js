@@ -1,4 +1,4 @@
-import EntryColumns from "./EntryColumns";
+import EntryColumns from './EntryColumns';
 
 const ArticleEntry = ({
   title,
@@ -8,7 +8,7 @@ const ArticleEntry = ({
   isFirstArticle = false,
   options,
 }) => {
-  if (options?.columns && options.columns !== "single") {
+  if (options?.columns && options.columns !== 'single') {
     return (
       <EntryColumns
         title={title}
@@ -22,7 +22,7 @@ const ArticleEntry = ({
   return (
     <section
       className={`std-container article-entry ${
-        isFirstArticle ? "first-article" : ""
+        isFirstArticle ? 'first-article' : ''
       } `}
       key={key}
       id={id}

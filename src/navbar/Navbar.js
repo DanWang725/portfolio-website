@@ -1,8 +1,8 @@
-import "./Navbar.css";
-import "../styles.css";
-import { NavLink, useLocation } from "react-router-dom";
-import React, { useContext, useState } from "react";
-import { PerformanceContext } from "../Contexts";
+import './Navbar.css';
+import '../styles.css';
+import { NavLink, useLocation } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { PerformanceContext } from '../Contexts';
 
 export const Navbar = ({ classOverride }) => {
   const { isLowPerformance, setIsLowPerformance } =
@@ -10,56 +10,45 @@ export const Navbar = ({ classOverride }) => {
   const location = useLocation();
   return (
     <div className={`nav-container `}>
-      <ul className={`navbar ${classOverride ?? "navbar-default"}`}>
+      <ul className={`navbar ${classOverride ?? 'navbar-default'}`}>
         <li>
           <NavLink
             to="/#home"
             className="navlink"
             style={({ isActive }) =>
-              isActive ? { backgroundColor: "#001414" } : {}
+              isActive ? { backgroundColor: '#001414' } : {}
             }
           >
             Home
           </NavLink>
         </li>
-        {/* <li>
-          <NavLink
-            to="/browse"
-            className="navlink"
-            style={({ isActive }) =>
-              isActive ? { backgroundColor: "#002929" } : {}
-            }
-          >
-            About
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/create"
-            className="navlink"
-            style={({ isActive }) =>
-              isActive ? { backgroundColor: "#002929" } : {}
-            }
-          >
-            Create
-          </NavLink>
-        </li> */}
         <li>
           <NavLink
             to="/work-term-report"
             className="navlink"
             style={({ isActive }) =>
-              isActive ? { backgroundColor: "#001414" } : {}
+              isActive ? { backgroundColor: '#001414' } : {}
             }
           >
             Work Term Reports
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/projects"
+            className="navlink"
+            style={({ isActive }) =>
+              isActive ? { backgroundColor: '#001414' } : {}
+            }
+          >
+            Fun Stuff
           </NavLink>
         </li>
         <li
           className="navlink"
           onClick={() => setIsLowPerformance(!isLowPerformance)}
         >
-          {isLowPerformance ? "Background: Off" : "Background: On"}
+          {isLowPerformance ? 'Background: Off' : 'Background: On'}
         </li>
       </ul>
     </div>

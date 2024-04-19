@@ -12,7 +12,7 @@ const scrollToHash = (hash) => {
     // Scroll to the target position smoothly
     window.scrollTo({
       top: targetScrollPosition,
-      behavior: "smooth",
+      behavior: 'smooth',
     });
   }
 };

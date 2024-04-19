@@ -1,4 +1,4 @@
-const ArticleLayout = ({ content, sidebar, classOverrides = "" }) => {
+const ArticleLayout = ({ content, sidebar, classOverrides = '' }) => {
   return (
     <div className={`article-body ${classOverrides}`}>
       <div>{sidebar}</div>

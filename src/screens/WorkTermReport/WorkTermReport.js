@@ -1,30 +1,30 @@
-import ArticleLayout from "../../components/Article/ArticleLayout";
-import { useEffect, useState } from "react";
-import ArticleSidebar from "../../components/Article/ArticleSidebar";
-import { workTermReportEntries } from "./entries";
-import WorkTermReportCard from "./WorkTermReportCard";
-import { getArticleEntriesFromObject } from "../../components/Article/utils";
-import { useNavigate, useParams } from "react-router-dom";
+import ArticleLayout from '../../components/Article/ArticleLayout';
+import { useEffect, useState } from 'react';
+import ArticleSidebar from '../../components/Article/ArticleSidebar';
+import { workTermReportEntries } from './entries';
+import WorkTermReportCard from './WorkTermReportCard';
+import { getArticleEntriesFromObject } from '../../components/Article/utils';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const WorkTermReport = () => {
   const params = useParams();
   // const [selectedArticle, setSelectedArticle] = useState();
   const navigate = useNavigate();
   const selectedArticle = workTermReportEntries.find(
-    (article) => article.id === params.reportId
-  ) || { id: "unknown" };
+    (article) => article.id === params.reportId,
+  ) || { id: 'unknown' };
 
   return (
     <div className="content-section">
       {params.reportId ? (
         <ArticleLayout
-          classOverrides={"no-title"}
+          classOverrides={'no-title'}
           content={getArticleEntriesFromObject(selectedArticle.entries)}
           sidebar={
             <ArticleSidebar
               entries={selectedArticle.entries}
               handleBack={() => {
-                navigate("/work-term-report");
+                navigate('/work-term-report');
               }}
             ></ArticleSidebar>
           }

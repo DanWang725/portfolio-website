@@ -1,5 +1,5 @@
-import { useEffect } from "react";
-import { scrollToHash, getHash } from "../../shared-utils/src";
+import { useEffect } from 'react';
+import { scrollToHash, getHash } from '../../shared-utils/src';
 export const useActionHashScroll = () => {
   useEffect(() => {
     const initHash = getHash();

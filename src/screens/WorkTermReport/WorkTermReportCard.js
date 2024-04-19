@@ -1,21 +1,21 @@
-import * as React from "react";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Typography from "@mui/material/Typography";
-import { CardActionArea } from "@mui/material";
+import * as React from 'react';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
+import { CardActionArea } from '@mui/material';
 
 const WorkTermReportCard = ({ workTermReportEntry, setSelectedWtr }) => {
   return (
     <Card
-      sx={{ maxWidth: 1000, display: "flex" }}
+      sx={{ maxWidth: 1000, display: 'flex' }}
       onClick={() => setSelectedWtr(workTermReportEntry)}
       className="report-card"
     >
       <CardActionArea>
         <CardMedia
           component="img"
-          sx={{ width: "10em" }}
+          sx={{ width: '10em' }}
           image={workTermReportEntry?.image}
           alt={workTermReportEntry.title}
         />
@@ -25,7 +25,7 @@ const WorkTermReportCard = ({ workTermReportEntry, setSelectedWtr }) => {
           gutterBottom
           variant="h3"
           component="div"
-          sx={{ fontSize: "1em" }}
+          sx={{ fontSize: '1em' }}
         >
           {workTermReportEntry.title}
         </Typography>

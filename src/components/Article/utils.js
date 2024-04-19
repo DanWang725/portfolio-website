@@ -1,4 +1,4 @@
-import ArticleEntry from "./ArticleEntry";
+import ArticleEntry from './ArticleEntry';
 export const getArticleEntriesFromObject = (entries) =>
   entries?.map((entry, index) => (
     <ArticleEntry

@@ -1,6 +1,6 @@
-import { Outlet, Route, Routes } from "react-router-dom";
-import { Home } from "./screens";
-import WorkTermReport from "./screens/WorkTermReport/WorkTermReport";
+import { Outlet, Route, Routes } from 'react-router-dom';
+import { Home } from './screens';
+import WorkTermReport from './screens/WorkTermReport/WorkTermReport';
 
 export const AppRoutes = ({ setNavbarClass }) => {
   return (

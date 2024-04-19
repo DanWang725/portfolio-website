@@ -1,16 +1,16 @@
 export const getParticleOptions = (speed) => ({
   background: {
     color: {
-      value: "#000022",
+      value: '#000022',
     },
   },
   fpsLimit: 30,
   interactivity: {
-    detectsOn: "window",
+    detectsOn: 'window',
     events: {
       onClick: {
         enable: true,
-        mode: "slow",
+        mode: 'slow',
       },
       // onDiv: {
       //   selectors: [".title-name"],
@@ -43,10 +43,10 @@ export const getParticleOptions = (speed) => ({
   },
   particles: {
     color: {
-      value: "#ffffff",
+      value: '#ffffff',
     },
     links: {
-      color: "#ADF5FF",
+      color: '#ADF5FF',
       distance: 135,
       enable: true,
       opacity: 0.5,
@@ -57,10 +57,10 @@ export const getParticleOptions = (speed) => ({
       },
     },
     move: {
-      direction: speed === 0 ? "down" : "down",
+      direction: speed === 0 ? 'down' : 'down',
       enable: true,
       outModes: {
-        default: "out",
+        default: 'out',
       },
       random: false,
       speed: speed === 0 ? 4 : 3,
@@ -77,7 +77,7 @@ export const getParticleOptions = (speed) => ({
       value: 0.5,
     },
     shape: {
-      type: "circle",
+      type: 'circle',
     },
     size: {
       value: 0.7,
@@ -110,7 +110,7 @@ export const getParticleOptions = (speed) => ({
 //controlling the particles https://codepen.io/matteobruni/pen/vYLjrOg
 
 export const option2 = () => ({
-  name: "Absorbers",
+  name: 'Absorbers',
   particles: {
     number: {
       value: 300,
@@ -119,10 +119,10 @@ export const option2 = () => ({
       enable: true,
     },
     color: {
-      value: "#ffffff",
+      value: '#ffffff',
     },
     shape: {
-      type: "circle",
+      type: 'circle',
     },
     opacity: {
       value: {
@@ -139,7 +139,7 @@ export const option2 = () => ({
     move: {
       enable: true,
       speed: 0.5,
-      direction: "none",
+      direction: 'none',
       straight: true,
       warp: true,
     },
@@ -148,7 +148,7 @@ export const option2 = () => ({
     events: {
       onClick: {
         enable: true,
-        mode: "push",
+        mode: 'push',
       },
     },
     modes: {
@@ -173,6 +173,6 @@ export const option2 = () => ({
     },
   },
   background: {
-    color: "#0d47a1",
+    color: '#0d47a1',
   },
 });
