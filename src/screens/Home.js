@@ -1,16 +1,18 @@
-import { articleContent } from "./utils";
-import { getArticleEntriesFromObject } from "../components/Article/utils";
-import { useInView } from "react-intersection-observer";
-import { Link } from "react-router-dom";
-import { useEffect } from "react";
-import { scrollToHash } from "../shared-utils/src";
+import { articleContent } from './utils';
+import { getArticleEntriesFromObject } from '../components/Article/utils';
+import { useInView } from 'react-intersection-observer';
+import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
+import { scrollToHash } from '../shared-utils/src';
+import { Button } from '@mui/material';
+import calculateBattle from './RiskCalculator/RiskCalculator';
 
 const Home = ({ setNavbarClass }) => {
   const { ref, inView } = useInView({ threshold: 0 });
   const articles = getArticleEntriesFromObject(articleContent);
   useEffect(() => {
-    setNavbarClass(inView ? "navbar-hidden" : "navbar-hidden navbar-show");
-    return () => setNavbarClass("");
+    setNavbarClass(inView ? 'navbar-hidden' : 'navbar-hidden navbar-show');
+    return () => setNavbarClass('');
   }, [inView, setNavbarClass]);
 
   return (
@@ -30,18 +32,18 @@ const Home = ({ setNavbarClass }) => {
           <div className="title-nav-items">
             <li>
               <Link
-                to={"#about"}
+                to={'#about'}
                 className="title-links"
-                onClick={() => scrollToHash("about")}
+                onClick={() => scrollToHash('about')}
               >
                 About
               </Link>
             </li>
             <li>
               <Link
-                to={"/work-term-report"}
+                to={'/work-term-report'}
                 className="title-links"
-                onClick={() => scrollToHash("about")}
+                onClick={() => scrollToHash('about')}
               >
                 Work Term Reports
               </Link>
@@ -49,6 +51,9 @@ const Home = ({ setNavbarClass }) => {
           </div>
           <></>
         </section>
+        <Button onClick={() => console.log(calculateBattle(10, 3))}>
+          Click Me!
+        </Button>
         {articles}
       </div>
     </>
