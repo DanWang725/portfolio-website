@@ -35,7 +35,7 @@ export const Navbar = ({ classOverride }) => {
         </li>
         <li>
           <NavLink
-            to="/projects"
+            to="/risk-calculator"
             className="navlink"
             style={({ isActive }) =>
               isActive ? { backgroundColor: '#001414' } : {}

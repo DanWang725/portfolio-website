@@ -11,17 +11,27 @@ import { scroll } from 'scroll-speed';
 import ParticleWrapper from './screens/ParticleWrapper/ParticleWrapper';
 import './styles.css';
 import { PerformanceContext } from './Contexts';
+import { ThemeProvider, createTheme, CssBaseline } from '@mui/material';
+const darkTheme = createTheme({
+  palette: {
+    mode: 'dark',
+  },
+});
+
 const App = () => {
   const [isLowPerformance, setIsLowPerformance] = useState(false);
   return (
-    <PerformanceContext.Provider
-      value={{ isLowPerformance, setIsLowPerformance }}
-    >
-      {!isLowPerformance && <ParticleWrapper />}
-      <HashRouter>
-        <Body></Body>
-      </HashRouter>
-    </PerformanceContext.Provider>
+    <ThemeProvider theme={darkTheme}>
+      <PerformanceContext.Provider
+        value={{ isLowPerformance, setIsLowPerformance }}
+      >
+        {!isLowPerformance && <ParticleWrapper />}
+        <CssBaseline />
+        <HashRouter>
+          <Body></Body>
+        </HashRouter>
+      </PerformanceContext.Provider>
+    </ThemeProvider>
   );
 };
 
