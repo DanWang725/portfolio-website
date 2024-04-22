@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
 import { scrollToHash } from '../shared-utils/src';
 import { Button } from '@mui/material';
-import calculateBattle from './RiskCalculator/RiskCalculator';
 
 const Home = ({ setNavbarClass }) => {
   const { ref, inView } = useInView({ threshold: 0 });
@@ -51,9 +50,6 @@ const Home = ({ setNavbarClass }) => {
           </div>
           <></>
         </section>
-        <Button onClick={() => console.log(calculateBattle(10, 3))}>
-          Click Me!
-        </Button>
         {articles}
       </div>
     </>

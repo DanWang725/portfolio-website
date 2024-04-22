@@ -11,6 +11,7 @@ const calculateBattlePhase = (
   defenderTroopCount,
   generator,
 ) => {
+  console.log(attackerTroopCount, defenderTroopCount);
   const attackRolls = getPlayerRolls(
     Math.min(attackerTroopCount, 3),
     generator,
@@ -58,21 +59,4 @@ const calculateBattle = (attackerTroopCount, defenderTroopCount, seed) => {
   return rounds;
 };
 
-const calculateBattlePhaseSeeded = (
-  attackerTroopCount,
-  defenderTroopCount,
-  generator,
-) => {
-  let rounds = [];
-  let attkCount = attackerTroopCount;
-  let defCount = defenderTroopCount;
-  while (attkCount > 0 && defCount > 0) {
-    console.log(attkCount, defCount);
-    const roundResult = calculateBattlePhase(attkCount, defCount, generator);
-    rounds.push(roundResult);
-    attkCount = attkCount - roundResult.attkLosses;
-    defCount = defCount - roundResult.defLosses;
-  }
-  return rounds;
-};
-export default calculateBattle;
+export { calculateBattlePhase, calculateBattle };

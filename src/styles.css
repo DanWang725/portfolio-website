@@ -392,6 +392,7 @@ h1 {
   line-break: inherit;
   white-space: pre-wrap;
   background: rgba(30, 30, 30, 0.8);
+  padding-bottom: 1rem;
 }
 
 .article-footer {
@@ -417,6 +418,29 @@ h1 {
 }
 
 /**** RISK BATTLE PAGE ****/
+
+.battle-calculator-inputs {
+  display: inline-flex;
+  gap: 1rem;
+  margin: 1rem;
+}
+
+.battle-result-list-header {
+  display: inline-flex;
+  width: -moz-available; /* WebKit-based browsers will ignore this. */
+  width: -webkit-fill-available; /* Mozilla-based browsers will ignore this. */
+  width: fill-available;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.battle-result-list-header > h3 {
+  margin: 0;
+}
 
 .battle-result-container {
   width: -moz-available; /* WebKit-based browsers will ignore this. */
