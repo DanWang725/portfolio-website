@@ -1,9 +1,8 @@
-import { Button, Input, TextField } from '@mui/material';
-import { useCallback, useEffect, useState } from 'react';
+import { Button, Checkbox, TextField } from '@mui/material';
+import { useEffect, useState } from 'react';
 import ResultDisplay from './component/ResultDisplay';
 import { calculateBattle, calculateBattlePhase } from './RiskCalculator';
 import MersenneTwister from '../../shared-utils/src/Mersenne Twister/Mersenne Twister';
-import { useLocation, useParams } from 'react-router-dom';
 import { ContentCopy } from '@mui/icons-material';
 
 const CalculatorWindow = () => {
@@ -81,6 +80,9 @@ const CalculatorWindow = () => {
             >
               Share Battle Results
             </Button>
+            <Button onClick={() => setBattleResult([])}>
+              Calculate New Battle
+            </Button>
           </div>
           <div>
             <h3>Last Round</h3>
@@ -89,9 +91,14 @@ const CalculatorWindow = () => {
               battleNumber={battleResult.length - 1}
             />
             {!!canContinueBattles && (
-              <Button onClick={() => handleCalculateBattle(false)}>
-                Next Round
-              </Button>
+              <>
+                <Button onClick={() => handleCalculateBattle(false)}>
+                  Next Round
+                </Button>
+                <Button onClick={() => handleCalculateBattle(true)}>
+                  All Rounds
+                </Button>
+              </>
             )}
             <h3>All Battles</h3>
           </div>
@@ -118,6 +125,14 @@ const CalculatorWindow = () => {
               label="Defender Troop Count"
               type="number"
             />
+          </div>
+          <div>
+            <Checkbox
+              label="Play all Consecutive Battles"
+              onChange={(e) => setIsAllBattles(e.target.checked)}
+              checked={isAllBattles}
+            />
+            Play all Consecutive Battles
           </div>
           <Button
             variant="contained"
