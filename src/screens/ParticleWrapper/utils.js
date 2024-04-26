@@ -4,26 +4,9 @@ export const getParticleOptions = (speed) => ({
       value: '#000022',
     },
   },
-  fpsLimit: 30,
+  fpsLimit: 12,
   interactivity: {
     detectsOn: 'window',
-    events: {
-      onClick: {
-        enable: true,
-        mode: 'slow',
-      },
-      // onDiv: {
-      //   selectors: [".title-name"],
-      //   enable: true,
-      //   mode: "bounce",
-      //   type: "rectangle",
-      // },
-      // onHover: {
-      //   enable: true,
-      //   mode: "slow",
-      // },
-      resize: true,
-    },
     modes: {
       push: {
         quantity: 4,
@@ -85,94 +68,6 @@ export const getParticleOptions = (speed) => ({
   },
   detectRetina: true,
   smooth: true,
-
-  //   emitters: [
-  //     {
-  //       autoPlay: "false",
-  //       direction: "down",
-  //       name: "scrollUp",
-  //       position: {
-  //         x: 50,
-  //         y: 0,
-  //       },
-  //       size: {
-  //         width: 100,
-  //         height: 0,
-  //       },
-  //       rate: {
-  //         quantity: 10,
-  //         delay: 0.1,
-  //       },
-  //     },
-  //   ],
 });
 // https://codepen.io/matteobruni/pen/mdVdPKj
 //controlling the particles https://codepen.io/matteobruni/pen/vYLjrOg
-
-export const option2 = () => ({
-  name: 'Absorbers',
-  particles: {
-    number: {
-      value: 300,
-    },
-    collisions: {
-      enable: true,
-    },
-    color: {
-      value: '#ffffff',
-    },
-    shape: {
-      type: 'circle',
-    },
-    opacity: {
-      value: {
-        min: 0.1,
-        max: 1,
-      },
-    },
-    size: {
-      value: {
-        min: 1,
-        max: 2,
-      },
-    },
-    move: {
-      enable: true,
-      speed: 0.5,
-      direction: 'none',
-      straight: true,
-      warp: true,
-    },
-  },
-  interactivity: {
-    events: {
-      onClick: {
-        enable: true,
-        mode: 'push',
-      },
-    },
-    modes: {
-      push: {
-        quantity: 10,
-      },
-    },
-  },
-  absorbers: {
-    draggable: true,
-    size: {
-      value: {
-        min: 5,
-        max: 10,
-      },
-      limit: 10,
-      density: 100,
-    },
-    position: {
-      x: 50,
-      y: 50,
-    },
-  },
-  background: {
-    color: '#0d47a1',
-  },
-});
