@@ -8,6 +8,8 @@ import {
 } from './RiskCalculator';
 import MersenneTwister from '../../shared-utils/src/Mersenne Twister/Mersenne Twister';
 import { ContentCopy } from '@mui/icons-material';
+import BattleList from './component/BattleList';
+import RiskBattleStats from './component/RiskBattleStats';
 
 const CalculatorWindow = () => {
   const [attackerCount, setAttackerCount] = useState(0);
@@ -79,6 +81,7 @@ const CalculatorWindow = () => {
               Calculate New Battle
             </Button>
           </div>
+          {!canContinueBattles && <RiskBattleStats battles={battleResult} />}
           <div>
             <h3>Last Round</h3>
             <ResultDisplay
@@ -95,11 +98,8 @@ const CalculatorWindow = () => {
                 </Button>
               </>
             )}
-            <h3>All Battles</h3>
           </div>
-          {battleResult.map((battle, index) => (
-            <ResultDisplay results={battle} key={index} battleNumber={index} />
-          ))}
+          <BattleList battles={battleResult} />
         </>
       ) : (
         <>

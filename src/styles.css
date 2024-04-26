@@ -442,6 +442,10 @@ h1 {
   margin: 0;
 }
 
+.battle-list-container {
+  width: 100%;
+}
+
 .battle-result-container {
   width: -moz-available; /* WebKit-based browsers will ignore this. */
   width: -webkit-fill-available; /* Mozilla-based browsers will ignore this. */
@@ -458,7 +462,7 @@ h1 {
   justify-content: space-around;
 }
 
-.battle-result-container > h1 {
+.battle-result-container > h3 {
   margin-top: 0.2rem;
   margin-bottom: 0.25rem;
 }
