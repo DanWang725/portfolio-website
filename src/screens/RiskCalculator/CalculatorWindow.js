@@ -96,7 +96,12 @@ const CalculatorWindow = () => {
             >
               Share Battle Results
             </Button>
-            <Button onClick={() => setBattleResult([])}>
+            <Button
+              onClick={() => {
+                setBattleResult([]);
+                setNumberGenerator(null);
+              }}
+            >
               Calculate New Battle
             </Button>
           </div>
