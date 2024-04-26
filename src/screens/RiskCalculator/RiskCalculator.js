@@ -1,3 +1,5 @@
+import { battleStatsTemplate, diceStats } from './utils';
+
 const getDiceRoll = () => Math.floor(Math.random() * 6) + 1;
 const getDiceRollSeeded = (m) => Math.floor(m.random() * 6) + 1;
 
@@ -45,6 +47,78 @@ const calculateBattlePhase = (
   return results;
 };
 
+const getTroopCount = (battles) => {
+  if (!battles || battles?.length === 0) return {};
+
+  const recentBattle = battles[battles.length - 1];
+  const curAttackerCount =
+    recentBattle.attackerTroopCount - recentBattle.attkLosses;
+  const curDefenderCount =
+    recentBattle.defenderTroopCount - recentBattle.defLosses;
+
+  return { attacker: curAttackerCount, defender: curDefenderCount };
+};
+
+const getStatisticsOfBattle = (battles) => {
+  if (!battles || battles?.length === 0) return {};
+
+  const initialStats = {
+    attackerRollCount: structuredClone(diceStats),
+    defenderRollCount: structuredClone(diceStats),
+    attackerWins: 0,
+    defenderWins: 0,
+  };
+
+  const battleStats = battles?.reduce((prevStats, curResult) => {
+    const { attackerRollCount, defenderRollCount, attackerWins, defenderWins } =
+      prevStats;
+    const { attkLosses, defLosses, attackerRolls, defenderRolls, diceMatches } =
+      curResult;
+
+    for (let i = 0; i < diceMatches.length; i++) {
+      const diceA = attackerRolls[i];
+      attackerRollCount[diceA] = attackerRollCount[diceA] + 1;
+
+      const diceD = defenderRolls[i];
+      defenderRollCount[diceD] = defenderRollCount[diceD] + 1;
+    }
+    const newAttackerWins = attackerWins + defLosses;
+    const newDefenderWins = defenderWins + attkLosses;
+    return {
+      attackerRollCount,
+      defenderRollCount,
+      attackerWins: newAttackerWins,
+      defenderWins: newDefenderWins,
+    };
+  }, initialStats);
+
+  const { attackerRollCount, defenderRollCount, attackerWins, defenderWins } =
+    battleStats;
+
+  const { attacker: curAttackerTroops, defender: curDefenderTroops } =
+    getTroopCount(battles);
+  var winner = 'NA';
+  if (!curAttackerTroops) {
+    winner = 'D';
+  } else if (!curDefenderTroops) {
+    winner = 'A';
+  }
+  const attacker = {
+    rolls: attackerRollCount,
+    battlesWon: attackerWins,
+    originalTroopCount: battles[0].attackerTroopCount,
+    currentTroopCount: curAttackerTroops,
+  };
+  const defender = {
+    rolls: defenderRollCount,
+    battlesWon: defenderWins,
+    originalTroopCount: battles[0].defenderTroopCount,
+    currentTroopCount: curDefenderTroops,
+  };
+
+  return { attacker, defender, winner, roundsPlayed: battles.length - 1 };
+};
+
 const calculateBattle = (attackerTroopCount, defenderTroopCount, seed) => {
   let rounds = [];
   let attkCount = attackerTroopCount;
@@ -59,4 +133,9 @@ const calculateBattle = (attackerTroopCount, defenderTroopCount, seed) => {
   return rounds;
 };
 
-export { calculateBattlePhase, calculateBattle };
+export {
+  calculateBattlePhase,
+  calculateBattle,
+  getTroopCount,
+  getStatisticsOfBattle,
+};
