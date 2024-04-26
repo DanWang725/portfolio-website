@@ -479,10 +479,65 @@ h1 {
   display: inline-flex;
   gap: 1rem;
 }
-
-/* .battle-result-player {
-} */
+.battle-statistics {
+  display: flex;
+  gap: 1rem;
+  width: -moz-available; /* WebKit-based browsers will ignore this. */
+  width: -webkit-fill-available; /* Mozilla-based browsers will ignore this. */
+  width: fill-available;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  justify-content: center;
+}
+.battle-statistics-player {
+  display: flex;
+  width: inherit;
+  flex-direction: column;
+}
 .battle-result-player > h2 {
   margin-top: 0.1rem;
   margin-bottom: 0.1rem;
+}
+
+.dice-roll-statistics {
+  display: inline-flex;
+  gap: 0.5rem;
+  flex-direction: row;
+  align-items: center;
+  width: -moz-available; /* WebKit-based browsers will ignore this. */
+  width: -webkit-fill-available; /* Mozilla-based browsers will ignore this. */
+  width: fill-available;
+  & > h2 {
+    margin: 0rem;
+  }
+  & > p {
+    margin: 0rem;
+    width: 3rem;
+  }
+}
+
+.reverse-stats {
+  flex-direction: row-reverse;
+  & > .MuiLinearProgress-root {
+    transform: rotate(180deg);
+  }
+  & > p {
+    text-align: end;
+  }
+}
+
+.dice-roll-statistics > .MuiLinearProgress-root {
+  width: inherit;
+  height: 8px;
+}
+
+@keyframes slideInFromZero {
+  0% {
+    transform: translateX(-100%);
+  }
+}
+.dice-roll-statistics > .MuiLinearProgress-root > .MuiLinearProgress-bar {
+  right: 0;
+  transform-origin: center right;
+  animation: 0.4s ease-out 0s 1 slideInFromZero;
 }

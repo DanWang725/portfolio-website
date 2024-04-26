@@ -3,29 +3,45 @@ import ResultDisplay from './component/ResultDisplay';
 import { calculateBattle, getStatisticsOfBattle } from './RiskCalculator';
 import MersenneTwister from '../../shared-utils/src/Mersenne Twister/Mersenne Twister';
 import { useParams } from 'react-router-dom';
+import DiceStatistics from './component/DiceStatistics';
 const RiskBattleStats = ({ statistics }) => {
+  const [isDiceRollsShown, setIsDiceRollsShown] = useState(false);
   const { attacker, defender, winner, roundsPlayed } = statistics;
 
   return (
-    <div>
-      {`Winner: ${winner}`}
-      <div>
-        <h3>Attacker</h3>
-        Battles Won: {attacker.battlesWon}
-        {`${attacker.originalTroopCount} Troops -> ${attacker.currentTroopCount} Troops`}
-        {Object.entries(attacker.rolls).map(([key, value], index) => {
-          return <h2 key={index}>{`${key}:${value}`}</h2>;
-        })}
+    <>
+      <div className="battle-statistics">
+        <div className="battle-statistics-player">
+          <h3>Attacker</h3>
+          Battles Won: {attacker.battlesWon}
+          <br></br>
+          {`${attacker.originalTroopCount} Troops -> ${attacker.currentTroopCount} Troops`}
+          <h4>Dice Rolls</h4>
+          <DiceStatistics
+            diceStats={attacker.rolls}
+            hidden={isDiceRollsShown}
+          />
+        </div>
+        <div
+          className="battle-statistics-player"
+          style={{ alignItems: 'flex-end' }}
+        >
+          <h3>Defender</h3>
+          Battles Won: {defender.battlesWon}
+          <br></br>
+          {`${defender.originalTroopCount} Troops ->${defender.currentTroopCount} Troops`}
+          <h4>Dice Rolls</h4>
+          <DiceStatistics
+            diceStats={defender.rolls}
+            additionalClassname="reverse-stats"
+            hidden={isDiceRollsShown}
+          />
+        </div>
       </div>
-      <div>
-        <h3>Defender</h3>
-        Battles Won: {defender.battlesWon}
-        {`${defender.originalTroopCount} Troops ->${defender.currentTroopCount} Troops`}
-        {Object.entries(defender.rolls).map(([key, value], index) => {
-          return <h2 key={index}>{`${key}:${value}`}</h2>;
-        })}
-      </div>
-    </div>
+      <button onClick={() => setIsDiceRollsShown((value) => !value)}>
+        {isDiceRollsShown ? 'Hide' : 'Show'}
+      </button>
+    </>
   );
 };
 const RiskCalculatorResult = () => {
