@@ -83,7 +83,7 @@ const CalculatorWindow = () => {
           )}
 
           <div className="battle-result-list-header">
-            <h3>{`${battleResult.length + 1} rounds`}</h3>
+            <h3>{`${battleResult.length} rounds`}</h3>
             <Button
               startIcon={<ContentCopy />}
               variant="outlined"
@@ -104,6 +104,13 @@ const CalculatorWindow = () => {
         </>
       ) : (
         <>
+          <p className="article-content">
+            To be used for the board game Risk. When reaching late game, there
+            is a specific rule with increasing territory card gains. This
+            results in battles that last for minutes, since only 2 troops can be
+            lost per round. This calculator makes these scenarios easier by
+            simulating dice rolls.
+          </p>
           <div style={{ display: 'flex' }} className="battle-calculator-inputs">
             <TextField
               onChange={(e) =>
@@ -132,7 +139,7 @@ const CalculatorWindow = () => {
           </div>
           <Button
             variant="contained"
-            disabled={!attackerCount && !defenderCount}
+            disabled={attackerCount <= 0 || defenderCount <= 0}
             onClick={() => handleCalculateBattle(isAllBattles)}
           >
             Calculate Battle
