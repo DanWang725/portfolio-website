@@ -1,7 +1,11 @@
 import { Button, Checkbox, TextField } from '@mui/material';
 import { useEffect, useState } from 'react';
 import ResultDisplay from './component/ResultDisplay';
-import { calculateBattle, calculateBattlePhase } from './RiskCalculator';
+import {
+  calculateBattle,
+  calculateBattlePhase,
+  getTroopCount,
+} from './RiskCalculator';
 import MersenneTwister from '../../shared-utils/src/Mersenne Twister/Mersenne Twister';
 import { ContentCopy } from '@mui/icons-material';
 
@@ -13,21 +17,12 @@ const CalculatorWindow = () => {
   const [canContinueBattles, setCanContinueBattles] = useState(true);
 
   const getLatestTroopCount = () => {
-    const recentBattle =
-      battleResult?.length > 0
-        ? battleResult?.[battleResult.length - 1]
-        : {
-            attackerTroopCount: attackerCount,
-            attkLosses: 0,
-            defenderTroopCount: defenderCount,
-            defLosses: 0,
-          };
-    const curAttackerCount =
-      recentBattle.attackerTroopCount - recentBattle.attkLosses;
-    const curDefenderCount =
-      recentBattle.defenderTroopCount - recentBattle.defLosses;
+    const { attacker, defender } = getTroopCount(battleResult);
 
-    return { attacker: curAttackerCount, defender: curDefenderCount };
+    return {
+      attacker: attacker ?? attackerCount,
+      defender: defender ?? defenderCount,
+    };
   };
 
   const canBattleFurther = () => {
