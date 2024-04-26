@@ -28,7 +28,7 @@ const ResultDisplay = ({ results, battleNumber }) => {
   } = results;
   return (
     <div className="battle-result-container">
-      <h3>{`Round ${battleNumber + 1}`}</h3>
+      {battleNumber !== undefined && <h3>{`Round ${battleNumber + 1}`}</h3>}
       <div className="battle-result-header">
         <div className="battle-result-player">
           <h2>Attacker</h2>
