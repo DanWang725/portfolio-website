@@ -1,6 +1,5 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
-import { getParticleOptions, option2 } from './utils';
-import getScroller from 'scroll-speed';
+import { useCallback, useRef } from 'react';
+import { getParticleOptions } from './utils';
 import Particles from 'react-particles';
 import { loadFull } from 'tsparticles';
 import { loadMotionPlugin } from 'tsparticles-plugin-motion';
@@ -8,7 +7,6 @@ import { loadExternalBubbleInteraction } from 'tsparticles-interaction-external-
 import './ParticleWrapper.css';
 
 const ParticleWrapper = () => {
-  const [scrollSpeed, setScrollSpeed] = useState(0);
   const containerRef = useRef();
   const particlesInit = useCallback(async (engine) => {
     // you can initiate the tsParticles instance (engine) here, adding custom shapes or presets

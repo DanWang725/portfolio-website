@@ -1,4 +1,4 @@
-import { battleStatsTemplate, diceStats } from './utils';
+import { diceStats } from './utils';
 
 const getDiceRoll = () => Math.floor(Math.random() * 6) + 1;
 const getDiceRollSeeded = (m) => Math.floor(m.random() * 6) + 1;

@@ -436,6 +436,7 @@ h1 {
   justify-content: center;
   gap: 2rem;
   margin-top: 1rem;
+  flex-wrap: wrap;
 }
 
 .battle-result-list-header > h3 {
@@ -444,6 +445,9 @@ h1 {
 
 .battle-list-container {
   width: 100%;
+  display: inline-flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 .battle-result-container {
@@ -497,6 +501,7 @@ h1 {
   display: flex;
   width: inherit;
   flex-direction: column;
+  justify-content: space-between;
 }
 .battle-result-player > h2 {
   margin-top: 0.1rem;

@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
-import ResultDisplay from './component/ResultDisplay';
-import { calculateBattle, getStatisticsOfBattle } from './RiskCalculator';
+import { calculateBattle } from './RiskCalculator';
 import MersenneTwister from '../../shared-utils/src/Mersenne Twister/Mersenne Twister';
 import { useParams } from 'react-router-dom';
 import RiskBattleStats from './component/RiskBattleStats';
