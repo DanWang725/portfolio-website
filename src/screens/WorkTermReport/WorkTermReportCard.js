@@ -12,10 +12,10 @@ const WorkTermReportCard = ({ workTermReportEntry, setSelectedWtr }) => {
       onClick={() => setSelectedWtr(workTermReportEntry)}
       className="report-card"
     >
-      <CardActionArea>
+      <CardActionArea sx={{width: 'auto'}}>
         <CardMedia
           component="img"
-          sx={{ width: '10em' }}
+          sx={{ width: '10rem' }}
           image={workTermReportEntry?.image}
           alt={workTermReportEntry.title}
         />
