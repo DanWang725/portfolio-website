@@ -123,18 +123,20 @@ const workTermReport2 = {
 const workTermReport3 = {
   title: 'Work Term Report S24',
   id: 'wtr-s24',
-  image: 'https://media.licdn.com/dms/image/C4D0BAQEU7NLxVO2miA/company-logo_200_200/0/1631353160813?e=2147483647&v=beta&t=27HCzvz9KhfZJq38rGFwp0LLZAg_9w3kHYT9K1yh560',
+
+  image:
+    'https://media.licdn.com/dms/image/C4D0BAQEU7NLxVO2miA/company-logo_200_200/0/1631353160813?e=2147483647&v=beta&t=27HCzvz9KhfZJq38rGFwp0LLZAg_9w3kHYT9K1yh560',
   description: 'Work term report of my S24 placement at Pacwill Environmental',
   entries: [
     {
       title: 'Introduction',
       id: 'introduction',
-      content: `      Welcome to my third co-op work term report! This placement was for 3 months from May to July. Within this report, I will describe the company I worked for, the software I would be developing, and some of the goals I set myself. I will also explain the many areas in which my knowledge and experience have grown as a software developer.`
+      content: `      Welcome to my third co-op work term report! This placement was for 3 months from May to July. Within this report, I will describe the company I worked for, the software I would be developing, and some of the goals I set myself. I will also explain the many areas in which my knowledge and experience have grown as a software developer.`,
     },
     {
       title: 'Pacwill Environmental',
       id: 'pacwill',
-      content: `  I worked with Pacwill Environmental, a small company based in Stoney Creek, Ontario. They provide a range of environmental monitoring equipment to customers across Canada, including various types of analyzers. One of their biggest clients is Environment Canada, which uses the equipment to monitor various sites and for scientific purposes. Although Pacwill’s specialty was only equipment supply and maintenance, they were interested in creating a new software solution to assist with monitoring equipment in the field.`
+      content: `  I worked with Pacwill Environmental, a small company based in Stoney Creek, Ontario. They provide a range of environmental monitoring equipment to customers across Canada, including various types of analyzers. One of their biggest clients is Environment Canada, which uses the equipment to monitor various sites and for scientific purposes. Although Pacwill’s specialty was only equipment supply and maintenance, they were interested in creating a new software solution to assist with monitoring equipment in the field.`,
     },
     {
       title: 'Goals',
@@ -162,13 +164,17 @@ const workTermReport3 = {
       In terms of skills required for this job, I would say having independent work skills was required to do well. As I have said before, I worked as the sole developer on the new software, which meant I managed myself and the work that I did. In terms of required coding skills, my prior experience in front-end development was a plus, but databases and backend languages were new to me. For this reason, my ability and passion for learning played a larger part in coding skills. There were many new languages and tools I learned from this job, which I attribute to those skills. In addition, many of the skills I learned from my courses helped me. Skills from my software design course helped me in the initial stages of planning, while my user interface design course helped me with the creation of the UI wireframe, along with conducting card sorting sessions.
 
       In terms of languages and technologies I used, there is unsurprisingly a long list of them that I used during my eventful work term. In terms of languages, I used PHP for the backend, MySQL for the backend, and the usual Javascript, React, HTML, and CSS combo for the frontend. For technical documentation, I used PlantUML to create all my sequence and class diagrams. I used Swagger to write my endpoint documentation. For technologies used during my co-op term, I used Git, Figma, Apache, Google Cloud Platform, and Docker. Although I did list a lot, I feel proud to have gained a significant amount of experience working with each.
-`
+`,
     },
     {
       title: 'Conclusion',
       id: 'conclusion',
-      content: `      Working at Pacwill Environmental has been an amazing and fulfilling experience and has been invaluable to my skills as a software engineer. Being in charge of a new cloud-based software project as its sole developer presented a great and rewarding challenge and allowed me to flex all of my programming muscles. I would like to thank everyone in Pacwill for being supportive and helping me when I was unsure. I would like to thank Sean, my manager, for allowing me to turn his idea into software. I would also like to thank Tom for helping me get used to PHP and Ahbi for assisting me with Teledyne issues.`
-    }
-  ]
+      content: `      Working at Pacwill Environmental has been an amazing and fulfilling experience and has been invaluable to my skills as a software engineer. Being in charge of a new cloud-based software project as its sole developer presented a great and rewarding challenge and allowed me to flex all of my programming muscles. I would like to thank everyone in Pacwill for being supportive and helping me when I was unsure. I would like to thank Sean, my manager, for allowing me to turn his idea into software. I would also like to thank Tom for helping me get used to PHP and Ahbi for assisting me with Teledyne issues.`,
+    },
+  ],
 };
-export const workTermReportEntries = [workTermReport1, workTermReport2, workTermReport3];
+export const workTermReportEntries = [
+  workTermReport1,
+  workTermReport2,
+  workTermReport3,
+];
