@@ -1,10 +1,10 @@
-import { useContext } from 'react';
+import { ReactNode, useContext } from 'react';
 import PerformanceProvider, {
   PerformanceContext,
 } from './contexts/PerformanceProvider';
 import ParticleWrapper from '../screens/ParticleWrapper/ParticleWrapper';
 
-const Layout = ({ children }) => {
+const Layout: React.FC<{ children: ReactNode }> = ({ children }) => {
   const { isLowPerformance } = useContext(PerformanceContext);
   return (
     <>

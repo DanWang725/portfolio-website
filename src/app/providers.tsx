@@ -4,8 +4,9 @@ import { darkTheme } from './theme';
 import { HashRouter } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import StylingProvider from './contexts/StylingProvider';
+import { ReactNode } from 'react';
 
-const Providers = ({ children }) => {
+const Providers: React.FC<{ children: ReactNode }> = ({ children }) => {
   return (
     <ThemeProvider theme={darkTheme}>
       <HashRouter>

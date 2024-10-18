@@ -3,7 +3,7 @@ import Providers from './providers';
 import { AppRoutes } from './router';
 import Layout from './layout';
 
-const App = () => {
+const App: React.FC = () => {
   return (
     <Providers>
       <Layout>
