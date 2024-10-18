@@ -3,15 +3,18 @@ import PerformanceProvider from './contexts/PerformanceProvider';
 import { darkTheme } from './theme';
 import { HashRouter } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
+import StylingProvider from './contexts/StylingProvider';
 
 const Providers = ({ children }) => {
   return (
     <ThemeProvider theme={darkTheme}>
       <HashRouter>
         <PerformanceProvider>
-          <CssBaseline />
-          <Toaster />
-          {children}
+          <StylingProvider>
+            <CssBaseline />
+            <Toaster />
+            {children}
+          </StylingProvider>
         </PerformanceProvider>
       </HashRouter>
     </ThemeProvider>
