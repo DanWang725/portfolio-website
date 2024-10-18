@@ -1,4 +1,4 @@
-import CalculatorWindow from './CalculatorWindow';
+import CalculatorWindow from '../../screens/RiskCalculator/CalculatorWindow';
 
 const RiskCalculatorScreen = () => {
   return (

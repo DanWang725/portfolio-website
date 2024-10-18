@@ -1,16 +1,18 @@
 import './Navbar.css';
 import '../styles.css';
 import { NavLink, useLocation } from 'react-router-dom';
-import React, { useContext, useState } from 'react';
-import { PerformanceContext } from '../Contexts';
+import React, { useContext } from 'react';
+import { StylingContext } from '../app/contexts/StylingProvider';
+import { PerformanceContext } from '../app/contexts/PerformanceProvider';
 
-export const Navbar = ({ classOverride }) => {
+export const Navbar = () => {
+  const location = useLocation();
   const { isLowPerformance, setIsLowPerformance } =
     useContext(PerformanceContext);
-  const location = useLocation();
+  const { navbarClassOverrides } = useContext(StylingContext);
   return (
     <div className={`nav-container `}>
-      <ul className={`navbar ${classOverride ?? 'navbar-default'}`}>
+      <ul className={`navbar ${navbarClassOverrides ?? 'navbar-default'}`}>
         <li>
           <NavLink
             to="/#home"

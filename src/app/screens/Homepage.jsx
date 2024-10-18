@@ -1,18 +1,22 @@
-import { articleContent } from './utils';
-import { getArticleEntriesFromObject } from '../components/Article/utils';
+import { articleContent } from '../../screens/utils';
+import { getArticleEntriesFromObject } from '../../components/Article/utils';
 import { useInView } from 'react-intersection-observer';
 import { Link } from 'react-router-dom';
-import { useEffect } from 'react';
-import { scrollToHash } from '../shared-utils/src';
+import { useContext, useEffect } from 'react';
+import { scrollToHash } from '../../shared-utils/src';
 import { Button } from '@mui/material';
+import { StylingContext } from '../contexts/StylingProvider';
 
-const Home = ({ setNavbarClass }) => {
+const Homepage = () => {
   const { ref, inView } = useInView({ threshold: 0 });
   const articles = getArticleEntriesFromObject(articleContent);
+  const { setNavbarClassOverrides } = useContext(StylingContext);
   useEffect(() => {
-    setNavbarClass(inView ? 'navbar-hidden' : 'navbar-hidden navbar-show');
-    return () => setNavbarClass('');
-  }, [inView, setNavbarClass]);
+    setNavbarClassOverrides(
+      inView ? 'navbar-hidden' : 'navbar-hidden navbar-show',
+    );
+    return () => setNavbarClassOverrides('');
+  }, [inView, setNavbarClassOverrides]);
 
   return (
     <>
@@ -55,4 +59,4 @@ const Home = ({ setNavbarClass }) => {
     </>
   );
 };
-export default Home;
+export default Homepage;

@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import { calculateBattle } from './RiskCalculator';
+import { calculateBattle } from '../../screens/RiskCalculator/RiskCalculator';
 import MersenneTwister from '../../shared-utils/src/Mersenne Twister/Mersenne Twister';
 import { useParams } from 'react-router-dom';
-import RiskBattleStats from './component/RiskBattleStats';
-import BattleList from './component/BattleList';
+import RiskBattleStats from '../../screens/RiskCalculator/component/RiskBattleStats';
+import BattleList from '../../screens/RiskCalculator/component/BattleList';
 
 const RiskCalculatorResult = () => {
   const [battleResult, setBattleResult] = useState([]);
