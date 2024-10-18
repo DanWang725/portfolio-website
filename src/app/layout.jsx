@@ -8,7 +8,7 @@ const Layout = ({ children }) => {
   const { isLowPerformance } = useContext(PerformanceContext);
   return (
     <>
-      {!isLowPerformance && ParticleWrapper}
+      {!isLowPerformance && <ParticleWrapper />}
       <div className="layout">
         <div className="content-section">
           <div className="std-container content-background">
