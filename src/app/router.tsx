@@ -1,0 +1,28 @@
+import { Outlet, Route, Routes } from 'react-router-dom';
+import { screens, routes } from './routes';
+import { RouteElement } from '../types/RouteSegment';
+
+function assembleRoutes(options: RouteElement[]) {
+  return options.map((route, index) => (
+    <Route
+      key={index}
+      {...(route?.index
+        ? { index: true }
+        : {
+            path: route?.path,
+            children: route?.children
+              ? assembleRoutes(route.children)
+              : undefined,
+          })}
+      element={screens[route.screen]}
+    />
+  ));
+}
+
+export const AppRoutes = () => {
+  return (
+    <div>
+      <Routes>{assembleRoutes(routes)}</Routes>
+    </div>
+  );
+};

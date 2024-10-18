@@ -4,8 +4,13 @@ import WorkTermReport from './screens/WorkTermReport';
 import RiskCalculatorScreen from './screens/RiskCalculatorScreen';
 import RiskCalculatorResult from './screens/RiskCalculatorResult';
 import { exact } from 'prop-types';
+import { RouteElement } from '../types/RouteSegment';
 
-export const screens = {
+type ScreenMap = {
+  [key: string]: JSX.Element;
+};
+
+export const screens: ScreenMap = {
   home: <Homepage />,
   wtr: <WorkTermReport />,
   'risk-calculator': <RiskCalculatorScreen />,
@@ -13,11 +18,10 @@ export const screens = {
   outlet: <Outlet />,
 };
 
-export const routes = [
+export const routes: RouteElement[] = [
   {
     screen: 'home',
-    path: '/',
-    exact: true,
+    index: true,
     name: 'homepage',
   },
   {
