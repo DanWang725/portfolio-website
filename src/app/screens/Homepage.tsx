@@ -4,10 +4,9 @@ import { useInView } from 'react-intersection-observer';
 import { Link } from 'react-router-dom';
 import { useContext, useEffect } from 'react';
 import { scrollToHash } from '../../shared-utils/src';
-import { Button } from '@mui/material';
 import { StylingContext } from '../contexts/StylingProvider';
 
-const Homepage = () => {
+const Homepage: React.FC = () => {
   const { ref, inView } = useInView({ threshold: 0 });
   const articles = getArticleEntriesFromObject(articleContent);
   const { setNavbarClassOverrides } = useContext(StylingContext);
