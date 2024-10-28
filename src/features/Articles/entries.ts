@@ -1,6 +1,8 @@
 import cover1 from './images/coverWTR1.png';
 import cover2 from './images/ncrVoyix.jpg';
-const workTermReport1 = {
+import { Article } from '../../components/Article/types/article';
+
+const workTermReport1: Article = {
   title: 'Work Term Report S23',
   id: 'wtr-s23',
   image: cover1,
@@ -53,7 +55,7 @@ const workTermReport1 = {
   ],
 };
 
-const workTermReport2 = {
+const workTermReport2: Article = {
   title: 'Work Term Report F23',
   id: 'wtr-f23',
   image: cover2,
@@ -120,7 +122,7 @@ const workTermReport2 = {
     },
   ],
 };
-const workTermReport3 = {
+const workTermReport3: Article = {
   title: 'Work Term Report S24',
   id: 'wtr-s24',
 

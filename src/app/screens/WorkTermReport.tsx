@@ -1,8 +1,8 @@
 import ArticleLayout from '../../components/Article/ArticleLayout';
 import { useEffect, useState } from 'react';
 import ArticleSidebar from '../../components/Article/ArticleSidebar';
-import { workTermReportEntries } from '../../screens/WorkTermReport/entries';
-import WorkTermReportCard from '../../screens/WorkTermReport/WorkTermReportCard';
+import { workTermReportEntries } from '../../features/Articles/entries';
+import WorkTermReportCard from '../../features/Articles/WorkTermReportCard';
 import { getArticleEntriesFromObject } from '../../components/Article/utils';
 import { useNavigate, useParams } from 'react-router-dom';
 

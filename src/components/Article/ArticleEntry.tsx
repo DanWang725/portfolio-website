@@ -1,13 +1,23 @@
 import EntryColumns from './EntryColumns';
+import { ArticleSection } from './types/article';
+interface ArticleEntryProps {
+  article: ArticleSection;
+  id: string;
+  key: string;
+  isFirstArticle?: boolean;
+  options?: {
+    columns: 'single' | 'multi';
+  };
+}
 
-const ArticleEntry = ({
-  title,
-  content,
+const ArticleEntry: React.FC<ArticleEntryProps> = ({
+  article,
   id,
   key,
   isFirstArticle = false,
-  options,
+  options = { columns: 'single' },
 }) => {
+  const { title, content } = article;
   if (options?.columns && options.columns !== 'single') {
     return (
       <EntryColumns

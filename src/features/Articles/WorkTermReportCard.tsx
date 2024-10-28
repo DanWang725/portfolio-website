@@ -4,8 +4,17 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
+import { Article } from '../../components/Article/types/article';
 
-const WorkTermReportCard = ({ workTermReportEntry, setSelectedWtr }) => {
+interface WorkTermReportCardProps {
+  workTermReportEntry: Article;
+  setSelectedWtr: (wtr: Article) => void;
+}
+
+const WorkTermReportCard: React.FC<WorkTermReportCardProps> = ({
+  workTermReportEntry,
+  setSelectedWtr,
+}) => {
   return (
     <Card
       sx={{ maxWidth: 1000, display: 'flex' }}
@@ -29,7 +38,7 @@ const WorkTermReportCard = ({ workTermReportEntry, setSelectedWtr }) => {
         >
           {workTermReportEntry.title}
         </Typography>
-        <Typography gutterBottom variant="p" component="div">
+        <Typography gutterBottom component="div">
           {workTermReportEntry.description}
         </Typography>
       </CardContent>
