@@ -3,31 +3,23 @@ import { useEffect, useState } from 'react';
 import ArticleSidebar from '../../components/Article/ArticleSidebar';
 import { workTermReportEntries } from '../../features/Articles/entries';
 import WorkTermReportCard from '../../features/Articles/WorkTermReportCard';
-import { getArticleEntriesFromObject } from '../../components/Article/utils';
 import { useNavigate, useParams } from 'react-router-dom';
 
 const WorkTermReport = () => {
   const params = useParams();
   // const [selectedArticle, setSelectedArticle] = useState();
   const navigate = useNavigate();
-  const selectedArticle = workTermReportEntries.find(
-    (article) => article.id === params.reportId,
-  ) || { id: 'unknown' };
+  const selectedArticle =
+    workTermReportEntries.find((article) => article.id === params.reportId) ||
+    null;
 
   return (
     <div className="content-section">
-      {params.reportId ? (
+      {selectedArticle ? (
         <ArticleLayout
           classOverrides={'no-title'}
-          content={getArticleEntriesFromObject(selectedArticle.entries)}
-          sidebar={
-            <ArticleSidebar
-              entries={selectedArticle.entries}
-              handleBack={() => {
-                navigate('/work-term-report');
-              }}
-            ></ArticleSidebar>
-          }
+          article={selectedArticle}
+          handleBack={() => navigate('/work-term-report')}
         />
       ) : (
         <>

@@ -1,7 +1,15 @@
 import { NavLink } from 'react-router-dom';
 import { getHash, scrollToHash } from '../../shared-utils/src';
+import { ArticleSection } from './types/article';
+interface ArticleSidebarProps {
+  entries: ArticleSection[];
+  handleBack?: () => void;
+}
 
-const ArticleSidebar = ({ entries, handleBack }) => {
+const ArticleSidebar: React.FC<ArticleSidebarProps> = ({
+  entries,
+  handleBack,
+}) => {
   return (
     <div className="article-sidebar">
       Navigation
@@ -10,9 +18,9 @@ const ArticleSidebar = ({ entries, handleBack }) => {
           <li key={id}>
             <NavLink
               to={`#${id}`}
-              isActive={() => {
-                return getHash() === `#${id}`;
-              }}
+              // isActive={() => {
+              //   return getHash() === `#${id}`;
+              // }}
               style={() =>
                 getHash() === `#${id}` ? { fontWeight: '600' } : {}
               }

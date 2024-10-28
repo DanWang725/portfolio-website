@@ -1,5 +1,3 @@
-import { articleContent } from '../../screens/utils';
-import { getArticleEntriesFromObject } from '../../components/Article/utils';
 import { useInView } from 'react-intersection-observer';
 import { Link } from 'react-router-dom';
 import { useContext, useEffect } from 'react';
@@ -8,7 +6,6 @@ import { StylingContext } from '../contexts/StylingProvider';
 
 const Homepage: React.FC = () => {
   const { ref, inView } = useInView({ threshold: 0 });
-  const articles = getArticleEntriesFromObject(articleContent);
   const { setNavbarClassOverrides } = useContext(StylingContext);
   useEffect(() => {
     setNavbarClassOverrides(
@@ -53,7 +50,6 @@ const Homepage: React.FC = () => {
           </div>
           <></>
         </section>
-        {articles}
       </div>
     </>
   );
