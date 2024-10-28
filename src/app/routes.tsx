@@ -30,23 +30,23 @@ export const routes: RouteElement[] = [
     name: 'Work Term Reports',
     children: [{ screen: 'wtr', path: ':reportId' }],
   },
-  {
-    screen: 'outlet',
-    path: '/proj',
-    name: 'Projects',
-    children: [
-      {
-        screen: 'risk-calculator',
-        path: 'risk-calculator',
-        name: 'Risk Calculator',
-        children: [
-          {
-            screen: 'risk-result',
-            path: ':result',
-            name: 'result of risk battle',
-          },
-        ],
-      },
-    ],
-  },
+  // {
+  //   screen: 'outlet',
+  //   path: '/proj',
+  //   name: 'Projects',
+  //   children: [
+  //     {
+  //       screen: 'risk-calculator',
+  //       path: 'risk-calculator',
+  //       name: 'Risk Calculator',
+  //       children: [
+  //         {
+  //           screen: 'risk-result',
+  //           path: ':result',
+  //           name: 'result of risk battle',
+  //         },
+  //       ],
+  //     },
+  //   ],
+  // },
 ];

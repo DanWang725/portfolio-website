@@ -1,15 +1,15 @@
 import { Button, Checkbox, TextField } from '@mui/material';
 import { useEffect, useState } from 'react';
-import ResultDisplay from './component/ResultDisplay';
+import ResultDisplay from './ResultDisplay';
 import {
   calculateBattle,
   calculateBattlePhase,
   getTroopCount,
 } from './RiskCalculator';
-import MersenneTwister from '../../shared-utils/src/Mersenne Twister/Mersenne Twister';
+import MersenneTwister from '../../../shared-utils/src/Mersenne Twister/Mersenne Twister';
 import { ContentCopy } from '@mui/icons-material';
-import BattleList from './component/BattleList';
-import RiskBattleStats from './component/RiskBattleStats';
+import BattleList from './BattleList';
+import RiskBattleStats from './RiskBattleStats';
 import toast from 'react-hot-toast';
 
 const CalculatorWindow = () => {

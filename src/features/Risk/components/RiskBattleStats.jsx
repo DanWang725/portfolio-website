@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import DiceStatistics from './DiceStatistics';
-import { getStatisticsOfBattle } from '../RiskCalculator';
+import { getStatisticsOfBattle } from './RiskCalculator';
 import { Button } from '@mui/material';
 
 const RiskBattleStats = ({ battles }) => {
