@@ -1,3 +1,5 @@
+import { Box } from '@mui/material';
+import ContentSection from '../Sections/ContentSection';
 import ArticleList from './ArticleList';
 import ArticleSidebar from './ArticleSidebar';
 import { Article } from './types/article';
@@ -13,10 +15,12 @@ const ArticleLayout: React.FC<ArticleLayoutProps> = ({
   classOverrides = '',
 }) => {
   return (
-    <div className={`article-body ${classOverrides}`}>
-      <ArticleList entries={article.entries} />
+    <Box display="flex">
       <ArticleSidebar entries={article.entries} handleBack={handleBack} />
-    </div>
+      <ContentSection>
+        <ArticleList entries={article.entries} />
+      </ContentSection>
+    </Box>
   );
 };
 export default ArticleLayout;

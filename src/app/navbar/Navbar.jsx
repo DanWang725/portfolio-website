@@ -1,18 +1,16 @@
-import './Navbar.css';
-import '../styles.css';
 import { NavLink, useLocation } from 'react-router-dom';
 import React, { useContext } from 'react';
-import { StylingContext } from '../app/contexts/StylingProvider';
-import { PerformanceContext } from '../app/contexts/PerformanceProvider';
+import { StylingContext } from '../contexts/StylingProvider';
+import { PerformanceContext } from '../contexts/PerformanceProvider';
+import { AppBar, Toolbar } from '@mui/material';
 
 export const Navbar = () => {
   const location = useLocation();
   const { isLowPerformance, setIsLowPerformance } =
     useContext(PerformanceContext);
-  const { navbarClassOverrides } = useContext(StylingContext);
   return (
-    <div className={`nav-container `}>
-      <ul className={`navbar ${navbarClassOverrides ?? 'navbar-default'}`}>
+    <AppBar>
+      <Toolbar>
         <li>
           <NavLink
             to="/#home"
@@ -52,7 +50,7 @@ export const Navbar = () => {
         >
           {isLowPerformance ? 'Background: Off' : 'Background: On'}
         </li>
-      </ul>
-    </div>
+      </Toolbar>
+    </AppBar>
   );
 };
