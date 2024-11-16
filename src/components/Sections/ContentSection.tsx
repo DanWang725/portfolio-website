@@ -1,10 +1,16 @@
-import { Box } from '@mui/material';
+import { Theme } from '@emotion/react';
+import { Box, ThemeOptions } from '@mui/material';
 import { ReactNode } from 'react';
 
 export interface ContentSectionProps {
   children: ReactNode;
+  styleOverrides?: Theme;
 }
-const ContentSection: React.FC<ContentSectionProps> = ({ children }) => {
+
+const ContentSection: React.FC<ContentSectionProps> = ({
+  children,
+  styleOverrides,
+}) => {
   return (
     <Box
       sx={{
@@ -12,10 +18,7 @@ const ContentSection: React.FC<ContentSectionProps> = ({ children }) => {
         borderWidth: '2px',
         borderColor: 'cyan',
         borderStyle: 'solid',
-        minWidth: '95%',
-        width: '90%',
-        height: 'auto',
-        padding: '1rem',
+        ...styleOverrides,
       }}
     >
       {children}
