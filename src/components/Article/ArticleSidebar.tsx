@@ -23,17 +23,6 @@ import React, { forwardRef, HtmlHTMLAttributes, useState } from 'react';
 import { Menu, ArrowBack } from '@mui/icons-material';
 import ContentSection from '../Sections/ContentSection';
 
-const MyNavLink = React.forwardRef<any, any>((props, ref) => (
-  <NavLink
-    ref={ref}
-    to={props.to}
-    className={({ isActive }) =>
-      `${props.className} ${isActive ? props.activeClassName : ''}`
-    }
-  >
-    {props.children}
-  </NavLink>
-));
 interface ArticleSidebarProps {
   entries: ArticleSection[];
   handleBack: () => void;
@@ -58,10 +47,11 @@ const ExpandTest: React.FC<ExpandTestProps> = ({
   console.log('location', location);
   return (
     <Box
-      position="flex"
-      width={isExpanded ? '10rem' : SIDEBAR_WIDTH}
+      position="sticky"
       sx={{
         // backgroundColor: 'green',
+        width: 'auto',
+        top: '80px',
         overflow: 'hidden',
         textWrap: 'nowrap',
         listStyleType: 'none',
@@ -78,14 +68,6 @@ const ExpandTest: React.FC<ExpandTestProps> = ({
         <ListItem>
           <Typography variant="caption">Contents</Typography>
         </ListItem>
-        {/* <ListItemButton>
-          <ListItemIcon
-            onClick={() => setIsExpanded((value) => !value)}
-            key="menu"
-          >
-            <Menu />
-          </ListItemIcon>
-        </ListItemButton> */}
         {entries?.map(({ id, title, titleShort }) => (
           <ListItemButton
             key={id}
@@ -101,24 +83,13 @@ const ExpandTest: React.FC<ExpandTestProps> = ({
             <Typography
               width={isExpanded ? '10rem' : SIDEBAR_WIDTH}
               overflow="auto"
-              scroll="hidden"
-              textOverflow="-"
+              onScroll={() => {}}
+              textOverflow="ellipsis"
               variant="body2"
               sx={{ '-ms-overflow-style': 'none', 'scrollbar-width': 'none' }}
-            >{`${isExpanded ? title : (titleShort ?? title)}`}</Typography>
-
-            {/* <NavLink
-              to={`#${id}`}
-              // isActive={() => {
-              //   return getHash() === `#${id}`;
-              // }}
-              style={() =>
-                getHash() === `#${id}` ? { fontWeight: '600' } : {}
-              }
-              onClick={() => scrollToHash(id)}
             >
-              <Typography>{`${title}`}</Typography>
-            </NavLink> */}
+              {isExpanded ? title : (titleShort ?? title)}
+            </Typography>
           </ListItemButton>
         ))}
       </List>
@@ -136,7 +107,7 @@ const ArticleSidebar: React.FC<ArticleSidebarProps> = ({
     <Box width={SIDEBAR_WIDTH} height="inherit">
       <Box
         width={isExpanded ? '10rem' : SIDEBAR_WIDTH}
-        height={'100%'}
+        height="100%"
         sx={{
           backgroundColor: 'rgba(30, 30, 30, 0.8)',
           borderColor: 'cyan',
@@ -145,14 +116,12 @@ const ArticleSidebar: React.FC<ArticleSidebarProps> = ({
           position: 'relative',
         }}
       >
-        <Box position="sticky" top="80px" width="auto">
-          <ExpandTest
-            entries={entries}
-            handleBack={handleBack}
-            isExpanded={isExpanded}
-            setIsExpanded={setIsExpanded}
-          />
-        </Box>
+        <ExpandTest
+          entries={entries}
+          handleBack={handleBack}
+          isExpanded={isExpanded}
+          setIsExpanded={setIsExpanded}
+        />
       </Box>
     </Box>
   );
