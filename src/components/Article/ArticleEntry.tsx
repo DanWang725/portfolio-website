@@ -1,7 +1,6 @@
 import { ArticleSection } from './types/article';
 interface ArticleEntryProps {
   article: ArticleSection;
-  id: string;
   isFirstArticle?: boolean;
   options?: {
     columns: 'single' | 'multi';
@@ -10,7 +9,6 @@ interface ArticleEntryProps {
 
 const ArticleEntry: React.FC<ArticleEntryProps> = ({
   article,
-  id,
   isFirstArticle = false,
   options = { columns: 'single' },
 }) => {
@@ -20,8 +18,8 @@ const ArticleEntry: React.FC<ArticleEntryProps> = ({
       className={`std-container article-entry ${
         isFirstArticle ? 'first-article' : ''
       } `}
-      key={id}
-      id={id}
+      key={article.id}
+      id={article.id}
     >
       {title && <h1 className="article-title">{title}</h1>}
       <div className="article-column">{content}</div>

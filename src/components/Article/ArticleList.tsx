@@ -11,12 +11,7 @@ interface ArticleListProps {
  */
 const ArticleList: React.FC<ArticleListProps> = ({ entries }) => {
   return entries?.map((entry, index) => (
-    <ArticleEntry
-      isFirstArticle={index === 0}
-      article={entry}
-      id={entry.id}
-      key={entry.title?.toLowerCase()}
-    />
+    <ArticleEntry isFirstArticle={index === 0} article={entry} key={entry.id} />
   ));
 };
 export default ArticleList;

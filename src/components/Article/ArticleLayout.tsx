@@ -3,6 +3,7 @@ import ContentSection from '../Sections/ContentSection';
 import ArticleList from './ArticleList';
 import ArticleSidebar from './ArticleSidebar';
 import { Article } from './types/article';
+import { Height } from '@mui/icons-material';
 
 export interface ArticleLayoutProps {
   article: Article;
@@ -15,12 +16,18 @@ const ArticleLayout: React.FC<ArticleLayoutProps> = ({
   classOverrides = '',
 }) => {
   return (
-    <Box display="flex">
+    <ContentSection styleOverrides={{ display: 'flex' }}>
       <ArticleSidebar entries={article.entries} handleBack={handleBack} />
-      <ContentSection>
+      <Box
+        sx={{
+          width: '95%',
+          height: 'auto',
+          padding: '1rem',
+        }}
+      >
         <ArticleList entries={article.entries} />
-      </ContentSection>
-    </Box>
+      </Box>
+    </ContentSection>
   );
 };
 export default ArticleLayout;
