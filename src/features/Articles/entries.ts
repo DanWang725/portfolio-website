@@ -10,11 +10,13 @@ const workTermReport1: Article = {
   entries: [
     {
       title: 'Introduction',
+      titleShort: 'Intro',
       id: 'introduction',
       content: `This is my first work term report. It will describe my experiences for the first 4 months of my 8-month work term at NCR. As my first work placement in the field, it has been an amazing experience and awesome learning opportunity. I will give some background on NCR, as well as talk about a few of my goals for this term. I will also describe my overall experience working there. `,
     },
     {
       title: 'About NCR',
+      titleShort: 'About',
       id: 'about',
       content: `National Cash Register, or NCR is an American software and technology company that provides a variety of services. These include retail, banking and IT software services, Point of Sale (POS) for commercial retail services, and ATMs. An interesting piece of information is that they had invented the cash register. The Waterloo office which I was working at focused on their interactive teller software solution as well as other software-based services. `,
     },
@@ -34,6 +36,7 @@ const workTermReport1: Article = {
     },
     {
       title: 'Job Description',
+      titleShort: 'Job',
       id: 'job-description',
       content: `For my placement at NCR, I joined a feature team as a front-end developer. At the Waterloo office, there were a pretty large number of teams. Most of the teams, including mine, would be working on a full stack software product. My team, being a feature team, would work on developing and delivering new features for one of NCR’s customers. 
 
@@ -47,6 +50,7 @@ const workTermReport1: Article = {
     },
     {
       title: 'Conclusion',
+      titleShort: 'Conc.',
       id: 'conclusion',
       content: `I have had an amazing experience working with my team and at NCR. I couldn’t have picked a better company to work at, and my team has been a blast to be part of. Even though it has only been four months, I have learned so much about software development, along with valuable experience of front-end development. I am looking forward to what my remaining four months at NCR have in store! 
 
@@ -63,12 +67,14 @@ const workTermReport2: Article = {
   entries: [
     {
       title: 'Introduction',
+      titleShort: 'Intro',
       id: 'introduction',
       content:
         'This work term report goes over the second half of my 8-month work term as a front-end developer at NCR. My experience working throughout this half continued to be amazing, and I had many challenging but fulfilling tasks I worked on. Within this report, I will talk about the major company split that occurred. I will also describe the goals I set for this term and how my work experience has changed from the first half, including some notable features I worked on. I will also talk about how I got a patent from the company hackathon.',
     },
     {
       title: 'Company Split',
+      titleShort: 'Split',
       id: 'company-split',
       content:
         'Around October, NCR officially split into two new companies: NCR Atleos and NCR Voyix. These new companies would specialize in NCR’s two main products or services: Atleos covering the ATM businesses and Voyix covering digital commerce. These two companies were independent of each other. Voyix was the legal successor to NCR Corporation, while Atleos was spun off. Currently, Voyix offers a variety of services focused on software in three main areas: retail, restaurants, and digital banking.',
@@ -89,6 +95,7 @@ const workTermReport2: Article = {
     },
     {
       title: 'Job Description',
+      titleShort: 'Job',
       id: 'job-description',
       content: `My placement at NCR had me continue working as a front-end developer with my team from the first portion of the term. Our team was still a feature team, which meant that we were developing new additional features for our bank teller platform. Since our team was moved to work under a new customer, the features we developed were less connected to the existing code and would be entirely new user flows. In addition to these features, I worked on a wide variety of other areas within the app. There were some days, or even sprints, where bugs dominated much of our work capacity. Some days, all of us front-end developers would be trying to merge two development branches together to sync changes.
       
@@ -103,6 +110,7 @@ const workTermReport2: Article = {
     },
     {
       title: 'NCR Hackathon',
+      titleShort: 'Hack',
       id: 'hackathon',
       content: `In addition to all my accomplishments during my work term, I got a patent filed with my name on it. In the first half of my work term in August, our company hosted a company-wide hackathon that would last two days. My team, called Eason and Friends, was a group of seven Guelph co-ops. We came up with the idea of using blockchain as a medium for interbank transfers. As a quick rundown on how blockchain networks like Ethereum work in general, they function using smart contracts. These contracts basically have their programming hard-coded into the blockchain. When anyone performs a transaction (as in running the smart contract), the entire procedure is public, as everyone can see and verify the code run. The most common language to use to write these is Solidity, which was a new language to everyone on the team. I took the initiative, learning and then creating a basic smart contract in Solidity over the two days. I also helped my team setup a local blockchain using my contract and helped develop a front end that would connect to the blockchain. At the end of the hackathon, we had a fully working prototype of our idea consisting of a front-end React application, a Java back-end, and a blockchain network. Although we didn’t win any prizes, the hackathon was a blast! It was fun working together as a team for over 12 hours at the office.
       
@@ -111,11 +119,13 @@ const workTermReport2: Article = {
     },
     {
       title: 'Conclusion',
+      titleShort: 'Conc.',
       id: 'conclusion',
       content: `Choosing NCR as my first co-op placement has been an amazing opportunity. I have grown so much in experience and knowledge since I started my placement. It feels unreal that, by the end, I was being assigned work equal to that of a regular developer. I was presented with challenging but fulfilling work that greatly benefited my learning experience. Reflecting on all the things I have done, it is amazing how much I was able to do during my term and the impact my code has on the current application. Aside from the work I did, the people I worked with and interacted with were outstanding. Everyone at NCR was very helpful and would usually take some time to assist me with my issue when I asked. My team was always looking out for my success and was supportive in many ways, making this experience unforgettable. I hope that I can come back to work at NCR in the future!`,
     },
     {
       title: 'Acknowledgements',
+      titleShort: 'Thanks',
       id: 'acknowledgements',
       content:
         'My experience at NCR can be attributed to the awesome team I worked with. Big thanks to my team leader, Lubna, for supporting me throughout my placement and helping me improve in my weaker areas, as well as to my entire team for being fun to work with and making this first work term so memorable. Finally, I want to thank some of the other co-ops (Eason, Mark, Ethan, Myron, Isaiah, and Max) for being great to hang out with and keeping the $2 burger tradition.',
@@ -132,11 +142,13 @@ const workTermReport3: Article = {
   entries: [
     {
       title: 'Introduction',
+      titleShort: 'Intro',
       id: 'introduction',
       content: `      Welcome to my third co-op work term report! This placement was for 3 months from May to July. Within this report, I will describe the company I worked for, the software I would be developing, and some of the goals I set myself. I will also explain the many areas in which my knowledge and experience have grown as a software developer.`,
     },
     {
       title: 'Pacwill Environmental',
+      titleShort: 'Pacwill',
       id: 'pacwill',
       content: `  I worked with Pacwill Environmental, a small company based in Stoney Creek, Ontario. They provide a range of environmental monitoring equipment to customers across Canada, including various types of analyzers. One of their biggest clients is Environment Canada, which uses the equipment to monitor various sites and for scientific purposes. Although Pacwill’s specialty was only equipment supply and maintenance, they were interested in creating a new software solution to assist with monitoring equipment in the field.`,
     },
@@ -156,6 +168,7 @@ const workTermReport3: Article = {
     },
     {
       title: 'Job Description',
+      titleShort: 'Job',
       id: 'job-desc',
       content: `      In this co-op placement, I was the sole developer on a new cloud-based full-stack application. It would be a data acquisition service, which would help customers monitor their analyzers that were out in the field. I was excited but also nervous to have this responsibility. Although officially, my position was a Web Developer, it was more so a full software developer role, as I did more than what was listed in the job description.
 
@@ -170,6 +183,7 @@ const workTermReport3: Article = {
     },
     {
       title: 'Conclusion',
+      titleShort: 'Conc.',
       id: 'conclusion',
       content: `      Working at Pacwill Environmental has been an amazing and fulfilling experience and has been invaluable to my skills as a software engineer. Being in charge of a new cloud-based software project as its sole developer presented a great and rewarding challenge and allowed me to flex all of my programming muscles. I would like to thank everyone in Pacwill for being supportive and helping me when I was unsure. I would like to thank Sean, my manager, for allowing me to turn his idea into software. I would also like to thank Tom for helping me get used to PHP and Ahbi for assisting me with Teledyne issues.`,
     },
