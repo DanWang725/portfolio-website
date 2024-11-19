@@ -22,7 +22,7 @@ export const routes: RouteElement[] = [
   {
     screen: 'home',
     index: true,
-    name: 'homepage',
+    name: 'Homepage',
   },
   {
     screen: 'wtr',
