@@ -16,6 +16,7 @@ import {
   ListItem,
   ListItemButton,
   ListItemIcon,
+  ListItemText,
   MenuList,
   Typography,
 } from '@mui/material';
@@ -36,7 +37,7 @@ interface ExpandTestProps {
 }
 const SIDEBAR_WIDTH = '5rem';
 
-const ExpandTest: React.FC<ExpandTestProps> = ({
+const ExpandingSidebar: React.FC<ExpandTestProps> = ({
   entries,
   handleBack,
   isExpanded,
@@ -44,12 +45,10 @@ const ExpandTest: React.FC<ExpandTestProps> = ({
 }) => {
   const location = useLocation();
   const navigate = useNavigate();
-  console.log('location', location);
   return (
     <Box
       position="sticky"
       sx={{
-        // backgroundColor: 'green',
         width: 'auto',
         top: '80px',
         overflow: 'hidden',
@@ -59,10 +58,11 @@ const ExpandTest: React.FC<ExpandTestProps> = ({
       }}
     >
       <List>
-        <ListItemButton>
-          <ListItemIcon onClick={() => handleBack()} key={'back'}>
+        <ListItemButton onClick={() => handleBack()}>
+          <ListItemIcon key={'back'}>
             <ArrowBack />
           </ListItemIcon>
+          {isExpanded && <Typography variant="body1">Back</Typography>}
         </ListItemButton>
         <Divider />
         <ListItem>
@@ -77,8 +77,6 @@ const ExpandTest: React.FC<ExpandTestProps> = ({
               navigate(`${location.pathname}#${id}`);
               setIsExpanded(false);
             }}
-            onMouseEnter={() => setIsExpanded(true)}
-            onMouseLeave={() => setIsExpanded(false)}
           >
             <Typography
               width={isExpanded ? '10rem' : SIDEBAR_WIDTH}
@@ -115,8 +113,10 @@ const ArticleSidebar: React.FC<ArticleSidebarProps> = ({
           transition: 'width 0.5s',
           position: 'relative',
         }}
+        onMouseEnter={() => setIsExpanded(true)}
+        onMouseLeave={() => setIsExpanded(false)}
       >
-        <ExpandTest
+        <ExpandingSidebar
           entries={entries}
           handleBack={handleBack}
           isExpanded={isExpanded}
