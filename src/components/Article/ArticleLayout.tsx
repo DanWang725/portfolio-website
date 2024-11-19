@@ -3,7 +3,6 @@ import ContentSection from '../Sections/ContentSection';
 import ArticleList from './ArticleList';
 import ArticleSidebar from './ArticleSidebar';
 import { Article } from './types/article';
-import { Height } from '@mui/icons-material';
 
 export interface ArticleLayoutProps {
   article: Article;

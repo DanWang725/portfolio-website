@@ -1,15 +1,12 @@
-import { NavLink, useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import React, { useContext } from 'react';
-import { StylingContext } from '../contexts/StylingProvider';
 import { PerformanceContext } from '../contexts/PerformanceProvider';
 import {
   AppBar,
   Box,
   Button,
-  ListItemButton,
-  Menu,
-  MenuItem,
   Toolbar,
+  Tooltip,
   Typography,
 } from '@mui/material';
 import { routes } from '../routes';
@@ -42,6 +39,12 @@ export const Navbar = () => {
             );
           })}
         </Box>
+        <Button onClick={() => setIsLowPerformance((val) => !val)}>
+          <Typography>
+            {isLowPerformance ? 'Enable Background' : 'Disable Background'}
+          </Typography>
+          <Tooltip title="This will disable the background animation" />
+        </Button>
       </Toolbar>
     </AppBar>
   );

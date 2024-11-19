@@ -1,11 +1,9 @@
 import ArticleLayout from '../../components/Article/ArticleLayout';
-import { useEffect, useState } from 'react';
-import ArticleSidebar from '../../components/Article/ArticleSidebar';
 import { workTermReportEntries } from '../../features/Articles/entries';
 import WorkTermReportCard from '../../features/Articles/WorkTermReportCard';
 import { useNavigate, useParams } from 'react-router-dom';
 import ContentSection from '../../components/Sections/ContentSection';
-import { List } from '@mui/material';
+import { List, Typography } from '@mui/material';
 
 const WorkTermReport = () => {
   const params = useParams();
@@ -34,25 +32,24 @@ const WorkTermReport = () => {
         padding: '1rem',
       }}
     >
-      <h1 className="article-title">Work Term Reports</h1>
-      <p className="article-content">
+      <Typography variant="h2">Work Term Reports</Typography>
+      <Typography variant="h6">
         These reports are cover my experiences and achievements during my co-op
-        work terms. 8-month work terms are split into two separate reports
-        covering 4 months each.
-      </p>
-      <div className="report-list">
-        <List>
-          {workTermReportEntries.map((article) => (
-            <WorkTermReportCard
-              workTermReportEntry={article}
-              setSelectedWtr={(entry) =>
-                navigate(`/work-term-report/${entry.id}`)
-              }
-              key={article.title.toLowerCase()}
-            />
-          ))}
-        </List>
-      </div>
+        work terms during my computer science co-op degree. Each report covers a
+        4-month period, or semester. Any 8-month work terms are split into two
+        reports.
+      </Typography>
+      <List>
+        {workTermReportEntries.map((article) => (
+          <WorkTermReportCard
+            workTermReportEntry={article}
+            setSelectedWtr={(entry) =>
+              navigate(`/work-term-report/${entry.id}`)
+            }
+            key={article.title.toLowerCase()}
+          />
+        ))}
+      </List>
     </ContentSection>
   );
 };

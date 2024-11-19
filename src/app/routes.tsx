@@ -3,7 +3,6 @@ import Homepage from './screens/Homepage';
 import WorkTermReport from './screens/WorkTermReport';
 import RiskCalculatorScreen from './screens/RiskCalculatorScreen';
 import RiskCalculatorResult from './screens/RiskCalculatorResult';
-import { exact } from 'prop-types';
 import { RouteElement } from '../types/RouteSegment';
 
 type ScreenMap = {

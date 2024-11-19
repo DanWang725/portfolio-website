@@ -1,5 +1,5 @@
 import ArticleEntry from './ArticleEntry';
-import { Article, ArticleSection } from './types/article';
+import { ArticleSection } from './types/article';
 
 interface ArticleListProps {
   entries: ArticleSection[];

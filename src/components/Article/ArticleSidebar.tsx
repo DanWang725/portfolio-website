@@ -1,28 +1,17 @@
-import {
-  LinkProps,
-  NavLink,
-  NavLinkProps,
-  useLocation,
-  useNavigate,
-} from 'react-router-dom';
-import { getHash, scrollToHash } from '../../shared-utils/src';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { getHash, scrollToHash } from '../../shared-utils/RouteHashUtils';
 import { ArticleSection } from './types/article';
 import {
   Box,
-  Button,
   Divider,
-  IconButton,
   List,
   ListItem,
   ListItemButton,
   ListItemIcon,
-  ListItemText,
-  MenuList,
   Typography,
 } from '@mui/material';
-import React, { forwardRef, HtmlHTMLAttributes, useState } from 'react';
-import { Menu, ArrowBack } from '@mui/icons-material';
-import ContentSection from '../Sections/ContentSection';
+import React, { useState } from 'react';
+import { ArrowBack } from '@mui/icons-material';
 
 interface ArticleSidebarProps {
   entries: ArticleSection[];
