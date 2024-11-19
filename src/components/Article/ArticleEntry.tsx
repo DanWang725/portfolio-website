@@ -1,3 +1,4 @@
+import { Box, Divider, Typography } from '@mui/material';
 import { ArticleSection } from './types/article';
 interface ArticleEntryProps {
   article: ArticleSection;
@@ -14,16 +15,27 @@ const ArticleEntry: React.FC<ArticleEntryProps> = ({
 }) => {
   const { title, content } = article;
   return (
-    <section
+    <Box
       className={`std-container article-entry ${
         isFirstArticle ? 'first-article' : ''
       } `}
       key={article.id}
       id={article.id}
     >
-      {title && <h1 className="article-title">{title}</h1>}
-      <div className="article-column">{content}</div>
-    </section>
+      {title && (
+        <Typography variant="h4" my={'1rem'}>
+          {title}
+        </Typography>
+      )}
+      <Divider variant="middle" />
+      <Typography
+        variant="body1"
+        gutterBottom
+        style={{ wordWrap: 'break-word', whiteSpace: 'pre-wrap' }}
+      >
+        {content}
+      </Typography>
+    </Box>
   );
 };
 export default ArticleEntry;
