@@ -2,7 +2,7 @@ import { ReactNode, useContext } from 'react';
 import PerformanceProvider, {
   PerformanceContext,
 } from './contexts/PerformanceProvider';
-import ParticleWrapper from '../screens/ParticleWrapper/ParticleWrapper';
+import ParticleWrapper from '../features/ParticleBackground/ParticleWrapper';
 import { Navbar } from './navbar/Navbar';
 import { Container } from '@mui/material';
 
