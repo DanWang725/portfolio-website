@@ -6,7 +6,7 @@ import {
   calculateBattlePhase,
   getTroopCount,
 } from './RiskCalculator';
-import MersenneTwister from '../../../shared-utils/src/Mersenne Twister/Mersenne Twister';
+import MersenneTwister from '../../../shared-utils/Mersenne Twister/Mersenne Twister';
 import { ContentCopy } from '@mui/icons-material';
 import BattleList from './BattleList';
 import RiskBattleStats from './RiskBattleStats';
