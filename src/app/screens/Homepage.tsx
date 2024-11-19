@@ -5,6 +5,8 @@ import { scrollToHash } from '../../shared-utils/RouteHashUtils';
 import { StylingContext } from '../contexts/StylingProvider';
 import ContentSection from '../../components/Sections/ContentSection';
 import { Box, Typography } from '@mui/material';
+import ArticleList from '../../components/Article/ArticleList';
+import { articleContent } from '../../screens/utils';
 
 const Homepage: React.FC = () => {
   const { ref, inView } = useInView({ threshold: 0 });
@@ -52,6 +54,11 @@ const Homepage: React.FC = () => {
           </div>
         </ContentSection>
       </Box>
+      <ContentSection
+        styleOverrides={{ display: 'flex', flexDirection: 'column', p: '1rem' }}
+      >
+        <ArticleList entries={articleContent} />
+      </ContentSection>
       <div className="content-section">
         <div id="home"></div>
         <section className="std-container name-page" ref={ref}>

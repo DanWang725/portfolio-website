@@ -1,5 +1,6 @@
 import { Box, Divider, Typography } from '@mui/material';
-import { ArticleSection } from './types/article';
+import { ArticleSection, SectionType } from './types/article';
+import CustomArticleEntry from './CustomArticleSection';
 interface ArticleEntryProps {
   article: ArticleSection;
   isFirstArticle?: boolean;
@@ -13,7 +14,7 @@ const ArticleEntry: React.FC<ArticleEntryProps> = ({
   isFirstArticle = false,
   options = { columns: 'single' },
 }) => {
-  const { title, content } = article;
+  const { title } = article;
   return (
     <Box
       className={`std-container article-entry ${
@@ -28,13 +29,17 @@ const ArticleEntry: React.FC<ArticleEntryProps> = ({
         </Typography>
       )}
       <Divider variant="middle" />
-      <Typography
-        variant="body1"
-        gutterBottom
-        style={{ wordWrap: 'break-word', whiteSpace: 'pre-wrap' }}
-      >
-        {content}
-      </Typography>
+      {article.type === SectionType.CUSTOM ? (
+        <CustomArticleEntry article={article} />
+      ) : (
+        <Typography
+          variant="body1"
+          gutterBottom
+          style={{ wordWrap: 'break-word', whiteSpace: 'pre-wrap' }}
+        >
+          {article.content}
+        </Typography>
+      )}
     </Box>
   );
 };

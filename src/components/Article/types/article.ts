@@ -1,15 +1,55 @@
+import { Breakpoint } from '@mui/material';
+import { SxProps, Theme } from '@mui/system';
+
+export enum SectionType {
+  TEXT = 'text',
+  CUSTOM = 'custom',
+}
+
 export interface Article {
   title: string;
   id: string;
-  image: string;
+  image?: string;
   description: string;
   entries: ArticleSection[];
 }
 
-export interface ArticleSection {
+interface BaseArticleSection {
   title: string;
   /** Will be displayed in the sidebar. Should be max 7 characters */
   titleShort?: string;
   id: string;
-  content: string;
 }
+
+export interface TextSection extends BaseArticleSection {
+  content: string;
+  type: SectionType.TEXT;
+}
+
+export interface CustomArticleSection extends BaseArticleSection {
+  content: Sections[];
+  type: SectionType.CUSTOM;
+}
+
+export type ArticleSection = TextSection | CustomArticleSection;
+
+export interface ContentGrid {
+  size: number | { [key in Breakpoint]?: number };
+  sx?: SxProps<Theme>;
+}
+
+export enum ContentType {
+  IMAGE = 'image',
+  TEXT = 'text',
+}
+export interface ImageContent {
+  type: ContentType.IMAGE;
+  src: string;
+  alt: string;
+}
+
+export interface TextContent {
+  type: ContentType.TEXT;
+  text: string;
+}
+export type Sections = ContentGrid & (ImageContent | TextContent);
