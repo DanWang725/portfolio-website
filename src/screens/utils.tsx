@@ -1,5 +1,6 @@
 import picture from '../img/picture.jpeg';
-const articleContent = [
+import { Article } from '../components/Article/types/article';
+const articleContent: Article = [
   {
     options: {
       columns: 'double',
