@@ -16,7 +16,7 @@ const ContentSection: React.FC<ContentSectionProps> = ({
       sx={{
         backgroundColor: 'rgba(30, 30, 30, 0.8)',
         borderWidth: '2px',
-        borderColor: 'cyan',
+        borderColor: 'rgba(0, 255, 255, 0.7 )',
         borderStyle: 'solid',
         ...styleOverrides,
       }}

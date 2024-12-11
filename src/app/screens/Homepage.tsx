@@ -6,7 +6,7 @@ import { StylingContext } from '../contexts/StylingProvider';
 import ContentSection from '../../components/Sections/ContentSection';
 import { Box, Typography } from '@mui/material';
 import ArticleList from '../../components/Article/ArticleList';
-import { articleContent } from '../../screens/utils';
+import { articleContent } from './utils';
 
 const Homepage: React.FC = () => {
   const { ref, inView } = useInView({ threshold: 0 });
@@ -22,7 +22,7 @@ const Homepage: React.FC = () => {
     <>
       <Box height="100vh">
         <ContentSection styleOverrides={{ mt: '30vh', width: 'fit-content' }}>
-          <Typography variant="h1">{"I'm Daniel Wang"}</Typography>
+          <Typography variant="h2">{"I'm Daniel Wang"}</Typography>
           <Typography variant="h4">
             {
               "Hello! I'm a computer science student currently in his third year studying at University of Geulph. I am open to any oppertunities. Looking to chat? You can find my contact information below. I am always up for a challenge."

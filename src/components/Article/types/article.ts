@@ -14,6 +14,9 @@ export interface Article {
   entries: ArticleSection[];
 }
 
+/**
+ * Represents a section of an article. Should have a title and an id.
+ */
 interface BaseArticleSection {
   title: string;
   /** Will be displayed in the sidebar. Should be max 7 characters */
@@ -28,6 +31,7 @@ export interface TextSection extends BaseArticleSection {
 
 export interface CustomArticleSection extends BaseArticleSection {
   content: Sections[];
+  gap?: number;
   type: SectionType.CUSTOM;
 }
 

@@ -26,7 +26,11 @@ const CustomSection: React.FC<CustomSectionProps> = ({ content }) => {
         />
       );
     case ContentType.TEXT:
-      return <Typography variant="body1">{content.text}</Typography>;
+      return (
+        <Typography variant="body1" sx={{ ...content.sx }}>
+          {content.text}
+        </Typography>
+      );
     default:
       return null;
   }
@@ -36,7 +40,7 @@ const CustomArticleEntry: React.FC<CustomArticleSectionProps> = ({
   article,
 }) => {
   return (
-    <Grid2 container spacing={2}>
+    <Grid2 container spacing={article.gap ?? 2}>
       {article.content.map((section, index) => {
         return (
           <Grid2 key={index} size={section.size}>
