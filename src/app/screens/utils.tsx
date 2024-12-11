@@ -5,15 +5,16 @@ import {
   ContentType,
   CustomArticleSection,
   SectionType,
-} from '../components/Article/types/article';
-const articleContent: ArticleSection[] = [
+} from '../../components/Article/types/article';
+const homepageAboutme: ArticleSection[] = [
   {
     title: 'About Me',
     id: 'about',
     type: SectionType.CUSTOM,
+    gap: 4,
     content: [
       {
-        size: 3,
+        size: { xs: 5, md: 3 },
         type: ContentType.IMAGE,
         src: picture,
         alt: 'profile picture',
@@ -24,8 +25,11 @@ const articleContent: ArticleSection[] = [
         },
       },
       {
-        size: 9,
+        size: { xs: 12, md: 9 },
         type: ContentType.TEXT,
+        sx: {
+          mt: '1rem',
+        },
         text: `Programming has been my thing ever since I discovered a python tutorial my early teenage years. Ever since, I've done programming in quite a few different areas, such as programming problems (always about that time efficiency), game development and developing this website. I always approach challenges with the goal of obtaining a deep understanding of anything I am working with. When I am not programming, you can usually find me either bouldering, playing board games, or going hiking on the Bruce Trail somewhere.`,
       },
     ],
@@ -68,4 +72,4 @@ const articleContent: ArticleSection[] = [
   },
 ];
 
-export { articleContent };
+export { homepageAboutme as articleContent };
