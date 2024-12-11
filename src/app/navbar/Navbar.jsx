@@ -5,11 +5,13 @@ import {
   AppBar,
   Box,
   Button,
+  List,
   Toolbar,
   Tooltip,
   Typography,
 } from '@mui/material';
 import { routes } from '../routes';
+import NavButtonItem from './NavButtonItem';
 
 export const Navbar = () => {
   const location = useLocation();
@@ -21,24 +23,19 @@ export const Navbar = () => {
   return (
     <AppBar>
       <Toolbar>
-        <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-          {routes.map((route) => {
-            const path = route?.index ? '/' : route.path;
-            const isActive = route?.index
-              ? path === location.pathname
-              : location.pathname.startsWith(path);
-
-            return (
-              <Button
-                key={route.path}
-                onClick={() => navigate(path)}
-                variant={isActive ? 'contained' : 'text'}
-              >
-                <Typography>{route.name}</Typography>
-              </Button>
-            );
-          })}
-        </Box>
+        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          Daniel Wang
+        </Typography>
+        <List sx={{ display: { sm: 'none', md: 'inline' } }}>
+          {routes.map((route) => (
+            <NavButtonItem
+              route={route}
+              navigate={navigate}
+              key={route.name}
+              pathname={location.pathname}
+            />
+          ))}
+        </List>
         <Button onClick={() => setIsLowPerformance((val) => !val)}>
           <Typography>
             {isLowPerformance ? 'Enable Background' : 'Disable Background'}
