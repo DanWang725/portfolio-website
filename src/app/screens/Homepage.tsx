@@ -1,7 +1,7 @@
 import { useInView } from 'react-intersection-observer';
 import { Link } from 'react-router-dom';
 import { useContext, useEffect } from 'react';
-import { scrollToHash } from '../../shared-utils/RouteHashUtils';
+import { scrollToHash } from '../../utils/RouteHashUtils';
 import { StylingContext } from '../contexts/StylingProvider';
 import ContentSection from '../../components/Sections/ContentSection';
 import { Box, Typography } from '@mui/material';

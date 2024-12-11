@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { calculateBattle } from '../../features/Risk/components/RiskCalculator';
-import MersenneTwister from '../../shared-utils/Mersenne Twister/Mersenne Twister';
+import MersenneTwister from '../../utils/Mersenne Twister/Mersenne Twister';
 import { useParams } from 'react-router-dom';
 import RiskBattleStats from '../../features/Risk/components/RiskBattleStats';
 import BattleList from '../../features/Risk/components/BattleList';

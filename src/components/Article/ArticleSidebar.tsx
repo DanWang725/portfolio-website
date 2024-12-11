@@ -1,5 +1,5 @@
 import { useLocation, useNavigate } from 'react-router-dom';
-import { getHash, scrollToHash } from '../../shared-utils/RouteHashUtils';
+import { getHash, scrollToHash } from '../../utils/RouteHashUtils';
 import { ArticleSection } from './types/article';
 import {
   Box,

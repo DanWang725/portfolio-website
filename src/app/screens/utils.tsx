@@ -1,11 +1,11 @@
-import picture from '../img/picture.jpeg';
+import picture from '@assets/img/picture.jpeg';
 import {
   Article,
   ArticleSection,
   ContentType,
   CustomArticleSection,
   SectionType,
-} from '../../components/Article/types/article';
+} from '@components/Article/types/article';
 const homepageAboutme: ArticleSection[] = [
   {
     title: 'About Me',

@@ -1,1 +1,1 @@
-import MersenneTwister from '../../../shared-utils/Mersenne Twister/Mersenne Twister';
+import MersenneTwister from '../../../utils/Mersenne Twister/Mersenne Twister';
