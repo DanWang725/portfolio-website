@@ -1,6 +1,6 @@
 import cover1 from './images/coverWTR1.png';
 import cover2 from './images/ncrVoyix.jpg';
-import { Article } from '../../components/Article/types/article';
+import { Article, SectionType } from '../../components/Article/types/article';
 
 const workTermReport1: Article = {
   title: 'Work Term Report S23',
@@ -9,18 +9,21 @@ const workTermReport1: Article = {
   description: 'Report for the first half of my NCR placement',
   entries: [
     {
+      type: SectionType.TEXT,
       title: 'Introduction',
       titleShort: 'Intro',
       id: 'introduction',
       content: `This is my first work term report. It will describe my experiences for the first 4 months of my 8-month work term at NCR. As my first work placement in the field, it has been an amazing experience and awesome learning opportunity. I will give some background on NCR, as well as talk about a few of my goals for this term. I will also describe my overall experience working there. `,
     },
     {
+      type: SectionType.TEXT,
       title: 'About NCR',
       titleShort: 'About',
       id: 'about',
       content: `National Cash Register, or NCR is an American software and technology company that provides a variety of services. These include retail, banking and IT software services, Point of Sale (POS) for commercial retail services, and ATMs. An interesting piece of information is that they had invented the cash register. The Waterloo office which I was working at focused on their interactive teller software solution as well as other software-based services. `,
     },
     {
+      type: SectionType.TEXT,
       title: 'Goals',
       id: 'goals',
       content: `Prior to my placement, I had set a few simple goals since going into my position. I did not have a clear idea of what to expect, it was a better idea to start the job with an open mind and make goals from there. Thus, after my first day, I aimed to learn all the react topics. I also set a goal to collaborate with my team. Finally, I aimed to learn more about the design aspect of front end. 
@@ -35,6 +38,7 @@ const workTermReport1: Article = {
       `,
     },
     {
+      type: SectionType.TEXT,
       title: 'Job Description',
       titleShort: 'Job',
       id: 'job-description',
@@ -49,6 +53,7 @@ const workTermReport1: Article = {
     The skills that I found were most important to my job were the web development languages (HTML, CSS), React, and JavaScript. Development tools including git and Jira were used everywhere, as well as agile development cycles. Surprisingly, when I started out, I only had some knowledge of web dev languages and git. The rest of the skills I picked up on the job. In addition, during my job I also learned about project architecture, design planning, development cycles and sprints, web accessibility, web security, software development in general, along with a lot of definitions. `,
     },
     {
+      type: SectionType.TEXT,
       title: 'Conclusion',
       titleShort: 'Conc.',
       id: 'conclusion',
@@ -66,6 +71,7 @@ const workTermReport2: Article = {
   description: 'Report for the second half of my NCR placement.',
   entries: [
     {
+      type: SectionType.TEXT,
       title: 'Introduction',
       titleShort: 'Intro',
       id: 'introduction',
@@ -73,6 +79,8 @@ const workTermReport2: Article = {
         'This work term report goes over the second half of my 8-month work term as a front-end developer at NCR. My experience working throughout this half continued to be amazing, and I had many challenging but fulfilling tasks I worked on. Within this report, I will talk about the major company split that occurred. I will also describe the goals I set for this term and how my work experience has changed from the first half, including some notable features I worked on. I will also talk about how I got a patent from the company hackathon.',
     },
     {
+      type: SectionType.TEXT,
+
       title: 'Company Split',
       titleShort: 'Split',
       id: 'company-split',
@@ -80,6 +88,7 @@ const workTermReport2: Article = {
         'Around October, NCR officially split into two new companies: NCR Atleos and NCR Voyix. These new companies would specialize in NCR’s two main products or services: Atleos covering the ATM businesses and Voyix covering digital commerce. These two companies were independent of each other. Voyix was the legal successor to NCR Corporation, while Atleos was spun off. Currently, Voyix offers a variety of services focused on software in three main areas: retail, restaurants, and digital banking.',
     },
     {
+      type: SectionType.TEXT,
       title: 'Goals',
       id: 'goals',
       content: `Moving into the second half of this work term, I had a decision to make: whether to try taking on some back-end development tasks or to dedicate my learning to front-end development. I felt that I had learned a good deal about front-end development at the halfway point to consider trying something new. Switching to a full-stack developer role, I could also learn about the back-end codebase. In the end, I decided that the best choice would be to continue focusing on front-end development. Since this was my first co-op work term, I still had two chances to try out the backend. This was my chance to learn and experience in-depth front-end development. To go along with this decision, I created the following goals to suit my decision:
@@ -94,6 +103,7 @@ const workTermReport2: Article = {
       `,
     },
     {
+      type: SectionType.TEXT,
       title: 'Job Description',
       titleShort: 'Job',
       id: 'job-description',
@@ -109,6 +119,7 @@ const workTermReport2: Article = {
       `,
     },
     {
+      type: SectionType.TEXT,
       title: 'NCR Hackathon',
       titleShort: 'Hack',
       id: 'hackathon',
@@ -118,12 +129,14 @@ const workTermReport2: Article = {
       `,
     },
     {
+      type: SectionType.TEXT,
       title: 'Conclusion',
       titleShort: 'Conc.',
       id: 'conclusion',
       content: `Choosing NCR as my first co-op placement has been an amazing opportunity. I have grown so much in experience and knowledge since I started my placement. It feels unreal that, by the end, I was being assigned work equal to that of a regular developer. I was presented with challenging but fulfilling work that greatly benefited my learning experience. Reflecting on all the things I have done, it is amazing how much I was able to do during my term and the impact my code has on the current application. Aside from the work I did, the people I worked with and interacted with were outstanding. Everyone at NCR was very helpful and would usually take some time to assist me with my issue when I asked. My team was always looking out for my success and was supportive in many ways, making this experience unforgettable. I hope that I can come back to work at NCR in the future!`,
     },
     {
+      type: SectionType.TEXT,
       title: 'Acknowledgements',
       titleShort: 'Thanks',
       id: 'acknowledgements',
@@ -141,18 +154,21 @@ const workTermReport3: Article = {
   description: 'Work term report of my S24 placement at Pacwill Environmental',
   entries: [
     {
+      type: SectionType.TEXT,
       title: 'Introduction',
       titleShort: 'Intro',
       id: 'introduction',
       content: `      Welcome to my third co-op work term report! This placement was for 3 months from May to July. Within this report, I will describe the company I worked for, the software I would be developing, and some of the goals I set myself. I will also explain the many areas in which my knowledge and experience have grown as a software developer.`,
     },
     {
+      type: SectionType.TEXT,
       title: 'Pacwill Environmental',
       titleShort: 'Pacwill',
       id: 'pacwill',
       content: `  I worked with Pacwill Environmental, a small company based in Stoney Creek, Ontario. They provide a range of environmental monitoring equipment to customers across Canada, including various types of analyzers. One of their biggest clients is Environment Canada, which uses the equipment to monitor various sites and for scientific purposes. Although Pacwill’s specialty was only equipment supply and maintenance, they were interested in creating a new software solution to assist with monitoring equipment in the field.`,
     },
     {
+      type: SectionType.TEXT,
       title: 'Goals',
       id: 'goals',
       content: `      For this placement, I had set many small goals for myself. Creating a new software solution from scratch presents many challenges and goals to overcome. I wanted to ensure my work met a certain quality standard, so my goals involved the development of skills to achieve that. I’ll describe a few goals that I found were essential to my success in this project.
@@ -167,6 +183,7 @@ const workTermReport3: Article = {
 `,
     },
     {
+      type: SectionType.TEXT,
       title: 'Job Description',
       titleShort: 'Job',
       id: 'job-desc',
@@ -182,6 +199,7 @@ const workTermReport3: Article = {
 `,
     },
     {
+      type: SectionType.TEXT,
       title: 'Conclusion',
       titleShort: 'Conc.',
       id: 'conclusion',
