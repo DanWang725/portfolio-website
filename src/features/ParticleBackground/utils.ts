@@ -1,4 +1,4 @@
-export const getParticleOptions = (speed) => ({
+export const getParticleOptions = () => ({
   background: {
     color: {
       value: '#000022',
@@ -40,13 +40,13 @@ export const getParticleOptions = (speed) => ({
       },
     },
     move: {
-      direction: speed === 0 ? 'down' : 'down',
+      direction: 'down',
       enable: true,
       outModes: {
         default: 'out',
       },
       random: false,
-      speed: speed === 0 ? 4 : 3,
+      speed: 2,
       straight: false,
     },
     number: {
