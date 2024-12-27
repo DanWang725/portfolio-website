@@ -1,15 +1,23 @@
 import { useInView } from 'react-intersection-observer';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useContext, useEffect } from 'react';
 import { scrollToHash } from '../../utils/RouteHashUtils';
 import { StylingContext } from '../contexts/StylingProvider';
 import ContentSection from '../../components/Sections/ContentSection';
-import { Box, Typography } from '@mui/material';
+import {
+  Box,
+  colors,
+  Divider,
+  ListItemButton,
+  Stack,
+  Typography,
+} from '@mui/material';
 import ArticleList from '../../components/Article/ArticleList';
 import { articleContent } from './utils';
 
 const Homepage: React.FC = () => {
   const { ref, inView } = useInView({ threshold: 0 });
+  const navigate = useNavigate();
   const { setNavbarClassOverrides } = useContext(StylingContext);
   useEffect(() => {
     setNavbarClassOverrides(
@@ -21,37 +29,47 @@ const Homepage: React.FC = () => {
   return (
     <>
       <Box height="100vh">
-        <ContentSection styleOverrides={{ mt: '30vh', width: 'fit-content' }}>
+        <ContentSection
+          styleOverrides={{ mt: '30vh', width: 'fit-content', p: '1rem' }}
+        >
           <Typography variant="h2">{"I'm Daniel Wang"}</Typography>
-          <Typography variant="h4">
+          <Typography variant="h5">
             {
               "Hello! I'm a computer science student currently in his third year studying at University of Geulph. I am open to any oppertunities. Looking to chat? You can find my contact information below. I am always up for a challenge."
             }
           </Typography>
-          <Typography variant="h6">
+          <Divider style={{ margin: '1rem' }} />
+          <Typography variant="h6" align="center">
             Scroll down or navigate to these areas
           </Typography>
-
-          <div className="title-nav-items">
-            <li>
+          <Stack
+            direction="row"
+            spacing={2}
+            divider={<Divider orientation="vertical" flexItem />}
+          >
+            <ListItemButton onClick={() => scrollToHash('about')}>
               <Link
-                to={'#about'}
-                className="title-links"
-                onClick={() => scrollToHash('about')}
+                to="#about"
+                style={{
+                  textDecoration: 'none',
+                  color: 'inherit',
+                }}
               >
                 About
               </Link>
-            </li>
-            <li>
+            </ListItemButton>
+            <ListItemButton onClick={() => navigate('/work-term-report')}>
               <Link
-                to={'/work-term-report'}
-                className="title-links"
-                onClick={() => scrollToHash('about')}
+                to="/work-term-report"
+                style={{
+                  textDecoration: 'none',
+                  color: 'inherit',
+                }}
               >
                 Work Term Reports
               </Link>
-            </li>
-          </div>
+            </ListItemButton>
+          </Stack>
         </ContentSection>
       </Box>
       <ContentSection
@@ -59,41 +77,6 @@ const Homepage: React.FC = () => {
       >
         <ArticleList entries={articleContent} />
       </ContentSection>
-      <div className="content-section">
-        <div id="home"></div>
-        <section className="std-container name-page" ref={ref}>
-          <h1>{"I'm Daniel Wang"}</h1>
-          <h2 className="name-page-about">
-            {
-              "Hello! I'm a computer science student currently in his third year studying at University of Geulph. I am open to any oppertunities. Looking to chat? You can find my contact information below. I am always up for a challenge."
-            }
-          </h2>
-          <h3 className="name-page-navigation">
-            Scroll down or navigate to these areas
-          </h3>
-          <div className="title-nav-items">
-            <li>
-              <Link
-                to={'#about'}
-                className="title-links"
-                onClick={() => scrollToHash('about')}
-              >
-                About
-              </Link>
-            </li>
-            <li>
-              <Link
-                to={'/work-term-report'}
-                className="title-links"
-                onClick={() => scrollToHash('about')}
-              >
-                Work Term Reports
-              </Link>
-            </li>
-          </div>
-          <></>
-        </section>
-      </div>
     </>
   );
 };
