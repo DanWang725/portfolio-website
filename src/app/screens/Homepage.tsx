@@ -1,8 +1,5 @@
-import { useInView } from 'react-intersection-observer';
 import { Link, useNavigate } from 'react-router-dom';
-import { useContext, useEffect } from 'react';
 import { scrollToHash } from '../../utils/RouteHashUtils';
-import { StylingContext } from '../contexts/StylingProvider';
 import ContentSection from '../../components/Sections/ContentSection';
 import {
   Box,
@@ -16,15 +13,7 @@ import ArticleList from '../../components/Article/ArticleList';
 import { articleContent } from './utils';
 
 const Homepage: React.FC = () => {
-  const { ref, inView } = useInView({ threshold: 0 });
   const navigate = useNavigate();
-  const { setNavbarClassOverrides } = useContext(StylingContext);
-  useEffect(() => {
-    setNavbarClassOverrides(
-      inView ? 'navbar-hidden' : 'navbar-hidden navbar-show',
-    );
-    return () => setNavbarClassOverrides('');
-  }, [inView, setNavbarClassOverrides]);
 
   return (
     <>
