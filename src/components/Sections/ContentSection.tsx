@@ -3,10 +3,16 @@ import { Box, ThemeOptions } from '@mui/material';
 import { ReactNode } from 'react';
 
 export interface ContentSectionProps {
+  /** The content to be displayed in the section */
   children: ReactNode;
+  /** Any styles to be applied to the content section box */
   styleOverrides?: Theme;
 }
 
+/**
+ * A styled box used to contain article content for the website
+ * Has a grey background and a cyan border
+ */
 const ContentSection: React.FC<ContentSectionProps> = ({
   children,
   styleOverrides,
