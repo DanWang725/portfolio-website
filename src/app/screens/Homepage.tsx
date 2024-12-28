@@ -3,6 +3,7 @@ import { scrollToHash } from '../../utils/RouteHashUtils';
 import ContentSection from '../../components/Sections/ContentSection';
 import {
   Box,
+  Button,
   colors,
   Divider,
   ListItemButton,
@@ -33,10 +34,11 @@ const Homepage: React.FC = () => {
           </Typography>
           <Stack
             direction="row"
+            justifyContent="center"
             spacing={2}
             divider={<Divider orientation="vertical" flexItem />}
           >
-            <ListItemButton onClick={() => scrollToHash('about')}>
+            <Button onClick={() => scrollToHash('about')}>
               <Link
                 to="#about"
                 style={{
@@ -46,8 +48,8 @@ const Homepage: React.FC = () => {
               >
                 About
               </Link>
-            </ListItemButton>
-            <ListItemButton onClick={() => navigate('/work-term-report')}>
+            </Button>
+            <Button onClick={() => navigate('/work-term-report')}>
               <Link
                 to="/work-term-report"
                 style={{
@@ -57,7 +59,7 @@ const Homepage: React.FC = () => {
               >
                 Work Term Reports
               </Link>
-            </ListItemButton>
+            </Button>
           </Stack>
         </ContentSection>
       </Box>
