@@ -21,12 +21,23 @@ export const Navbar = () => {
   console.log(location);
 
   return (
-    <AppBar>
+    <AppBar
+      sx={{
+        backgroundColor: 'rgba(30, 30, 30, 0.8)',
+        borderWidth: '2px',
+        borderBottom: 'solid rgba(0, 255, 255, 0.7 )',
+      }}
+    >
       <Toolbar>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           Daniel Wang
         </Typography>
-        <List sx={{ display: { sm: 'none', md: 'inline' } }}>
+        <List
+          sx={{
+            display: { sm: 'none', md: 'inline-flex' },
+            flexDirection: 'row',
+          }}
+        >
           {routes.map((route) => (
             <NavButtonItem
               route={route}

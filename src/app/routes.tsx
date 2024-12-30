@@ -21,12 +21,12 @@ export const routes: RouteElement[] = [
   {
     screen: 'home',
     index: true,
-    name: 'Homepage',
+    name: 'Home',
   },
   {
     screen: 'wtr',
     path: '/work-term-report',
-    name: 'Work Term Reports',
+    name: 'Reports',
     children: [{ screen: 'wtr', path: ':reportId' }],
   },
   // {
