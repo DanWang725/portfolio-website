@@ -4,6 +4,7 @@ import WorkTermReport from './screens/WorkTermReport';
 import RiskCalculatorScreen from './screens/RiskCalculatorScreen';
 import RiskCalculatorResult from './screens/RiskCalculatorResult';
 import { RouteElement } from '../types/RouteSegment';
+import Countdown from './screens/Countdown';
 
 type ScreenMap = {
   [key: string]: JSX.Element;
@@ -14,6 +15,7 @@ export const screens: ScreenMap = {
   wtr: <WorkTermReport />,
   'risk-calculator': <RiskCalculatorScreen />,
   'risk-result': <RiskCalculatorResult />,
+  countdown: <Countdown />,
   outlet: <Outlet />,
 };
 
@@ -28,6 +30,11 @@ export const routes: RouteElement[] = [
     path: '/work-term-report',
     name: 'Reports',
     children: [{ screen: 'wtr', path: ':reportId' }],
+  },
+  {
+    screen: 'countdown',
+    path: '/countdown',
+    name: 'New Years!!!!',
   },
   // {
   //   screen: 'outlet',
