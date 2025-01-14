@@ -3,7 +3,7 @@ import { workTermReportEntries } from '../../features/Articles/entries';
 import WorkTermReportCard from '../../features/Articles/WorkTermReportCard';
 import { useNavigate, useParams } from 'react-router-dom';
 import ContentSection from '../../components/Sections/ContentSection';
-import { List, Typography } from '@mui/material';
+import { Box, List, Typography } from '@mui/material';
 
 const WorkTermReport = () => {
   const params = useParams();
@@ -29,7 +29,7 @@ const WorkTermReport = () => {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        padding: '1rem',
+        padding: '2rem',
       }}
     >
       <Typography variant="h2">Work Term Reports</Typography>
@@ -39,7 +39,7 @@ const WorkTermReport = () => {
         4-month period, or semester. Any 8-month work terms are split into two
         reports.
       </Typography>
-      <List>
+      <Box display={'flex'} sx={{ gap: '10px', flexDirection: 'column' }}>
         {workTermReportEntries.map((article) => (
           <WorkTermReportCard
             workTermReportEntry={article}
@@ -49,7 +49,7 @@ const WorkTermReport = () => {
             key={article.title.toLowerCase()}
           />
         ))}
-      </List>
+      </Box>
     </ContentSection>
   );
 };
