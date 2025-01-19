@@ -5,6 +5,7 @@ import RiskCalculatorScreen from './screens/RiskCalculatorScreen';
 import RiskCalculatorResult from './screens/RiskCalculatorResult';
 import { RouteElement } from '../types/RouteSegment';
 import Countdown from './screens/Countdown';
+import RandomSounds from './screens/RandomSounds';
 
 type ScreenMap = {
   [key: string]: JSX.Element;
@@ -17,6 +18,7 @@ export const screens: ScreenMap = {
   'risk-result': <RiskCalculatorResult />,
   countdown: <Countdown />,
   outlet: <Outlet />,
+  funny: <RandomSounds />,
 };
 
 export const routes: RouteElement[] = [
@@ -35,6 +37,11 @@ export const routes: RouteElement[] = [
     screen: 'countdown',
     path: '/countdown',
     name: 'New Years!!!!',
+  },
+  {
+    screen: 'funny',
+    path: '/funny',
+    name: 'Funny',
   },
   // {
   //   screen: 'outlet',
