@@ -9,6 +9,18 @@ const RandomSounds: React.FC = () => {
   const [timeoutId, setTimeoutId] = useState<number | undefined>();
   const [time, setTime] = useState(new Date());
 
+  useEffect(() => {
+    return () => {
+      //we need to clear the timeout id at cleanup
+      setTimeoutId((value) => {
+        if (value) {
+          clearTimeout(value);
+        }
+        return undefined;
+      });
+    };
+  }, []);
+
   const toggleSound = () => {
     if (timeoutId) {
       stop();
