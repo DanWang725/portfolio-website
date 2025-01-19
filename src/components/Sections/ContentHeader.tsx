@@ -4,7 +4,7 @@ export interface ContentHeaderProps {
 }
 const ContentHeader: React.FC<ContentHeaderProps> = ({ children }) => {
   return (
-    <Box sx={{ width: '100%', textAlign: 'center', mt: '2rem' }}>
+    <Box sx={{ width: '100%', textAlign: 'center' }}>
       <Typography variant="h2" sx={{ textAlign: 'start' }}>
         {children}
       </Typography>
