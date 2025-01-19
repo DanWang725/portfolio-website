@@ -4,6 +4,8 @@ import WorkTermReportCard from '../../features/Articles/WorkTermReportCard';
 import { useNavigate, useParams } from 'react-router-dom';
 import ContentSection from '../../components/Sections/ContentSection';
 import { Box, List, Typography } from '@mui/material';
+import ContentHeader from '@components/Sections/ContentHeader';
+import ContentText from '@components/Sections/ContentText';
 
 const WorkTermReport = () => {
   const params = useParams();
@@ -32,13 +34,13 @@ const WorkTermReport = () => {
         padding: '2rem',
       }}
     >
-      <Typography variant="h2">Work Term Reports</Typography>
-      <Typography variant="h6">
+      <ContentHeader>Work Term Reports</ContentHeader>
+      <ContentText styleOverrides={{ mb: '1rem' }}>
         These reports are cover my experiences and achievements during my co-op
         work terms during my computer science co-op degree. Each report covers a
         4-month period, or semester. Any 8-month work terms are split into two
         reports.
-      </Typography>
+      </ContentText>
       <Box display={'flex'} sx={{ gap: '10px', flexDirection: 'column' }}>
         {workTermReportEntries.map((article) => (
           <WorkTermReportCard
