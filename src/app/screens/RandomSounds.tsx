@@ -1,23 +1,20 @@
+import { TimeoutContext } from '@app/contexts/TimeoutProvider';
 import ContentSection from '@components/Sections/ContentSection';
 import TimerCountdown from '@features/Timers/TimerCountdown';
 import { Input } from '@mui/material';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 const RandomSounds: React.FC = () => {
   const [nextTrigger, setNextTrigger] = useState<Date | undefined>();
   const [playInterval, setPlayInterval] = useState<number>(10000);
   const [timeoutId, setTimeoutId] = useState<number | undefined>();
   const [time, setTime] = useState(new Date());
+  const timeoutManager = useContext(TimeoutContext);
 
   useEffect(() => {
     return () => {
       //we need to clear the timeout id at cleanup
-      setTimeoutId((value) => {
-        if (value) {
-          clearTimeout(value);
-        }
-        return undefined;
-      });
+      timeoutManager.clearAllTimeouts();
     };
   }, []);
 
@@ -39,12 +36,12 @@ const RandomSounds: React.FC = () => {
   const start = () => {
     const randomInterval = Math.floor(Math.random() * playInterval);
 
-    setTimeoutId(setTimeout(playSound, randomInterval));
+    setTimeoutId(timeoutManager.setTimeout(playSound, randomInterval));
     setNextTrigger(new Date(Date.now() + randomInterval));
   };
 
   const stop = () => {
-    clearTimeout(timeoutId);
+    timeoutManager.clearTimeout(timeoutId ?? 0);
     setTimeoutId(undefined);
     setNextTrigger(undefined);
   };
@@ -61,6 +58,7 @@ const RandomSounds: React.FC = () => {
     audio.play();
     start();
   };
+
   return (
     <ContentSection>
       <Input
