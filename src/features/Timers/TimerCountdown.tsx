@@ -28,7 +28,7 @@ const TimerCountdown: React.FC<TimerCountdownProps> = ({
         [seconds % 60, 'Seconds'],
         ...[showMilliseconds ? [dif % 1000, 'Milliseconds'] : []],
       ].map(([value, label]) => (
-        <Box textAlign={'center'}>
+        <Box textAlign={'center'} key={label}>
           <Typography variant="h4">{value}</Typography>
           <Typography>{label}</Typography>
         </Box>
