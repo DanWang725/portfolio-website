@@ -2,20 +2,19 @@ import { ReactNode, useContext } from 'react';
 import PerformanceProvider, {
   PerformanceContext,
 } from './contexts/PerformanceProvider';
-import ParticleWrapper from '../screens/ParticleWrapper/ParticleWrapper';
+import ParticleWrapper from '../features/ParticleBackground/ParticleWrapper';
+import { Navbar } from './navbar/Navbar';
+import { Container } from '@mui/material';
+import FPSStats from 'react-fps-stats';
 
 const Layout: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const { isLowPerformance } = useContext(PerformanceContext);
+  const { isLowPerformance, isDebugMode } = useContext(PerformanceContext);
   return (
     <>
       {!isLowPerformance && <ParticleWrapper />}
-      <div className="layout">
-        <div className="content-section">
-          <div className="std-container content-background">
-            <div className="Body">{children}</div>
-          </div>
-        </div>
-      </div>
+      <Navbar />
+      <Container sx={{ mt: '80px' }}>{children}</Container>
+      {isDebugMode && <FPSStats />}
     </>
   );
 };
