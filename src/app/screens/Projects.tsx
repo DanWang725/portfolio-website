@@ -11,7 +11,7 @@ const Projects: React.FC = () => {
       <ContentHeader>Projects</ContentHeader>
       <ContentText>Some stuf fI made</ContentText>
       <Box>
-        <Button onClick={() => navigate('/proj/risk')}></Button>
+        <Button onClick={() => navigate('./risk-calculator')}></Button>
       </Box>
     </ContentSection>
   );

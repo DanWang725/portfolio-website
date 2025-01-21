@@ -45,10 +45,13 @@ export const routes: RouteElement[] = [
     name: 'Funny',
   },
   {
-    screen: 'projects',
-    path: '/proj',
+    path: '/projects',
     name: 'Projects',
     children: [
+      {
+        index: true,
+        screen: 'projects',
+      },
       {
         screen: 'risk-calculator',
         path: 'risk-calculator',
