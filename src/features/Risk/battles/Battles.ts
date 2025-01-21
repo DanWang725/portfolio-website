@@ -3,16 +3,18 @@ import { DiceRollStats } from '../dice/DiceStats';
 import { Player } from './Player';
 import { RoundResult } from './RoundResult';
 
-enum BattleStatus {
+export enum BattleStatus {
+  NotStarted = 'notStarted',
   Ongoing = 'ongoing',
   AttackerWins = 'attackerWins',
   DefenderWins = 'defenderWins',
 }
 
-class Battle {
+export class Battle {
   rounds: RoundResult[];
   attacker: Player;
   defender: Player;
+  status: BattleStatus;
 
   public static init(
     attackerTroops: number,
@@ -24,7 +26,6 @@ class Battle {
     const attacker = new Player(roller, attackerTroops);
     const defender = new Player(roller, defenderTroops);
     const battle = new Battle(attacker, defender);
-
     return battle;
   }
 
@@ -32,9 +33,10 @@ class Battle {
     this.attacker = attacker;
     this.defender = defender;
     this.rounds = [];
+    this.status = BattleStatus.Ongoing;
   }
 
-  public getStatus(): string {
+  private updateStatus(): string {
     if (!this.attacker.canBattle()) {
       return BattleStatus.DefenderWins;
     }
@@ -45,17 +47,20 @@ class Battle {
   }
 
   public playRound(): RoundResult | null {
-    if (this.getStatus() !== BattleStatus.Ongoing) {
+    console.log('battle');
+    if (this.status !== BattleStatus.Ongoing) {
       return null;
     }
     const round = new RoundResult();
     round.addAttackerRolls(this.attacker.getRolls());
     round.addDefenderRolls(this.defender.getRolls());
     this.rounds.push(round);
+    this.updateStatus();
     return round;
   }
 
   public getRoundsPlayed(): number {
+    console.log('I got called');
     return this.rounds.length;
   }
 }

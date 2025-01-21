@@ -1,6 +1,6 @@
 import { DiceRoll } from '../dice/DiceRoller';
 
-enum RoundSide {
+export enum RoundSide {
   Attacker = 'attacker',
   Defender = 'defender',
 }
