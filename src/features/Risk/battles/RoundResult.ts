@@ -1,4 +1,3 @@
-import { DicePair } from '../dice/DicePair';
 import { DiceRoll } from '../dice/DiceRoller';
 
 enum RoundSide {
@@ -37,10 +36,19 @@ export class RoundResult {
       }
     }
   }
+  public addAttackerRolls(rolls: DiceRoll[]): void {
+    this.attackerRolls.push(...rolls);
+    this.attackerRolls.sort((a, b) => b - a);
+  }
 
   public addAttackerRoll(roll: DiceRoll): void {
     this.attackerRolls.push(roll);
     this.attackerRolls.sort((a, b) => b - a);
+  }
+
+  public addDefenderRolls(rolls: DiceRoll[]): void {
+    this.defenderRolls.push(...rolls);
+    this.defenderRolls.sort((a, b) => b - a);
   }
 
   public addDefenderRoll(roll: DiceRoll): void {
