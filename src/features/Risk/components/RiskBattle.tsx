@@ -6,10 +6,16 @@ import useRiskBattleManager, {
 } from '../battles/useRiskBattleManager';
 import './RiskBattle.css';
 import TroopTracker from './TroopTracker';
+import useAutoBattler from '../battles/useAutoBattler';
 
 const RiskBattle: React.FC = () => {
   const { attacker, defender, battleStatus, init, playRound, rounds, seed } =
     useRiskBattleManager();
+
+  const { start: startAutoBattle, isAutoBattling } = useAutoBattler(
+    playRound,
+    battleStatus,
+  );
 
   const handleStart = () => {
     init(
@@ -47,14 +53,26 @@ const RiskBattle: React.FC = () => {
               />
             </p>
             {battleStatus === BattleStatus.Ongoing && (
-              <Button
-                variant="contained"
-                onClick={() => {
-                  playRound();
-                }}
-              >
-                Play Round
-              </Button>
+              <>
+                <Button
+                  variant="contained"
+                  disabled={isAutoBattling}
+                  onClick={() => {
+                    playRound();
+                  }}
+                >
+                  Play Round
+                </Button>
+                <Button
+                  variant="contained"
+                  disabled={isAutoBattling}
+                  onClick={() => {
+                    startAutoBattle();
+                  }}
+                >
+                  AutoBattle
+                </Button>
+              </>
             )}
           </Grid2>
           <Grid2
