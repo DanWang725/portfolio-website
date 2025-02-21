@@ -1,15 +1,21 @@
 import ContentSection from '@components/Sections/ContentSection';
 import { Box, Button, Grid2, Typography } from '@mui/material';
-import { useEffect, useState } from 'react';
-import { Battle, BattleStatus } from '../battles/Battles';
-import useRiskBattleManager from '../battles/useRiskBattleManager';
+import { BattleStatus } from '../battles/Battles';
+import useRiskBattleManager, {
+  IPlayerData,
+} from '../battles/useRiskBattleManager';
+import './RiskBattle.css';
+import TroopTracker from './TroopTracker';
 
 const RiskBattle: React.FC = () => {
   const { attacker, defender, battleStatus, init, playRound, rounds, seed } =
     useRiskBattleManager();
 
   const handleStart = () => {
-    init(10, 10, 1);
+    init(
+      Math.floor(Math.random() * 25) + 5,
+      Math.floor(Math.random() * 25) + 5,
+    );
   };
   return (
     <ContentSection>
@@ -26,10 +32,27 @@ const RiskBattle: React.FC = () => {
             sx={{ border: '1px solid black', width: '30%' }}
           >
             <p>{seed}</p>
-            <p>Attacker Troops: {attacker?.troops}</p>
-            <p>Defender Troops: {defender?.troops}</p>
+            <p>
+              <TroopTracker
+                id="attacker-live-troops"
+                player={attacker ?? ({} as IPlayerData)}
+                roundTroopLosses={rounds?.[rounds?.length - 1]?.attackerLosses}
+              />
+            </p>
+            <p>
+              <TroopTracker
+                id="defender-live-troops"
+                player={defender ?? ({} as IPlayerData)}
+                roundTroopLosses={rounds?.[rounds?.length - 1]?.defenderLosses}
+              />
+            </p>
             {battleStatus === BattleStatus.Ongoing && (
-              <Button variant="contained" onClick={() => playRound()}>
+              <Button
+                variant="contained"
+                onClick={() => {
+                  playRound();
+                }}
+              >
                 Play Round
               </Button>
             )}

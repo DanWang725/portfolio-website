@@ -7,7 +7,7 @@ const useDiceRoller = () => {
   const [generator, setGenerator] = useState<MersenneTwister | null>(null);
 
   const init = (seed?: number) => {
-    if (!seed) seed = Math.ceil(Math.random() * 10000);
+    if (!seed) seed = new Date().getTime();
     setSeed(seed);
     const newGenerator = new MersenneTwister(seed);
     setGenerator(newGenerator);
@@ -18,7 +18,6 @@ const useDiceRoller = () => {
       throw new Error('DiceRoller not initialized');
     }
     const result = Math.floor(generator.random() * 6) + 1;
-    console.log('Roll:', result);
     return result;
   };
 

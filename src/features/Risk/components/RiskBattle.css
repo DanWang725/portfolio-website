@@ -1,0 +1,22 @@
+.loss-count-visible {
+  opacity: 1;
+}
+
+.loss-count-hidden {
+  opacity: 1;
+  color: red;
+  animation: fadeOut 3s forwards;
+}
+
+@keyframes fadeOut {
+  100% {
+    opacity: 0;
+  }
+  70% {
+    opacity: 0.8;
+    color: maroon;
+  }
+  0% {
+    opacity: 1;
+  }
+}

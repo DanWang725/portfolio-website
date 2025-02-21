@@ -7,13 +7,13 @@ import { DiceRoll } from '../dice/DiceStats';
 
 type IDiceStats = DiceRoll[];
 
-interface IPlayerData {
+export interface IPlayerData {
   diceStats: IDiceStats;
   initialTroops: number;
   troops: number;
 }
 
-interface IRoundResult {
+export interface IRoundResult {
   attackerRolls: DiceRoll[];
   defenderRolls: DiceRoll[];
   diceResults: RoundSide[];
@@ -135,9 +135,8 @@ const useRiskBattleManager = () => {
   const init = (
     attackerTroops: number,
     defenderTroops: number,
-    seed: number,
+    seed?: number,
   ) => {
-    if (seed === undefined) seed = Math.ceil(Math.random() * 10000);
     roller.init(seed);
     setRounds([]);
     setAttacker({
