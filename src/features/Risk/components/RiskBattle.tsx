@@ -7,6 +7,7 @@ import useRiskBattleManager, {
 import './RiskBattle.css';
 import TroopTracker from './TroopTracker';
 import useAutoBattler from '../battles/useAutoBattler';
+import { useEffect } from 'react';
 
 const RiskBattle: React.FC = () => {
   const { attacker, defender, battleStatus, init, playRound, rounds, seed } =
@@ -16,6 +17,16 @@ const RiskBattle: React.FC = () => {
     playRound,
     battleStatus,
   );
+
+  const updateScroll = () => {
+    const element = document.getElementById('rounds-container');
+    if (!element) return;
+    element.scrollTop = element.scrollHeight;
+  };
+
+  useEffect(() => {
+    updateScroll();
+  }, [rounds]);
 
   const handleStart = () => {
     init(
@@ -76,6 +87,7 @@ const RiskBattle: React.FC = () => {
             )}
           </Grid2>
           <Grid2
+            id="rounds-container"
             size={{ xs: 12, md: 8 }}
             key={`rounds`}
             sx={{
@@ -87,7 +99,14 @@ const RiskBattle: React.FC = () => {
           >
             {rounds.map((round, index) => {
               return (
-                <Box key={`round-${index}`} mb="1rem">
+                <Box
+                  key={`round-${index}`}
+                  mb="1rem"
+                  sx={{
+                    animation: 'fadeIn 0.5s',
+                    opacity: 1,
+                  }}
+                >
                   <Typography>Round {index + 1}</Typography>
                   <Typography>
                     Attacker: {round.attackerRolls.join(', ')}

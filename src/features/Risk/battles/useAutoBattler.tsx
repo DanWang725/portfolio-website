@@ -4,7 +4,7 @@ import { BattleStatus } from './Battles';
 const useAutoBattler = (
   playRound: () => void,
   battleStatus: BattleStatus,
-  delay: number = 500,
+  delay: number = 2000,
 ) => {
   const [isAutoBattling, setIsAutoBattling] = useState(false);
 
