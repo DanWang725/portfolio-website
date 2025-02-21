@@ -9,9 +9,15 @@ const Projects: React.FC = () => {
   return (
     <ContentSection>
       <ContentHeader>Projects</ContentHeader>
-      <ContentText>Some stuf fI made</ContentText>
+      <ContentText>
+        Over the years I have created many wonderful and cool applications,
+        large and small. Over time, I plan to add these to here. Some of these
+        are written directly into the website!
+      </ContentText>
       <Box>
-        <Button onClick={() => navigate('./risk-calculator')}></Button>
+        <Button onClick={() => navigate('./risk-calculator')}>
+          Risk Battles
+        </Button>
       </Box>
     </ContentSection>
   );
