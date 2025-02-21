@@ -1,4 +1,6 @@
-import { DiceRoll, DiceRoller } from './DiceRoller';
+import { DiceRoller } from './DiceRoller';
+
+export type DiceRoll = number;
 
 export interface DiceRollCount {
   one: number;

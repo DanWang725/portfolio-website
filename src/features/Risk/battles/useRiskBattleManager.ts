@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import { DiceRoll, DiceRoller } from '../dice/DiceRoller';
 import { BattleStatus } from './Battles';
 import { Player } from './Player';
 import { RoundResult, RoundSide } from './RoundResult';
+import useDiceRoller from '../dice/useDiceRoller';
+import { DiceRoll } from '../dice/DiceStats';
 
 type IDiceStats = DiceRoll[];
 
@@ -25,14 +26,13 @@ const useRiskBattleManager = () => {
   const [rounds, setRounds] = useState<IRoundResult[]>([]);
   const [attacker, setAttacker] = useState<IPlayerData>();
   const [defender, setDefender] = useState<IPlayerData>();
-  const [roller, setRoller] = useState<DiceRoller>(new DiceRoller(1));
+  const roller = useDiceRoller();
 
   //=============================================================================
   const getRollsFromPlayer = (player: IPlayerData): DiceRoll[] => {
     const maxRolls = Math.min(player.troops, 3);
-    return Array(maxRolls)
-      .map(() => roller.roll())
-      .sort((a, b) => b - a);
+    const rolls = Array.from(Array(maxRolls), () => roller.roll());
+    return rolls.sort((a, b) => b - a);
   };
   const getNewDiceStats = (
     diceStats: IDiceStats,
@@ -111,17 +111,25 @@ const useRiskBattleManager = () => {
     const defenderRolls = getRollsFromPlayer(defender);
     const roundResult = calculateRoundResult(attackerRolls, defenderRolls);
     setRounds([...rounds, roundResult]);
-    setAttacker(
-      getUpdatedPlayerData(attacker, attackerRolls, roundResult.attackerLosses),
+    const newAttackerData = getUpdatedPlayerData(
+      attacker,
+      attackerRolls,
+      roundResult.attackerLosses,
     );
-    setDefender(
-      getUpdatedPlayerData(defender, defenderRolls, roundResult.defenderLosses),
+    const newDefenderData = getUpdatedPlayerData(
+      defender,
+      defenderRolls,
+      roundResult.defenderLosses,
     );
-    if (attacker.troops == 0) {
+
+    if (newAttackerData.troops === 0) {
       setBattleStatus(BattleStatus.DefenderWins);
-    } else if (defender.troops == 0) {
+    } else if (newDefenderData.troops === 0) {
       setBattleStatus(BattleStatus.AttackerWins);
     }
+
+    setAttacker(newAttackerData);
+    setDefender(newDefenderData);
   };
 
   const init = (
@@ -130,8 +138,7 @@ const useRiskBattleManager = () => {
     seed: number,
   ) => {
     if (seed === undefined) seed = Math.ceil(Math.random() * 10000);
-    const roller = new DiceRoller(seed);
-    setRoller(roller);
+    roller.init(seed);
     setAttacker({
       initialTroops: attackerTroops,
       diceStats: [0, 0, 0, 0, 0, 0],
@@ -147,3 +154,5 @@ const useRiskBattleManager = () => {
 
   return { playRound, init, rounds, attacker, defender, battleStatus };
 };
+
+export default useRiskBattleManager;
