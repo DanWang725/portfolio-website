@@ -49,8 +49,8 @@ export const routes: RouteElement[] = [
     name: 'Projects',
     children: [
       {
-        index: true,
         screen: 'projects',
+        index: true,
       },
       {
         screen: 'risk-calculator',

@@ -1,18 +1,28 @@
-interface RouteSegmentProps {
-  screen: string;
-  path?: string;
-  index?: boolean;
+interface BaseRouteSegmentProps {
   name?: string;
-  children?: RoutePathSegmentProps[];
 }
-interface RouteIndexSegmentProps extends RouteSegmentProps {
-  index: boolean;
+
+interface RouteSegmentProps extends BaseRouteSegmentProps {
+  path: string;
+  index?: never;
+  screen?: string;
+  children?: RouteSegmentProps[];
+}
+
+interface RouteIndexSegmentProps extends BaseRouteSegmentProps {
+  index: true;
+  screen: string;
   children?: never;
 }
 
-interface RoutePathSegmentProps extends RouteSegmentProps {
+interface RouteSegmentWithOutput extends BaseRouteSegmentProps {
   path: string;
-  index?: never | false;
+  index?: never;
+  screen?: never;
+  children: [RouteIndexSegmentProps, ...RouteSegmentProps[]];
 }
 
-export type RouteElement = RoutePathSegmentProps | RouteIndexSegmentProps;
+export type RouteElement =
+  | RouteIndexSegmentProps
+  | RouteSegmentWithOutput
+  | RouteSegmentProps;

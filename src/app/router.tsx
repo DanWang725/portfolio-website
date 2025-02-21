@@ -1,4 +1,4 @@
-import { Outlet, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { screens, routes } from './routes';
 import { RouteElement } from '../types/RouteSegment';
 
@@ -14,7 +14,9 @@ function assembleRoutes(options: RouteElement[]) {
               ? assembleRoutes(route.children)
               : undefined,
           })}
-      element={screens[route.screen]}
+      {...(route?.screen === undefined
+        ? {}
+        : { element: screens[route.screen] })}
     />
   ));
 }
