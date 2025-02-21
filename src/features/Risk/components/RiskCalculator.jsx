@@ -1,7 +1,7 @@
-import { diceStats } from './utils';
-
 const getDiceRoll = () => Math.floor(Math.random() * 6) + 1;
 const getDiceRollSeeded = (m) => Math.floor(m.random() * 6) + 1;
+
+const diceStats = [0, 0, 0, 0, 0, 0];
 
 const getPlayerRolls = (diceAmt, generator) =>
   [...Array(diceAmt).keys()]

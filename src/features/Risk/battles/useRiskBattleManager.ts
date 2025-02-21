@@ -139,6 +139,7 @@ const useRiskBattleManager = () => {
   ) => {
     if (seed === undefined) seed = Math.ceil(Math.random() * 10000);
     roller.init(seed);
+    setRounds([]);
     setAttacker({
       initialTroops: attackerTroops,
       diceStats: [0, 0, 0, 0, 0, 0],
@@ -152,7 +153,15 @@ const useRiskBattleManager = () => {
     setBattleStatus(BattleStatus.Ongoing);
   };
 
-  return { playRound, init, rounds, attacker, defender, battleStatus };
+  return {
+    playRound,
+    init,
+    rounds,
+    attacker,
+    defender,
+    battleStatus,
+    seed: roller.seed,
+  };
 };
 
 export default useRiskBattleManager;

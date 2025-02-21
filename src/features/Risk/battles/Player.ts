@@ -1,6 +1,5 @@
-import { diceStats } from '../components/utils';
-import { DiceRoll, DiceRoller } from '../dice/DiceRoller';
-import { DiceRollStats } from '../dice/DiceStats';
+import { DiceRoller } from '../dice/DiceRoller';
+import { DiceRoll, DiceRollStats } from '../dice/DiceStats';
 
 export class Player {
   diceStats: DiceRollStats;
