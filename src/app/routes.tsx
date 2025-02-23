@@ -34,16 +34,7 @@ export const routes: RouteElement[] = [
     name: 'Reports',
     children: [{ screen: 'wtr', path: ':reportId' }],
   },
-  {
-    screen: 'countdown',
-    path: '/countdown',
-    name: 'New Years!!!!',
-  },
-  {
-    screen: 'funny',
-    path: '/funny',
-    name: 'Funny',
-  },
+
   {
     path: '/projects',
     name: 'Projects',
@@ -63,6 +54,16 @@ export const routes: RouteElement[] = [
             name: 'result of risk battle',
           },
         ],
+      },
+      {
+        screen: 'countdown',
+        path: 'countdown',
+        name: 'New Years!!!!',
+      },
+      {
+        screen: 'funny',
+        path: 'funny',
+        name: 'Funny',
       },
     ],
   },

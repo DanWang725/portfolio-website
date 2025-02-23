@@ -18,6 +18,10 @@ const Projects: React.FC = () => {
         <Button onClick={() => navigate('./risk-calculator')}>
           Risk Battles
         </Button>
+        <Button onClick={() => navigate('./countdown')}>
+          New Years Countdown
+        </Button>
+        <Button onClick={() => navigate('./funny')}>Random Silence</Button>
       </Box>
     </ContentSection>
   );
