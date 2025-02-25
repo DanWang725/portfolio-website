@@ -1,4 +1,4 @@
-import { Box, Button, Divider, Grid2, Typography } from '@mui/material';
+import { Box, Button, Divider, Grid2, Slider, Typography } from '@mui/material';
 import TroopTracker from './TroopTracker';
 import { IPlayerData } from '@features/Risk/types/players';
 import { IRoundResult } from '@features/Risk/types/dice';
@@ -13,7 +13,9 @@ interface BattleTrackerProps {
   actions: {
     playRound: () => void;
     startAutoBattle: () => void;
+    setAutoBattleSpeed: (speed: number) => void;
   };
+  autoBattleSpeed: number;
   isAutoBattling: boolean;
 }
 
@@ -22,36 +24,49 @@ const BattleTracker: React.FC<BattleTrackerProps> = ({
   defender,
   rounds,
   battleStatus,
-  actions: { playRound, startAutoBattle },
+  actions: { playRound, startAutoBattle, setAutoBattleSpeed },
   isAutoBattling,
+  autoBattleSpeed,
 }) => {
+  const handleSpeedChange = (event: Event, newValue: number | number[]) => {
+    setAutoBattleSpeed(newValue as number);
+  };
   return (
-    <Grid2 size={{ xs: 12, md: 4 }} sx={{ width: '30%' }}>
-      <Box mb="1rem">
-        <Typography variant="h6">Battle Statistics</Typography>
-        <Divider />
+    <Grid2
+      size={{ xs: 12, md: 4 }}
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+      }}
+    >
+      <Box>
+        <Box mb="1rem">
+          <Typography variant="h6">Battle Statistics</Typography>
+          <Divider />
+        </Box>
+        <p>
+          <TroopTracker
+            id="attacker-live-troops"
+            label="Attacker's Troops: "
+            player={attacker ?? ({} as IPlayerData)}
+            roundTroopLosses={rounds?.[rounds?.length - 1]?.attackerLosses}
+          />
+        </p>
+        <TroopDisplay troopCount={attacker.troops} />
+        <p>
+          <TroopTracker
+            id="defender-live-troops"
+            label="Defender's Troops: "
+            player={defender ?? ({} as IPlayerData)}
+            roundTroopLosses={rounds?.[rounds?.length - 1]?.defenderLosses}
+          />
+        </p>
+        <TroopDisplay troopCount={defender.troops} />
       </Box>
-      <p>
-        <TroopTracker
-          id="attacker-live-troops"
-          label="Attacker's Troops: "
-          player={attacker ?? ({} as IPlayerData)}
-          roundTroopLosses={rounds?.[rounds?.length - 1]?.attackerLosses}
-        />
-      </p>
-      <TroopDisplay troopCount={attacker.troops} />
-      <p>
-        <TroopTracker
-          id="defender-live-troops"
-          label="Defender's Troops: "
-          player={defender ?? ({} as IPlayerData)}
-          roundTroopLosses={rounds?.[rounds?.length - 1]?.defenderLosses}
-        />
-      </p>
-      <TroopDisplay troopCount={defender.troops} />
 
       {battleStatus === BattleStatus.Ongoing && (
-        <>
+        <Box display="flex" flexDirection="column" gap="1rem" mt="1rem">
           <Button
             variant="contained"
             disabled={isAutoBattling}
@@ -61,16 +76,33 @@ const BattleTracker: React.FC<BattleTrackerProps> = ({
           >
             Play Round
           </Button>
-          <Button
-            variant="contained"
-            disabled={isAutoBattling}
-            onClick={() => {
-              startAutoBattle();
-            }}
+          <Box
+            display={'flex'}
+            flexDirection={'row'}
+            alignItems={'center'}
+            gap="1rem"
           >
-            AutoBattle
-          </Button>
-        </>
+            <Button
+              variant="contained"
+              disabled={isAutoBattling}
+              onClick={() => {
+                startAutoBattle();
+              }}
+            >
+              Auto
+            </Button>
+            <Typography>Speed</Typography>
+            <Slider
+              valueLabelDisplay="auto"
+              valueLabelFormat={(value) => `${800 / value}x`}
+              value={autoBattleSpeed}
+              onChange={handleSpeedChange}
+              min={400}
+              max={2000}
+              step={400}
+            ></Slider>
+          </Box>
+        </Box>
       )}
     </Grid2>
   );

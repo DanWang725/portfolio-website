@@ -9,9 +9,10 @@ import useRiskBattleManager from '../battles/useRiskBattleManager';
 import { BattleStatus } from '../types/battles';
 import useCyclicShifting from '@hooks/TextEffects/useCyclicShifting';
 import { useScrollSection } from '@hooks/useScrollSection';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 const RiskBattle: React.FC = () => {
+  const [autoBattleSpeed, setAutoBattleSpeed] = useState(800);
   const {
     attacker,
     defender,
@@ -28,7 +29,7 @@ const RiskBattle: React.FC = () => {
   const { start: startAutoBattle, isAutoBattling } = useAutoBattler(
     playRound,
     battleStatus,
-    50,
+    autoBattleSpeed,
   );
 
   useEffect(() => {
@@ -58,7 +59,12 @@ const RiskBattle: React.FC = () => {
             defender={defender}
             battleStatus={battleStatus}
             rounds={rounds}
-            actions={{ playRound: playRound, startAutoBattle: startAutoBattle }}
+            actions={{
+              playRound: playRound,
+              startAutoBattle: startAutoBattle,
+              setAutoBattleSpeed: setAutoBattleSpeed,
+            }}
+            autoBattleSpeed={autoBattleSpeed}
             isAutoBattling={isAutoBattling}
           />
           <RoundList rounds={rounds} />

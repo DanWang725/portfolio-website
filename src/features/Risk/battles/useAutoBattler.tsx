@@ -7,16 +7,21 @@ const useAutoBattler = (
   delay: number = 2000,
 ) => {
   const [isAutoBattling, setIsAutoBattling] = useState(false);
+  const [isTimeoutSet, setIsTimeoutSet] = useState(false);
 
   useEffect(() => {
-    if (isAutoBattling) {
+    if (isAutoBattling && !isTimeoutSet) {
       if (battleStatus !== BattleStatus.Ongoing) {
         setIsAutoBattling(false);
       } else {
-        setTimeout(() => playRound(), delay);
+        setIsTimeoutSet(true);
+        setTimeout(() => {
+          setIsTimeoutSet(false);
+          playRound();
+        }, delay);
       }
     }
-  }, [battleStatus, playRound]);
+  }, [playRound]);
 
   const start = () => {
     setIsAutoBattling(true);
