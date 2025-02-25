@@ -2363,6 +2363,23 @@
   resolved "https://registry.yarnpkg.com/@trysound/sax/-/sax-0.2.0.tgz#cccaab758af56761eb7bf37af6f03f326dd798ad"
   integrity sha512-L7z9BgrNEcYyUYtF+HaEfiS5ebkh9jXqbszz7pC0hRBPaatV0XjSD3+eHrpqFemQfgwiFF0QPIarnIihIDn7OA==
 
+"@tsparticles/engine@3.8.1", "@tsparticles/engine@^3.8.1":
+  version "3.8.1"
+  resolved "https://registry.yarnpkg.com/@tsparticles/engine/-/engine-3.8.1.tgz#1dc538cdb043757c8b8a90bd03b1069c1801cc1e"
+  integrity sha512-S8h10nuZfElY7oih//NUHnT5qf4v3/dnsU8CMs7dz5lBEGr3amrYrXk0V+YKPTIQwfdmJHUaSBoAqFiv4aEGIA==
+
+"@tsparticles/move-base@^3.8.1":
+  version "3.8.1"
+  resolved "https://registry.yarnpkg.com/@tsparticles/move-base/-/move-base-3.8.1.tgz#4a9681076eca09d5fd45ce4d786f44e5de1cb291"
+  integrity sha512-DNFRL1QT8ZQYLg3fIk74EbHJq5HGOq9CM2bCci9dDcdymvN4L7aWVFQavRiWDbi3y1EUW3+jeHSMbD3qHAfOeA==
+  dependencies:
+    "@tsparticles/engine" "3.8.1"
+
+"@tsparticles/react@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@tsparticles/react/-/react-3.0.0.tgz#d0a794ba53164eb39ce88a3961be723a636b37c0"
+  integrity sha512-hjGEtTT1cwv6BcjL+GcVgH++KYs52bIuQGW3PWv7z3tMa8g0bd6RI/vWSLj7p//NZ3uTjEIeilYIUPBh7Jfq/Q==
+
 "@types/aria-query@^5.0.1":
   version "5.0.4"
   resolved "https://registry.yarnpkg.com/@types/aria-query/-/aria-query-5.0.4.tgz#1a31c3d378850d2778dabb6374d036dcba4ba708"
