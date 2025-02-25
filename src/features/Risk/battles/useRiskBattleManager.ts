@@ -13,8 +13,11 @@ const useRiskBattleManager = () => {
   const roller = useDiceRoller();
 
   //=============================================================================
-  const getRollsFromPlayer = (player: IPlayerData): DiceRoll[] => {
-    const maxRolls = Math.min(player.troops, 3);
+  const getRollsFromPlayer = (
+    player: IPlayerData,
+    maxDice: number,
+  ): DiceRoll[] => {
+    const maxRolls = Math.min(player.troops, maxDice);
     const rolls = Array.from(Array(maxRolls), () => roller.roll());
     return rolls.sort((a, b) => b - a);
   };
@@ -91,8 +94,8 @@ const useRiskBattleManager = () => {
     if (!attacker || !defender) return;
     if (battleStatus !== BattleStatus.Ongoing) return;
 
-    const attackerRolls = getRollsFromPlayer(attacker);
-    const defenderRolls = getRollsFromPlayer(defender);
+    const attackerRolls = getRollsFromPlayer(attacker, 3);
+    const defenderRolls = getRollsFromPlayer(defender, 2);
     const roundResult = calculateRoundResult(attackerRolls, defenderRolls);
     setRounds([...rounds, roundResult]);
     const newAttackerData = getUpdatedPlayerData(
