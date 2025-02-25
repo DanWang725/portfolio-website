@@ -3,7 +3,6 @@ import { diceIcons } from '@features/Risk/utils/diceUtils';
 import { Box, Divider, Grid2, Typography } from '@mui/material';
 import { useEffect } from 'react';
 import '../RiskBattle.css';
-import { RoundResult } from '@features/Risk/battles/RoundResult';
 
 interface RoundListProps {
   rounds: IRoundResult[];
@@ -67,7 +66,6 @@ const RoundList: React.FC<RoundListProps> = ({ rounds }) => {
 
                       return (
                         <Icon
-                          key={roll}
                           key={`round-${index}-attacker-${i}`}
                           className={`round-dice ${getDiceClass(
                             RoundSide.Attacker,
@@ -83,7 +81,6 @@ const RoundList: React.FC<RoundListProps> = ({ rounds }) => {
 
                       return (
                         <Icon
-                          key={roll}
                           key={`round-${index}-defender-${i}`}
                           className={`round-dice ${getDiceClass(
                             RoundSide.Defender,
