@@ -50,8 +50,13 @@
   transition: width 0.5s;
 }
 
+.round-dice {
+  height: 2rem;
+  width: 2rem;
+}
+
 .round-dice-win {
-  color: green;
+  color: white;
 }
 
 .round-dice-lose {

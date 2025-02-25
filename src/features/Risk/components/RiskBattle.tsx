@@ -24,21 +24,11 @@ const RiskBattle: React.FC = () => {
     seed,
   } = useRiskBattleManager();
 
-  const { text, setIsActive } = useCyclicShifting(battleStatus, 1000);
-
   const { start: startAutoBattle, isAutoBattling } = useAutoBattler(
     playRound,
     battleStatus,
     autoBattleSpeed,
   );
-
-  useEffect(() => {
-    if (
-      battleStatus === BattleStatus.AttackerWins ||
-      battleStatus === BattleStatus.DefenderWins
-    )
-      setIsActive(true);
-  }, [battleStatus]);
 
   const handleStart = (attackertroops: number, defenderTroops: number) => {
     init(attackertroops, defenderTroops);
@@ -48,12 +38,8 @@ const RiskBattle: React.FC = () => {
       {battleStatus == BattleStatus.NotStarted && (
         <BattleSetup handleStart={handleStart} />
       )}
-      {battleStatus !== BattleStatus.Ongoing &&
-        battleStatus !== BattleStatus.NotStarted && (
-          <Typography>{text}</Typography>
-        )}
       {battleStatus !== BattleStatus.NotStarted && (
-        <Grid2 container mt="1rem">
+        <Grid2 container mt="1rem" spacing={2}>
           <BattleTracker
             attacker={attacker}
             defender={defender}
