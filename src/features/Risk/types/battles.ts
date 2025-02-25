@@ -1,1 +1,6 @@
-import MersenneTwister from '../../../utils/Mersenne Twister/Mersenne Twister';
+export enum BattleStatus {
+  NotStarted = 'notStarted',
+  Ongoing = 'ongoing',
+  AttackerWins = 'attackerWins',
+  DefenderWins = 'defenderWins',
+}
