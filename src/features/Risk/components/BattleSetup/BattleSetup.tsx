@@ -1,6 +1,5 @@
 import { Box, Button, IconButton, Input, Typography } from '@mui/material';
 import { useState } from 'react';
-import { riskTroops } from './utils';
 import PlayerTroopField from './PlayerTroopField';
 
 interface BattleSetupProps {
@@ -15,7 +14,7 @@ const BattleSetup: React.FC<BattleSetupProps> = ({ handleStart }) => {
     setDefenderTroops(Math.max(newValue, 0));
   };
   const addAttackerTroops = (value: number, replace = false) => {
-    const newValue = replace ? value : defenderTroops + value;
+    const newValue = replace ? value : attackerTroops + value;
     setAttackerTroops(Math.max(newValue, 0));
   };
   return (

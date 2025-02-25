@@ -7,6 +7,9 @@ import RoundList from './RoundList';
 import BattleTracker from './BattleTracker/BattleTracker';
 import useRiskBattleManager from '../battles/useRiskBattleManager';
 import { BattleStatus } from '../types/battles';
+import useCyclicShifting from '@hooks/TextEffects/useCyclicShifting';
+import { useScrollSection } from '@hooks/useScrollSection';
+import { useEffect } from 'react';
 
 const RiskBattle: React.FC = () => {
   const {
@@ -20,11 +23,21 @@ const RiskBattle: React.FC = () => {
     seed,
   } = useRiskBattleManager();
 
+  const { text, setIsActive } = useCyclicShifting(battleStatus, 1000);
+
   const { start: startAutoBattle, isAutoBattling } = useAutoBattler(
     playRound,
     battleStatus,
     50,
   );
+
+  useEffect(() => {
+    if (
+      battleStatus === BattleStatus.AttackerWins ||
+      battleStatus === BattleStatus.DefenderWins
+    )
+      setIsActive(true);
+  }, [battleStatus]);
 
   const handleStart = (attackertroops: number, defenderTroops: number) => {
     init(attackertroops, defenderTroops);
@@ -34,8 +47,12 @@ const RiskBattle: React.FC = () => {
       {battleStatus == BattleStatus.NotStarted && (
         <BattleSetup handleStart={handleStart} />
       )}
+      {battleStatus !== BattleStatus.Ongoing &&
+        battleStatus !== BattleStatus.NotStarted && (
+          <Typography>{text}</Typography>
+        )}
       {battleStatus !== BattleStatus.NotStarted && (
-        <Grid2 container>
+        <Grid2 container mt="1rem">
           <BattleTracker
             attacker={attacker}
             defender={defender}

@@ -1,5 +1,5 @@
-import { Box, Button, Input, Typography } from '@mui/material';
-import { riskTroops } from './utils';
+import { riskTroops } from '@features/Risk/utils/troopsUtils';
+import { Box, Button, Input, SxProps, Typography } from '@mui/material';
 import { replace } from 'react-router-dom';
 
 interface PlayerTroopFieldProps {
@@ -15,7 +15,7 @@ const PlayerTroopField: React.FC<PlayerTroopFieldProps> = ({
 }) => {
   return (
     <Box display={'flex'} flexDirection={'column'}>
-      <Typography variant="h4">{playerLabel}</Typography>
+      <Typography variant="h5">{playerLabel} Units</Typography>
       <Input
         type="number"
         value={troopCount}
@@ -23,14 +23,23 @@ const PlayerTroopField: React.FC<PlayerTroopFieldProps> = ({
       />
       <Box>
         {riskTroops.map((troop, index) => (
-          <Button onClick={() => addTroops(troop.value)} key={index}>
+          <Button
+            onClick={() => addTroops(troop.value)}
+            key={index}
+            sx={{ color: 'dodgerblue' }}
+          >
             <troop.Icon />+{troop.value}
           </Button>
         ))}
       </Box>
       <Box>
         {riskTroops.map((troop, index) => (
-          <Button onClick={() => addTroops(-troop.value)} key={index}>
+          <Button
+            onClick={() => addTroops(-troop.value)}
+            key={index}
+            sx={{ color: 'salmon' }}
+            disabled={troopCount < troop.value}
+          >
             <troop.Icon />-{troop.value}
           </Button>
         ))}
