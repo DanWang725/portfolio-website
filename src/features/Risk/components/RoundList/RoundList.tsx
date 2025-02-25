@@ -24,9 +24,9 @@ const RoundList: React.FC<RoundListProps> = ({ rounds }) => {
       <Box
         id="rounds-container"
         sx={{
-          height: '50vh',
+          height: { xs: 'auto', md: '50vh' },
           width: '100%',
-          overflow: { xs: 'auto', md: 'scroll' },
+          overflow: { xs: 'visible', md: 'scroll' },
         }}
       >
         {rounds.map((round, index) => {
