@@ -1,7 +1,7 @@
 import { Box, Button, Grid2, Typography } from '@mui/material';
 import './RiskBattle.css';
 import useAutoBattler from '../battles/useAutoBattler';
-import RiskSetup from './RiskSetup';
+import BattleSetup from './BattleSetup/BattleSetup';
 import DiceStatistics from './DiceStatistics';
 import RoundList from './RoundList';
 import BattleTracker from './BattleTracker/BattleTracker';
@@ -32,7 +32,7 @@ const RiskBattle: React.FC = () => {
   return (
     <>
       {battleStatus == BattleStatus.NotStarted && (
-        <RiskSetup handleStart={handleStart} />
+        <BattleSetup handleStart={handleStart} />
       )}
       {battleStatus !== BattleStatus.NotStarted && (
         <Grid2 container>
@@ -47,7 +47,6 @@ const RiskBattle: React.FC = () => {
           <RoundList rounds={rounds} />
         </Grid2>
       )}
-      <Typography>{battleStatus}</Typography>
       {battleStatus !== BattleStatus.Ongoing &&
         battleStatus !== BattleStatus.NotStarted && (
           <>
