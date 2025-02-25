@@ -1,5 +1,11 @@
+import { IconType } from 'react-icons';
+
 export type DiceRoll = number;
 export type IDiceStats = DiceRoll[];
+
+export interface DiceIcon {
+  [key: number]: IconType;
+}
 
 export enum RoundSide {
   Attacker = 'attacker',
