@@ -1,8 +1,9 @@
-import { Button, Grid2 } from '@mui/material';
+import { Box, Button, Divider, Grid2, Typography } from '@mui/material';
 import TroopTracker from './TroopTracker';
 import { IPlayerData } from '@features/Risk/types/players';
 import { IRoundResult } from '@features/Risk/types/dice';
 import { BattleStatus } from '@features/Risk/types/battles';
+import TroopDisplay from './TroopDisplay';
 
 interface BattleTrackerProps {
   attacker: IPlayerData;
@@ -25,26 +26,29 @@ const BattleTracker: React.FC<BattleTrackerProps> = ({
   isAutoBattling,
 }) => {
   return (
-    <Grid2
-      size={{ xs: 12, md: 4 }}
-      sx={{ border: '1px solid black', width: '30%' }}
-    >
+    <Grid2 size={{ xs: 12, md: 4 }} sx={{ width: '30%' }}>
+      <Box mb="1rem">
+        <Typography variant="h6">Battle Statistics</Typography>
+        <Divider />
+      </Box>
       <p>
         <TroopTracker
           id="attacker-live-troops"
-          label="Attacker Troops: "
+          label="Attacker's Troops: "
           player={attacker ?? ({} as IPlayerData)}
           roundTroopLosses={rounds?.[rounds?.length - 1]?.attackerLosses}
         />
       </p>
+      <TroopDisplay troopCount={attacker.troops} />
       <p>
         <TroopTracker
           id="defender-live-troops"
-          label="Defender Troops: "
+          label="Defender's Troops: "
           player={defender ?? ({} as IPlayerData)}
           roundTroopLosses={rounds?.[rounds?.length - 1]?.defenderLosses}
         />
       </p>
+      <TroopDisplay troopCount={defender.troops} />
 
       {battleStatus === BattleStatus.Ongoing && (
         <>
