@@ -1,16 +1,18 @@
 import NumberFlow, { NumberFlowGroup } from '@number-flow/react';
-import { IPlayerData, IRoundResult } from '../battles/useRiskBattleManager';
 import { useEffect, useState } from 'react';
-import './RiskBattle.css';
+import '../RiskBattle.css';
+import { IPlayerData } from '@features/Risk/types/players';
 
 export interface TroopTrackerProps {
   id: string;
+  label: string;
   player: IPlayerData;
   roundTroopLosses: number | null;
 }
 
 const TroopTracker: React.FC<TroopTrackerProps> = ({
   id,
+  label,
   player,
   roundTroopLosses,
 }) => {
@@ -31,7 +33,7 @@ const TroopTracker: React.FC<TroopTrackerProps> = ({
 
   return (
     <NumberFlowGroup>
-      Attacker Troops: <NumberFlow value={player?.troops ?? 0} />{' '}
+      {label} <NumberFlow value={player?.troops ?? 0} />{' '}
       {!!lastShownLosses && isDifferenceVisible && (
         <span
           id={id}
