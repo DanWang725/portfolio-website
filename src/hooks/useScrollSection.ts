@@ -1,6 +1,10 @@
 import { useEffect, useState } from 'react';
 
-export const useScrollSection = ({ initialSection }) => {
+export const useScrollSection = ({
+  initialSection,
+}: {
+  initialSection: string;
+}) => {
   const [activeSection, setActiveSection] = useState(initialSection);
 
   useEffect(() => {

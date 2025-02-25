@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import { screens, routes } from './routes';
-import { RouteElement } from '../types/RouteSegment';
+import { RouteElement } from '../types/routes';
 
 function assembleRoutes(options: RouteElement[]) {
   return options.map((route, index) => (

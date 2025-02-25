@@ -3,7 +3,7 @@ import Homepage from './screens/Homepage';
 import WorkTermReport from './screens/WorkTermReport';
 import RiskCalculatorScreen from './screens/RiskCalculatorScreen';
 import RiskCalculatorResult from './screens/RiskCalculatorResult';
-import { RouteElement } from '../types/RouteSegment';
+import { RouteElement } from '../types/routes';
 import Countdown from './screens/Countdown';
 import RandomSounds from './screens/RandomSounds';
 import Projects from './screens/Projects';
