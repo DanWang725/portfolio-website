@@ -1,5 +1,6 @@
 import { DiceRoller } from '../dice/DiceRoller';
-import { DiceRoll, DiceRollStats } from '../dice/DiceStats';
+import { DiceRollStats } from '../dice/DiceStats';
+import { DiceRoll } from '../types/dice';
 
 export class Player {
   diceStats: DiceRollStats;

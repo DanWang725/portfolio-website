@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { BattleStatus } from './Battles';
+import { BattleStatus } from '../types/battles';
 
 const useAutoBattler = (
   playRound: () => void,

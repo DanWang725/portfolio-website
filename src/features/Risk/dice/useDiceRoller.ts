@@ -1,6 +1,6 @@
 import MersenneTwister from '@utils/Mersenne Twister/Mersenne Twister';
 import { useState } from 'react';
-import { DiceRoll } from './DiceStats';
+import { DiceRoll } from '../types/dice';
 
 const useDiceRoller = () => {
   const [seed, setSeed] = useState<number>(1);

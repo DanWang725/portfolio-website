@@ -1,5 +1,5 @@
 import MersenneTwister from '@utils/Mersenne Twister/Mersenne Twister';
-import { DiceRoll } from './DiceStats';
+import { DiceRoll } from '../types/dice';
 
 export class DiceRoller {
   generator: MersenneTwister;

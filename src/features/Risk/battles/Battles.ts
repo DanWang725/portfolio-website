@@ -1,14 +1,7 @@
 import { DiceRoller } from '../dice/DiceRoller';
-import { DiceRollStats } from '../dice/DiceStats';
+import { BattleStatus } from '../types/battles';
 import { Player } from './Player';
 import { RoundResult } from './RoundResult';
-
-export enum BattleStatus {
-  NotStarted = 'notStarted',
-  Ongoing = 'ongoing',
-  AttackerWins = 'attackerWins',
-  DefenderWins = 'defenderWins',
-}
 
 export class Battle {
   rounds: RoundResult[];

@@ -1,31 +1,15 @@
 import { useState } from 'react';
-import { BattleStatus } from './Battles';
-import { Player } from './Player';
-import { RoundResult, RoundSide } from './RoundResult';
 import useDiceRoller from '../dice/useDiceRoller';
-import { DiceRoll } from '../dice/DiceStats';
-
-type IDiceStats = DiceRoll[];
-
-export interface IPlayerData {
-  diceStats: IDiceStats;
-  initialTroops: number;
-  troops: number;
-}
-
-export interface IRoundResult {
-  attackerRolls: DiceRoll[];
-  defenderRolls: DiceRoll[];
-  diceResults: RoundSide[];
-  attackerLosses: number;
-  defenderLosses: number;
-}
+import { BattleStatus } from '../types/battles';
+import { DiceRoll, IDiceStats, IRoundResult, RoundSide } from '../types/dice';
+import { IPlayerData } from '../types/players';
+import { initializePlayerData } from '../utils/playerUtils';
 
 const useRiskBattleManager = () => {
   const [battleStatus, setBattleStatus] = useState(BattleStatus.NotStarted);
   const [rounds, setRounds] = useState<IRoundResult[]>([]);
-  const [attacker, setAttacker] = useState<IPlayerData>();
-  const [defender, setDefender] = useState<IPlayerData>();
+  const [attacker, setAttacker] = useState<IPlayerData>(initializePlayerData());
+  const [defender, setDefender] = useState<IPlayerData>(initializePlayerData());
   const roller = useDiceRoller();
 
   //=============================================================================
@@ -152,9 +136,17 @@ const useRiskBattleManager = () => {
     setBattleStatus(BattleStatus.Ongoing);
   };
 
+  const reset = () => {
+    setBattleStatus(BattleStatus.NotStarted);
+    setRounds([]);
+    setAttacker(initializePlayerData());
+    setDefender(initializePlayerData());
+  };
+
   return {
     playRound,
     init,
+    reset,
     rounds,
     attacker,
     defender,

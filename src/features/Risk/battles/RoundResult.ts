@@ -1,9 +1,4 @@
-import { DiceRoll } from '../dice/DiceStats';
-
-export enum RoundSide {
-  Attacker = 'attacker',
-  Defender = 'defender',
-}
+import { DiceRoll, RoundSide } from '../types/dice';
 
 export class RoundResult {
   defenderRolls: DiceRoll[];
