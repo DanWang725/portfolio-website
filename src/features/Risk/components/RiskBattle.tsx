@@ -17,17 +17,17 @@ const RiskBattle: React.FC = () => {
   const { result } = useParams();
 
   const [autoBattleSpeed, setAutoBattleSpeed] = useState(800);
+  const battleManager = useRiskBattleManager();
   const {
     attacker,
     defender,
     battleStatus,
     init,
-    end,
     playRound,
     reset,
     rounds,
-    seed,
-  } = useRiskBattleManager();
+    end,
+  } = battleManager;
 
   const { start: startAutoBattle, isAutoBattling } = useAutoBattler(
     playRound,
@@ -35,16 +35,7 @@ const RiskBattle: React.FC = () => {
     autoBattleSpeed,
   );
 
-  const { getEncodedString, loadBattle } = useSaveableBattles(
-    init,
-    playRound,
-    end,
-    attacker,
-    defender,
-    rounds,
-    seed,
-    battleStatus,
-  );
+  const { getEncodedString, loadBattle } = useSaveableBattles(battleManager);
 
   const copyGameToClipboard = () => {
     navigator.clipboard.writeText(
@@ -57,7 +48,7 @@ const RiskBattle: React.FC = () => {
       console.log('result', result);
       loadBattle(result);
     }
-  }, []);
+  }, [result]);
 
   const handleStart = (attackertroops: number, defenderTroops: number) => {
     init(attackertroops, defenderTroops);
@@ -79,6 +70,7 @@ const RiskBattle: React.FC = () => {
               playRound: playRound,
               startAutoBattle: startAutoBattle,
               setAutoBattleSpeed: setAutoBattleSpeed,
+              endBattle: end,
             }}
             autoBattleSpeed={autoBattleSpeed}
             isAutoBattling={isAutoBattling}

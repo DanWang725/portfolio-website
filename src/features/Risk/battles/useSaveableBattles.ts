@@ -1,20 +1,11 @@
 import { useEffect, useState } from 'react';
 import { BattleStatus } from '../types/battles';
 import { IPlayerData } from '../types/players';
-import { InitBattleFunction } from './useRiskBattleManager';
+import { InitBattleFunction, IRiskBattleManager } from './useRiskBattleManager';
 import { IRoundResult } from '../types/dice';
 import { Battle } from './Battles';
 
-const useSaveableBattles = (
-  init: InitBattleFunction,
-  playRound: (numRounds?: number) => void,
-  end: () => void,
-  attacker: IPlayerData,
-  defender: IPlayerData,
-  rounds: IRoundResult[],
-  seed: number,
-  battleStatus: BattleStatus,
-) => {
+const useSaveableBattles = (battleManager: IRiskBattleManager) => {
   const [roundsToPlay, setRoundsToPlay] = useState(0);
   const [loadingBattle, setLoadingBattle] = useState(0);
   const loadBattle = (encodedString: string) => {
@@ -25,6 +16,17 @@ const useSaveableBattles = (
     setRoundsToPlay(parsedResults[3]);
     setLoadingBattle(1);
   };
+
+  const {
+    init,
+    playRound,
+    end,
+    attacker,
+    defender,
+    rounds,
+    seed,
+    battleStatus,
+  } = battleManager;
 
   useEffect(() => {
     if (battleStatus !== BattleStatus.Ongoing || !loadingBattle) return;
@@ -38,7 +40,7 @@ const useSaveableBattles = (
       }
       setLoadingBattle(0);
     }
-  }, [battleStatus, playRound]);
+  }, [battleManager]);
 
   const getEncodedString = () => {
     if (!attacker || !defender) return '';

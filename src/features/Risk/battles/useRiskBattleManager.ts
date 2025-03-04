@@ -11,6 +11,18 @@ export type InitBattleFunction = (
   seed?: number,
 ) => void;
 
+export interface IRiskBattleManager {
+  playRound: (numRounds?: number) => void;
+  init: InitBattleFunction;
+  end: () => void;
+  reset: () => void;
+  rounds: IRoundResult[];
+  attacker: IPlayerData;
+  defender: IPlayerData;
+  battleStatus: BattleStatus;
+  seed: number;
+}
+
 const useRiskBattleManager = () => {
   const [battleStatus, setBattleStatus] = useState(BattleStatus.NotStarted);
   const [rounds, setRounds] = useState<IRoundResult[]>([]);

@@ -21,11 +21,18 @@ const TroopDisplay: React.FC<TroopDisplayProps> = ({ troopCount }) => {
         <>
           {counts[index] < 20 ? (
             Array.from(Array(counts[index])).map((_, i) => (
-              <troop.Icon key={i} className="troop-display-icon" />
+              <troop.Icon
+                key={`troop-display-${counts[index]}-${index}-${i}`}
+                className="troop-display-icon"
+              />
             ))
           ) : (
             <>
-              <troop.Icon className="troop-display-icon" /> x {counts[index]}
+              <troop.Icon
+                className="troop-display-icon"
+                key={`troop-display-multi-${counts[index]}-${index}`}
+              />{' '}
+              x {counts[index]}
             </>
           )}
         </>

@@ -14,6 +14,7 @@ interface BattleTrackerProps {
     playRound: () => void;
     startAutoBattle: () => void;
     setAutoBattleSpeed: (speed: number) => void;
+    endBattle: () => void;
   };
   autoBattleSpeed: number;
   isAutoBattling: boolean;
@@ -24,7 +25,7 @@ const BattleTracker: React.FC<BattleTrackerProps> = ({
   defender,
   rounds,
   battleStatus,
-  actions: { playRound, startAutoBattle, setAutoBattleSpeed },
+  actions: { playRound, startAutoBattle, setAutoBattleSpeed, endBattle },
   isAutoBattling,
   autoBattleSpeed,
 }) => {
@@ -67,15 +68,33 @@ const BattleTracker: React.FC<BattleTrackerProps> = ({
 
       {battleStatus === BattleStatus.Ongoing && (
         <Box display="flex" flexDirection="column" gap="1rem" mt="1rem">
-          <Button
-            variant="contained"
-            disabled={isAutoBattling}
-            onClick={() => {
-              playRound();
-            }}
+          <Box
+            display={'flex'}
+            flexDirection={'row'}
+            alignItems={'center'}
+            justifyContent={'space-between'}
+            gap="1rem"
           >
-            Play Round
-          </Button>
+            <Button
+              variant="contained"
+              disabled={isAutoBattling}
+              onClick={() => {
+                playRound();
+              }}
+            >
+              Play Round
+            </Button>
+            <Button
+              variant="outlined"
+              color="error"
+              disabled={isAutoBattling}
+              onClick={() => {
+                endBattle();
+              }}
+            >
+              End Battle
+            </Button>
+          </Box>
           <Box
             display={'flex'}
             flexDirection={'row'}
