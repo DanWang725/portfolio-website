@@ -1,8 +1,6 @@
-import { Outlet } from 'react-router-dom';
 import Homepage from './screens/Homepage';
 import WorkTermReport from './screens/WorkTermReport';
 import RiskCalculatorScreen from './screens/RiskCalculatorScreen';
-import RiskCalculatorResult from './screens/RiskCalculatorResult';
 import { RouteElement } from '../types/routes';
 import Countdown from './screens/Countdown';
 import RandomSounds from './screens/RandomSounds';
@@ -16,7 +14,6 @@ export const screens: ScreenMap = {
   home: <Homepage />,
   wtr: <WorkTermReport />,
   'risk-calculator': <RiskCalculatorScreen />,
-  'risk-result': <RiskCalculatorResult />,
   countdown: <Countdown />,
   projects: <Projects />,
   funny: <RandomSounds />,
@@ -49,7 +46,7 @@ export const routes: RouteElement[] = [
         name: 'Risk Calculator',
         children: [
           {
-            screen: 'risk-result',
+            screen: 'risk-calculator',
             path: ':result',
             name: 'result of risk battle',
           },
