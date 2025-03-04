@@ -5,6 +5,12 @@ import { DiceRoll, IDiceStats, IRoundResult, RoundSide } from '../types/dice';
 import { IPlayerData } from '../types/players';
 import { initializePlayerData } from '../utils/playerUtils';
 
+export type InitBattleFunction = (
+  attackerTroops: number,
+  defenderTroops: number,
+  seed?: number,
+) => void;
+
 const useRiskBattleManager = () => {
   const [battleStatus, setBattleStatus] = useState(BattleStatus.NotStarted);
   const [rounds, setRounds] = useState<IRoundResult[]>([]);
@@ -90,36 +96,54 @@ const useRiskBattleManager = () => {
 
   //=============================================================================
 
-  const playRound = () => {
-    if (!attacker || !defender) return;
-    if (battleStatus !== BattleStatus.Ongoing) return;
-
-    const attackerRolls = getRollsFromPlayer(attacker, 3);
-    const defenderRolls = getRollsFromPlayer(defender, 2);
+  const playSingleRound = (
+    attackerData: IPlayerData,
+    defenderData: IPlayerData,
+  ) => {
+    const attackerRolls = getRollsFromPlayer(attackerData, 3);
+    const defenderRolls = getRollsFromPlayer(defenderData, 2);
     const roundResult = calculateRoundResult(attackerRolls, defenderRolls);
-    setRounds([...rounds, roundResult]);
     const newAttackerData = getUpdatedPlayerData(
-      attacker,
+      attackerData,
       attackerRolls,
       roundResult.attackerLosses,
     );
     const newDefenderData = getUpdatedPlayerData(
-      defender,
+      defenderData,
       defenderRolls,
       roundResult.defenderLosses,
     );
-
-    if (newAttackerData.troops === 0) {
-      setBattleStatus(BattleStatus.DefenderWins);
-    } else if (newDefenderData.troops === 0) {
-      setBattleStatus(BattleStatus.AttackerWins);
-    }
-
-    setAttacker(newAttackerData);
-    setDefender(newDefenderData);
+    return { newAttackerData, newDefenderData, roundResult };
   };
 
-  const init = (
+  const playRound = (numRounds: number = 1) => {
+    let attackerData = attacker;
+    let defenderData = defender;
+    let curBattleStatus = battleStatus;
+    let curRounds = [];
+    for (let i = 0; i < numRounds; i++) {
+      if (curBattleStatus !== BattleStatus.Ongoing) return;
+      const { newAttackerData, newDefenderData, roundResult } = playSingleRound(
+        attackerData,
+        defenderData,
+      );
+
+      if (newAttackerData.troops === 0) {
+        curBattleStatus = BattleStatus.DefenderWins;
+      } else if (newDefenderData.troops === 0) {
+        curBattleStatus = BattleStatus.AttackerWins;
+      }
+      curRounds.push(roundResult);
+      attackerData = newAttackerData;
+      defenderData = newDefenderData;
+    }
+    setBattleStatus(curBattleStatus);
+    setRounds([...rounds, ...curRounds]);
+    setAttacker(attackerData);
+    setDefender(defenderData);
+  };
+
+  const init: InitBattleFunction = (
     attackerTroops: number,
     defenderTroops: number,
     seed?: number,
@@ -139,6 +163,17 @@ const useRiskBattleManager = () => {
     setBattleStatus(BattleStatus.Ongoing);
   };
 
+  const end = () => {
+    if (battleStatus !== BattleStatus.Ongoing) return;
+    const attackerLosses = attacker.initialTroops - attacker.troops;
+    const defenderLosses = defender.initialTroops - defender.troops;
+    const result =
+      attackerLosses > defenderLosses
+        ? BattleStatus.AttackerWins
+        : BattleStatus.DefenderWins;
+    setBattleStatus(result);
+  };
+
   const reset = () => {
     setBattleStatus(BattleStatus.NotStarted);
     setRounds([]);
@@ -149,6 +184,7 @@ const useRiskBattleManager = () => {
   return {
     playRound,
     init,
+    end,
     reset,
     rounds,
     attacker,

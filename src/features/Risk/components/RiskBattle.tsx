@@ -10,14 +10,19 @@ import { BattleStatus } from '../types/battles';
 import useCyclicShifting from '@hooks/TextEffects/useCyclicShifting';
 import { useScrollSection } from '@hooks/useScrollSection';
 import { useEffect, useState } from 'react';
+import useSaveableBattles from '../battles/useSaveableBattles';
+import { useParams } from 'react-router-dom';
 
 const RiskBattle: React.FC = () => {
+  const { result } = useParams();
+
   const [autoBattleSpeed, setAutoBattleSpeed] = useState(800);
   const {
     attacker,
     defender,
     battleStatus,
     init,
+    end,
     playRound,
     reset,
     rounds,
@@ -30,11 +35,36 @@ const RiskBattle: React.FC = () => {
     autoBattleSpeed,
   );
 
+  const { getEncodedString, loadBattle } = useSaveableBattles(
+    init,
+    playRound,
+    end,
+    attacker,
+    defender,
+    rounds,
+    seed,
+    battleStatus,
+  );
+
+  const copyGameToClipboard = () => {
+    navigator.clipboard.writeText(
+      `${window.location.href}/${getEncodedString()}`,
+    );
+  };
+
+  useEffect(() => {
+    if (result) {
+      console.log('result', result);
+      loadBattle(result);
+    }
+  }, []);
+
   const handleStart = (attackertroops: number, defenderTroops: number) => {
     init(attackertroops, defenderTroops);
   };
   return (
     <>
+      <Typography variant="h4">Sharing battles coming out soon!</Typography>
       {battleStatus == BattleStatus.NotStarted && (
         <BattleSetup handleStart={handleStart} />
       )}
@@ -64,6 +94,12 @@ const RiskBattle: React.FC = () => {
                 ? 'Attacker Wins'
                 : 'Defender Wins'}
             </Typography>
+            <Box>
+              <Button variant="contained" onClick={() => reset()}>
+                Reset
+              </Button>
+              <Button onClick={copyGameToClipboard}>Share</Button>
+            </Box>
             <Box
               display="flex"
               flexDirection="row"
@@ -76,9 +112,6 @@ const RiskBattle: React.FC = () => {
                 <DiceStatistics diceStats={defender?.diceStats ?? []} />
               </Box>
             </Box>
-            <Button variant="contained" onClick={() => reset()}>
-              Reset
-            </Button>
           </>
         )}
     </>
