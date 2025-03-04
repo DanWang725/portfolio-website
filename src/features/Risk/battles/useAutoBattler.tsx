@@ -23,11 +23,13 @@ const useAutoBattler = (
     }
   }, [playRound]);
 
-  const start = () => {
-    setIsAutoBattling(true);
-    playRound();
+  const toggle = () => {
+    if (!isAutoBattling) {
+      playRound();
+    }
+    setIsAutoBattling(!isAutoBattling);
   };
 
-  return { start, isAutoBattling };
+  return { toggle, isAutoBattling };
 };
 export default useAutoBattler;

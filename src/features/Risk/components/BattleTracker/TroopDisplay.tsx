@@ -7,8 +7,12 @@ import '../RiskBattle.css';
 
 interface TroopDisplayProps {
   troopCount: number;
+  classname?: string;
 }
-const TroopDisplay: React.FC<TroopDisplayProps> = ({ troopCount }) => {
+const TroopDisplay: React.FC<TroopDisplayProps> = ({
+  troopCount,
+  classname = '',
+}) => {
   const counts = getRiskTroopSplit(troopCount);
 
   return (
@@ -19,17 +23,17 @@ const TroopDisplay: React.FC<TroopDisplayProps> = ({ troopCount }) => {
     >
       {riskTroops.toReversed().map((troop, index) => (
         <>
-          {counts[index] < 20 ? (
+          {counts[index] < 5 ? (
             Array.from(Array(counts[index])).map((_, i) => (
               <troop.Icon
                 key={`troop-display-${counts[index]}-${index}-${i}`}
-                className="troop-display-icon"
+                className={`troop-display-icon ${classname}`}
               />
             ))
           ) : (
             <>
               <troop.Icon
-                className="troop-display-icon"
+                className={`troop-display-icon ${classname}`}
                 key={`troop-display-multi-${counts[index]}-${index}`}
               />{' '}
               x {counts[index]}

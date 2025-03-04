@@ -1,9 +1,6 @@
 import { useEffect, useState } from 'react';
 import { BattleStatus } from '../types/battles';
-import { IPlayerData } from '../types/players';
-import { InitBattleFunction, IRiskBattleManager } from './useRiskBattleManager';
-import { IRoundResult } from '../types/dice';
-import { Battle } from './Battles';
+import { IRiskBattleManager } from './useRiskBattleManager';
 
 const useSaveableBattles = (battleManager: IRiskBattleManager) => {
   const [roundsToPlay, setRoundsToPlay] = useState(0);

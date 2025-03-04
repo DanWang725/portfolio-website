@@ -12,7 +12,7 @@ interface BattleTrackerProps {
   battleStatus: BattleStatus;
   actions: {
     playRound: () => void;
-    startAutoBattle: () => void;
+    toggleAutoBattle: () => void;
     setAutoBattleSpeed: (speed: number) => void;
     endBattle: () => void;
   };
@@ -25,7 +25,7 @@ const BattleTracker: React.FC<BattleTrackerProps> = ({
   defender,
   rounds,
   battleStatus,
-  actions: { playRound, startAutoBattle, setAutoBattleSpeed, endBattle },
+  actions: { playRound, toggleAutoBattle, setAutoBattleSpeed, endBattle },
   isAutoBattling,
   autoBattleSpeed,
 }) => {
@@ -102,13 +102,12 @@ const BattleTracker: React.FC<BattleTrackerProps> = ({
             gap="1rem"
           >
             <Button
-              variant="contained"
-              disabled={isAutoBattling}
+              variant={isAutoBattling ? 'contained' : 'outlined'}
               onClick={() => {
-                startAutoBattle();
+                toggleAutoBattle(); //todo: disable buttons until timeout is done
               }}
             >
-              Auto
+              {isAutoBattling ? 'Stop' : 'Auto'}
             </Button>
             <Typography>Speed</Typography>
             <Slider

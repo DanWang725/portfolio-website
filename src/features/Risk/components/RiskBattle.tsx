@@ -29,7 +29,7 @@ const RiskBattle: React.FC = () => {
     end,
   } = battleManager;
 
-  const { start: startAutoBattle, isAutoBattling } = useAutoBattler(
+  const { toggle: toggleAutobattle, isAutoBattling } = useAutoBattler(
     playRound,
     battleStatus,
     autoBattleSpeed,
@@ -68,7 +68,7 @@ const RiskBattle: React.FC = () => {
             rounds={rounds}
             actions={{
               playRound: playRound,
-              startAutoBattle: startAutoBattle,
+              toggleAutoBattle: toggleAutobattle,
               setAutoBattleSpeed: setAutoBattleSpeed,
               endBattle: end,
             }}
