@@ -32,6 +32,8 @@ const BattleTracker: React.FC<BattleTrackerProps> = ({
   const handleSpeedChange = (event: Event, newValue: number | number[]) => {
     setAutoBattleSpeed(newValue as number);
   };
+
+  const hasEnded = battleStatus !== BattleStatus.Ongoing;
   return (
     <Grid2
       size={{ xs: 12, md: 4 }}
@@ -53,8 +55,15 @@ const BattleTracker: React.FC<BattleTrackerProps> = ({
             player={attacker ?? ({} as IPlayerData)}
             roundTroopLosses={rounds?.[rounds?.length - 1]?.attackerLosses}
           />
+          {hasEnded && ` (${attacker.initialTroops - attacker.troops} lost)`}
         </p>
         <TroopDisplay troopCount={attacker.troops} />
+        {hasEnded && (
+          <TroopDisplay
+            troopCount={attacker.initialTroops - attacker.troops}
+            classname="troop-lost"
+          />
+        )}
         <p>
           <TroopTracker
             id="defender-live-troops"
@@ -62,8 +71,15 @@ const BattleTracker: React.FC<BattleTrackerProps> = ({
             player={defender ?? ({} as IPlayerData)}
             roundTroopLosses={rounds?.[rounds?.length - 1]?.defenderLosses}
           />
+          {hasEnded && ` (${defender.initialTroops - defender.troops} lost)`}
         </p>
         <TroopDisplay troopCount={defender.troops} />
+        {hasEnded && (
+          <TroopDisplay
+            troopCount={defender.initialTroops - defender.troops}
+            classname="troop-lost"
+          />
+        )}
       </Box>
 
       {battleStatus === BattleStatus.Ongoing && (

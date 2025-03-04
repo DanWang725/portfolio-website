@@ -18,7 +18,7 @@ const TroopDisplay: React.FC<TroopDisplayProps> = ({
   return (
     <Box
       sx={{
-        height: '2rem',
+        minHeight: '2rem',
       }}
     >
       {riskTroops.toReversed().map((troop, index) => (
@@ -36,7 +36,9 @@ const TroopDisplay: React.FC<TroopDisplayProps> = ({
                 className={`troop-display-icon ${classname}`}
                 key={`troop-display-multi-${counts[index]}-${index}`}
               />{' '}
-              x {counts[index]}
+              <span className={`troop-display-count ${classname}`}>
+                x {counts[index]}
+              </span>
             </>
           )}
         </>

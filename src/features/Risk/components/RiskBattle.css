@@ -46,6 +46,14 @@
   width: 2rem;
 }
 
+.troop-display-count {
+  margin-right: 0.5rem;
+}
+
+.troop-lost {
+  fill: gray;
+}
+
 .width-transition {
   transition: width 0.5s;
 }
