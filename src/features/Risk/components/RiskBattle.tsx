@@ -11,10 +11,11 @@ import useCyclicShifting from '@hooks/TextEffects/useCyclicShifting';
 import { useScrollSection } from '@hooks/useScrollSection';
 import { useEffect, useState } from 'react';
 import useSaveableBattles from '../battles/useSaveableBattles';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const RiskBattle: React.FC = () => {
   const { result } = useParams();
+  const navigate = useNavigate();
 
   const [autoBattleSpeed, setAutoBattleSpeed] = useState(800);
   const battleManager = useRiskBattleManager();
@@ -53,9 +54,15 @@ const RiskBattle: React.FC = () => {
   const handleStart = (attackertroops: number, defenderTroops: number) => {
     init(attackertroops, defenderTroops);
   };
+
+  const handleReset = () => {
+    if (result) {
+      navigate('/projects/risk-calculator');
+    }
+    reset();
+  };
   return (
     <>
-      <Typography variant="h4">Sharing battles coming out soon!</Typography>
       {battleStatus == BattleStatus.NotStarted && (
         <BattleSetup handleStart={handleStart} />
       )}
@@ -87,12 +94,12 @@ const RiskBattle: React.FC = () => {
                 : 'Defender Wins'}
             </Typography>
             <Box>
-              <Button variant="contained" onClick={() => reset()}>
+              <Button variant="contained" onClick={handleReset}>
                 Reset
               </Button>
               <Button onClick={copyGameToClipboard}>Share</Button>
             </Box>
-            <Box
+            {/* <Box
               display="flex"
               flexDirection="row"
               justifyContent={'space-around'}
@@ -103,7 +110,7 @@ const RiskBattle: React.FC = () => {
               <Box width={'100%'}>
                 <DiceStatistics diceStats={defender?.diceStats ?? []} />
               </Box>
-            </Box>
+            </Box> */}
           </>
         )}
     </>
