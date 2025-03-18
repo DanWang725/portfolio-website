@@ -1,4 +1,4 @@
-import { ReactNode, useContext } from 'react';
+import { ReactNode, Suspense, useContext } from 'react';
 import { PerformanceContext } from './contexts/PerformanceProvider';
 import ParticleWrapper from '../features/ParticleBackground/ParticleWrapper';
 import { Navbar } from './navbar/Navbar';
@@ -10,7 +10,9 @@ const Layout: React.FC<{ children: ReactNode }> = ({ children }) => {
     <>
       {!isLowPerformance && <ParticleWrapper />}
       <Navbar />
-      <Container sx={{ mt: '80px' }}>{children}</Container>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Container sx={{ mt: '80px' }}>{children}</Container>
+      </Suspense>
     </>
   );
 };

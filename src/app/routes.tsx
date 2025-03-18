@@ -1,22 +1,24 @@
-import Homepage from './screens/Homepage';
-import WorkTermReport from './screens/WorkTermReport';
-import RiskCalculatorScreen from './screens/RiskCalculatorScreen';
 import { RouteElement } from '../types/routes';
-import Countdown from './screens/Countdown';
-import RandomSounds from './screens/RandomSounds';
-import Projects from './screens/Projects';
+import { lazy } from 'react';
 
 type ScreenMap = {
-  [key: string]: JSX.Element;
+  [key: string]: JSX.Element | React.LazyExoticComponent<React.FC<{}>>;
 };
 
+const Home = lazy(() => import('./screens/Homepage'));
+const Wtr = lazy(() => import('./screens/WorkTermReport'));
+const RiskCalculator = lazy(() => import('./screens/RiskCalculatorScreen'));
+const Countdown = lazy(() => import('./screens/Countdown'));
+const Projects = lazy(() => import('./screens/Projects'));
+const Funny = lazy(() => import('./screens/RandomSounds'));
+
 export const screens: ScreenMap = {
-  home: <Homepage />,
-  wtr: <WorkTermReport />,
-  'risk-calculator': <RiskCalculatorScreen />,
+  home: <Home />,
+  wtr: <Wtr />,
+  'risk-calculator': <RiskCalculator />,
   countdown: <Countdown />,
+  funny: <Funny />,
   projects: <Projects />,
-  funny: <RandomSounds />,
 };
 
 export const routes: RouteElement[] = [
