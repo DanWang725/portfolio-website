@@ -9,6 +9,17 @@ import { BattleStatus } from '../types/battles';
 import { useEffect, useState } from 'react';
 import useSaveableBattles from '../battles/useSaveableBattles';
 import { useNavigate, useParams } from 'react-router-dom';
+import { Line } from 'react-chartjs-2';
+import {
+  Chart as ChartJS,
+  LinearScale,
+  LineElement,
+  PointElement,
+  Title,
+  CategoryScale,
+} from 'chart.js';
+
+ChartJS.register(LineElement, PointElement, LinearScale, Title, CategoryScale);
 
 const RiskBattle: React.FC = () => {
   const { result } = useParams();
@@ -41,6 +52,44 @@ const RiskBattle: React.FC = () => {
     );
   };
 
+  const getChartData = () => {
+    const data = {
+      labels: ['0', ...rounds.map((_, i) => (i + 1).toString())],
+      datasets: [
+        {
+          label: 'Attacker Troops',
+          data: rounds.reduce<number[]>(
+            (prev, cur) => {
+              if (prev.length === 0) {
+                return [attacker.initialTroops - cur.attackerLosses];
+              }
+              return [...prev, prev[prev.length - 1] - cur.attackerLosses];
+            },
+            [attacker.initialTroops],
+          ),
+          borderColor: 'rgba(255, 99, 132, 1)',
+          cubicInterpolationMode: 'monotone',
+        },
+        {
+          label: 'Defender Troops',
+          data: rounds.reduce<number[]>(
+            (prev, cur) => {
+              if (prev.length === 0) {
+                return [defender.initialTroops - cur.defenderLosses];
+              }
+              return [...prev, prev[prev.length - 1] - cur.defenderLosses];
+            },
+            [defender.initialTroops],
+          ),
+          borderColor: 'rgba(54, 162, 235, 1)',
+          cubicInterpolationMode: 'monotone',
+        },
+      ],
+    };
+    console.log(data);
+    return data;
+  };
+
   useEffect(() => {
     if (result) {
       console.log('result', result);
@@ -63,6 +112,39 @@ const RiskBattle: React.FC = () => {
       {battleStatus == BattleStatus.NotStarted && (
         <BattleSetup handleStart={handleStart} />
       )}
+      {battleStatus !== BattleStatus.Ongoing &&
+        battleStatus !== BattleStatus.NotStarted && (
+          <Box
+            sx={{ textAlign: 'center' }}
+            className="battle-results-container"
+          >
+            <Typography>
+              {battleStatus === BattleStatus.AttackerWins
+                ? 'Attacker Wins'
+                : 'Defender Wins'}
+            </Typography>
+            <Box>
+              <Button variant="contained" onClick={handleReset}>
+                Reset
+              </Button>
+              <Button onClick={copyGameToClipboard}>Share</Button>
+            </Box>
+            <Typography>Stuff</Typography>
+            {/* <Line data={getChartData()} className="troop-chart"></Line> */}
+            {/* <Box
+              display="flex"
+              flexDirection="row"
+              justifyContent={'space-around'}
+            >
+              <Box width={'100%'}>
+                <DiceStatistics diceStats={attacker?.diceStats ?? []} />
+              </Box>
+              <Box width={'100%'}>
+                <DiceStatistics diceStats={defender?.diceStats ?? []} />
+              </Box>
+            </Box> */}
+          </Box>
+        )}
       {battleStatus !== BattleStatus.NotStarted && (
         <Grid2 container mt="1rem" spacing={2}>
           <BattleTracker
@@ -82,34 +164,6 @@ const RiskBattle: React.FC = () => {
           <RoundList rounds={rounds} />
         </Grid2>
       )}
-      {battleStatus !== BattleStatus.Ongoing &&
-        battleStatus !== BattleStatus.NotStarted && (
-          <>
-            <Typography>
-              {battleStatus === BattleStatus.AttackerWins
-                ? 'Attacker Wins'
-                : 'Defender Wins'}
-            </Typography>
-            <Box>
-              <Button variant="contained" onClick={handleReset}>
-                Reset
-              </Button>
-              <Button onClick={copyGameToClipboard}>Share</Button>
-            </Box>
-            {/* <Box
-              display="flex"
-              flexDirection="row"
-              justifyContent={'space-around'}
-            >
-              <Box width={'100%'}>
-                <DiceStatistics diceStats={attacker?.diceStats ?? []} />
-              </Box>
-              <Box width={'100%'}>
-                <DiceStatistics diceStats={defender?.diceStats ?? []} />
-              </Box>
-            </Box> */}
-          </>
-        )}
     </>
   );
 };

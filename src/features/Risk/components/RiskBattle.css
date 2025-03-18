@@ -39,6 +39,21 @@
   }
 }
 
+@keyframes expandDropdown {
+  0% {
+    max-height: 0;
+  }
+  100% {
+    max-height: 50rem;
+  }
+}
+
+.battle-results-container {
+  height: 100%;
+  overflow: clip;
+  animation: expandDropdown 1s cubic-bezier(0.7, 0.08, 0.36, 0.93);
+}
+
 .troop-display-icon {
   animation: existing 0.5s forwards;
   overflow: hidden;
@@ -73,4 +88,9 @@
 
 .round-dice-unused {
   color: grey;
+}
+
+.troop-chart {
+  background-color: gray;
+  color: aqua;
 }
