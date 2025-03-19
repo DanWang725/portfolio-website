@@ -40,7 +40,8 @@ const RoundList: React.FC<RoundListProps> = ({ rounds }) => {
         sx={{
           height: { xs: 'auto', md: '50vh' },
           width: '100%',
-          overflow: { xs: 'visible', md: 'scroll' },
+          overflowY: { xs: 'visible', md: 'scroll' },
+          overflowX: 'hidden',
         }}
       >
         {rounds.map((round, index) => {
