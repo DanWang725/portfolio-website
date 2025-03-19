@@ -3,6 +3,7 @@ import { PerformanceContext } from './contexts/PerformanceProvider';
 import ParticleWrapper from '../features/ParticleBackground/ParticleWrapper';
 import { Navbar } from './navbar/Navbar';
 import { Container } from '@mui/material';
+import Loading from './screens/Loading';
 
 const Layout: React.FC<{ children: ReactNode }> = ({ children }) => {
   const { isLowPerformance } = useContext(PerformanceContext);
@@ -10,9 +11,9 @@ const Layout: React.FC<{ children: ReactNode }> = ({ children }) => {
     <>
       {!isLowPerformance && <ParticleWrapper />}
       <Navbar />
-      <Suspense fallback={<div>Loading...</div>}>
-        <Container sx={{ mt: '80px' }}>{children}</Container>
-      </Suspense>
+      <Container sx={{ mt: '80px' }}>
+        <Suspense fallback={<Loading />}>{children}</Suspense>
+      </Container>
     </>
   );
 };
