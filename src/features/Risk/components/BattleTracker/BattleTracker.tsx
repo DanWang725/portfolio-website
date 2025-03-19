@@ -103,7 +103,7 @@ const BattleTracker: React.FC<BattleTrackerProps> = ({
             <Button
               variant="outlined"
               color="error"
-              disabled={isAutoBattling}
+              disabled={isAutoBattling || rounds.length === 0}
               onClick={() => {
                 endBattle();
               }}
