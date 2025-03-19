@@ -1,6 +1,8 @@
 import { Route, Routes } from 'react-router-dom';
 import { screens, routes } from './routes';
 import { RouteElement } from '../types/routes';
+import { Suspense } from 'react';
+import Loading from './screens/Loading';
 
 function assembleRoutes(options: RouteElement[]) {
   return options.map((route, index) => (
@@ -16,7 +18,9 @@ function assembleRoutes(options: RouteElement[]) {
           })}
       {...(route?.screen === undefined
         ? {}
-        : { element: screens[route.screen] })}
+        : {
+            Component: screens[route.screen],
+          })}
     />
   ));
 }
