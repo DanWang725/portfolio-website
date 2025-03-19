@@ -5,3 +5,8 @@ export interface IPlayerData {
   initialTroops: number;
   troops: number;
 }
+
+export enum Player {
+  Attacker = 'attacker',
+  Defender = 'defender',
+}

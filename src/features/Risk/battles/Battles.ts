@@ -31,10 +31,10 @@ export class Battle {
 
   private updateStatus(): string {
     if (!this.attacker.canBattle()) {
-      return BattleStatus.DefenderWins;
+      return BattleStatus.Ended;
     }
     if (!this.defender.canBattle()) {
-      return BattleStatus.AttackerWins;
+      return BattleStatus.Ended;
     }
     return BattleStatus.Ongoing;
   }

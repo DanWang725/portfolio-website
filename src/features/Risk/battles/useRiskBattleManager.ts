@@ -134,16 +134,14 @@ const useRiskBattleManager = () => {
     let curBattleStatus = battleStatus;
     let curRounds = [];
     for (let i = 0; i < numRounds; i++) {
-      if (curBattleStatus !== BattleStatus.Ongoing) return;
+      if (curBattleStatus !== BattleStatus.Ongoing) break;
       const { newAttackerData, newDefenderData, roundResult } = playSingleRound(
         attackerData,
         defenderData,
       );
 
-      if (newAttackerData.troops === 0) {
-        curBattleStatus = BattleStatus.DefenderWins;
-      } else if (newDefenderData.troops === 0) {
-        curBattleStatus = BattleStatus.AttackerWins;
+      if (newAttackerData.troops === 0 || newDefenderData.troops === 0) {
+        curBattleStatus = BattleStatus.Ended;
       }
       curRounds.push(roundResult);
       attackerData = newAttackerData;
@@ -177,13 +175,7 @@ const useRiskBattleManager = () => {
 
   const end = () => {
     if (battleStatus !== BattleStatus.Ongoing) return;
-    const attackerLosses = attacker.initialTroops - attacker.troops;
-    const defenderLosses = defender.initialTroops - defender.troops;
-    const result =
-      attackerLosses > defenderLosses
-        ? BattleStatus.AttackerWins
-        : BattleStatus.DefenderWins;
-    setBattleStatus(result);
+    setBattleStatus(BattleStatus.Ended);
   };
 
   const reset = () => {

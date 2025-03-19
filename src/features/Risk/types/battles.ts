@@ -1,6 +1,17 @@
+import { Player } from './players';
+
 export enum BattleStatus {
   NotStarted = 'notStarted',
   Ongoing = 'ongoing',
-  AttackerWins = 'attackerWins',
-  DefenderWins = 'defenderWins',
+  Ended = 'ended',
+}
+
+export enum BattleResult {
+  Minor = 'minor',
+  Major = 'major',
+  Overwhelming = 'overwhelming',
+}
+export interface BattleOutcome {
+  winner: Player;
+  result: BattleResult;
 }
