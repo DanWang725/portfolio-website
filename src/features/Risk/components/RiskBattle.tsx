@@ -18,6 +18,8 @@ import {
   Title,
   CategoryScale,
 } from 'chart.js';
+import toast from 'react-hot-toast';
+import ResultBanner from './Results/ResultBanner';
 
 ChartJS.register(LineElement, PointElement, LinearScale, Title, CategoryScale);
 
@@ -47,6 +49,7 @@ const RiskBattle: React.FC = () => {
   const { getEncodedString, loadBattle } = useSaveableBattles(battleManager);
 
   const copyGameToClipboard = () => {
+    toast.success('Copied to clipboard');
     navigator.clipboard.writeText(
       `${window.location.href}/${getEncodedString()}`,
     );
@@ -114,37 +117,15 @@ const RiskBattle: React.FC = () => {
       )}
       {battleStatus !== BattleStatus.Ongoing &&
         battleStatus !== BattleStatus.NotStarted && (
-          <Box
-            sx={{ textAlign: 'center' }}
-            className="battle-results-container"
-          >
-            <Typography>
-              {battleStatus === BattleStatus.AttackerWins
-                ? 'Attacker Wins'
-                : 'Defender Wins'}
-            </Typography>
-            <Box>
-              <Button variant="contained" onClick={handleReset}>
-                Reset
-              </Button>
-              <Button onClick={copyGameToClipboard}>Share</Button>
-            </Box>
-            <Typography>Stuff</Typography>
-            {/* <Line data={getChartData()} className="troop-chart"></Line> */}
-            {/* <Box
-              display="flex"
-              flexDirection="row"
-              justifyContent={'space-around'}
-            >
-              <Box width={'100%'}>
-                <DiceStatistics diceStats={attacker?.diceStats ?? []} />
-              </Box>
-              <Box width={'100%'}>
-                <DiceStatistics diceStats={defender?.diceStats ?? []} />
-              </Box>
-            </Box> */}
-          </Box>
+          <ResultBanner
+            battleStatus={battleStatus}
+            actions={{ handleReset, copyGameToClipboard }}
+            rounds={rounds}
+            attacker={attacker}
+            defender={defender}
+          />
         )}
+
       {battleStatus !== BattleStatus.NotStarted && (
         <Grid2 container mt="1rem" spacing={2}>
           <BattleTracker
