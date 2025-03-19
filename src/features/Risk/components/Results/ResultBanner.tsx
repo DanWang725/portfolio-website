@@ -36,17 +36,28 @@ const ResultBanner: React.FC<ResultBannerProps> = ({
   const { handleReset, copyGameToClipboard } = actions;
   const battleOutcome = calculateBattleOutcome(attacker, defender);
   return (
-    <Box className="battle-results-container" padding={2}>
-      <Typography variant="h4">
-        {PlayerLabelMap[battleOutcome.winner]}{' '}
-        {BattleResultMap[battleOutcome.result]} Victory
-      </Typography>
+    <Box
+      className="battle-results-container"
+      padding={2}
+      display="flex"
+      justifyContent="space-between"
+    >
       <Box>
-        <Button variant="contained" onClick={handleReset}>
-          Reset
-        </Button>
-        <Button onClick={copyGameToClipboard}>
+        <Typography variant="h4">
+          {PlayerLabelMap[battleOutcome.winner]}{' '}
+          {BattleResultMap[battleOutcome.result]} Victory
+        </Typography>
+      </Box>
+      <Box display="flex" flexDirection="column" gap={2} alignItems="flex-end">
+        <Button onClick={copyGameToClipboard} sx={{ width: '6rem' }}>
           <Link /> Share
+        </Button>
+        <Button
+          variant="contained"
+          onClick={handleReset}
+          sx={{ width: '10rem' }}
+        >
+          New Battle
         </Button>
       </Box>
     </Box>
