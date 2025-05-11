@@ -47,12 +47,14 @@ export enum ContentType {
   TEXT = 'text',
 }
 export interface ImageContent {
+  /** Image content for the article, requires src and alt properties */
   type: ContentType.IMAGE;
   src: string;
   alt: string;
 }
 
 export interface TextContent {
+  /** Text content for the article, requires text property */
   type: ContentType.TEXT;
   text: string;
 }
