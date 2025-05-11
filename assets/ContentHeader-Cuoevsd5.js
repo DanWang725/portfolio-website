@@ -1,0 +1,1 @@
+import{j as t,B as s,T as e}from"./index-BtDqWspV.js";import{D as x}from"./Divider-CDqkQ0at.js";const n=({children:r})=>t.jsxs(s,{sx:{width:"100%",textAlign:"center"},children:[t.jsx(e,{variant:"h2",sx:{textAlign:"start"},children:r}),t.jsx(x,{})]});export{n as C};
