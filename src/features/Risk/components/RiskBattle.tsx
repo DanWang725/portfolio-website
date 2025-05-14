@@ -9,19 +9,9 @@ import { BattleStatus } from '../types/battles';
 import { useEffect, useState } from 'react';
 import useSaveableBattles from '../battles/useSaveableBattles';
 import { useNavigate, useParams } from 'react-router-dom';
-import { Line } from 'react-chartjs-2';
-import {
-  Chart as ChartJS,
-  LinearScale,
-  LineElement,
-  PointElement,
-  Title,
-  CategoryScale,
-} from 'chart.js';
 import toast from 'react-hot-toast';
 import ResultBanner from './Results/ResultBanner';
-
-ChartJS.register(LineElement, PointElement, LinearScale, Title, CategoryScale);
+import { VictoryChart, VictoryLine } from 'victory';
 
 const RiskBattle: React.FC = () => {
   const { result } = useParams();
@@ -55,44 +45,6 @@ const RiskBattle: React.FC = () => {
     );
   };
 
-  const getChartData = () => {
-    const data = {
-      labels: ['0', ...rounds.map((_, i) => (i + 1).toString())],
-      datasets: [
-        {
-          label: 'Attacker Troops',
-          data: rounds.reduce<number[]>(
-            (prev, cur) => {
-              if (prev.length === 0) {
-                return [attacker.initialTroops - cur.attackerLosses];
-              }
-              return [...prev, prev[prev.length - 1] - cur.attackerLosses];
-            },
-            [attacker.initialTroops],
-          ),
-          borderColor: 'rgba(255, 99, 132, 1)',
-          cubicInterpolationMode: 'monotone',
-        },
-        {
-          label: 'Defender Troops',
-          data: rounds.reduce<number[]>(
-            (prev, cur) => {
-              if (prev.length === 0) {
-                return [defender.initialTroops - cur.defenderLosses];
-              }
-              return [...prev, prev[prev.length - 1] - cur.defenderLosses];
-            },
-            [defender.initialTroops],
-          ),
-          borderColor: 'rgba(54, 162, 235, 1)',
-          cubicInterpolationMode: 'monotone',
-        },
-      ],
-    };
-    console.log(data);
-    return data;
-  };
-
   useEffect(() => {
     if (result) {
       console.log('result', result);
@@ -115,16 +67,15 @@ const RiskBattle: React.FC = () => {
       {battleStatus == BattleStatus.NotStarted && (
         <BattleSetup handleStart={handleStart} />
       )}
-      {battleStatus !== BattleStatus.Ongoing &&
-        battleStatus !== BattleStatus.NotStarted && (
-          <ResultBanner
-            battleStatus={battleStatus}
-            actions={{ handleReset, copyGameToClipboard }}
-            rounds={rounds}
-            attacker={attacker}
-            defender={defender}
-          />
-        )}
+      {battleStatus == BattleStatus.Ended && (
+        <ResultBanner
+          battleStatus={battleStatus}
+          actions={{ handleReset, copyGameToClipboard }}
+          rounds={rounds}
+          attacker={attacker}
+          defender={defender}
+        />
+      )}
 
       {battleStatus !== BattleStatus.NotStarted && (
         <Grid2 container mt="1rem" spacing={2}>
