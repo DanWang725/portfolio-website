@@ -1,25 +1,24 @@
-import { Outlet } from 'react-router-dom';
-import Homepage from './screens/Homepage';
-import WorkTermReport from './screens/WorkTermReport';
-import RiskCalculatorScreen from './screens/RiskCalculatorScreen';
-import RiskCalculatorResult from './screens/RiskCalculatorResult';
-import { RouteElement } from '../types/RouteSegment';
-import Countdown from './screens/Countdown';
-import RandomSounds from './screens/RandomSounds';
-import Projects from './screens/Projects';
+import { RouteElement } from '../types/routes';
+import { lazy } from 'react';
 
 type ScreenMap = {
-  [key: string]: JSX.Element;
+  [key: string]: React.LazyExoticComponent<React.FC<{}>>;
 };
 
+const Home = lazy(() => import('./screens/Homepage'));
+const Wtr = lazy(() => import('./screens/WorkTermReport'));
+const RiskCalculator = lazy(() => import('./screens/RiskCalculatorScreen'));
+const Countdown = lazy(() => import('./screens/Countdown'));
+const Projects = lazy(() => import('./screens/Projects'));
+const Funny = lazy(() => import('./screens/RandomSounds'));
+
 export const screens: ScreenMap = {
-  home: <Homepage />,
-  wtr: <WorkTermReport />,
-  'risk-calculator': <RiskCalculatorScreen />,
-  'risk-result': <RiskCalculatorResult />,
-  countdown: <Countdown />,
-  projects: <Projects />,
-  funny: <RandomSounds />,
+  home: Home,
+  wtr: Wtr,
+  'risk-calculator': RiskCalculator,
+  countdown: Countdown,
+  funny: Funny,
+  projects: Projects,
 };
 
 export const routes: RouteElement[] = [
@@ -34,32 +33,36 @@ export const routes: RouteElement[] = [
     name: 'Reports',
     children: [{ screen: 'wtr', path: ':reportId' }],
   },
+
   {
-    screen: 'countdown',
-    path: '/countdown',
-    name: 'New Years!!!!',
-  },
-  {
-    screen: 'funny',
-    path: '/funny',
-    name: 'Funny',
-  },
-  {
-    screen: 'projects',
-    path: '/proj',
+    path: '/projects',
     name: 'Projects',
     children: [
+      {
+        screen: 'projects',
+        index: true,
+      },
       {
         screen: 'risk-calculator',
         path: 'risk-calculator',
         name: 'Risk Calculator',
         children: [
           {
-            screen: 'risk-result',
+            screen: 'risk-calculator',
             path: ':result',
             name: 'result of risk battle',
           },
         ],
+      },
+      {
+        screen: 'countdown',
+        path: 'countdown',
+        name: 'New Years!!!!',
+      },
+      {
+        screen: 'funny',
+        path: 'funny',
+        name: 'Funny',
       },
     ],
   },

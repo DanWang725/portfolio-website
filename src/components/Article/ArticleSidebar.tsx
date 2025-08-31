@@ -97,8 +97,8 @@ const ArticleSidebar: React.FC<ArticleSidebarProps> = ({
         height="100%"
         sx={{
           backgroundColor: 'rgba(30, 30, 30, 0.8)',
-          borderColor: 'cyan',
-          borderRight: '2px solid',
+          borderColor: 'rgba(0, 255, 255, 0.7 )',
+          borderRight: '1px solid rgba(0, 255, 255, 0.8 )',
           transition: 'width 0.5s',
           position: 'relative',
         }}
