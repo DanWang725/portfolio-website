@@ -1,0 +1,102 @@
+.loss-count-visible {
+  opacity: 1;
+}
+
+.loss-count-hidden {
+  opacity: 1;
+  color: red;
+  animation: fadeOut 3s forwards;
+}
+
+@keyframes fadeOut {
+  100% {
+    opacity: 0;
+  }
+  70% {
+    opacity: 0.8;
+    color: maroon;
+  }
+  0% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes existing {
+  0% {
+    color: rosybrown;
+  }
+  100% {
+    color: white;
+  }
+}
+
+@keyframes expandDropdown {
+  0% {
+    max-height: 0;
+  }
+  100% {
+    max-height: 50rem;
+  }
+}
+
+.battle-results-container {
+  height: 100%;
+  overflow: clip;
+  animation: expandDropdown 1s cubic-bezier(0.7, 0.08, 0.36, 0.93);
+}
+
+.troop-display-icon {
+  animation: existing 0.5s forwards;
+  overflow: hidden;
+  height: 2rem;
+  width: 2rem;
+}
+
+.troop-display-count {
+  margin-right: 0.5rem;
+}
+
+.troop-lost {
+  fill: gray;
+}
+
+.width-transition {
+  transition: width 0.5s;
+}
+
+.round-dice {
+  height: 2rem;
+  width: 2rem;
+}
+@media screen and (max-width: 600px) {
+  .round-dice {
+    height: 1.3rem;
+    width: 1.3rem;
+  }
+}
+
+.round-dice-win {
+  color: white;
+}
+
+.round-dice-lose {
+  color: red;
+}
+
+.round-dice-unused {
+  color: grey;
+}
+
+.troop-chart {
+  background-color: gray;
+  color: aqua;
+}
