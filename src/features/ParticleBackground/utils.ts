@@ -1,4 +1,6 @@
-export const getParticleOptions = () => ({
+import { IOptions, RecursivePartial } from '@tsparticles/engine';
+
+export const getParticleOptions = (): RecursivePartial<IOptions> => ({
   background: {
     color: {
       value: '#000022',
@@ -30,7 +32,7 @@ export const getParticleOptions = () => ({
     },
     links: {
       color: '#ADF5FF',
-      distance: 135,
+      distance: 160,
       enable: true,
       opacity: 0.5,
       width: 1,
@@ -40,7 +42,7 @@ export const getParticleOptions = () => ({
       },
     },
     move: {
-      direction: 'down',
+      direction: 'none',
       enable: true,
       outModes: {
         default: 'out',
@@ -52,9 +54,14 @@ export const getParticleOptions = () => ({
     number: {
       density: {
         enable: true,
-        area: 800,
+        width: 1920,
+        height: 1080,
       },
-      value: 70,
+      limit: {
+        mode: 'delete',
+        value: 0,
+      },
+      value: 100,
     },
     opacity: {
       value: 0.5,
