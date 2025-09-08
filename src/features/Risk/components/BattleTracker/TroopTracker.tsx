@@ -21,7 +21,7 @@ const TroopTracker: React.FC<TroopTrackerProps> = ({
 
   useEffect(() => {
     if (roundTroopLosses && roundTroopLosses > 0) {
-      console.log(roundTroopLosses);
+      // console.log(roundTroopLosses);
       setIsDifferenceVisible(true);
       setLastShownLosses(roundTroopLosses);
 

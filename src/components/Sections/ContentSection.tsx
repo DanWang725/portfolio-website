@@ -15,7 +15,7 @@ export interface ContentSectionProps {
  */
 const ContentSection: React.FC<ContentSectionProps> = ({
   children,
-  styleOverrides,
+  styleOverrides = {},
 }) => {
   return (
     <Box

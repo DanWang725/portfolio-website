@@ -1,8 +1,8 @@
 import { Box, Divider, Typography } from '@mui/material';
-import { ArticleSection, SectionType } from './types/article';
-import CustomArticleEntry from './CustomArticleSection';
+import { ArticleEntry as ArticleEntryTypes } from './types/article';
+import ArticleEntryContent from './ArticleEntryContent';
 interface ArticleEntryProps {
-  article: ArticleSection;
+  articleEntry: ArticleEntryTypes;
   isFirstArticle?: boolean;
   options?: {
     columns: 'single' | 'multi';
@@ -10,18 +10,21 @@ interface ArticleEntryProps {
 }
 
 const ArticleEntry: React.FC<ArticleEntryProps> = ({
-  article,
+  articleEntry,
   isFirstArticle = false,
   options = { columns: 'single' },
 }) => {
-  const { title } = article;
+  const title = articleEntry?.title ?? null;
+
+  const hasSections = Array.isArray(articleEntry.content);
+
   return (
     <Box
       className={`std-container article-entry ${
         isFirstArticle ? 'first-article' : ''
       } `}
-      key={article.id}
-      id={article.id}
+      key={articleEntry.id}
+      id={articleEntry.id}
     >
       {title && (
         <Typography variant="h4" my={'1rem'}>
@@ -29,15 +32,15 @@ const ArticleEntry: React.FC<ArticleEntryProps> = ({
         </Typography>
       )}
       <Divider variant="middle" />
-      {article.type === SectionType.CUSTOM ? (
-        <CustomArticleEntry article={article} />
+      {hasSections ? (
+        <ArticleEntryContent article={articleEntry} />
       ) : (
         <Typography
           variant="body1"
           gutterBottom
           style={{ wordWrap: 'break-word', whiteSpace: 'pre-wrap' }}
         >
-          {article.content}
+          {articleEntry.content as string}
         </Typography>
       )}
     </Box>
