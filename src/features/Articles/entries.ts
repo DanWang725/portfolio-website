@@ -268,6 +268,7 @@ const workTermReport5: Article = {
   id: 'wtr-s25',
   title: 'Work Term Report S25',
   description: 'Remaining 4 months for my placement at Camis.',
+  image: cover4,
   entries: [
     {
       title: 'Introduction',
