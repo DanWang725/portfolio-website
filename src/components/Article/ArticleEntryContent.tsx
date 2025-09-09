@@ -21,12 +21,17 @@ const NonRootSections: React.FC<NonRootSectionsProps> = ({ content }) => {
   switch (content.type) {
     case ContentType.IMAGE:
       return (
-        <Box
-          width="100%"
-          sx={{ ...content.sx }}
-          component="img"
-          src={content.value.src}
-        />
+        <>
+          <Box
+            width="100%"
+            sx={{ ...content.sx }}
+            component="img"
+            src={content.value.src}
+          />
+          {content.value?.caption && (
+            <Typography variant="caption">{content.value.caption}</Typography>
+          )}
+        </>
       );
     case ContentType.TEXT:
       return (
@@ -36,7 +41,14 @@ const NonRootSections: React.FC<NonRootSectionsProps> = ({ content }) => {
       );
     case ContentType.LIST:
       return (
-        <List sx={{ listStyleType: 'disc', ...content.sx }}>
+        <List
+          sx={{
+            listStyleType: 'disc',
+            listStylePosition: 'inside',
+            paddingX: 0,
+            ...content.sx,
+          }}
+        >
           {content.value.map((item: string, index: number) => (
             <ListItem key={index} sx={{ display: 'list-item' }}>
               {item}

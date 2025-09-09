@@ -59,6 +59,7 @@ export interface ImageContent extends BaseContent {
   value: {
     src: string;
     alt: string;
+    caption?: string;
   };
 }
 
