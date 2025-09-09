@@ -103,6 +103,7 @@ const ArticleSidebar: React.FC<ArticleSidebarProps> = ({
           borderRight: '1px solid rgba(0, 255, 255, 0.8 )',
           transition: 'width 0.5s',
           position: 'relative',
+          zIndex: 1,
         }}
         onMouseEnter={() => setIsExpanded(true)}
         onMouseLeave={() => setIsExpanded(false)}
