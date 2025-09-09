@@ -26,9 +26,5 @@ function assembleRoutes(options: RouteElement[]) {
 }
 
 export const AppRoutes = () => {
-  return (
-    <div>
-      <Routes>{assembleRoutes(routes)}</Routes>
-    </div>
-  );
+  return <Routes>{assembleRoutes(routes)}</Routes>;
 };
