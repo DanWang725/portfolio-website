@@ -2,6 +2,9 @@ import cover1 from './images/coverWTR1.png';
 import cover2 from './images/ncrVoyix.jpg';
 import cover4 from './images/camis_inc__logo.jpg';
 import shoppingCart from './images/screenshot-shoppingcart.png';
+import coopsCamis from './images/1755781208858.jpg';
+import orderPage from './images/9f29df89b5015f883257a7d924fe21d4a4228c97.png';
+import accessibilityContent from './images/formsite-order-review.jpg';
 import { Article, ContentType } from '../../components/Article/types/article';
 
 const workTermReport1: Article = {
@@ -264,14 +267,23 @@ const workTermReport4: Article = {
 const workTermReport5: Article = {
   id: 'wtr-s25',
   title: 'Work Term Report S25',
-  description: 'Remaining 4-month placement at Camis.',
+  description: 'Remaining 4 months for my placement at Camis.',
   entries: [
     {
       title: 'Introduction',
       titleShort: 'Intro',
       id: 'introduction',
-      content:
-        'This is my 5th and final work term report in my co-op! This report will cover some of my achievements from my remaining 4 months in my 8-month full-stack software developer co-op at Camis. I will first cover some changes that happened in the company. Then I will describe my goals I set for this term. Finally, I will cover the job description along with the highlights from my work.',
+      content: [
+        {
+          type: ContentType.IMAGE,
+          value: { src: coopsCamis, alt: 'Co-ops picture' },
+        },
+        {
+          type: ContentType.TEXT,
+          value:
+            "This is my 5th and final work term report in my co-op! (That's me 5th to the left in the image above) This report will cover some of my achievements from my remaining 4 months in my 8-month full-stack software developer co-op at Camis. I will first cover some changes that happened in the company. Then I will describe my goals I set for this term. Finally, I will cover the job description along with the highlights from my work.",
+        },
+      ],
     },
     {
       id: 'about',
@@ -326,7 +338,11 @@ const workTermReport5: Article = {
         {
           size: { md: 6, sm: 12 },
           type: ContentType.IMAGE,
-          value: { src: shoppingCart, alt: 'Old shopping cart page' },
+          value: {
+            src: shoppingCart,
+            alt: 'Old shopping cart page',
+            caption: 'The old shopping cart design. It definitely looks older.',
+          },
         },
         {
           type: ContentType.TEXT,
@@ -345,6 +361,13 @@ const workTermReport5: Article = {
         'My co-op journey has been amazing, and it feels like a proper ending at Camis. I have learned so much about working in the software industry, and also about myself and where I might want to work in the future. Hint: it might be Camis! Looking back, I’d say my journey worked out great. NCR was a great first employer which allowed me to quickly jumpstart my learning. I felt the actual work environment was a bit too much for me in a permanent position, but I was their fast pace allowed me to build my fundamental skills and also try different things. Working at Pacwill showed me a different job as more of a contractor, where I was building software from the ground up. I was able to make use of the courses that I had just taken, to create a full systems design. Finally, working at Camis gave me a chance to refine the skills I wanted, as well as introducing me to a company which I enjoyed working at.',
     },
     {
+      id: 'acknowledgements',
+      title: 'Acknowledgements',
+      titleShort: 'Ackngnts',
+      content:
+        'I would like to thank my team Web Squad for being so friendly and awesome to work with throughout this term. Specifically, Julian was always eager to help me with any struggles I had. Jonathan was very supportive of me in my work and gave me helpful advice as my team lead. I also want to thank Denise for listening to my stream of design questions, and for taking in my proposal for a page redesign.',
+    },
+    {
       title: 'Screen Reader',
       titleShort: 'SR',
       id: 'screen-reader',
@@ -353,13 +376,13 @@ const workTermReport5: Article = {
           size: 12,
           type: ContentType.TEXT,
           value:
-            'From my exploration of screen readers when carrying out the cart redesign page, I ended up developing some procedure to do attempt to improve the user experience.',
+            'From my exploration of screen readers when carrying out the cart redesign page, I identified some areas in web accessibility which were problematic.',
         },
         {
           size: 12,
           type: ContentType.TEXT,
           value:
-            'How does a screen reader work? If you’ve ever used the keyboard to navigate a webpage, it’s an extension of functionality to that. You must install external software, such as NonVisual Desktop Access (NVDA). These basically have an invisible selector which goes through the dom (Document Object Model). There’s a ton of different commands, but I usually find myself using the arrow keys to move down each readable text. However, it’s also common to use tab to hop between the interactable content.',
+            "Before diving in, it's helpful to ask, how does a screen reader work? If you’ve ever used the keyboard to navigate a webpage, it’s an extension of functionality to that. You must install external software, such as NonVisual Desktop Access (NVDA). The have an invisible selector which goes through the DOM (Document Object Model), speaking out what they are and their content. There’s a ton of different navigation shortcuts, but I usually find myself using the arrow keys to move down each readable text. However, it’s also common to use tab to hop between the interactable content.",
         },
         {
           size: 12,
@@ -384,7 +407,7 @@ const workTermReport5: Article = {
         {
           type: ContentType.SUBHEADER,
           id: 'ease-of-use',
-          title: 'Ease of use',
+          title: 'Ease of Use',
           titleShort: 'Ease',
           value: [
             {
@@ -394,7 +417,6 @@ const workTermReport5: Article = {
                 'It’s important to first state that screen readers can skip the current text block they are reading. Users aren’t forced to listen to the entire block of text before moving onto the next one. So, as long as the user knows the block of text, they can easily skip past it if they don’t need to listen through it. However, if there’s a ton of small text blocks, the user must still skip past each one. This is more common than you think. If you’ve needed to split up text into different spans to do localizations, include an icon in the middle or arrange overflow in a specific way, this situation can occur. Using a screen reader, each time you press the down key, you hear:',
             },
             {
-              size: 12,
               type: ContentType.LIST,
               value: [
                 '"Fees"',
@@ -407,9 +429,135 @@ const workTermReport5: Article = {
               ],
             },
             {
-              size: 12,
               type: ContentType.TEXT,
               value: 'This is annoying.',
+            },
+            {
+              type: ContentType.TEXT,
+              value:
+                'Instead of adding individual aria labels to each span, a better solution would be to mark the entire container as invisible to the screen reader. Then, you can provide a visually hidden text block before which has the same content.',
+            },
+            {
+              type: ContentType.TEXT,
+              value:
+                '“2 Adventure pass for two dollars, at one dollar per unit”',
+            },
+            {
+              type: ContentType.TEXT,
+              value:
+                'Much better. Users now can listen to the entire complete text without needing navigate, and it’s easier to skip if they don’t want to listen to it.',
+            },
+          ],
+        },
+        {
+          type: ContentType.SUBHEADER,
+          id: 'content-arrangement',
+          title: 'Visual vs Audible Content Arrangement',
+          titleShort: 'Content',
+          value: [
+            {
+              size: { md: 8, sm: 12 },
+              type: ContentType.TEXT,
+              value:
+                'This can be a problem when our content is arranged in specific ways. Take for example transaction items in an order summary. You might arrange each item in the following way:',
+            },
+            {
+              size: { md: 4, sm: 12 },
+              type: ContentType.IMAGE,
+              value: {
+                src: accessibilityContent,
+                alt: 'Example Order Summary',
+                caption: 'Example Order Summary',
+              },
+            },
+            {
+              type: ContentType.TEXT,
+              value:
+                'However, when you hear it in this order, it makes less sense. Visual arrangement takes priority over the grammatical clarity within this text, which hinders the experience for screen readers. They don’t even benefit from the visuals!',
+            },
+            {
+              type: ContentType.TEXT,
+              value:
+                'Addressing this issue can be done with the same methods to address ease of use issues. After hiding the visual text and replacing it, the aria label should contain a grammatically correct version of the content. As a warning, the extent of the fix shouldn’t be too far from the original text. Screen readers serve as a tool to read out the website’s content. Too much deviation from the actual content can be jarring for the user, so striking a balance with changes is a must.',
+            },
+          ],
+        },
+        {
+          type: ContentType.SUBHEADER,
+          id: 'context',
+          title: 'Context',
+          titleShort: 'Context',
+          value: [
+            {
+              type: ContentType.TEXT,
+              value:
+                'Finally, providing context is important to allow users who jump around to orient themselves. For example, when pressing tab, the next button in sequence can bring the user to a completely different section of the page. While the button label might be enough to understand, such as” proceed to checkout”, other situations are not as intuitive. Any page which presents a list of items each with their own buttons can be harder to navigate. An example of this would be a “previous purchases” page, where each purchase has its own set of buttons.',
+            },
+            {
+              type: ContentType.TEXT,
+              value:
+                'For example, if you had this page, tabbing through you would hear',
+            },
+            {
+              size: { md: 6, sm: 5 },
+              type: ContentType.LIST,
+              value: [
+                'Button Buy it again',
+                'Button Buy it again',
+                'Button Buy it again',
+                '...',
+              ],
+            },
+            {
+              type: ContentType.IMAGE,
+              size: { md: 6, sm: 7 },
+              value: {
+                src: orderPage,
+                alt: 'Example amazon order page, each ordered item has multiple buttons',
+                caption:
+                  'The orders page in amazon. Notice how each order has associated buttons.',
+              },
+            },
+            {
+              type: ContentType.TEXT,
+              value:
+                'Jumping between buttons requires a bit more context. Like what is "It" if you just heard it?',
+            },
+            {
+              type: ContentType.TEXT,
+              value:
+                'Screen readers can address this issue with special HTML components which state their description when entered. For example, when tabbing to a button in the 2nd purchase, it would say',
+            },
+            {
+              type: ContentType.TEXT,
+              value: '“Purchase 2 button buy it again',
+            },
+            {
+              type: ContentType.TEXT,
+              value:
+                'Behind the scenes, whenever the selector enters a region, the reader automatically reads out the description for the region (if one exists) before continuing. In our case, the description of the region is “Purchase 2”. The trick is that if the user navigates to various elements within this region, it won’t repeat itself. This allows the user to know that they’re still selecting elements within that one place. Once the user leaves, it’ll let the user know they’ve left the region.',
+            },
+            {
+              type: ContentType.TEXT,
+              value:
+                'From my experimentation, I’ve found two html elements which this strategy can be applied to:',
+            },
+            {
+              type: ContentType.LIST,
+              value: [
+                'Region elements work for pre-defined large content blocks which more context is necessary but shouldn’t be repeated once they enter it. For example, if you have a block with the main content, you can surround it in a region with an ‘aria-label’',
+                'Lists also work if you have a large list, where each list item has enough elements to require differentiation. In this case, you can specify an ‘aria-label’ on the list element.',
+              ],
+            },
+            {
+              type: ContentType.TEXT,
+              value:
+                'This method is pretty like input boxes and labels, where input boxes will speak the label, they’re associated with. However, using regions is less common, and requires more effort to implement. It requires active awareness to which situations it can be best applied. It’s important to keep this description short. Otherwise, you force the user to wait through the prefix descriptions before the actual content.',
+            },
+            {
+              type: ContentType.TEXT,
+              value:
+                'I have found this solution to be cleaner compared to other tricks I used to address this issue. Prior to my discovery of this solution, I would pass down an identifier to the list item. There, each button would include this identifier in its aria label. This requires a lot more coupling with the addition of a relatively redundant variable, and it doesn’t require the list item to exactly know the user facing identifier, as the list container would provide the information instead.',
             },
           ],
         },
