@@ -2,11 +2,8 @@ import { Box, Grid2, List, ListItem, Typography } from '@mui/material';
 import {
   ContentType,
   ArticleEntry,
-  ImageContent,
   Sections,
-  TextContent,
   RootSections,
-  SubheaderContent,
 } from './types/article';
 
 interface CustomArticleSectionProps {
@@ -50,7 +47,7 @@ const NonRootSections: React.FC<NonRootSectionsProps> = ({ content }) => {
           }}
         >
           {content.value.map((item: string, index: number) => (
-            <ListItem key={index} sx={{ display: 'list-item' }}>
+            <ListItem key={`list-${index}`} sx={{ display: 'list-item' }}>
               {item}
             </ListItem>
           ))}
@@ -65,7 +62,7 @@ const ArticleEntryContent: React.FC<CustomArticleSectionProps> = ({
   article,
 }) => {
   return (
-    <Grid2 container spacing={article.gap ?? 2}>
+    <Grid2 container spacing={article.gap ?? 2} key={article.id}>
       {(article.content as RootSections[]).map((section, index) => {
         if (section.type === ContentType.SUBHEADER) {
           return (
@@ -74,14 +71,21 @@ const ArticleEntryContent: React.FC<CustomArticleSectionProps> = ({
                 variant="h5"
                 sx={{ marginTop: '1rem', marginBottom: '0.5rem' }}
                 id={section.id}
-                key={section.id}
+                key={`subheader-${section.id}`}
               >
                 {section.title}
               </Typography>
-              <Grid2 container spacing={2}>
-                {section.value.map((content, index) => {
+              <Grid2
+                container
+                spacing={2}
+                key={`subheader-container-${section.id}`}
+              >
+                {section.value.map((content, index2) => {
                   return (
-                    <Grid2 key={index} size={content?.size ?? 12}>
+                    <Grid2
+                      key={`${section.id}-${index2}`}
+                      size={content?.size ?? 12}
+                    >
                       <NonRootSections content={content} />
                     </Grid2>
                   );
@@ -91,7 +95,7 @@ const ArticleEntryContent: React.FC<CustomArticleSectionProps> = ({
           );
         }
         return (
-          <Grid2 key={index} size={section?.size ?? 12}>
+          <Grid2 key={`${article.id}-${index}`} size={section?.size ?? 12}>
             <NonRootSections content={section} />
           </Grid2>
         );
