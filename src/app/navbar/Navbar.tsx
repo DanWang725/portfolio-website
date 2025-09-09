@@ -18,7 +18,6 @@ export const Navbar = () => {
   const { isLowPerformance, setIsLowPerformance } =
     useContext(PerformanceContext);
   const navigate = useNavigate();
-  console.log(location);
 
   return (
     <AppBar
@@ -48,10 +47,11 @@ export const Navbar = () => {
           ))}
         </List>
         <Button onClick={() => setIsLowPerformance((val) => !val)}>
-          <Typography>
-            {isLowPerformance ? 'Enable Background' : 'Disable Background'}
-          </Typography>
-          <Tooltip title="This will disable the background animation" />
+          <Tooltip title="This will disable the background animation">
+            <Typography>
+              {isLowPerformance ? 'Enable Background' : 'Disable Background'}
+            </Typography>
+          </Tooltip>
         </Button>
       </Toolbar>
     </AppBar>

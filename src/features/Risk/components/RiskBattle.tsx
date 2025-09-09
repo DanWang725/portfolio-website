@@ -47,7 +47,7 @@ const RiskBattle: React.FC = () => {
 
   useEffect(() => {
     if (result) {
-      console.log('result', result);
+      // console.log('result', result);
       loadBattle(result);
     }
   }, [result]);

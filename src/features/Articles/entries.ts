@@ -1,30 +1,31 @@
 import cover1 from './images/coverWTR1.png';
 import cover2 from './images/ncrVoyix.jpg';
 import cover4 from './images/camis_inc__logo.jpg';
-import { Article, SectionType } from '../../components/Article/types/article';
+import shoppingCart from './images/screenshot-shoppingcart.png';
+import coopsCamis from './images/1755781208858.jpg';
+import orderPage from './images/9f29df89b5015f883257a7d924fe21d4a4228c97.png';
+import accessibilityContent from './images/formsite-order-review.jpg';
+import { Article, ContentType } from '../../components/Article/types/article';
 
 const workTermReport1: Article = {
   title: 'Work Term Report S23',
   id: 'wtr-s23',
   image: cover1,
-  description: 'Report for the first half of my NCR placement',
+  description: 'First 4 months for my placement at NCR.',
   entries: [
     {
-      type: SectionType.TEXT,
       title: 'Introduction',
       titleShort: 'Intro',
       id: 'introduction',
       content: `This is my first work term report. It will describe my experiences for the first 4 months of my 8-month work term at NCR. As my first work placement in the field, it has been an amazing experience and awesome learning opportunity. I will give some background on NCR, as well as talk about a few of my goals for this term. I will also describe my overall experience working there. `,
     },
     {
-      type: SectionType.TEXT,
       title: 'About NCR',
       titleShort: 'About',
       id: 'about',
       content: `National Cash Register, or NCR is an American software and technology company that provides a variety of services. These include retail, banking and IT software services, Point of Sale (POS) for commercial retail services, and ATMs. An interesting piece of information is that they had invented the cash register. The Waterloo office which I was working at focused on their interactive teller software solution as well as other software-based services. `,
     },
     {
-      type: SectionType.TEXT,
       title: 'Goals',
       id: 'goals',
       content: `Prior to my placement, I had set a few simple goals since going into my position. I did not have a clear idea of what to expect, it was a better idea to start the job with an open mind and make goals from there. Thus, after my first day, I aimed to learn all the react topics. I also set a goal to collaborate with my team. Finally, I aimed to learn more about the design aspect of front end. 
@@ -39,7 +40,6 @@ const workTermReport1: Article = {
       `,
     },
     {
-      type: SectionType.TEXT,
       title: 'Job Description',
       titleShort: 'Job',
       id: 'job-description',
@@ -54,7 +54,6 @@ const workTermReport1: Article = {
     The skills that I found were most important to my job were the web development languages (HTML, CSS), React, and JavaScript. Development tools including git and Jira were used everywhere, as well as agile development cycles. Surprisingly, when I started out, I only had some knowledge of web dev languages and git. The rest of the skills I picked up on the job. In addition, during my job I also learned about project architecture, design planning, development cycles and sprints, web accessibility, web security, software development in general, along with a lot of definitions. `,
     },
     {
-      type: SectionType.TEXT,
       title: 'Conclusion',
       titleShort: 'Conc.',
       id: 'conclusion',
@@ -69,10 +68,9 @@ const workTermReport2: Article = {
   title: 'Work Term Report F23',
   id: 'wtr-f23',
   image: cover2,
-  description: 'Report for the second half of my NCR placement.',
+  description: 'Remaining 4 months for my placement at NCR.',
   entries: [
     {
-      type: SectionType.TEXT,
       title: 'Introduction',
       titleShort: 'Intro',
       id: 'introduction',
@@ -80,14 +78,12 @@ const workTermReport2: Article = {
         'This work term report goes over the second half of my 8-month work term as a front-end developer at NCR. My experience working throughout this half continued to be amazing, and I had many challenging but fulfilling tasks I worked on. Within this report, I will talk about the major company split that occurred. I will also describe the goals I set for this term and how my work experience has changed from the first half, including some notable features I worked on. I will also talk about how I got a patent from the company hackathon.',
     },
     {
-      type: SectionType.TEXT,
       title: 'Company Split',
       titleShort: 'Split',
       id: 'company-split',
       content: `Around October, NCR officially split into two new companies: NCR Atleos and NCR Voyix. These new companies would specialize in NCR's two main products or services: Atleos covering the ATM businesses and Voyix covering digital commerce. These two companies were independent of each other. Voyix was the legal successor to NCR Corporation, while Atleos was spun off. Currently, Voyix offers a variety of services focused on software in three main areas: retail, restaurants, and digital banking.`,
     },
     {
-      type: SectionType.TEXT,
       title: 'Goals',
       id: 'goals',
       content: `Moving into the second half of this work term, I had a decision to make: whether to try taking on some back-end development tasks or to dedicate my learning to front-end development. I felt that I had learned a good deal about front-end development at the halfway point to consider trying something new. Switching to a full-stack developer role, I could also learn about the back-end codebase. In the end, I decided that the best choice would be to continue focusing on front-end development. Since this was my first co-op work term, I still had two chances to try out the backend. This was my chance to learn and experience in-depth front-end development. To go along with this decision, I created the following goals to suit my decision:
@@ -102,7 +98,6 @@ const workTermReport2: Article = {
       `,
     },
     {
-      type: SectionType.TEXT,
       title: 'Job Description',
       titleShort: 'Job',
       id: 'job-description',
@@ -118,7 +113,6 @@ const workTermReport2: Article = {
       `,
     },
     {
-      type: SectionType.TEXT,
       title: 'NCR Hackathon',
       titleShort: 'Hack',
       id: 'hackathon',
@@ -128,14 +122,12 @@ const workTermReport2: Article = {
       `,
     },
     {
-      type: SectionType.TEXT,
       title: 'Conclusion',
       titleShort: 'Conc.',
       id: 'conclusion',
       content: `Choosing NCR as my first co-op placement has been an amazing opportunity. I have grown so much in experience and knowledge since I started my placement. It feels unreal that, by the end, I was being assigned work equal to that of a regular developer. I was presented with challenging but fulfilling work that greatly benefited my learning experience. Reflecting on all the things I have done, it is amazing how much I was able to do during my term and the impact my code has on the current application. Aside from the work I did, the people I worked with and interacted with were outstanding. Everyone at NCR was very helpful and would usually take some time to assist me with my issue when I asked. My team was always looking out for my success and was supportive in many ways, making this experience unforgettable. I hope that I can come back to work at NCR in the future!`,
     },
     {
-      type: SectionType.TEXT,
       title: 'Acknowledgements',
       titleShort: 'Thanks',
       id: 'acknowledgements',
@@ -150,24 +142,21 @@ const workTermReport3: Article = {
 
   image:
     'https://media.licdn.com/dms/image/C4D0BAQEU7NLxVO2miA/company-logo_200_200/0/1631353160813?e=2147483647&v=beta&t=27HCzvz9KhfZJq38rGFwp0LLZAg_9w3kHYT9K1yh560',
-  description: 'Work term report of my S24 placement at Pacwill Environmental',
+  description: '4-month placement at Pacwill Environmental.',
   entries: [
     {
-      type: SectionType.TEXT,
       title: 'Introduction',
       titleShort: 'Intro',
       id: 'introduction',
       content: `      Welcome to my third co-op work term report! This placement was for 3 months from May to July. Within this report, I will describe the company I worked for, the software I would be developing, and some of the goals I set myself. I will also explain the many areas in which my knowledge and experience have grown as a software developer.`,
     },
     {
-      type: SectionType.TEXT,
       title: 'Pacwill Environmental',
       titleShort: 'Pacwill',
       id: 'pacwill',
       content: `  I worked with Pacwill Environmental, a small company based in Stoney Creek, Ontario. They provide a range of environmental monitoring equipment to customers across Canada, including various types of analyzers. One of their biggest clients is Environment Canada, which uses the equipment to monitor various sites and for scientific purposes. Although Pacwill's specialty was only equipment supply and maintenance, they were interested in creating a new software solution to assist with monitoring equipment in the field.`,
     },
     {
-      type: SectionType.TEXT,
       title: 'Goals',
       id: 'goals',
       content: `      For this placement, I had set many small goals for myself. Creating a new software solution from scratch presents many challenges and goals to overcome. I wanted to ensure my work met a certain quality standard, so my goals involved the development of skills to achieve that. I'll describe a few goals that I found were essential to my success in this project.
@@ -182,7 +171,6 @@ const workTermReport3: Article = {
 `,
     },
     {
-      type: SectionType.TEXT,
       title: 'Job Description',
       titleShort: 'Job',
       id: 'job-desc',
@@ -198,7 +186,6 @@ const workTermReport3: Article = {
 `,
     },
     {
-      type: SectionType.TEXT,
       title: 'Conclusion',
       titleShort: 'Conc.',
       id: 'conclusion',
@@ -211,24 +198,21 @@ const workTermReport4: Article = {
   id: 'wtr-w25',
   title: 'Work Term Report W25',
   image: cover4,
-  description: 'Covers the first half of my eight-month placement at Camis!',
+  description: 'First 4-month for my placement at Camis.',
   entries: [
     {
-      type: SectionType.TEXT,
       title: 'Introduction',
       titleShort: 'Intro',
       id: 'introduction',
       content: `    This is my 4th work term report in my co-op journey! This report covers the first 4 months of my eight-month placement at Camis as a full-stack software developer. I will first introduce the company along with some interesting facts about it. Then I will describe my goals for going into the job. Finally, I will cover the job description along with the highlights from my work.`,
     },
     {
-      type: SectionType.TEXT,
       title: 'About Camis',
       titleShort: 'About',
       id: 'camis',
       content: `    Camis provides park reservation and management solutions for various national and provincial parks in America. They were founded in Guelph in the 1980s to address the issues with campsite reservations that their founder, Doug Hall, noticed during his stays. Their management solutions have evolved. Starting out with a DOS-based park management system with an in-house call centre, they then moved to a full software system, Everest Blue, and later on Everest Silver in 2006/2009 respectively. Their latest software solution, Camis-5, was first released in 2017. Their largest clients include Parks Canada, Parks Ontario, and Washington parks. Their most recent client to have their release was Mississippi Parks, which I had a hand in helping.Camis provides park reservation and management solutions for various national and provincial parks in America. They were founded in Guelph in the 1980s to address the issues with campsite reservations that their founder, Doug Hall, noticed during his stays. Their management solutions have evolved. Starting out with a DOS-based park management system with an in-house call centre, they then moved to a full software system, Everest Blue, and later on Everest Silver in 2006/2009 respectively. Their latest software solution, Camis-5, was first released in 2017. Their largest clients include Parks Canada, Parks Ontario, and Washington parks. Their most recent client to have their release was Mississippi Parks, which I had a hand in helping.`,
     },
     {
-      type: SectionType.TEXT,
       title: 'Goals',
       titleShort: 'Goals',
       id: 'goals',
@@ -246,7 +230,6 @@ const workTermReport4: Article = {
 `,
     },
     {
-      type: SectionType.TEXT,
       title: 'Job Description',
       titleShort: 'Job',
       id: 'job-description',
@@ -266,7 +249,6 @@ const workTermReport4: Article = {
 `,
     },
     {
-      type: SectionType.TEXT,
       title: 'Conclusion',
       titleShort: 'Conc.',
       id: 'conclusion',
@@ -274,11 +256,313 @@ const workTermReport4: Article = {
         '    My first four months at Camis were a very fulfilling and rewarding experience. I feel like I have contributed an impressive amount of work towards the application. I look forward to working on bigger stories by the end of this work term!',
     },
     {
-      type: SectionType.TEXT,
       title: 'Acknowledgements',
       titleShort: 'Thanks',
       id: 'acknowledgements',
       content: `    I would like to thank my team, the Web Squad, for helping me and supporting me while I became acclimated to the codebase and for supporting me on increasingly challenging tickets. I would like to thank Julian, Nihar, and Amninder in particular for answering all of my questions and giving me advice.`,
+    },
+  ],
+};
+
+const workTermReport5: Article = {
+  id: 'wtr-s25',
+  title: 'Work Term Report S25',
+  description: 'Remaining 4 months for my placement at Camis.',
+  image: cover4,
+  entries: [
+    {
+      title: 'Introduction',
+      titleShort: 'Intro',
+      id: 'introduction',
+      content: [
+        {
+          type: ContentType.IMAGE,
+          value: { src: coopsCamis, alt: 'Co-ops picture' },
+        },
+        {
+          type: ContentType.TEXT,
+          value:
+            "This is my 5th and final work term report in my co-op! (That's me 5th to the left in the image above) This report will cover some of my achievements from my remaining 4 months in my 8-month full-stack software developer co-op at Camis. I will first cover some changes that happened in the company. Then I will describe my goals I set for this term. Finally, I will cover the job description along with the highlights from my work.",
+        },
+      ],
+    },
+    {
+      id: 'about',
+      content:
+        'During this term, Camis celebrated reaching release version 100 of Camis 5. This was the main reservation software platform we provided and was what I was working on. ',
+      title: 'About',
+      titleShort: 'About',
+    },
+    {
+      id: 'goals',
+      title: 'Goals',
+      titleShort: 'Goals',
+      content: [
+        {
+          type: ContentType.TEXT,
+          value:
+            'Continuing into the second half of this work term, I developed several new goals to develop other skills to round out my developer skills in the workplace. Through my previous work terms, I have alluded to trying to develop backend skills. At this point, I have had several opportunities working in this area and have concluded that front-end suits me better for now.',
+        },
+        {
+          type: ContentType.TEXT,
+          value:
+            'My first goal was to get more experience working with web accessibility. This included visual accessibility such as text spacing and colour contrast as well as screen readers and keyboard navigation. While I have interacted with it as part of various tickets, I felt that I needed a ticket that had a larger emphasis on reaching the accessibility standards. Learning how to develop web components to adhere to/assist those with accessibility needs is essential to becoming a web developer, which heavily intersects with UI design. Luckily, I completed this goal quickly by undertaking a big webpage redesign, which I’ll explain more in the later section. When it came to accessibility in that ticket, the visual elements such as colours and text spacing were mainly handled by the webpages’ theming automatically. Nonetheless, knowing the tools to check this was important for awareness. In addition, I played around a lot with screen readers to understand how they work and how to improve their experience. This is something I have talked about in a later section.',
+        },
+        {
+          type: ContentType.TEXT,
+          value:
+            'Next, I created a goal to take more responsibility for my code and be more confident in my work. When I started my co-op sequence, I maintained a low confidence in my code intentionally to get validation in my work. This was essential to learning the ropes and ensuring I was following proper procedures and design as a software developer. In addition, since I wasn’t knowledgeable about the codebase, my team would usually respond to me with deeper inquiries about my work. After many valuable work placements, this became less relevant as I gained experience in front-end and the codebase.I tried taking on tickets that would push me out of my comfort zone, such as critical tickets requiring communication updates, as well as more complex tickets in general. When it came to situations in which I was stuck on which code design to use, I weighed the benefits of each to come to a resolution with myself. As a result, I gradually shed some habits.',
+        },
+        {
+          type: ContentType.TEXT,
+          value:
+            'Finally, for my last goal for this term, I wanted to work on my independent work skills as a developer. During one of my one-on-ones with Jonathan, my team lead, he suggested improving my self-direction. For example, I could try choosing items to work on myself rather than expecting someone else to choose. This desire relates to the previous goal—now that I have gained enough developer-specific skills, I want to prioritize general goals that will benefit a full-time placement. To carry this goal out, I needed to know if my current knowledge of the task was enough to complete a ticket. With all my skills, I was more than ready to achieve this goal. It gave me a chance to reflect on how far I have come in my co-op terms. Being able to quickly identify what the ticket required was enough to show that I had awareness of many common code designs. If there was something in the ticket that I wasn’t so sure how to code, I knew which team member to reach out to.',
+        },
+      ],
+    },
+    {
+      id: 'job-description',
+      title: 'Job Description',
+      titleShort: 'Job',
+      content: [
+        {
+          type: ContentType.TEXT,
+          value:
+            'I continued working with the web squad as a full-stack developer. This squad was responsible for developing Camis’ web application for park reservations. Our team followed an agile methodology with two-week sprints. My role was focused mainly on the front end, since I had proven my proficiency in Angular, but I was treated as a full-stack developer with independence to contribute across the Camis5 platform. I had some opportunities to try working on other areas, including the server-side code, .NET applications, and node package updating. This co-op gave me a chance to work on many fulfilling tasks throughout and gain invaluable experience.',
+        },
+        {
+          size: { md: 6, sm: 12 },
+          type: ContentType.TEXT,
+          value:
+            'The highlight of this work term was Shopping Cart Redesign. I singlehandedly implemented the entire feature, ensuring that it was the highest quality. It required a lot of the skills I had obtained from my co-op work terms. When starting out, I made sure to discuss any questions or issues with functionality I saw before starting and made sure to show it for review. It also was a challenge for my code design skills, which I had built up through the work terms, as it was a good chance to fully redo an old component. I used many organizational skills to ensure I had a strong outline and plan, as well as to make sure there were no logical bugs in the code. Finally, I used my test development skills to write up all of the unit and E2E tests for this feature. I am proud to say that my work featured in the seasonal company all hands!',
+        },
+        {
+          size: { md: 6, sm: 12 },
+          type: ContentType.IMAGE,
+          value: {
+            src: shoppingCart,
+            alt: 'Old shopping cart page',
+            caption: 'The old shopping cart design. It definitely looks older.',
+          },
+        },
+        {
+          type: ContentType.TEXT,
+          value:
+            'I also have some honourable mentions for notable things I did. I helped fix a critical bug vulnerability, which was a bit nerve-racking the first time doing it. I also played a part in the Angular versioning upgrades, where I looked through many changelogs to ensure there were no vulnerabilities. Finally, I suggested a new feature design for one of the flows in our application. I created Jira tickets as well as a whole design on Figma along with my proposal.',
+        },
+        { type: ContentType.TEXT, value: '' },
+        { type: ContentType.TEXT, value: '' },
+      ],
+    },
+    {
+      id: 'conclusion',
+      title: 'Conclusion',
+      titleShort: 'Conc',
+      content:
+        'My co-op journey has been amazing, and it feels like a proper ending at Camis. I have learned so much about working in the software industry, and also about myself and where I might want to work in the future. Hint: it might be Camis! Looking back, I’d say my journey worked out great. NCR was a great first employer which allowed me to quickly jumpstart my learning. I felt the actual work environment was a bit too much for me in a permanent position, but I was their fast pace allowed me to build my fundamental skills and also try different things. Working at Pacwill showed me a different job as more of a contractor, where I was building software from the ground up. I was able to make use of the courses that I had just taken, to create a full systems design. Finally, working at Camis gave me a chance to refine the skills I wanted, as well as introducing me to a company which I enjoyed working at.',
+    },
+    {
+      id: 'acknowledgements',
+      title: 'Acknowledgements',
+      titleShort: 'Ackngnts',
+      content:
+        'I would like to thank my team Web Squad for being so friendly and awesome to work with throughout this term. Specifically, Julian was always eager to help me with any struggles I had. Jonathan was very supportive of me in my work and gave me helpful advice as my team lead. I also want to thank Denise for listening to my stream of design questions, and for taking in my proposal for a page redesign.',
+    },
+    {
+      title: 'Screen Reader',
+      titleShort: 'SR',
+      id: 'screen-reader',
+      content: [
+        {
+          size: 12,
+          type: ContentType.TEXT,
+          value:
+            'From my exploration of screen readers when carrying out the cart redesign page, I identified some areas in web accessibility which were problematic.',
+        },
+        {
+          size: 12,
+          type: ContentType.TEXT,
+          value:
+            "Before diving in, it's helpful to ask, how does a screen reader work? If you’ve ever used the keyboard to navigate a webpage, it’s an extension of functionality to that. You must install external software, such as NonVisual Desktop Access (NVDA). The have an invisible selector which goes through the DOM (Document Object Model), speaking out what they are and their content. There’s a ton of different navigation shortcuts, but I usually find myself using the arrow keys to move down each readable text. However, it’s also common to use tab to hop between the interactable content.",
+        },
+        {
+          size: 12,
+          type: ContentType.TEXT,
+          value:
+            'When developing on the webpage, there’s a few things which can hinder the experience.',
+        },
+        {
+          size: 12,
+          type: ContentType.LIST,
+          value: [
+            'Ease of Use',
+            'Visual vs Audible Content Arrangement',
+            'Context',
+          ],
+        },
+        {
+          size: 12,
+          type: ContentType.TEXT,
+          value: 'I will go through each of these below.',
+        },
+        {
+          type: ContentType.SUBHEADER,
+          id: 'ease-of-use',
+          title: 'Ease of Use',
+          titleShort: 'Ease',
+          value: [
+            {
+              size: 12,
+              type: ContentType.TEXT,
+              value:
+                'It’s important to first state that screen readers can skip the current text block they are reading. Users aren’t forced to listen to the entire block of text before moving onto the next one. So, as long as the user knows the block of text, they can easily skip past it if they don’t need to listen through it. However, if there’s a ton of small text blocks, the user must still skip past each one. This is more common than you think. If you’ve needed to split up text into different spans to do localizations, include an icon in the middle or arrange overflow in a specific way, this situation can occur. Using a screen reader, each time you press the down key, you hear:',
+            },
+            {
+              type: ContentType.LIST,
+              value: [
+                '"Fees"',
+                '"2 Adventure Pass"',
+                '"for"',
+                '"two dollars"',
+                '"at"',
+                '"one dollar"',
+                '"per unit"',
+              ],
+            },
+            {
+              type: ContentType.TEXT,
+              value: 'This is annoying.',
+            },
+            {
+              type: ContentType.TEXT,
+              value:
+                'Instead of adding individual aria labels to each span, a better solution would be to mark the entire container as invisible to the screen reader. Then, you can provide a visually hidden text block before which has the same content.',
+            },
+            {
+              type: ContentType.TEXT,
+              value:
+                '“2 Adventure pass for two dollars, at one dollar per unit”',
+            },
+            {
+              type: ContentType.TEXT,
+              value:
+                'Much better. Users now can listen to the entire complete text without needing navigate, and it’s easier to skip if they don’t want to listen to it.',
+            },
+          ],
+        },
+        {
+          type: ContentType.SUBHEADER,
+          id: 'content-arrangement',
+          title: 'Visual vs Audible Content Arrangement',
+          titleShort: 'Content',
+          value: [
+            {
+              size: { md: 8, sm: 12 },
+              type: ContentType.TEXT,
+              value:
+                'This can be a problem when our content is arranged in specific ways. Take for example transaction items in an order summary. You might arrange each item in the following way:',
+            },
+            {
+              size: { md: 4, sm: 12 },
+              type: ContentType.IMAGE,
+              value: {
+                src: accessibilityContent,
+                alt: 'Example Order Summary',
+                caption: 'Example Order Summary',
+              },
+            },
+            {
+              type: ContentType.TEXT,
+              value:
+                'However, when you hear it in this order, it makes less sense. Visual arrangement takes priority over the grammatical clarity within this text, which hinders the experience for screen readers. They don’t even benefit from the visuals!',
+            },
+            {
+              type: ContentType.TEXT,
+              value:
+                'Addressing this issue can be done with the same methods to address ease of use issues. After hiding the visual text and replacing it, the aria label should contain a grammatically correct version of the content. As a warning, the extent of the fix shouldn’t be too far from the original text. Screen readers serve as a tool to read out the website’s content. Too much deviation from the actual content can be jarring for the user, so striking a balance with changes is a must.',
+            },
+          ],
+        },
+        {
+          type: ContentType.SUBHEADER,
+          id: 'context',
+          title: 'Context',
+          titleShort: 'Context',
+          value: [
+            {
+              type: ContentType.TEXT,
+              value:
+                'Finally, providing context is important to allow users who jump around to orient themselves. For example, when pressing tab, the next button in sequence can bring the user to a completely different section of the page. While the button label might be enough to understand, such as” proceed to checkout”, other situations are not as intuitive. Any page which presents a list of items each with their own buttons can be harder to navigate. An example of this would be a “previous purchases” page, where each purchase has its own set of buttons.',
+            },
+            {
+              type: ContentType.TEXT,
+              value:
+                'For example, if you had this page, tabbing through you would hear',
+            },
+            {
+              size: { md: 6, sm: 5 },
+              type: ContentType.LIST,
+              value: [
+                'Button Buy it again',
+                'Button Buy it again',
+                'Button Buy it again',
+                '...',
+              ],
+            },
+            {
+              type: ContentType.IMAGE,
+              size: { md: 6, sm: 7 },
+              value: {
+                src: orderPage,
+                alt: 'Example amazon order page, each ordered item has multiple buttons',
+                caption:
+                  'The orders page in amazon. Notice how each order has associated buttons.',
+              },
+            },
+            {
+              type: ContentType.TEXT,
+              value:
+                'Jumping between buttons requires a bit more context. Like what is "It" if you just heard it?',
+            },
+            {
+              type: ContentType.TEXT,
+              value:
+                'Screen readers can address this issue with special HTML components which state their description when entered. For example, when tabbing to a button in the 2nd purchase, it would say',
+            },
+            {
+              type: ContentType.TEXT,
+              value: '“Purchase 2 button buy it again',
+            },
+            {
+              type: ContentType.TEXT,
+              value:
+                'Behind the scenes, whenever the selector enters a region, the reader automatically reads out the description for the region (if one exists) before continuing. In our case, the description of the region is “Purchase 2”. The trick is that if the user navigates to various elements within this region, it won’t repeat itself. This allows the user to know that they’re still selecting elements within that one place. Once the user leaves, it’ll let the user know they’ve left the region.',
+            },
+            {
+              type: ContentType.TEXT,
+              value:
+                'From my experimentation, I’ve found two html elements which this strategy can be applied to:',
+            },
+            {
+              type: ContentType.LIST,
+              value: [
+                'Region elements work for pre-defined large content blocks which more context is necessary but shouldn’t be repeated once they enter it. For example, if you have a block with the main content, you can surround it in a region with an ‘aria-label’',
+                'Lists also work if you have a large list, where each list item has enough elements to require differentiation. In this case, you can specify an ‘aria-label’ on the list element.',
+              ],
+            },
+            {
+              type: ContentType.TEXT,
+              value:
+                'This method is pretty like input boxes and labels, where input boxes will speak the label, they’re associated with. However, using regions is less common, and requires more effort to implement. It requires active awareness to which situations it can be best applied. It’s important to keep this description short. Otherwise, you force the user to wait through the prefix descriptions before the actual content.',
+            },
+            {
+              type: ContentType.TEXT,
+              value:
+                'I have found this solution to be cleaner compared to other tricks I used to address this issue. Prior to my discovery of this solution, I would pass down an identifier to the list item. There, each button would include this identifier in its aria label. This requires a lot more coupling with the addition of a relatively redundant variable, and it doesn’t require the list item to exactly know the user facing identifier, as the list container would provide the information instead.',
+            },
+          ],
+        },
+      ],
     },
   ],
 };
@@ -288,4 +572,5 @@ export const workTermReportEntries = [
   workTermReport2,
   workTermReport3,
   workTermReport4,
+  workTermReport5,
 ];

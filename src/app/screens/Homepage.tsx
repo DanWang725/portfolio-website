@@ -10,7 +10,7 @@ import {
   Stack,
   Typography,
 } from '@mui/material';
-import ArticleList from '../../components/Article/ArticleList';
+import ArticleEntryList from '../../components/Article/ArticleEntryList';
 import { articleContent } from './utils';
 
 const Homepage: React.FC = () => {
@@ -66,7 +66,7 @@ const Homepage: React.FC = () => {
       <ContentSection
         styleOverrides={{ display: 'flex', flexDirection: 'column', p: '1rem' }}
       >
-        <ArticleList entries={articleContent} />
+        <ArticleEntryList entries={articleContent} />
       </ContentSection>
     </>
   );

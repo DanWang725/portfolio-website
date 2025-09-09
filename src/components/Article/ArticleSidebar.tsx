@@ -1,6 +1,5 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 import { getHash, scrollToHash } from '../../utils/RouteHashUtils';
-import { ArticleSection } from './types/article';
 import {
   Box,
   Divider,
@@ -12,14 +11,15 @@ import {
 } from '@mui/material';
 import React, { useState } from 'react';
 import { ArrowBack } from '@mui/icons-material';
+import { ArticleEntry } from './types/article';
 
 interface ArticleSidebarProps {
-  entries: ArticleSection[];
+  entries: ArticleEntry[];
   handleBack: () => void;
 }
 
 interface ExpandTestProps {
-  entries: ArticleSection[];
+  entries: ArticleEntry[];
   handleBack: () => void;
   isExpanded: boolean;
   setIsExpanded: React.Dispatch<React.SetStateAction<boolean>>;
@@ -57,28 +57,30 @@ const ExpandingSidebar: React.FC<ExpandTestProps> = ({
         <ListItem>
           <Typography variant="caption">Contents</Typography>
         </ListItem>
-        {entries?.map(({ id, title, titleShort }) => (
-          <ListItemButton
-            key={id}
-            selected={getHash() === `#${id}`}
-            onClick={() => {
-              scrollToHash(id);
-              navigate(`${location.pathname}#${id}`);
-              setIsExpanded(false);
-            }}
-          >
-            <Typography
-              width={isExpanded ? '10rem' : SIDEBAR_WIDTH}
-              overflow="auto"
-              onScroll={() => {}}
-              textOverflow="ellipsis"
-              variant="body2"
-              sx={{ '-ms-overflow-style': 'none', 'scrollbar-width': 'none' }}
+        {entries
+          ?.filter((entry) => entry.id !== undefined)
+          ?.map(({ id, title, titleShort }) => (
+            <ListItemButton
+              key={id}
+              selected={getHash() === `#${id}`}
+              onClick={() => {
+                scrollToHash(id as string);
+                navigate(`${location.pathname}#${id}`);
+                setIsExpanded(false);
+              }}
             >
-              {isExpanded ? title : (titleShort ?? title)}
-            </Typography>
-          </ListItemButton>
-        ))}
+              <Typography
+                width={isExpanded ? '10rem' : SIDEBAR_WIDTH}
+                overflow="auto"
+                onScroll={() => {}}
+                textOverflow="ellipsis"
+                variant="body2"
+                sx={{ msOverflowStyle: 'none', scrollbarWidth: 'none' }}
+              >
+                {isExpanded ? title : (titleShort ?? title)}
+              </Typography>
+            </ListItemButton>
+          ))}
       </List>
     </Box>
   );
@@ -101,6 +103,7 @@ const ArticleSidebar: React.FC<ArticleSidebarProps> = ({
           borderRight: '1px solid rgba(0, 255, 255, 0.8 )',
           transition: 'width 0.5s',
           position: 'relative',
+          zIndex: 1,
         }}
         onMouseEnter={() => setIsExpanded(true)}
         onMouseLeave={() => setIsExpanded(false)}

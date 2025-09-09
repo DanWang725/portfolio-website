@@ -13,7 +13,6 @@ const NavButtonItem: React.FC<NavButtonItemProps> = ({
   navigate,
   pathname,
 }) => {
-  console.log(route);
   const isIndex = route?.index;
   const path = isIndex ? '/' : route.path;
   const isActive = isIndex ? path === pathname : pathname.startsWith(path);

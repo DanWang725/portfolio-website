@@ -1,61 +1,78 @@
 import { Breakpoint } from '@mui/material';
 import { SxProps, Theme } from '@mui/system';
 
-export enum SectionType {
-  TEXT = 'text',
-  CUSTOM = 'custom',
-}
-
 export interface Article {
   title: string;
   id: string;
   image?: string;
   description: string;
-  entries: ArticleSection[];
+  entries: ArticleEntry[];
 }
 
-/**
- * Represents a section of an article. Should have a title and an id.
- */
-interface BaseArticleSection {
-  title: string;
-  /** Will be displayed in the sidebar. Should be max 7 characters */
-  titleShort?: string;
-  id: string;
-}
-
-export interface TextSection extends BaseArticleSection {
-  content: string;
-  type: SectionType.TEXT;
-}
-
-export interface CustomArticleSection extends BaseArticleSection {
-  content: Sections[];
+interface BaseArticleEntry {
+  content: string | RootSections[];
   gap?: number;
-  type: SectionType.CUSTOM;
+  id?: string;
+  title?: string;
+  titleShort?: string;
 }
 
-export type ArticleSection = TextSection | CustomArticleSection;
+/** A article entry with a header included. Include a short title to have it appear in the sidebar */
+interface HeaderArticleEntry extends BaseArticleEntry {
+  content: string | RootSections[];
+  id: string;
+  title: string;
+  titleShort?: string;
+}
+
+export type ArticleEntry = BaseArticleEntry | HeaderArticleEntry;
 
 export interface ContentGrid {
-  size: number | { [key in Breakpoint]?: number };
+  size?: number | { [key in Breakpoint]?: number };
   sx?: SxProps<Theme>;
 }
 
 export enum ContentType {
   IMAGE = 'image',
   TEXT = 'text',
-}
-export interface ImageContent {
-  /** Image content for the article, requires src and alt properties */
-  type: ContentType.IMAGE;
-  src: string;
-  alt: string;
+  LIST = 'list',
+  SUBHEADER = 'subheader',
 }
 
-export interface TextContent {
+interface BaseContent {
+  /** Type of content, can be image, text or list */
+  type: ContentType;
+  value: any;
+}
+
+export interface SubheaderContent extends BaseContent {
+  /** Subheader content for some content, must contain some content */
+  type: ContentType.SUBHEADER;
+  value: Sections[];
+  id: string;
+  title: string;
+  titleShort?: string;
+}
+export interface ImageContent extends BaseContent {
+  /** Image content for the article, requires src and alt properties */
+  type: ContentType.IMAGE;
+  value: {
+    src: string;
+    alt: string;
+    caption?: string;
+  };
+}
+
+export interface TextContent extends BaseContent {
   /** Text content for the article, requires text property */
   type: ContentType.TEXT;
-  text: string;
+  value: string;
 }
-export type Sections = ContentGrid & (ImageContent | TextContent);
+
+export interface ListContent extends BaseContent {
+  /** List content for the article, requires items property */
+  type: ContentType.LIST;
+  value: string[];
+}
+export type Sections = ContentGrid & (ImageContent | TextContent | ListContent);
+export type RootSections = Sections | SubheaderContent;

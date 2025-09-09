@@ -1,6 +1,6 @@
 import { Box } from '@mui/material';
 import ContentSection from '../Sections/ContentSection';
-import ArticleList from './ArticleList';
+import ArticleEntryList from './ArticleEntryList';
 import ArticleSidebar from './ArticleSidebar';
 import { Article } from './types/article';
 
@@ -24,7 +24,7 @@ const ArticleLayout: React.FC<ArticleLayoutProps> = ({
           padding: '1rem',
         }}
       >
-        <ArticleList entries={article.entries} />
+        <ArticleEntryList entries={article.entries} />
       </Box>
     </ContentSection>
   );
