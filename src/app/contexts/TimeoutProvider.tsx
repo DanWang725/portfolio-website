@@ -1,5 +1,5 @@
 import { createContext, ReactNode, useRef } from 'react';
-class TimeoutManager {
+export class TimeoutManager {
   private timeoutIds: { [x: number]: number } = {};
 
   public constructor() {}
