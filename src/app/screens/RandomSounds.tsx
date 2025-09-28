@@ -1,7 +1,9 @@
+import { RandomSoundsContext } from '@app/contexts/SoundsProvider';
 import { TimeoutContext } from '@app/contexts/TimeoutProvider';
 import ContentSection from '@components/Sections/ContentSection';
+import ActiveSounds from '@features/SilenceInterruption/ActiveSounds';
 import TimerCountdown from '@features/Timers/TimerCountdown';
-import { Input, MenuItem, Select } from '@mui/material';
+import { Button, Input, MenuItem, Select } from '@mui/material';
 import { useContext, useEffect, useState } from 'react';
 
 const audioOptions = [
@@ -27,27 +29,28 @@ const audioOptions = [
 ];
 
 const RandomSounds: React.FC = () => {
-  const [nextTrigger, setNextTrigger] = useState<Date | undefined>();
+  const soundsProvider = useContext(RandomSoundsContext);
+  // const [nextTrigger, setNextTrigger] = useState<Date | undefined>();
   const [playInterval, setPlayInterval] = useState<number>(10000);
-  const [timeoutId, setTimeoutId] = useState<number | undefined>();
-  const [time, setTime] = useState(new Date());
+  // const [timeoutId, setTimeoutId] = useState<number | undefined>();
+  // const [time, setTime] = useState(new Date());
   const [selectedUrl, setSelectedUrl] = useState(audioOptions[1].value);
-  const timeoutManager = useContext(TimeoutContext);
+  // const timeoutManager = useContext(TimeoutContext);
 
-  useEffect(() => {
-    return () => {
-      //we need to clear the timeout id at cleanup
-      timeoutManager.clearAllTimeouts();
-    };
-  }, []);
+  // useEffect(() => {
+  //   return () => {
+  //     //we need to clear the timeout id at cleanup
+  //     timeoutManager.clearAllTimeouts();
+  //   };
+  // }, []);
 
-  const toggleSound = () => {
-    if (timeoutId) {
-      stop();
-    } else {
-      start();
-    }
-  };
+  // const toggleSound = () => {
+  //   if (timeoutId) {
+  //     stop();
+  //   } else {
+  //     start();
+  //   }
+  // };
 
   const updateInterval = (value: number) => {
     if (value < 0) {
@@ -56,29 +59,43 @@ const RandomSounds: React.FC = () => {
     setPlayInterval(value * 1000);
   };
 
-  const start = () => {
-    const randomInterval = Math.floor(Math.random() * playInterval);
-
-    setTimeoutId(timeoutManager.setTimeout(playSound, randomInterval));
-    setNextTrigger(new Date(Date.now() + randomInterval));
+  const onAddSound = () => {
+    soundsProvider.addSound(selectedUrl, playInterval);
   };
 
-  const stop = () => {
-    timeoutManager.clearTimeout(timeoutId ?? 0);
-    setTimeoutId(undefined);
-    setNextTrigger(undefined);
+  const toggleSoundPlayback = (soundId: number, pause: boolean) => {
+    pause
+      ? soundsProvider.pauseSound(soundId)
+      : soundsProvider.resumeSound(soundId);
   };
 
-  useEffect(() => {
-    const inte = setInterval(() => setTime(new Date()), 1);
-    return () => clearInterval(inte);
-  }, []);
-
-  const playSound = () => {
-    const audio = new Audio(selectedUrl);
-    audio.play();
-    start();
+  const handleRemoveSound = (soundId: number) => {
+    soundsProvider.removeSound(soundId);
   };
+
+  // const start = () => {
+  //   const randomInterval = Math.floor(Math.random() * playInterval);
+
+  //   setTimeoutId(timeoutManager.setTimeout(playSound, randomInterval));
+  //   setNextTrigger(new Date(Date.now() + randomInterval));
+  // };
+
+  // const stop = () => {
+  //   timeoutManager.clearTimeout(timeoutId ?? 0);
+  //   setTimeoutId(undefined);
+  //   setNextTrigger(undefined);
+  // };
+
+  // useEffect(() => {
+  //   const inte = setInterval(() => setTime(new Date()), 1);
+  //   return () => clearInterval(inte);
+  // }, []);
+
+  // const playSound = () => {
+  //   const audio = new Audio(selectedUrl);
+  //   audio.play();
+  //   start();
+  // };
 
   return (
     <ContentSection>
@@ -87,10 +104,7 @@ const RandomSounds: React.FC = () => {
         onChange={(e) => updateInterval(parseInt(e.target.value) ?? 0)}
         value={playInterval / 1000}
       ></Input>
-      {<button onClick={toggleSound}>{timeoutId ? 'stop' : 'start'}</button>}
-      {nextTrigger && (
-        <TimerCountdown target={nextTrigger} curTime={time} showMilliseconds />
-      )}
+
       <Select
         value={selectedUrl}
         onChange={(e) => setSelectedUrl(e.target.value)}
@@ -101,6 +115,13 @@ const RandomSounds: React.FC = () => {
           </MenuItem>
         ))}
       </Select>
+      <Button onClick={() => onAddSound()}>Add</Button>
+      {soundsProvider.loadedSounds.length}
+      <ActiveSounds
+        sounds={soundsProvider.loadedSounds}
+        handleRemoveSound={handleRemoveSound}
+        handleToggleSoundPlayback={toggleSoundPlayback}
+      ></ActiveSounds>
     </ContentSection>
   );
 };
