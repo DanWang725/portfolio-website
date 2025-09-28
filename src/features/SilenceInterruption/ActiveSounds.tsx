@@ -1,20 +1,14 @@
 import { TimeoutContext } from '@app/contexts/TimeoutProvider';
 import TimerCountdown from '@features/Timers/TimerCountdown';
-import {
-  Pause,
-  PlayArrow,
-  PlaylistRemove,
-  Remove,
-  X,
-} from '@mui/icons-material';
+import { Pause, PlayArrow, PlaylistRemove } from '@mui/icons-material';
 import { Box, IconButton } from '@mui/material';
 import { RandomSound } from '@type/Contexts';
 import { useContext, useEffect, useState } from 'react';
 
 export interface ActiveSoundsProps {
   sounds: RandomSound[];
-  handleRemoveSound: (soundId: number) => {};
-  handleToggleSoundPlayback: (soundId: number, pause: boolean) => {};
+  handleRemoveSound: (soundId: number) => void;
+  handleToggleSoundPlayback: (soundId: number, pause: boolean) => void;
 }
 
 const ActiveSounds: React.FC<ActiveSoundsProps> = ({
@@ -30,13 +24,13 @@ const ActiveSounds: React.FC<ActiveSoundsProps> = ({
   const timeoutProvider = useContext(TimeoutContext);
   return (
     <>
-      {sounds.length}
       {sounds.map((sound) => (
         <Box
-          key={sound.id}
+          key={`sound-${sound.id}`}
           display="flex"
           flexDirection="row"
           justifyContent={'space-between'}
+          sx={{ border: '1px solid' }}
         >
           <Box display="flex" flexDirection={'row'}>
             ID: {sound.id}
@@ -48,7 +42,8 @@ const ActiveSounds: React.FC<ActiveSoundsProps> = ({
             <TimerCountdown
               curTime={curTime}
               target={
-                timeoutProvider.getTriggerTime(sound.timeoutId) ?? new Date()
+                timeoutProvider.getTriggerTime(sound.timeoutId) ??
+                new Date(Date.now() + sound.pauseInformation.remainingTime)
               }
             ></TimerCountdown>
           )}
