@@ -4,6 +4,8 @@ export interface RandomSound {
   id: number;
   /** Represents the media type url to play when triggered */
   url: string;
+  /** The name of the audio that will be playaed */
+  label: string;
   /** Represents the interval set when sound was queued. */
   initialTimeout?: number;
   /** Represents the maximum time can go */
@@ -27,7 +29,7 @@ export interface StylingProviderValues {
 
 export interface SoundsProviderValues {
   loadedSounds: RandomSound[];
-  addSound: (url: string, upperBound: number) => number;
+  addSound: (url: string, label: string, upperBound: number) => number;
   removeSound: (soundId: number) => void;
   pauseSound: (soundId: number) => void;
   resumeSound: (soundId: number) => void;

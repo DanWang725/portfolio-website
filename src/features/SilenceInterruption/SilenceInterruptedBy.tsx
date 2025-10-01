@@ -64,7 +64,11 @@ const SilenceInterruptedBy: React.FC = () => {
   };
 
   const onAddSound = () => {
-    soundsProvider.addSound(selectedUrl, playInterval);
+    soundsProvider.addSound(
+      selectedUrl,
+      audioOptions.find((a) => a.value === selectedUrl)?.label ?? 'No Label',
+      playInterval,
+    );
   };
 
   const toggleSoundPlayback = (soundId: number, pause: boolean) => {
@@ -78,7 +82,9 @@ const SilenceInterruptedBy: React.FC = () => {
   };
   return (
     <Box p="1rem">
-      <Typography variant="h4">Play New Sound</Typography>
+      <Typography variant="h4" mb="1rem">
+        Play New Sound
+      </Typography>
       <Input
         type="number"
         onChange={(e) => updateInterval(parseInt(e.target.value) ?? 0)}
@@ -95,8 +101,10 @@ const SilenceInterruptedBy: React.FC = () => {
         ))}
       </Select>
       <Button onClick={() => onAddSound()}>Add</Button>
-      {soundsProvider.loadedSounds.length}
-      <Typography variant="h4">Currently Playing Sounds</Typography>
+
+      <Typography variant="h4" mb="1rem">
+        Currently Playing Sounds ({soundsProvider.loadedSounds.length})
+      </Typography>
       <ActiveSounds
         sounds={soundsProvider.loadedSounds}
         handleRemoveSound={handleRemoveSound}

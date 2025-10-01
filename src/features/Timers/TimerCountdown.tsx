@@ -4,6 +4,7 @@ interface TimerCountdownProps {
   target: Date;
   curTime: Date;
   showMilliseconds?: boolean;
+  showLabels?: boolean;
 }
 
 /**
@@ -13,6 +14,7 @@ const TimerCountdown: React.FC<TimerCountdownProps> = ({
   target,
   curTime,
   showMilliseconds = false,
+  showLabels = true,
 }) => {
   const dif = target.getTime() - curTime.getTime();
   const seconds = Math.floor(dif / 1000);
@@ -28,10 +30,17 @@ const TimerCountdown: React.FC<TimerCountdownProps> = ({
         [seconds % 60, 'Seconds'],
         ...[showMilliseconds ? [dif % 1000, 'Milliseconds'] : []],
       ].map(([value, label], index) => (
-        <Box textAlign={'center'} key={`${index}-${label}`}>
-          <Typography variant="h4">{value}</Typography>
-          <Typography>{label}</Typography>
-        </Box>
+        <>
+          {index !== 0 && label && (
+            <Box textAlign={'center'} key={`${index - 1}.5`}>
+              <Typography variant="h4">:</Typography>
+            </Box>
+          )}
+          <Box textAlign={'center'} key={`${index}-${label}`}>
+            <Typography variant="h4">{value}</Typography>
+            {showLabels && <Typography>{label}</Typography>}
+          </Box>
+        </>
       ))}
     </Box>
   );

@@ -68,12 +68,13 @@ const UseRandomSounds = (timeoutManager: TimeoutManager) => {
     return newId;
   };
 
-  const addSound = (url: string, upperBound: number): number => {
+  const addSound = (url: string, label: string, upperBound: number): number => {
     const newId =
       loadedSounds.reduce((maxId, sound) => Math.max(maxId, sound.id), 0) + 1;
 
     const sound: RandomSound = {
       id: newId,
+      label: label,
       url: url,
       upperBound,
       initialTimeout: undefined,
