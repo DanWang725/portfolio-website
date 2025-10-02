@@ -31,6 +31,6 @@ export interface SoundsProviderValues {
   loadedSounds: RandomSound[];
   addSound: (url: string, label: string, upperBound: number) => number;
   removeSound: (soundId: number) => void;
-  pauseSound: (soundId: number) => void;
-  resumeSound: (soundId: number) => void;
+  pauseSound: (soundId: number | number[]) => void;
+  resumeSound: (soundId: number | number[]) => void;
 }

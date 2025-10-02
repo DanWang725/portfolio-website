@@ -102,46 +102,69 @@ const UseRandomSounds = (timeoutManager: TimeoutManager) => {
     });
   };
 
-  const pauseSound = (soundId: number) => {
+  const pauseSound = (soundId: number | number[]) => {
     updateLoadedSounds((draft) => {
-      const sound = draft.find((snd) => snd.id == soundId);
+      const sounds =
+        typeof soundId === 'object'
+          ? draft.filter((snd) => soundId.includes(snd.id) != null)
+          : [draft.find((snd) => snd.id == soundId)].filter(
+              (val) => val != null,
+            );
 
-      if (sound == null || !sound.timeoutId) {
+      if (sounds.length === 0) {
         return;
       }
 
-      const triggerTime = timeoutManager.getTriggerTime(sound.timeoutId);
-      if (triggerTime == null) {
-        return;
-      }
+      sounds.forEach((sound) => {
+        if (sound.pauseInformation.isPaused || sound.timeoutId == null) {
+          return;
+        }
+        const triggerTime = timeoutManager.getTriggerTime(sound.timeoutId);
+        if (triggerTime == null) {
+          return;
+        }
 
-      const remainingTime = triggerTime.getTime() - Date.now();
-      timeoutManager.clearTimeout(sound.timeoutId);
+        const remainingTime = triggerTime.getTime() - Date.now();
+        timeoutManager.clearTimeout(sound.timeoutId);
 
-      sound.pauseInformation.remainingTime = remainingTime;
-      sound.pauseInformation.isPaused = true;
+        sound.pauseInformation.remainingTime = remainingTime;
+        sound.pauseInformation.isPaused = true;
+      });
     });
   };
 
-  const resumeSound = (soundId: number) => {
-    const sound = loadedSounds.find((snd) => snd.id == soundId);
-    if (sound == null || !sound.pauseInformation.isPaused) {
-      return;
-    }
-    const newTimeoutId = startSound(
-      sound.id,
-      sound.pauseInformation.remainingTime,
-    );
-    updateLoadedSounds((draft) => {
-      const draftSound = draft.find((snd) => snd.id == soundId);
+  const resumeSound = (soundId: number | number[]) => {
+    const soundsToResume: { id: number; timeoutId: number }[] = [];
+    const sounds =
+      typeof soundId === 'object'
+        ? loadedSounds.filter((snd) => soundId.includes(snd.id) != null)
+        : [loadedSounds.find((snd) => snd.id == soundId)].filter(
+            (val) => val != null,
+          );
 
-      if (draftSound == null || !draftSound.pauseInformation.isPaused) {
+    sounds.forEach((sound) => {
+      if (!sound.pauseInformation.isPaused) {
         return;
       }
+      const newTimeoutId = startSound(
+        sound.id,
+        sound.pauseInformation.remainingTime,
+      );
+      soundsToResume.push({ id: sound.id, timeoutId: newTimeoutId });
+    });
 
-      draftSound.pauseInformation.isPaused = false;
-
-      draftSound.timeoutId = newTimeoutId;
+    if (soundsToResume.length === 0) {
+      return;
+    }
+    updateLoadedSounds((draft) => {
+      soundsToResume.forEach((sound) => {
+        const draftSound = draft.find((s) => s.id === sound.id);
+        if (draftSound == null) {
+          return;
+        }
+        draftSound.pauseInformation.isPaused = false;
+        draftSound.timeoutId = sound.timeoutId;
+      });
     });
   };
 

@@ -12,11 +12,28 @@ import {
 } from '@mui/material';
 import { routes } from '../routes';
 import NavButtonItem from './NavButtonItem';
+import { RandomSoundsContext } from '@app/contexts/SoundsProvider';
 
 export const Navbar = () => {
   const location = useLocation();
   const { isLowPerformance, setIsLowPerformance } =
     useContext(PerformanceContext);
+
+  const { loadedSounds, pauseSound, resumeSound } =
+    useContext(RandomSoundsContext);
+
+  const togglePlaybackSounds = () => {
+    const hasPlaying = loadedSounds.some((s) => !s.pauseInformation.isPaused);
+    if (hasPlaying) {
+      pauseSound(
+        loadedSounds
+          .filter((s) => !s.pauseInformation.isPaused)
+          .map((s) => s.id),
+      );
+    } else {
+      resumeSound(loadedSounds.map((s) => s.id));
+    }
+  };
   const navigate = useNavigate();
 
   return (
@@ -53,6 +70,23 @@ export const Navbar = () => {
             </Typography>
           </Tooltip>
         </Button>
+        {loadedSounds.length !== 0 && (
+          <Button onClick={() => togglePlaybackSounds()}>
+            <Tooltip
+              title={
+                loadedSounds.some((s) => !s.pauseInformation.isPaused)
+                  ? 'Pause the playing of random sounds'
+                  : 'resume ALL THE SOUNDS'
+              }
+            >
+              <Typography>
+                {loadedSounds.some((s) => !s.pauseInformation.isPaused)
+                  ? 'Pause'
+                  : 'Resume All'}
+              </Typography>
+            </Tooltip>
+          </Button>
+        )}
       </Toolbar>
     </AppBar>
   );
