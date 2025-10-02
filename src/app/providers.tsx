@@ -6,19 +6,22 @@ import { Toaster } from 'react-hot-toast';
 import StylingProvider from './contexts/StylingProvider';
 import { ReactNode } from 'react';
 import TimeoutProvider from './contexts/TimeoutProvider';
+import SoundsProvider from './contexts/SoundsProvider';
 
 const Providers: React.FC<{ children: ReactNode }> = ({ children }) => {
   return (
     <ThemeProvider theme={darkTheme}>
       <HashRouter>
         <TimeoutProvider>
-          <PerformanceProvider>
-            <StylingProvider>
-              <CssBaseline />
-              <Toaster />
-              {children}
-            </StylingProvider>
-          </PerformanceProvider>
+          <SoundsProvider>
+            <PerformanceProvider>
+              <StylingProvider>
+                <CssBaseline />
+                <Toaster />
+                {children}
+              </StylingProvider>
+            </PerformanceProvider>
+          </SoundsProvider>
         </TimeoutProvider>
       </HashRouter>
     </ThemeProvider>

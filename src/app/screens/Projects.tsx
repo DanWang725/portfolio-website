@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 const Projects: React.FC = () => {
   const navigate = useNavigate();
   return (
-    <ContentSection>
+    <ContentSection styleOverrides={{ p: '1rem' }}>
       <ContentHeader>Projects</ContentHeader>
       <ContentText>
         Over the years I have created many wonderful and cool applications,
