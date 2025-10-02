@@ -6,9 +6,13 @@ import {
   Button,
   Typography,
   Box,
+  Checkbox,
+  FormGroup,
+  FormControlLabel,
 } from '@mui/material';
 import { useContext, useState } from 'react';
 import ActiveSounds from './ActiveSounds';
+import toast from 'react-hot-toast';
 
 const audioOptions = [
   {
@@ -34,27 +38,10 @@ const audioOptions = [
 
 const SilenceInterruptedBy: React.FC = () => {
   const soundsProvider = useContext(RandomSoundsContext);
-  // const [nextTrigger, setNextTrigger] = useState<Date | undefined>();
   const [playInterval, setPlayInterval] = useState<number>(10000);
-  // const [timeoutId, setTimeoutId] = useState<number | undefined>();
-  // const [time, setTime] = useState(new Date());
   const [selectedUrl, setSelectedUrl] = useState(audioOptions[1].value);
-  // const timeoutManager = useContext(TimeoutContext);
-
-  // useEffect(() => {
-  //   return () => {
-  //     //we need to clear the timeout id at cleanup
-  //     timeoutManager.clearAllTimeouts();
-  //   };
-  // }, []);
-
-  // const toggleSound = () => {
-  //   if (timeoutId) {
-  //     stop();
-  //   } else {
-  //     start();
-  //   }
-  // };
+  const [urlLabel, setUrlLabel] = useState(audioOptions[1].label);
+  const [isCustomSound, setCustomSound] = useState(false);
 
   const updateInterval = (value: number) => {
     if (value < 0) {
@@ -63,12 +50,38 @@ const SilenceInterruptedBy: React.FC = () => {
     setPlayInterval(value * 1000);
   };
 
-  const onAddSound = () => {
-    soundsProvider.addSound(
-      selectedUrl,
+  const testAudio = () => {
+    return new Promise<boolean>((resolve) => {
+      const audio = new Audio(selectedUrl);
+      audio.addEventListener('canplaythrough', () => resolve(true));
+      audio.addEventListener('error', () => resolve(false));
+      audio.load();
+    });
+  };
+
+  const handleToggleCustomUrl = (
+    event: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    setCustomSound(event.target.checked);
+  };
+
+  const selectOption = (selectedAudioUrl: string) => {
+    setSelectedUrl(selectedAudioUrl);
+    setUrlLabel(
       audioOptions.find((a) => a.value === selectedUrl)?.label ?? 'No Label',
-      playInterval,
     );
+  };
+
+  const onAddSound = () => {
+    const thing = new Audio(selectedUrl);
+    console.log(thing.error);
+    testAudio().then((verdict) => {
+      if (verdict) {
+        soundsProvider.addSound(selectedUrl, urlLabel, playInterval);
+      } else {
+        toast.error('Cannot load audio!');
+      }
+    });
   };
 
   const toggleSoundPlayback = (soundId: number, pause: boolean) => {
@@ -83,23 +96,49 @@ const SilenceInterruptedBy: React.FC = () => {
   return (
     <Box p="1rem">
       <Typography variant="h4" mb="1rem">
-        Play New Sound
+        Add New Sound
       </Typography>
+      <FormGroup>
+        <FormControlLabel
+          label="Custom Sound"
+          control={
+            <Checkbox
+              onChange={handleToggleCustomUrl}
+              checked={isCustomSound}
+            ></Checkbox>
+          }
+        />
+      </FormGroup>
+      {isCustomSound ? (
+        <Box>
+          <Input
+            value={urlLabel}
+            onChange={(e) => setUrlLabel(e.target.value)}
+          ></Input>
+          <Input
+            value={selectedUrl}
+            onChange={(e) => setSelectedUrl(e.target.value)}
+          />
+          <Button onClick={testAudio}> Test</Button>
+        </Box>
+      ) : (
+        <Select
+          value={selectedUrl}
+          onChange={(e) => selectOption(e.target.value)}
+        >
+          {audioOptions.map(({ label, value }) => (
+            <MenuItem value={value} key={value}>
+              {label}
+            </MenuItem>
+          ))}
+        </Select>
+      )}
       <Input
         type="number"
         onChange={(e) => updateInterval(parseInt(e.target.value) ?? 0)}
         value={playInterval / 1000}
       ></Input>
-      <Select
-        value={selectedUrl}
-        onChange={(e) => setSelectedUrl(e.target.value)}
-      >
-        {audioOptions.map(({ label, value }) => (
-          <MenuItem value={value} key={value}>
-            {label}
-          </MenuItem>
-        ))}
-      </Select>
+
       <Button onClick={() => onAddSound()}>Add</Button>
 
       <Typography variant="h4" mb="1rem">
