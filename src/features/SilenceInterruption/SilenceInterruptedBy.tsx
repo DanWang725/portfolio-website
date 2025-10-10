@@ -9,6 +9,8 @@ import {
   Checkbox,
   FormGroup,
   FormControlLabel,
+  InputLabel,
+  TextField,
 } from '@mui/material';
 import { useContext, useState } from 'react';
 import ActiveSounds from './ActiveSounds';
@@ -43,6 +45,8 @@ const SilenceInterruptedBy: React.FC = () => {
   const [urlLabel, setUrlLabel] = useState(audioOptions[1].label);
   const [isCustomSound, setCustomSound] = useState(false);
 
+  const [error, setError] = useState('');
+
   const updateInterval = (value: number) => {
     if (value < 0) {
       return;
@@ -62,6 +66,13 @@ const SilenceInterruptedBy: React.FC = () => {
   const handleToggleCustomUrl = (
     event: React.ChangeEvent<HTMLInputElement>,
   ) => {
+    if (!event.target.checked) {
+      setSelectedUrl(audioOptions[1].value);
+      setUrlLabel(audioOptions[1].label);
+    } else {
+      setSelectedUrl('');
+      setUrlLabel('');
+    }
     setCustomSound(event.target.checked);
   };
 
@@ -73,8 +84,6 @@ const SilenceInterruptedBy: React.FC = () => {
   };
 
   const onAddSound = () => {
-    const thing = new Audio(selectedUrl);
-    console.log(thing.error);
     testAudio().then((verdict) => {
       if (verdict) {
         soundsProvider.addSound(selectedUrl, urlLabel, playInterval);
@@ -98,6 +107,41 @@ const SilenceInterruptedBy: React.FC = () => {
       <Typography variant="h4" mb="1rem">
         Add New Sound
       </Typography>
+      <Box display="flex" gap="1rem">
+        {isCustomSound ? (
+          <Box gap="1rem" display={'flex'}>
+            <TextField
+              value={urlLabel}
+              onChange={(e) => setUrlLabel(e.target.value)}
+              label="Name"
+            ></TextField>
+            <TextField
+              label="Audio URL"
+              value={selectedUrl}
+              onChange={(e) => setSelectedUrl(e.target.value)}
+            />
+            <Button onClick={testAudio}> Test</Button>
+          </Box>
+        ) : (
+          <Select
+            value={selectedUrl}
+            sx={{ width: '20rem' }}
+            onChange={(e) => selectOption(e.target.value)}
+          >
+            {audioOptions.map(({ label, value }) => (
+              <MenuItem value={value} key={value}>
+                {label}
+              </MenuItem>
+            ))}
+          </Select>
+        )}
+        <TextField
+          type="number"
+          label="Maximum Delay"
+          onChange={(e) => updateInterval(parseInt(e.target.value) ?? 0)}
+          value={playInterval / 1000}
+        ></TextField>
+      </Box>
       <FormGroup>
         <FormControlLabel
           label="Custom Sound"
@@ -109,39 +153,10 @@ const SilenceInterruptedBy: React.FC = () => {
           }
         />
       </FormGroup>
-      {isCustomSound ? (
-        <Box>
-          <Input
-            value={urlLabel}
-            onChange={(e) => setUrlLabel(e.target.value)}
-          ></Input>
-          <Input
-            value={selectedUrl}
-            onChange={(e) => setSelectedUrl(e.target.value)}
-          />
-          <Button onClick={testAudio}> Test</Button>
-        </Box>
-      ) : (
-        <Select
-          value={selectedUrl}
-          onChange={(e) => selectOption(e.target.value)}
-        >
-          {audioOptions.map(({ label, value }) => (
-            <MenuItem value={value} key={value}>
-              {label}
-            </MenuItem>
-          ))}
-        </Select>
-      )}
-      <Input
-        type="number"
-        onChange={(e) => updateInterval(parseInt(e.target.value) ?? 0)}
-        value={playInterval / 1000}
-      ></Input>
 
       <Button onClick={() => onAddSound()}>Add</Button>
 
-      <Typography variant="h4" mb="1rem">
+      <Typography variant="h4" my="1rem">
         Currently Playing Sounds ({soundsProvider.loadedSounds.length})
       </Typography>
       <ActiveSounds

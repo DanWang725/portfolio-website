@@ -1,6 +1,6 @@
 import { TimeoutContext } from '@app/contexts/TimeoutProvider';
 import TimerCountdown from '@features/Timers/TimerCountdown';
-import { Pause, PlayArrow, PlaylistRemove } from '@mui/icons-material';
+import { Clear, Pause, PlayArrow, PlaylistRemove } from '@mui/icons-material';
 import { Box, IconButton, Typography } from '@mui/material';
 import { RandomSound } from '@type/Contexts';
 import { useContext, useEffect, useState } from 'react';
@@ -51,6 +51,7 @@ const ActiveSounds: React.FC<ActiveSoundsProps> = ({
                 new Date(Date.now() + sound.pauseInformation.remainingTime)
               }
               showLabels={false}
+              styleOverrides={{ alignContent: 'center', alignItems: 'center' }}
             ></TimerCountdown>
           )}
           <Box
@@ -58,6 +59,7 @@ const ActiveSounds: React.FC<ActiveSoundsProps> = ({
             display="flex"
             alignItems="center"
             sx={{ boxSizing: 'inherit' }}
+            mr="1rem"
           >
             <IconButton
               onClick={() =>
@@ -70,7 +72,7 @@ const ActiveSounds: React.FC<ActiveSoundsProps> = ({
               {sound.pauseInformation.isPaused ? <PlayArrow /> : <Pause />}
             </IconButton>
             <IconButton onClick={() => handleRemoveSound(sound.id)}>
-              <PlaylistRemove />
+              <Clear />
             </IconButton>
           </Box>
         </Box>
