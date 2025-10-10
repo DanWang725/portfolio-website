@@ -141,6 +141,13 @@ const SilenceInterruptedBy: React.FC = () => {
           onChange={(e) => updateInterval(parseInt(e.target.value) ?? 0)}
           value={playInterval / 1000}
         ></TextField>
+        <Button
+          sx={{ justifySelf: 'end' }}
+          onClick={() => onAddSound()}
+          variant="outlined"
+        >
+          Add Sound Effect
+        </Button>
       </Box>
       <FormGroup>
         <FormControlLabel
@@ -153,8 +160,6 @@ const SilenceInterruptedBy: React.FC = () => {
           }
         />
       </FormGroup>
-
-      <Button onClick={() => onAddSound()}>Add</Button>
 
       <Typography variant="h4" my="1rem">
         Currently Playing Sounds ({soundsProvider.loadedSounds.length})
