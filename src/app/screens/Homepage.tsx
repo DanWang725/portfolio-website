@@ -22,10 +22,10 @@ const Homepage: React.FC = () => {
         <ContentSection
           styleOverrides={{ mt: '30vh', width: 'fit-content', p: '1rem' }}
         >
-          <Typography variant="h2">{"I'm Daniel Wang"}</Typography>
+          <Typography variant="h2">{"Hello, I'm Daniel Wang"}</Typography>
           <Typography variant="h5">
             {
-              "Hello! I'm a computer science student currently in his third year studying at University of Geulph. I am open to any oppertunities. Looking to chat? You can find my contact information below. I am always up for a challenge."
+              "I'm a 5th year undergraduate computer science student at the University of Guelph. Experienced in industry front end development as well as academic experience in training and evaluating generative ML models. I also like to do game development, as well as code hobby projects on this website."
             }
           </Typography>
           <Divider style={{ margin: '1rem' }} />
