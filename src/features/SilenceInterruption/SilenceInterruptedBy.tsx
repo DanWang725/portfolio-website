@@ -79,7 +79,8 @@ const SilenceInterruptedBy: React.FC = () => {
   const selectOption = (selectedAudioUrl: string) => {
     setSelectedUrl(selectedAudioUrl);
     setUrlLabel(
-      audioOptions.find((a) => a.value === selectedUrl)?.label ?? 'No Label',
+      audioOptions.find((a) => a.value === selectedAudioUrl)?.label ??
+        'No Label',
     );
   };
 
@@ -137,7 +138,7 @@ const SilenceInterruptedBy: React.FC = () => {
         )}
         <TextField
           type="number"
-          label="Maximum Delay"
+          label="Maximum Delay (s)"
           onChange={(e) => updateInterval(parseInt(e.target.value) ?? 0)}
           value={playInterval / 1000}
         ></TextField>

@@ -2,7 +2,7 @@ import TimerCountdown from '@features/Timers/TimerCountdown';
 import { Clear, Pause, PlayArrow } from '@mui/icons-material';
 import { Box, IconButton, Tooltip, Typography } from '@mui/material';
 import { RandomSound } from '@type/Contexts';
-import { useEffect } from 'react';
+import { lazy } from 'react';
 
 export interface ActiveSoundProps {
   sound: RandomSound;
@@ -10,6 +10,7 @@ export interface ActiveSoundProps {
   triggerTime: Date | null;
   handleRemoveSound: () => void;
   handleToggleSoundPlayback: (pause: boolean) => void;
+  minimal?: boolean;
 }
 
 const ActiveSound: React.FC<ActiveSoundProps> = ({
@@ -18,6 +19,7 @@ const ActiveSound: React.FC<ActiveSoundProps> = ({
   triggerTime,
   handleRemoveSound,
   handleToggleSoundPlayback,
+  minimal = false,
 }) => {
   // useEffect(() => console.log(`Trigger time: ${triggerTime}`));
   return (
@@ -29,16 +31,21 @@ const ActiveSound: React.FC<ActiveSoundProps> = ({
       sx={{ border: '1px solid' }}
     >
       <Box display="flex" flexDirection={'row'}>
-        <Typography variant={'h5'} m="1rem">
-          {sound.label}
-        </Typography>
+        <Box>
+          <Typography variant={'h5'} mx="1rem" mt="1rem">
+            {sound.label}
+          </Typography>
+          <Typography variant="subtitle2" mx="1rem" mb="1rem">
+            Max {sound.upperBound / 1000} second delay
+          </Typography>
+        </Box>
         {/* <Typography>
               ID: {sound.id}
               TimeoutID {sound.timeoutId}
               TriggerTime: {sound.initialTimeout}
             </Typography> */}
       </Box>
-      {sound.timeoutId && (
+      {!minimal && sound.timeoutId && (
         <TimerCountdown
           curTime={curTime}
           target={
