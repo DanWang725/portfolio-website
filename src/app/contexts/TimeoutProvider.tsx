@@ -22,8 +22,8 @@ export class TimeoutManager {
       this.clearTimeout(Number.parseInt(key, 10));
     });
   }
-  public getTriggerTime(id: number): Date | null {
-    return this.timeoutIds[id] ? new Date(this.timeoutIds[id]) : null;
+  public getTriggerTime(id: number | null): Date | null {
+    return id && this.timeoutIds[id] ? new Date(this.timeoutIds[id]) : null;
   }
 }
 export const TimeoutContext = createContext(new TimeoutManager());

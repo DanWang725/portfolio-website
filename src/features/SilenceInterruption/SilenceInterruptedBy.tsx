@@ -13,7 +13,7 @@ import {
   TextField,
 } from '@mui/material';
 import { useContext, useState } from 'react';
-import ActiveSounds from './ActiveSounds';
+import ActiveSoundList from './ActiveSoundList';
 import toast from 'react-hot-toast';
 
 const audioOptions = [
@@ -164,11 +164,11 @@ const SilenceInterruptedBy: React.FC = () => {
       <Typography variant="h4" my="1rem">
         Currently Playing Sounds ({soundsProvider.loadedSounds.length})
       </Typography>
-      <ActiveSounds
+      <ActiveSoundList
         sounds={soundsProvider.loadedSounds}
         handleRemoveSound={handleRemoveSound}
         handleToggleSoundPlayback={toggleSoundPlayback}
-      ></ActiveSounds>
+      ></ActiveSoundList>
     </Box>
   );
 };
