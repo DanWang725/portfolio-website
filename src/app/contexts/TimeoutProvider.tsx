@@ -1,6 +1,6 @@
 import { createContext, ReactNode, useRef } from 'react';
-class TimeoutManager {
-  public timeoutIds: number[] = [];
+export class TimeoutManager {
+  private timeoutIds: { [x: number]: number } = {};
 
   public constructor() {}
 
@@ -9,19 +9,21 @@ class TimeoutManager {
       callback();
       this.clearTimeout(timeoutId);
     }, timeout);
-    this.timeoutIds.push(timeoutId);
+    this.timeoutIds[timeoutId] = Date.now() + timeout;
     return timeoutId;
   }
 
   public clearTimeout(timeoutId: number): void {
     clearTimeout(timeoutId);
-    this.timeoutIds = this.timeoutIds.filter((id) => id !== timeoutId);
+    delete this.timeoutIds[timeoutId];
   }
   public clearAllTimeouts(): void {
-    this.timeoutIds.forEach((element) => {
-      this.clearTimeout(element);
+    Object.keys(this.timeoutIds).forEach((key) => {
+      this.clearTimeout(Number.parseInt(key, 10));
     });
-    this.timeoutIds = [];
+  }
+  public getTriggerTime(id: number | null): Date | null {
+    return id && this.timeoutIds[id] ? new Date(this.timeoutIds[id]) : null;
   }
 }
 export const TimeoutContext = createContext(new TimeoutManager());

@@ -40,7 +40,7 @@ export class Battle {
   }
 
   public playRound(): RoundResult | null {
-    console.log('battle');
+    // console.log('battle');
     if (this.status !== BattleStatus.Ongoing) {
       return null;
     }
@@ -53,7 +53,7 @@ export class Battle {
   }
 
   public getRoundsPlayed(): number {
-    console.log('I got called');
+    // console.log('I got called');
     return this.rounds.length;
   }
 }
