@@ -30,23 +30,23 @@ const UseRandomSounds = (timeoutManager: TimeoutManager) => {
   };
 
   const onSoundPlay = (soundId: number) => {
-    console.log('triggered for ', soundId);
+    // console.log('triggered for ', soundId);
     const sound = loadedSounds.find((snd) => snd.id == soundId);
     if (sound == null) {
-      console.log('could not find sound for ', soundId, loadedSounds);
+      // console.log('could not find sound for ', soundId, loadedSounds);
       return;
     }
 
     const newTimeout = getTimeout(sound.upperBound);
     const timeoutId = startSound(sound.id, newTimeout);
     const audio = new Audio(sound.url);
-    console.log(
-      'playing audio',
-      sound.timeoutId,
-      ' => ',
-      timeoutId,
-      `(${newTimeout}). ${sound.initialTimeout}, ${sound.upperBound}`,
-    );
+    // console.log(
+    //   'playing audio',
+    //   sound.timeoutId,
+    //   ' => ',
+    //   timeoutId,
+    //   `(${newTimeout}). ${sound.initialTimeout}, ${sound.upperBound}`,
+    // );
     audio.play();
 
     updateLoadedSounds((draft) => {
