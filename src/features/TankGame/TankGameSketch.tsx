@@ -7,7 +7,7 @@ import p5 from 'p5';
 import React, { useEffect, useRef, useState } from 'react';
 
 type MySketchProps = SketchProps & {
-  containerRef: React.MutableRefObject<HTMLElement>;
+  containerRef: React.MutableRefObject<HTMLCanvasElement>;
 };
 
 function sketch(p5: P5CanvasInstance<MySketchProps>) {
@@ -43,7 +43,7 @@ function sketch(p5: P5CanvasInstance<MySketchProps>) {
   let img: p5.Image, mySound;
   let dataCoord: number[];
   let canvasSetup: p5.Renderer;
-  let container: HTMLElement;
+  let container: HTMLCanvasElement;
   // Receive containerRef from React
   p5.updateWithProps = (props) => {
     if (props.containerRef) {
@@ -56,8 +56,9 @@ function sketch(p5: P5CanvasInstance<MySketchProps>) {
     );
     let font = await p5.loadFont('src/assets/Montserrat-Regular.ttf');
     p5.frameRate(60);
-    canvasSetup = p5.createCanvas(1000, 600, p5.P2DHDR);
-    canvasSetup.parent(container);
+    canvasSetup = p5.createCanvas(1000, 600, p5.P2DHDR, container);
+    // canvasSetup.parent(container);
+    // container.style.position = 'relative';
     p5.textSize(100);
     p5.textFont(font);
     // mySound.setVolume(0.1);
@@ -2287,18 +2288,19 @@ function sketch(p5: P5CanvasInstance<MySketchProps>) {
 }
 
 const TankGameSketch: React.FC = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLCanvasElement>(null);
   return (
-    <div
-      ref={containerRef}
-      style={{
-        position: 'relative', // important!
-        width: 'fit-content',
-        height: 'fit-content',
-      }}
-    >
+    <>
+      <canvas
+        ref={containerRef}
+        style={{
+          position: 'relative', // important!
+          width: 'fit-content',
+          height: 'fit-content',
+        }}
+      ></canvas>
       <ReactP5Wrapper sketch={sketch} containerRef={containerRef} />
-    </div>
+    </>
   );
 };
 export default TankGameSketch;

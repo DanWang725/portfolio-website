@@ -32,11 +32,8 @@ const TankGame: React.FC = () => {
     <ContentSection styleOverrides={{ p: '1rem' }}>
       <ContentHeader>Tank Game</ContentHeader>
       <ContentText>
-        Videos that do 'silence randomly interrupted by [x sound effect] are
-        hilarious to me, and they add to a comedic atmosphere. Sound effects
-        somehow manage to play at the right situations. This module re-creates
-        this effect within my website. If you play any sounds here, they'll play{' '}
-        <b>anywhere</b> within my website!
+        This was made for my grade 11 computer science summative. Originally
+        written on p5.js, this has been ported over.
       </ContentText>
       <TankGameSketch />
     </ContentSection>
