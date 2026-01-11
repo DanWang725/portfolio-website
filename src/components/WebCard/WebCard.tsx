@@ -10,7 +10,15 @@ const WebCard: React.FunctionComponent<
 > = ({ children, onClick }) => {
   return (
     <Box
+      tabIndex={0}
       onClick={onClick}
+      onKeyDown={(e) => {
+        if (e.key === ' ' || e.key === 'Enter') {
+          e.stopPropagation();
+          e.preventDefault();
+          onClick();
+        }
+      }}
       sx={{
         cursor: 'pointer',
         transition: 'background-color 0.5s',
