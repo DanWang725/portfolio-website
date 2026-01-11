@@ -68,8 +68,8 @@ const workTermReport1: WorkTermArticle = {
   jobPosition: 'Front End Developer',
   company: 'NCR',
   startDate: 'May 2023',
-  endDate: '-',
-  semester: 'Summer 23',
+  endDate: 'August 2023',
+  semester: 'S23',
   tags: [],
 };
 
@@ -146,7 +146,7 @@ const workTermReport2: WorkTermArticle = {
   ],
   jobPosition: 'Front End Developer',
   company: 'NCR',
-  startDate: '-',
+  startDate: 'September 2023',
   endDate: 'December 2023',
   semester: 'F23',
   tags: [],
@@ -286,7 +286,7 @@ const workTermReport4: WorkTermArticle = {
   jobPosition: 'Full-stack Software Developer',
   company: 'Camis',
   startDate: 'January 2025',
-  endDate: '-',
+  endDate: 'April 2025',
   semester: 'W25',
   tags: [],
 };
@@ -594,7 +594,7 @@ const workTermReport5: WorkTermArticle = {
   ],
   jobPosition: 'Full-stack Software Developer',
   company: 'Camis',
-  startDate: '-',
+  startDate: 'May 2025',
   endDate: 'August 2025',
   semester: 'S25',
   tags: [],

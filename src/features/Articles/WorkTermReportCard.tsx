@@ -3,11 +3,14 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { CardActionArea } from '@mui/material';
+import { CardActionArea, Grid2 } from '@mui/material';
 import { Article } from '../../components/Article/types/article';
+import { WebCard } from '@components/WebCard';
+import { WorkTermArticle } from './types/types';
+import CardHeader from './components/CardHeader';
 
 interface WorkTermReportCardProps {
-  workTermReportEntry: Article;
+  workTermReportEntry: WorkTermArticle;
   setSelectedWtr: (wtr: Article) => void;
 }
 
@@ -16,33 +19,13 @@ const WorkTermReportCard: React.FC<WorkTermReportCardProps> = ({
   setSelectedWtr,
 }) => {
   return (
-    <Card
-      sx={{ maxWidth: 1000, display: 'flex' }}
-      onClick={() => setSelectedWtr(workTermReportEntry)}
-      className="report-card"
-    >
-      <CardActionArea sx={{ width: 'auto' }}>
-        <CardMedia
-          component="img"
-          sx={{ width: '10rem' }}
-          image={workTermReportEntry?.image}
-          alt={workTermReportEntry.title}
-        />
-      </CardActionArea>
-      <CardContent>
-        <Typography
-          gutterBottom
-          variant="h3"
-          component="div"
-          sx={{ fontSize: '1em' }}
-        >
-          {workTermReportEntry.title}
-        </Typography>
-        <Typography gutterBottom component="div">
-          {workTermReportEntry.description}
-        </Typography>
-      </CardContent>
-    </Card>
+    <Grid2 size={{ sm: 8, md: 5 }}>
+      <WebCard onClick={() => setSelectedWtr(workTermReportEntry)}>
+        <CardHeader article={workTermReportEntry} />
+        <Typography variant="h5">{workTermReportEntry.jobPosition}</Typography>
+        <Typography>{workTermReportEntry.description}</Typography>
+      </WebCard>
+    </Grid2>
   );
 };
 export default WorkTermReportCard;
