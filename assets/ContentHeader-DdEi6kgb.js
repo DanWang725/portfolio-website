@@ -1,0 +1,1 @@
+import{j as t,B as r,T as e,D as x}from"./index-BrMA8n-J.js";const n=({children:s})=>t.jsxs(r,{sx:{width:"100%",textAlign:"center"},children:[t.jsx(e,{variant:"h2",sx:{textAlign:"start"},children:s}),t.jsx(x,{})]});export{n as C};
