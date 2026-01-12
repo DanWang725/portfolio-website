@@ -6,6 +6,8 @@ const getAlphabetArray = (start = 'A', end = 'Z') => {
   );
 };
 
+const alphabetLettersSet = new Set(getAlphabetArray());
+
 const getLetterFrequencies = (str: string, filter: string[]) => {
   return str
     .split('')
@@ -48,4 +50,9 @@ const letterFrequencies: Record<string, number> = {
   J: 0.1,
   Z: 0.1,
 };
-export { getAlphabetArray, letterFrequencies, getLetterFrequencies };
+export {
+  getAlphabetArray,
+  letterFrequencies,
+  getLetterFrequencies,
+  alphabetLettersSet,
+};

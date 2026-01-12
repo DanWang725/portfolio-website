@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import {
+  alphabetLettersSet,
   getAlphabetArray,
   getLetterFrequencies,
   letterFrequencies,
@@ -9,27 +10,24 @@ import { Box, Button, Grid2, Tooltip, Typography } from '@mui/material';
 export interface DecoratedCharacter {
   value: string;
   char: string;
-  selectable: boolean;
   highlight: boolean;
 }
 
 interface MonoalphabetSubFieldProps {
   ciphertext: string;
-  handleDecryptedContent: (d: DecoratedCharacter[]) => void;
-  selectedLetter: string;
-  handleSetSeletedLetter: (letter: string) => void;
+  handleDecryptedContent: (d: string) => void;
 }
 
 const MonoalphabetSubField: React.FC<MonoalphabetSubFieldProps> = ({
   ciphertext = '',
   handleDecryptedContent,
-  selectedLetter,
-  handleSetSeletedLetter,
 }) => {
   const [mapping, setMapping] = useState<{ [key: string]: string | null }>({});
   const [uniqueLetters, setUniqueLetters] = useState<string[]>([]);
   const [frequencies, setFrequencies] = useState<{ [key: string]: number }>({});
+  const [selectedLetter, setSelectedLetter] = useState('');
   const [keys, setKeys] = useState<string[]>(getAlphabetArray());
+  const [decryptedText, setDecryptedText] = useState<DecoratedCharacter[]>([]);
 
   const chooseLetter = (key: string, newMapping: string) => {
     const existing = Object.entries(mapping).filter(
@@ -42,7 +40,7 @@ const MonoalphabetSubField: React.FC<MonoalphabetSubFieldProps> = ({
       }
       return mapping;
     });
-    handleSetSeletedLetter('');
+    setSelectedLetter('');
   };
   // init
   useEffect(() => {
@@ -79,7 +77,7 @@ const MonoalphabetSubField: React.FC<MonoalphabetSubFieldProps> = ({
       s = s.toUpperCase();
       // not one of our mapped characters
       if (mapping[s] === undefined) {
-        return { char: s, value: s, selectable: false } as DecoratedCharacter;
+        return { char: s, value: s } as DecoratedCharacter;
       }
       //no key has been selected yet
       let converted = mapping[s] !== null ? mapping[s] : '*';
@@ -91,11 +89,13 @@ const MonoalphabetSubField: React.FC<MonoalphabetSubFieldProps> = ({
         char: converted,
         value: s,
         highlight: selectedLetter === s.toUpperCase(),
-        selectable: true,
       };
     });
 
-    handleDecryptedContent(decrypted);
+    setDecryptedText(decrypted);
+    handleDecryptedContent(
+      decrypted.reduce<string>((d, cur) => d + cur.char, ''),
+    );
   }, [mapping, ciphertext, selectedLetter]);
 
   useEffect(() => {
@@ -109,13 +109,71 @@ const MonoalphabetSubField: React.FC<MonoalphabetSubFieldProps> = ({
 
   return (
     <>
+      <Grid2 container mt="2rem">
+        <Grid2 size={6}>
+          <Typography variant="h5">Ciphertext</Typography>
+          <Typography
+            sx={{ letterSpacing: '0.3rem', overflowWrap: 'break-word' }}
+          >
+            {ciphertext
+              .toUpperCase()
+              .split('')
+              .map((char) => {
+                const validSelection = alphabetLettersSet.has(char);
+
+                return (
+                  <span
+                    style={{
+                      ...(validSelection ? { cursor: 'pointer' } : {}),
+                      ...(char === selectedLetter
+                        ? { backgroundColor: 'lavender', color: 'darkblue' }
+                        : {}),
+                    }}
+                    onClick={() => validSelection && setSelectedLetter(char)}
+                  >
+                    {char}
+                  </span>
+                );
+              })}
+          </Typography>
+        </Grid2>
+        <Grid2 size={6}>
+          <Typography variant="h5">Decrypted Text</Typography>
+          <Typography
+            sx={{ letterSpacing: '0.3rem', overflowWrap: 'break-word' }}
+          >
+            {decryptedText.map((char) => {
+              const validSelection = alphabetLettersSet.has(char.value);
+
+              return (
+                <span
+                  style={{
+                    ...(validSelection ? { cursor: 'pointer' } : {}),
+                    ...(char.value === selectedLetter
+                      ? { backgroundColor: 'lavender', color: 'darkblue' }
+                      : {}),
+                  }}
+                  onClick={() =>
+                    validSelection && setSelectedLetter(char.value)
+                  }
+                >
+                  {char.char}
+                </span>
+              );
+            })}
+          </Typography>
+        </Grid2>
+      </Grid2>
+      <Typography variant="h5" mt="1rem">
+        Character Translations
+      </Typography>
       <Box display="flex" gap={1} width="auto" overflow="auto">
         {uniqueLetters.map((s) => (
           <Box
             display="flex"
             flexDirection="column"
             justifyContent="center"
-            mt="1rem"
+            mt="0.5rem"
           >
             <Tooltip
               title={`The frequency of '${s}' in the ciphertext is ${frequencies[s]?.toFixed(2)}%.`}
@@ -130,8 +188,8 @@ const MonoalphabetSubField: React.FC<MonoalphabetSubFieldProps> = ({
               color="info"
               onClick={
                 selectedLetter === s
-                  ? () => handleSetSeletedLetter('')
-                  : () => handleSetSeletedLetter(s)
+                  ? () => setSelectedLetter('')
+                  : () => setSelectedLetter(s)
               }
               sx={{
                 border: selectedLetter === s ? '1px solid white' : '',
@@ -165,7 +223,7 @@ const MonoalphabetSubField: React.FC<MonoalphabetSubFieldProps> = ({
                     Object.values(mapping)
                       .filter((val) => val !== null)
                       .indexOf(s) !== -1
-                      ? theme.palette.secondary.main
+                      ? theme.palette.grey[800]
                       : theme.palette.background.default,
                 })}
               >

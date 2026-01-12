@@ -7,16 +7,9 @@ import { ReactJSXElement } from '@emotion/react/types/jsx-namespace';
 
 const MonoalphabeticalSubstitution = () => {
   const [cipherText, setCipherText] = useState('');
-  const [mapping, setMapping] = useState<{ [key: string]: string | undefined }>(
-    {},
-  );
-  // cyphertext char to some char
-  const [decryptedText, setDecryptedText] = useState<DecoratedCharacter[]>([]);
-  // const [availableLetters, setAvailableLetters] = useState<string[]>([]);
-  const [uniqueLetters, setUniqueLetters] = useState<string[]>([]);
-  const [selectedLetter, setSelectedLetter] = useState<string>('');
+  const [decryptedText, setDecryptedText] = useState<string>('');
 
-  const handleDecrpytedContent = (d: DecoratedCharacter[]) => {
+  const handleDecrpytedContent = (d: string) => {
     setDecryptedText(d);
   };
 
@@ -35,27 +28,13 @@ const MonoalphabeticalSubstitution = () => {
           <Typography
             sx={{ letterSpacing: '0.3rem', overflowWrap: 'break-word' }}
           >
-            {decryptedText.map((char) => (
-              <span
-                style={{
-                  cursor: 'pointer',
-                  ...(char.value === selectedLetter
-                    ? { backgroundColor: 'lavender', color: 'darkblue' }
-                    : {}),
-                }}
-                onClick={() => char.selectable && setSelectedLetter(char.value)}
-              >
-                {char.char}
-              </span>
-            ))}
+            {decryptedText}
           </Typography>
         </Grid2>
       </Grid2>
       <MonoalphabetSubField
         ciphertext={cipherText}
         handleDecryptedContent={handleDecrpytedContent}
-        selectedLetter={selectedLetter}
-        handleSetSeletedLetter={setSelectedLetter}
       />
     </Box>
   );
