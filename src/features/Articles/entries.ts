@@ -6,8 +6,11 @@ import coopsCamis from './images/1755781208858.jpg';
 import orderPage from './images/9f29df89b5015f883257a7d924fe21d4a4228c97.png';
 import accessibilityContent from './images/formsite-order-review.jpg';
 import { Article, ContentType } from '../../components/Article/types/article';
+import { WorkTermArticle } from './types/types';
 
-const workTermReport1: Article = {
+enum WorkTermStacks {}
+
+const workTermReport1: WorkTermArticle = {
   title: 'Work Term Report S23',
   id: 'wtr-s23',
   image: cover1,
@@ -62,9 +65,15 @@ const workTermReport1: Article = {
     `,
     },
   ],
+  jobPosition: 'Front End Developer',
+  company: 'NCR',
+  startDate: 'May 2023',
+  endDate: 'August 2023',
+  semester: 'S23',
+  tags: [],
 };
 
-const workTermReport2: Article = {
+const workTermReport2: WorkTermArticle = {
   title: 'Work Term Report F23',
   id: 'wtr-f23',
   image: cover2,
@@ -135,8 +144,14 @@ const workTermReport2: Article = {
         'My experience at NCR can be attributed to the awesome team I worked with. Big thanks to my team leader, Lubna, for supporting me throughout my placement and helping me improve in my weaker areas, as well as to my entire team for being fun to work with and making this first work term so memorable. Finally, I want to thank some of the other co-ops (Eason, Mark, Ethan, Myron, Isaiah, and Max) for being great to hang out with and keeping the $2 burger tradition.',
     },
   ],
+  jobPosition: 'Front End Developer',
+  company: 'NCR',
+  startDate: 'September 2023',
+  endDate: 'December 2023',
+  semester: 'F23',
+  tags: [],
 };
-const workTermReport3: Article = {
+const workTermReport3: WorkTermArticle = {
   title: 'Work Term Report S24',
   id: 'wtr-s24',
 
@@ -192,9 +207,15 @@ const workTermReport3: Article = {
       content: `      Working at Pacwill Environmental has been an amazing and fulfilling experience and has been invaluable to my skills as a software engineer. Being in charge of a new cloud-based software project as its sole developer presented a great and rewarding challenge and allowed me to flex all of my programming muscles. I would like to thank everyone in Pacwill for being supportive and helping me when I was unsure. I would like to thank Sean, my manager, for allowing me to turn his idea into software. I would also like to thank Tom for helping me get used to PHP and Ahbi for assisting me with Teledyne issues.`,
     },
   ],
+  jobPosition: 'Software Developer Co-op',
+  company: 'Pacwill',
+  startDate: 'May 2024',
+  endDate: 'August 2024',
+  semester: 'S24',
+  tags: [],
 };
 
-const workTermReport4: Article = {
+const workTermReport4: WorkTermArticle = {
   id: 'wtr-w25',
   title: 'Work Term Report W25',
   image: cover4,
@@ -262,9 +283,15 @@ const workTermReport4: Article = {
       content: `    I would like to thank my team, the Web Squad, for helping me and supporting me while I became acclimated to the codebase and for supporting me on increasingly challenging tickets. I would like to thank Julian, Nihar, and Amninder in particular for answering all of my questions and giving me advice.`,
     },
   ],
+  jobPosition: 'Full-stack Software Developer',
+  company: 'Camis',
+  startDate: 'January 2025',
+  endDate: 'April 2025',
+  semester: 'W25',
+  tags: [],
 };
 
-const workTermReport5: Article = {
+const workTermReport5: WorkTermArticle = {
   id: 'wtr-s25',
   title: 'Work Term Report S25',
   description: 'Remaining 4 months for my placement at Camis.',
@@ -565,6 +592,12 @@ const workTermReport5: Article = {
       ],
     },
   ],
+  jobPosition: 'Full-stack Software Developer',
+  company: 'Camis',
+  startDate: 'May 2025',
+  endDate: 'August 2025',
+  semester: 'S25',
+  tags: [],
 };
 
 export const workTermReportEntries = [

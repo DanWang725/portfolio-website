@@ -22,6 +22,8 @@ const Projects: React.FC = () => {
           New Years Countdown
         </Button>
         <Button onClick={() => navigate('./funny')}>Random Silence</Button>
+        <Button onClick={() => navigate('./tank-game')}>Tanks</Button>
+        <Button onClick={() => navigate('./cypher')}>Cypher</Button>
       </Box>
     </ContentSection>
   );

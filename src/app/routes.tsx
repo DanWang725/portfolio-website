@@ -11,6 +11,8 @@ const RiskCalculator = lazy(() => import('./screens/RiskCalculatorScreen'));
 const Countdown = lazy(() => import('./screens/Countdown'));
 const Projects = lazy(() => import('./screens/Projects'));
 const Funny = lazy(() => import('./screens/RandomSounds'));
+const Tank = lazy(() => import('./screens/TankGame'));
+const Cypher = lazy(() => import('./screens/Cypher'));
 
 export const screens: ScreenMap = {
   home: Home,
@@ -19,6 +21,8 @@ export const screens: ScreenMap = {
   countdown: Countdown,
   funny: Funny,
   projects: Projects,
+  tank: Tank,
+  cypher: Cypher,
 };
 
 export const routes: RouteElement[] = [
@@ -64,6 +68,8 @@ export const routes: RouteElement[] = [
         path: 'funny',
         name: 'Funny',
       },
+      { screen: 'tank', path: 'tank-game', name: 'Tank Game' },
+      { screen: 'cypher', path: 'cypher', name: 'Cypher' },
     ],
   },
 ];

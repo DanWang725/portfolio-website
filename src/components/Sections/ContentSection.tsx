@@ -1,22 +1,19 @@
 import { Theme } from '@emotion/react';
-import { Box, ThemeOptions } from '@mui/material';
+import { Box, SxProps, ThemeOptions } from '@mui/material';
 import { ReactNode } from 'react';
 
 export interface ContentSectionProps {
-  /** The content to be displayed in the section */
-  children: ReactNode;
   /** Any styles to be applied to the content section box */
-  styleOverrides?: Theme;
+  styleOverrides: SxProps<Theme> | undefined;
 }
 
 /**
  * A styled box used to contain article content for the website
  * Has a grey background and a cyan border
  */
-const ContentSection: React.FC<ContentSectionProps> = ({
-  children,
-  styleOverrides = {},
-}) => {
+const ContentSection: React.FC<
+  React.PropsWithChildren<ContentSectionProps>
+> = ({ children, styleOverrides = {} }) => {
   return (
     <Box
       sx={{
