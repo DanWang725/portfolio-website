@@ -11,19 +11,13 @@ const MonoalphabeticalSubstitution = () => {
     {},
   );
   // cyphertext char to some char
-  const [decryptedText, setDecryptedText] = useState<
-    (string | ReactJSXElement)[]
-  >([]);
+  const [decryptedText, setDecryptedText] = useState<DecoratedCharacter[]>([]);
   // const [availableLetters, setAvailableLetters] = useState<string[]>([]);
   const [uniqueLetters, setUniqueLetters] = useState<string[]>([]);
   const [selectedLetter, setSelectedLetter] = useState<string>('');
 
   const handleDecrpytedContent = (d: DecoratedCharacter[]) => {
-    setDecryptedText(
-      d.map((character) => {
-        return character.highlight ? <b>{character.char}</b> : character.char;
-      }),
-    );
+    setDecryptedText(d);
   };
 
   return (
@@ -38,14 +32,30 @@ const MonoalphabeticalSubstitution = () => {
           ></Input>
         </Grid2>
         <Grid2 size={6}>
-          <Typography sx={{ letterSpacing: '0.4rem' }}>
-            {decryptedText}
+          <Typography
+            sx={{ letterSpacing: '0.3rem', overflowWrap: 'break-word' }}
+          >
+            {decryptedText.map((char) => (
+              <span
+                style={{
+                  cursor: 'pointer',
+                  ...(char.value === selectedLetter
+                    ? { backgroundColor: 'lavender', color: 'darkblue' }
+                    : {}),
+                }}
+                onClick={() => char.selectable && setSelectedLetter(char.value)}
+              >
+                {char.char}
+              </span>
+            ))}
           </Typography>
         </Grid2>
       </Grid2>
       <MonoalphabetSubField
         ciphertext={cipherText}
         handleDecryptedContent={handleDecrpytedContent}
+        selectedLetter={selectedLetter}
+        handleSetSeletedLetter={setSelectedLetter}
       />
     </Box>
   );
