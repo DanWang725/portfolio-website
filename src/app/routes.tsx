@@ -13,6 +13,7 @@ const Projects = lazy(() => import('./screens/Projects'));
 const Funny = lazy(() => import('./screens/RandomSounds'));
 const Tank = lazy(() => import('./screens/TankGame'));
 const Cypher = lazy(() => import('./screens/Cypher'));
+const PaymentDivider = lazy(() => import('./screens/PaymentDividerScreen'));
 
 export const screens: ScreenMap = {
   home: Home,
@@ -23,6 +24,7 @@ export const screens: ScreenMap = {
   projects: Projects,
   tank: Tank,
   cypher: Cypher,
+  paymentDivider: PaymentDivider,
 };
 
 export const routes: RouteElement[] = [
@@ -70,6 +72,7 @@ export const routes: RouteElement[] = [
       },
       { screen: 'tank', path: 'tank-game', name: 'Tank Game' },
       { screen: 'cypher', path: 'cypher', name: 'Cypher' },
+      { screen: 'paymentDivider', path: 'payment', name: 'Payment Divider' },
     ],
   },
 ];
