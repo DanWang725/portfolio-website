@@ -7,7 +7,10 @@ const PaymentDividerScreen: React.FC = () => {
   return (
     <ContentSection styleOverrides={{ p: '1rem' }}>
       <ContentHeader>Payment Divider</ContentHeader>
-      <ContentText>Divide Payments</ContentText>
+      <ContentText>
+        Calculator to split payments among several payees. This was created as a
+        tool to divide up payments during a trip.
+      </ContentText>
       <PaymentDivider />
     </ContentSection>
   );

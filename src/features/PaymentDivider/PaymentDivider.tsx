@@ -15,6 +15,8 @@ import {
   Typography,
 } from '@mui/material';
 import { GiTrashCan } from 'react-icons/gi';
+import { Person } from '@mui/icons-material';
+import PayeeInput from './components/PayeeInput';
 
 // list of unique payees
 // track payments done by each payee
@@ -66,67 +68,17 @@ const PaymentDivider: React.FC = () => {
           Add Payee
         </Button>
       </Box>
-      <Box display="flex" flexDirection="column">
-        <Typography>Add Payment</Typography>
-        <Grid2 container gap={1}>
-          <Grid2 size={4}>
-            <Select
-              fullWidth
-              value={selectedPayee}
-              onChange={(e) => setSelectedPayee(e.target.value as string)}
-            >
-              {payees.map((p) => (
-                <MenuItem value={p}>{p}</MenuItem>
-              ))}
-            </Select>
-          </Grid2>
-          <Grid2 size={4}>
-            <Input
-              type="number"
-              fullWidth
-              onChange={(e) =>
-                setSelectedPayeeAmount(Number.parseFloat(e.target.value))
-              }
-              value={selectedPayeeAmount}
-            ></Input>
-          </Grid2>
-          <Grid2 size={1}>
-            <Button
-              onClick={() =>
-                handleAddPayment(selectedPayee, selectedPayeeAmount)
-              }
-            >
-              Add Payment
-            </Button>
-          </Grid2>
-        </Grid2>
-      </Box>
-      <Typography>Paid</Typography>
-      <Grid2 container gap={2} mb="1rem" direction="column">
+
+      <Grid2 container gap={2} mt="1rem" mb="1rem" direction="row">
         {payees.map((payee) => (
-          <Grid2
-            size={
-              payments.filter((payment) => payment.payee === payee).length + 1
-            }
-          >
-            <Typography>{payee}</Typography>
-            <Divider />
-            {payments
-              .filter((payment) => payment.payee === payee)
-              .map((payment) => (
-                <Box display="flex" alignItems="center">
-                  <Typography>${payment.amount}</Typography>
-                  <IconButton>
-                    <GiTrashCan
-                      onClick={() => handleRemovePayment(payment)}
-                    ></GiTrashCan>
-                  </IconButton>
-                </Box>
-              ))}
-          </Grid2>
+          <PayeeInput
+            payee={payee}
+            payments={payments.filter((payment) => payment.payee == payee)}
+            handleAddPayment={(amount) => handleAddPayment(payee, amount)}
+            handleRemovePayment={handleRemovePayment}
+          />
         ))}
       </Grid2>
-      <Divider />
       {payments.length != 0 && (
         <Grid2 container gap={2}>
           {payeePayments.map((payee) => (
