@@ -36,6 +36,10 @@ const audioOptions = [
     value:
       'https://us-tuna-sounds-files.voicemod.net/b1314a78-a2a4-4fb3-823c-d8be5f8bedf0-1712575538117.mp3',
   },
+  {
+    label: 'Talking Ben Yes',
+    value: 'https://www.myinstants.com/media/sounds/ben-yes.mp3',
+  },
 ];
 
 const SilenceInterruptedBy: React.FC = () => {
