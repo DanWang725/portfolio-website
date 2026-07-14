@@ -1,7 +1,7 @@
 // for each payee, split amount paid by 4, add to others
 
-import { useState } from 'react';
-import usePaymentDivider, { Payment } from './hooks/usePaymentDivider';
+import { useState } from "react";
+import usePaymentDivider, { Payment } from "./hooks/usePaymentDivider";
 import {
   Box,
   Button,
@@ -13,10 +13,10 @@ import {
   MenuItem,
   Select,
   Typography,
-} from '@mui/material';
-import { GiTrashCan } from 'react-icons/gi';
-import { Person } from '@mui/icons-material';
-import PayeeInput from './components/PayeeInput';
+} from "@mui/material";
+import { GiTrashCan } from "react-icons/gi";
+import { Person } from "@mui/icons-material";
+import PayeeInput from "./components/PayeeInput";
 
 // list of unique payees
 // track payments done by each payee
@@ -25,20 +25,20 @@ const PaymentDivider: React.FC = () => {
   const [payees, setPayees] = useState<string[]>([]);
   const [payments, setPayments] = useState<Payment[]>([]);
 
-  const [newPayeeName, setNewPayeeName] = useState('');
+  const [newPayeeName, setNewPayeeName] = useState("");
 
   const payeePayments = usePaymentDivider(payees, payments);
 
-  const [selectedPayee, setSelectedPayee] = useState('');
+  const [selectedPayee, setSelectedPayee] = useState("");
   const [selectedPayeeAmount, setSelectedPayeeAmount] = useState(0);
 
   const handleAddNewPayee = (name: string) => {
-    if (name === '') {
+    if (name === "") {
       return;
     }
     if (!payees.find((p) => p === name)) {
       setPayees([...payees, name]);
-      setNewPayeeName('');
+      setNewPayeeName("");
     }
   };
 
@@ -48,7 +48,7 @@ const PaymentDivider: React.FC = () => {
     }
     const newPayment: Payment = { payee, amount };
     setPayments([...payments, newPayment]);
-    setSelectedPayee('');
+    setSelectedPayee("");
     setSelectedPayeeAmount(0);
   };
 
@@ -69,7 +69,7 @@ const PaymentDivider: React.FC = () => {
         </Button>
       </Box>
 
-      <Grid2 container gap={2} mt="1rem" mb="1rem" direction="row">
+      <Grid2 container spacing={2} mt="1rem" mb="1rem" direction="row">
         {payees.map((payee) => (
           <PayeeInput
             payee={payee}

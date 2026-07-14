@@ -4,13 +4,15 @@ import {
   Grid2,
   IconButton,
   Input,
+  Link,
   TextField,
   Typography,
-} from '@mui/material';
-import { Payment } from '../hooks/usePaymentDivider';
-import { Add, Person } from '@mui/icons-material';
-import { GiTrashCan } from 'react-icons/gi';
-import { useState } from 'react';
+} from "@mui/material";
+import { Payment } from "../hooks/usePaymentDivider";
+import { Add, Person, Remove } from "@mui/icons-material";
+import { GiTrashCan } from "react-icons/gi";
+import { useState } from "react";
+import { RemovableLink } from "@components/RemovableLink";
 
 export interface PayeeInputProps {
   payee: string;
@@ -34,13 +36,29 @@ const PayeeInput: React.FC<PayeeInputProps> = ({
   };
   return (
     <Grid2
-      size={4}
-      justifyContent={'flex'}
-      display={'flex'}
+      size={{ md: 4, sm: 6, xs: 12 }}
+      justifyContent={"flex"}
+      sx={{ border: "1px solid", borderRadius: "2px" }}
+      display={"flex"}
       flexDirection="column"
+      p="1rem"
     >
-      <Box alignItems="center" display={'flex'}>
-        <Person viewBox="0 0 20 20" />
+      <Box alignItems="center" display={"flex"}>
+        <Box
+          sx={{
+            ml: "0.5rem",
+            borderRadius: "50%",
+            backgroundColor: "#111111",
+            aspectRatio: 1,
+            width: "auto",
+            height: "80%",
+            alignItems: "center",
+            justifyContent: "space-evenly",
+            display: "flex",
+          }}
+        >
+          <Person />
+        </Box>
         <Typography alignSelf="center" ml="1rem" variant="h4">
           {payee}
         </Typography>
@@ -50,7 +68,7 @@ const PayeeInput: React.FC<PayeeInputProps> = ({
             .filter((payment) => payment.payee === payee)
             .reduce((sum, payment) => {
               return payment.amount + sum;
-            }, 0)}{' '}
+            }, 0)}{" "}
           paid)
         </Typography>
       </Box>
@@ -58,14 +76,17 @@ const PayeeInput: React.FC<PayeeInputProps> = ({
       {payments
         .filter((payment) => payment.payee === payee)
         .map((payment) => (
-          <Box display="flex" alignItems="center" justifyContent="flex-end">
-            <Typography>${payment.amount}</Typography>
-            <IconButton>
-              <GiTrashCan
-                onClick={() => handleRemovePayment(payment)}
-              ></GiTrashCan>
-            </IconButton>
-          </Box>
+          <RemovableLink
+            value={
+              <>
+                <Typography>${payment.amount}</Typography>
+                <IconButton>
+                  <Remove></Remove>
+                </IconButton>
+              </>
+            }
+            onClick={() => handleRemovePayment(payment)}
+          ></RemovableLink>
         ))}
       <Box mt="1rem">
         <TextField
@@ -78,11 +99,11 @@ const PayeeInput: React.FC<PayeeInputProps> = ({
             )
           }
           onKeyUp={(e) => {
-            if (e.key == 'Enter') {
+            if (e.key == "Enter") {
               submitPayment();
             }
           }}
-          value={newPaymentAmount > 0 ? newPaymentAmount : ''}
+          value={newPaymentAmount > 0 ? newPaymentAmount : ""}
         ></TextField>
         <IconButton
           disabled={newPaymentAmount <= 0}
