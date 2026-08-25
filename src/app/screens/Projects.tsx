@@ -24,6 +24,7 @@ const Projects: React.FC = () => {
         <Button onClick={() => navigate('./funny')}>Random Silence</Button>
         <Button onClick={() => navigate('./tank-game')}>Tanks</Button>
         <Button onClick={() => navigate('./cypher')}>Cypher</Button>
+        <Button onClick={() => navigate('./payment')}>Payments</Button>
       </Box>
     </ContentSection>
   );
