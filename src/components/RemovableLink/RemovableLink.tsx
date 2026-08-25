@@ -18,7 +18,10 @@ const RemovableLink: React.FC<RemovableLinkProps> = ({ value, onClick }) => {
       underline="none"
       onMouseEnter={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
-      sx={{ textDecoration: isHover ? "line-through" : "none" }}
+      sx={{
+        textDecoration: isHover ? "line-through" : "none",
+        cursor: "pointer",
+      }}
       onClick={onClick}
     >
       {value}
