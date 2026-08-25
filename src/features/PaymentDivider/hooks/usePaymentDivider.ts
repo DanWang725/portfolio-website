@@ -14,7 +14,6 @@ const usePaymentDivider = (payees: string[], payments: Payment[]) => {
       const paid = payments
         .filter((p) => p.payee === curPayee)
         .reduce((sum, cur) => sum + cur.amount, 0);
-
       acc[curPayee] = paid;
       return acc;
     },

@@ -12,6 +12,7 @@ import {
   Input,
   MenuItem,
   Select,
+  TextField,
   Typography,
 } from "@mui/material";
 import { GiTrashCan } from "react-icons/gi";
@@ -26,6 +27,7 @@ const PaymentDivider: React.FC = () => {
   const [payments, setPayments] = useState<Payment[]>([]);
 
   const [newPayeeName, setNewPayeeName] = useState("");
+  const [newPayeeError, setNewPayeeError] = useState("");
 
   const payeePayments = usePaymentDivider(payees, payments);
 
@@ -34,11 +36,15 @@ const PaymentDivider: React.FC = () => {
 
   const handleAddNewPayee = (name: string) => {
     if (name === "") {
+      setNewPayeeError("Enter a payee name.");
       return;
     }
     if (!payees.find((p) => p === name)) {
+      setNewPayeeError("");
       setPayees([...payees, name]);
       setNewPayeeName("");
+    } else {
+      setNewPayeeError("Payee already exists");
     }
   };
 
@@ -60,10 +66,14 @@ const PaymentDivider: React.FC = () => {
   return (
     <>
       <Box display="flex" flexDirection="row">
-        <Input
+        <TextField
+          variant="standard"
           onChange={(e) => setNewPayeeName(e.target.value)}
           value={newPayeeName}
+          error={!!newPayeeError}
+          helperText={newPayeeError}
         />
+
         <Button onClick={() => handleAddNewPayee(newPayeeName)}>
           Add Payee
         </Button>
@@ -74,26 +84,12 @@ const PaymentDivider: React.FC = () => {
           <PayeeInput
             payee={payee}
             payments={payments.filter((payment) => payment.payee == payee)}
+            payeePayment={payeePayments.filter((p) => p.payee == payee)?.[0]}
             handleAddPayment={(amount) => handleAddPayment(payee, amount)}
             handleRemovePayment={handleRemovePayment}
           />
         ))}
       </Grid2>
-      {payments.length != 0 && (
-        <Grid2 container gap={2}>
-          {payeePayments.map((payee) => (
-            <Grid2 size={5}>
-              <Typography>{payee.payee} Owes</Typography>
-              <Divider />
-              {payee.owes.map((payment) => (
-                <Typography>
-                  {payment.payee}: ${payment.amount}
-                </Typography>
-              ))}
-            </Grid2>
-          ))}
-        </Grid2>
-      )}
     </>
   );
 };

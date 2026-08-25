@@ -8,7 +8,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { Payment } from "../hooks/usePaymentDivider";
+import { PayeePayments, Payment } from "../hooks/usePaymentDivider";
 import { Add, Person, Remove } from "@mui/icons-material";
 import { GiTrashCan } from "react-icons/gi";
 import { useState } from "react";
@@ -17,6 +17,7 @@ import { RemovableLink } from "@components/RemovableLink";
 export interface PayeeInputProps {
   payee: string;
   payments: Payment[];
+  payeePayment: PayeePayments | undefined;
   handleRemovePayment: (payment: Payment) => void;
   handleAddPayment: (amount: number) => void;
 }
@@ -24,6 +25,7 @@ export interface PayeeInputProps {
 const PayeeInput: React.FC<PayeeInputProps> = ({
   payee,
   payments,
+  payeePayment,
   handleRemovePayment,
   handleAddPayment,
 }) => {
@@ -114,6 +116,21 @@ const PayeeInput: React.FC<PayeeInputProps> = ({
           <Add />
         </IconButton>
       </Box>
+      {payeePayment?.owes?.length && (
+        <Box>
+          <Typography variant="h5" mt="1rem">
+            Owes
+          </Typography>
+          <Divider />
+          <Box>
+            {payeePayment.owes.map((p) => (
+              <Typography>
+                {p.payee}: ${p.amount}
+              </Typography>
+            ))}
+          </Box>
+        </Box>
+      )}
     </Grid2>
   );
 };
